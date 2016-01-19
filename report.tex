@@ -93,14 +93,65 @@ storage to achieve previously unattainable goals whiles till meeting a
 variety of security and privacy requirements.
 
 \section{Introduction}
-\label{sec:introduction}
+\label{sec:intro}
 
-This is an example section.
+How best to storage and manager secrets -- the bits of tightly
+controlled data necessary to ensure or bootstrap and security of
+larger data stores or computing systems -- has always been a
+non-trivial problem. As we continue to move toward computing and
+storage platforms controlled by third parties and embrace the ideals
+of ephemeral infrastructure, the secret storage problems only become
+more prevalent and important to answer. Tutamen\footnote{Latin -- A
+  means of protection or defense.} is our attempt to solve the secret
+storage problem in a manner that allows the user to adhere to a range
+of security and privacy requirements.
 
-\subsection{Subsection A}
-\label{sec:section1A}
 
-This is an example subsection
+\subsection{The Need for Secret Storage}
+
+In response to the move toward ephemeral infrastructure, we have
+developed and deployed numerous configuration management systems to
+store the metadata required to deploy and operate a range of modern
+technologies. System such as puppet\cite{puppet} or chef\cite{chef}
+are designed to manage and configure large fleets of ephemeral
+infrastructure. Such systems, however, do not tend to have suitable
+mechanisms for storing and controlling access to configuration data
+that must remain secret.
+
+\subsection{Existing Solutions}
+
+\cite{confidant}
+\cite{vault}
+\cite{keywhiz}
+\cite{openstack-barbican}
+
+\subsection{Desirable Properties}
+
+\section{The Tutamen Platform}
+\label{sec:tutamen}
+
+\subsection{Architecture}
+
+\subsection{Security and Trust}
+
+\subsection{Implementation}
+
+\section{Applications}
+\label{sec:apps}
+
+\subsection{Server Disk Encryption}
+
+\subsection{Encrypted File Locker}
+
+\section{Evaluation}
+\label{sec:eval}
+
+\subsection{Usage}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\subsection{Future Work}
 
 {
   \footnotesize
