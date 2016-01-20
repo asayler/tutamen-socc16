@@ -1,34 +1,90 @@
 \section{Introduction}
 \label{sec:intro}
 
-How best to storage and manager secrets -- the bits of tightly
-controlled data necessary to ensure or bootstrap and security of
-larger data stores or computing systems -- has always been a
-non-trivial problem. As we continue to move toward computing and
-storage platforms controlled by third parties and embrace the ideals
-of ephemeral infrastructure, the secret storage problems only become
-more prevalent and important to answer. Tutamen\footnote{Latin -- A
-  means of protection or defense.} is our attempt to solve the secret
+How best to store and manage secrets -- the bits of tightly controlled
+data necessary to ensure or bootstrap and security of larger data
+stores or computing systems -- has always been a non-trivial
+problem. As we continue to move toward computing and storage platforms
+controlled by third parties and embrace modern desires for ephemeral
+infrastructure, the secret storage problems only becomes more
+prevalent and important to answer. Tutamen\footnote{Latin -- A means
+  of protection or defense.} is our attempt to solve the secret
 storage problem in a manner that allows the user to adhere to a range
 of security and privacy requirements.
 
-
 \subsection{The Need for Secret Storage}
 
-In response to the move toward ephemeral infrastructure, we have
-developed and deployed numerous configuration management systems to
-store the metadata required to deploy and operate a range of modern
-technologies. System such as puppet~\cite{puppet} or chef~\cite{chef}
-are designed to manage and configure large fleets of ephemeral
-infrastructure. Such systems, however, do not tend to have suitable
-mechanisms for storing and controlling access to configuration data
-that must remain secret.
+The pervasiveness of computing systems today invades every contour of
+our lives -- from the fitness trackers on our wrists to our ``smart''
+home appliances to the server infrastructure required to support the
+range of web sites and services we interact with every day. With this
+explosion of in computing systems has come an equally large explosion
+in the amount of data stored by and about us. While some of this data
+is designed to be public (i.e. the entries on Wikipedia), much of it
+is not - requiring the enforcement of various privacy and security
+guarantees with respect to its handling and storage. The basis of
+proving such guarantees relies on our ability to keep and selectively
+share secrets - from encryption keys used to encrypt such data or
+serve it over a secure connection, to the passwords used to protect
+our online accounts, to personally sensitive data such as social
+security numbers or other commonly used human authentication
+information.
 
-\subsection{Existing Solutions}
+How best to store and manage these secrets is thus a significant
+question that provides the foundation to all of computing's higher
+level security and privacy guarantees. Beyond the repaid expansion of
+sensitive digital data in existence there are several other factors
+driving the need to good solution to the secret storage problem.
 
-\cite{vault}
-\cite{confidant}
-\cite{openstack-barbican}
-\cite{keywhiz}
+On the developer front, the trend toward ephemeral infrastructure
+capable of being rapidly scaled up or down as demand requires is
+driving the need for suitable configuration management systems capable
+of converting configuration metadata into fully configured
+systems. Systems such as puppet~\cite{puppet} or chef~\cite{chef}
+allow administrators to manage and configure large fleets of ephemeral
+systems with a high degree of efficiency. Such systems, however, do
+not tend to have suitable mechanisms for providing the security and
+privacy requirements inherent to storing and controlling access to
+configuration data that must remain secret. And yet configuration data
+often contains a variety of secrets including:
 
-\subsection{Desirable Properties}
+\begin{packed_item}
+\item Cryptographic secrets such a SSH keys, TLS/SSL keys, and file
+  encryption keys
+\item API Tokens or credentials necessary to authenticate to a variety of
+  API endpoints
+\item Others?
+\end{packed_item}
+
+On the end-user front, the need for suitable secret storage systems is
+being driven by the rapid expansion in the number of sites and
+services to which user must authenticate themselves as well as by the
+growing expanse of private digital data users wish to protect. Indeed,
+the popularity of password management systems such as
+LastPass~\cite{lastpass} or 1Password~\cite{onepassword} as well as
+users desire for encryption support on their
+devices~\cite{intercept-cookencryption} demonstrate the importance of
+secret storage to end users.
+
+Unlike standard configuration management systems, or even specific
+secret storage systems such as password managers, a general purpose
+secret storage presents a number of unique requirements including:
+
+\begin{packed_item}
+\item The ability to store a wide-range of secret data
+\item The ability to store data in a secure manner
+\item The ability to enforce fine-grained access control requirements
+\item The ability to support a range of authentication sources and methods
+\item The ability to provide audit logs tracking data access history
+\end{packed_item}
+
+In response to these needs, a number of general purpose secret-storage
+systems have been proposed or developed including HashiCorp's
+Vault~\cite{vault}, Lyft's Confidant~\cite{confidant}, and Square's
+Keywhiz~\cite{keywhiz}.
+
+\subsection{The Ideal Secret Storage System}
+
+
+
+%%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz
