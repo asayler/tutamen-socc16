@@ -38,8 +38,15 @@ redundancy and trust requirements.
 The Tutamen Access Control Servers are responsible with authenticating
 Tutamen requests as well as storing and enforcing all access control
 requirements. Access Control servers expose a number of core data
-structures that reflect that manner in which they operate. Figure XX
-shows these structures.
+structures that reflect that manner in which they
+operate. Figure~\ref{fig:tutamen:acstructs} shows these structures.
+
+\begin{figure}[th]
+  \centering
+  \includegraphics[width=\columnwidth]{./figs/pdf/tutamen-datastructures-ac.pdf}
+  \caption{Access Control Server Data Structures}
+  \label{fig:tutamen:acstructs}
+\end{figure}
 
 In order to track and control access from specific users - the ACS
 uses per-user accounts. These accounts are generally designed to to
@@ -83,7 +90,7 @@ message or otherwise interfacing with eternal services to gain
 approval.
 
 Accounts and authenticators are combined via verifiers. A verifier
-consist of a set of Accounts and a list of Authenticators. In order to
+consist of a set of Accounts and a set of Authenticators. In order to
 satisfy a verifier a request must originate form ONE of the Accounts
 and must satisfy ALL of the authenticators plugins listed in the
 verifier. A verifier may contain no Authenticators, in which case
