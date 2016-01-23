@@ -23,6 +23,13 @@ control servers with which they interact. All communication in Tutamen
 takes place via HTTPS connections - and in some cases leverage mutual
 TLS to require both client and server authentication.
 
+\begin{figure}[th]
+  \centering
+  \includegraphics[width=\columnwidth]{./figs/pdf/system-base.pdf}
+  \caption{Tutamen System Components}
+  \label{fig:tutamen:systembase}
+\end{figure}
+
 Both access control and storage servers are designed to be used
 individually or in sets. E.g. An application may store their secret
 on a single storage server and delegate access control to a single
