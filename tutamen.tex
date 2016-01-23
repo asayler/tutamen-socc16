@@ -148,10 +148,17 @@ requests to preform actions on access control server data types
 \subsubsection{Storage Servers}
 
 Tutamen storage servers are responsible for storing all or part of
-each Tutamen secret. Figure XX shows the core storage server data
-structures. In addition to storing data, each storage server is also
-responsible for verifying the access control tokens provided by the
-each client accessing the server.
+each Tutamen secret. Figure~\ref{fig:tutamen:storagestructs} shows the
+core storage server data structures. In addition to storing data, each
+storage server is also responsible for verifying the access control
+tokens provided by the each client accessing the server.
+
+\begin{figure}[th]
+  \centering
+  \includegraphics[width=\columnwidth]{./figs/pdf/tutamen-datastructures-storage.pdf}
+  \caption{Storage Server Data Structures}
+  \label{fig:tutamen:storagestructs}
+\end{figure}
 
 The top-level data structure employed by storage servers is a
 collection. A collection represents a logical grouping of one or more

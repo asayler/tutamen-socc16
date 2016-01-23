@@ -7,7 +7,9 @@ TEX = $(wildcard *.tex)
 SRCS = $(TEX) refs.bib
 
 FIG_TMP = tmp.eps
-FIGS = $(patsubst %, figs/pdf/%.pdf, tutamen-datastructures-ac)
+FIGS = $(patsubst %, figs/pdf/%.pdf, \
+	     tutamen-datastructures-ac \
+	     tutamen-datastructures-storage)
 
 all: pdf
 
