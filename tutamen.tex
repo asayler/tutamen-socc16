@@ -17,18 +17,12 @@ The Tutamen Secret Storage platform has three main components:
 
 In general, Tutamen communication occurs between applications and both
 types of servers. Tutamen servers do not generally communicates with
-each other directly -- with the one exception of storage servers
-needing to download the public signing keys from each of the access
-control servers with which they interact. All communication in Tutamen
-takes place via HTTPS connections - and in some cases leverage mutual
-TLS to require both client and server authentication.
-
-\begin{figure}[th]
-  \centering
-  \includegraphics[width=\columnwidth]{./figs/pdf/system-base.pdf}
-  \caption{Tutamen System Components}
-  \label{fig:tutamen:systembase}
-\end{figure}
+each other directly.\footnote{There is one exception to this stamen --
+  storage servers need to download the public signing keys from each
+  of the access control servers with which they interact.} All
+communication in Tutamen takes place via HTTPS connections - and in
+some cases leverages mutual TLS to require both client and server
+authentication.
 
 Both access control and storage servers are designed to be used
 individually or in sets. E.g. An application may store their secret
@@ -111,54 +105,11 @@ that can be preformed on the corresponding object. Each permission
 contains a set of verifiers. In order to be granted a given permission
 a request must satisfy at least one of the verifiers in this set.
 
-Access control servers control access related to both internal
-(i.e. access control server) and external (i.e. storage server)
-objects by providing signed authorization tokens in response to valid
-requests granting. Each authorization token grants the presenter with
-specific permissions related to a specific object. In this manner,
-access control server provide a form of federated access management
-than bears some similarities to previously deployed systems such as
-Shibboleth~\cite{leandro2012}.
-
-The access control server generates authorization tokens in response
-to a client sending an authorization request. Each authorization
-request (and each corresponding token) includes two claims binding it
-to a specific object: the object type and the object ID. Each request
-also contains a claim that binds it to a specific permission
-(e.g. read, write, delete, modify) for the corresponding
-object. Authorization requests are further bound to a specific client
-making the request (authenticate via mutual-TLS) and to an expiration
-time after which the token is no longer valid. Upon receiving a
-authorization request from a client, the access control server looks
-up the permission group for the corresponding object (identified via
-the combination of object type and object ID) and then loads the
-verifier set corresponding to the requested permission. The server
-then traverses each verifier in this set - verifying both client
-membership in one of the accounts listed in the verifier as well as
-executing any authenticator plugins required by the verifier until it
-finds (or fails to find) a verifier that is satisfied by the
-request. If the server is able to verify compliance with at least one
-verifier in the permission set - it grants the authorization request
-and returns a signed authorization token that includes the object
-type, object ID, granted permission, expiration time. The bearer of
-this token can then present it to either the access control server or
-a storage server in order to be granted the right to perform the class
-of operations included in the corresponding permission on the
-corresponding object.
-
-In this manner, access control server are responsible both for
-granting and verifying authorization requests and signing the
-corresponding tokens as well as for verifying tokens accompanying
-requests to preform actions on access control server data types
-(e.g. to create or modify verifiers or accounts).
-
 \subsubsection{Storage Servers}
 
 Tutamen storage servers are responsible for storing all or part of
 each Tutamen secret. Figure~\ref{fig:tutamen:storagestructs} shows the
-core storage server data structures. In addition to storing data, each
-storage server is also responsible for verifying the access control
-tokens provided by the each client accessing the server.
+core storage server data structures.
 
 \begin{figure}[th]
   \centering
@@ -184,6 +135,7 @@ metadata. Since access control is set at the per-collection level,
 secrets inherit their access control characteristics from the
 corresponding collection.
 
+% Move to discussion section ?
 How best to map secret data to collections is left up to each
 applications. This decision is primarily driven by the fact that
 access control is preformed on the per-collection level. Thus, if an
@@ -199,6 +151,82 @@ requires its own access control requirements (e.g. per-file encrypting
 keys for a sensitive document), it would be appropriate for the
 corresponding application to store only a single secret per
 collection.
+
+\subsubsection{Access Control Protocol}
+
+Access control servers control access related to both internal
+(i.e. access control server) and external (i.e. storage server)
+objects by providing signed authorization tokens in response to valid
+requests. Each authorization token grants the bearer with specific
+permissions related to a specific object. In this manner, access
+control servers provide a form of federated access management than
+bears some similarities to previously deployed systems such as
+Shibboleth~\cite{leandro2012}. Figure~\ref{fig:tutamen:systembase}
+shows the basic communication involved in the Tutamen access control
+process.
+
+\begin{figure}[th]
+  \centering
+  \includegraphics[width=\columnwidth]{./figs/pdf/system-base.pdf}
+  \caption{Tutamen System Components}
+  \label{fig:tutamen:systembase}
+\end{figure}
+
+The access control server generates authorization tokens in response
+to a client sending an authorization request. Each authorization
+request (and each corresponding token) includes two claims binding it
+to a specific object: the object type and the object ID. Each request
+also contains a claim that binds it to a specific permission
+(e.g. read, write, delete, modify) for the corresponding
+object. Authorization requests are further bound to the specific
+client making the request (authenticated via mutual-TLS) and to an
+expiration time -- after which the token is no longer
+valid. Listing~\ref{lst:tutamen:token} shows the structure of Tutamen
+access control tokens.
+
+\begin{lstlisting}[float,
+    language=JavaScript,
+    caption={Authorization Token Contents},
+    label=lst:tutamen:token]
+{
+  "claims":
+  {
+    "objtype": <object type>,
+    "objuid": <object ID>,
+    "permission": <object permission>,
+    "requesting-client": <client ID>,
+    "requesting-account": <account ID>,
+    "expiration": <expiration date and time>
+  }
+  "signature": <AC server signature>
+}
+\end{lstlisting}
+
+Upon receiving a authorization request from a client, the access
+control server looks up the permission group for the corresponding
+object (identified via the combination of object type and object ID)
+and then loads the verifier set corresponding to the requested
+permission. The server then traverses each verifier in this set -
+verifying both client membership in one of the accounts listed in the
+verifier as well as executing any authenticator plugins required by
+the verifier until it finds (or fails to find) a verifier that is
+satisfied by the request. If the server is able to verify compliance
+with at least one verifier in the permission set it grants the
+authorization request and returns a signed authorization token that
+includes the object type, object ID, granted permission, expiration
+time. The bearer of this token can then present it to either the
+access control server or a storage server in order to be granted the
+right to perform the class of operations included in the corresponding
+permission on the corresponding object.
+
+In this manner, access control servers are responsible both for
+granting and verifying authorization requests and signing the
+corresponding tokens as well as for verifying tokens accompanying
+requests to preform actions on access control server data structures
+(e.g. to create or modify verifiers or accounts). Storage servers are
+responsible only for verifying tokens accompanying requests to perform
+actions on storage server data structures (e.g. to create a collection
+or read a secret).
 
 \subsubsection{Distributed Usage}
 
@@ -226,4 +254,4 @@ collection.
 \subsection{Implementation}
 
 %%  LocalWords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
-%%  LocalWords:  authenticators authenticator
+%%  LocalWords:  authenticators authenticator objtype objuid
