@@ -168,7 +168,7 @@ process.
 \begin{figure}[th]
   \centering
   \includegraphics[width=\columnwidth]{./figs/pdf/system-base.pdf}
-  \caption{Tutamen System Components}
+  \caption{Access Control Communication}
   \label{fig:tutamen:systembase}
 \end{figure}
 
@@ -219,16 +219,54 @@ access control server or a storage server in order to be granted the
 right to perform the class of operations included in the corresponding
 permission on the corresponding object.
 
-In this manner, access control servers are responsible both for
-granting and verifying authorization requests and signing the
-corresponding tokens as well as for verifying tokens accompanying
-requests to preform actions on access control server data structures
-(e.g. to create or modify verifiers or accounts). Storage servers are
-responsible only for verifying tokens accompanying requests to perform
-actions on storage server data structures (e.g. to create a collection
-or read a secret).
+All requests to either storage or access control server related to the
+manipulation of server data objects must be accompanied by a valid
+token. The receiving server validated this token using the public
+signing key of the associated AC server: for request to the AC sever
+itself, this key is available internally. For requests to external
+storage servers, the signing key is downloaded by the target server
+from the access control server and cached for future use. In this
+manner, access control servers are responsible both for granting and
+verifying authorization requests and signing the corresponding tokens
+as well as for verifying tokens accompanying requests to preform
+actions on access control server data structures (e.g. to create or
+modify verifiers or accounts). Storage servers are responsible only
+for verifying tokens accompanying requests to perform actions on
+storage server data structures (e.g. to create a collection or read a
+secret).
 
 \subsubsection{Distributed Usage}
+
+Tutamen is designed to be used in both centralized and distributed
+used cases. The simplest Tutamen arrangement (e.g. as shown in
+Figure~\ref{fig:tutamen:systembase}) include leveraging a single
+Tutamen access control server and a single storage server. It is
+possible or these two servers to be co-located on a single machine -
+or for them to be operated separately for performance purposes. In
+this arrangement the storage server store a complete copy of each
+secret while the access control server is solely charged with
+enforcing access to these secrets. While this use case is easy to
+deploy it has two notable downsides. First, it forces the user to
+place a high degree of trust in the operator of the access control
+server (who has complete control over whether or not the access
+control rules for a given secret are being faithfully enforced) as
+well as the operator of the storage server (who, likewise, must
+faithfully verify incoming tokens and avoid otherwise leaking secret
+data). Second, it lacks any form of redundancy - if either the access
+control server or the storage server is unavailable the application
+will be unable to retrieve any secrets.
+
+To overcome these deficiencies, we've designed Tutamen to be leveraged
+in a distributed manner in addition to supporting simpler modes of
+centralized operation. Operating Tutamen in a distributed manner is
+largely a task that is pushed down to the application and client
+levels -- With the exception of supporting the necessary primitives to
+support such operation, both Tutamen storage and access control server
+are designed to by largely agnostic to whether they are being used in
+a centralized or a distributed manner. This design has the benefit of
+avoiding server-side scaling challenges, allowing the extra overhead
+required for distributed operation to be supported by each application
+that requires it.
 
 \begin{figure}[th]
   \centering
@@ -237,7 +275,77 @@ or read a secret).
   \label{fig:tutamen:systemdistributed}
 \end{figure}
 
+Figure~\ref{fig:tutamen:systemdistributed} shows the basic layout of a
+distributed Tutamen setup. In such a setup, the Tutamen application
+first shards its secret using a $(k, n)$ threshold schemes such as
+Shamir's~\cite{shamir1979}. The application chooses the value of $n$
+based on the number of storage servers they wish to utilize. The value
+of $k$ is then chosen to control how many of the server must be
+responsive in order to retrieve the secret -- i.e. the difference
+between $n$ and $k$ controls how much storage redundancy the system
+has by setting the number of storage server that can be unavailable
+before access to the secret itself is lost. The application then
+pushes each shard to the $n$ storage servers. If the application is
+merely concerned about storage redundancy or about their ability to
+trust storage server operates, it can simply delegate the access
+control for each secret shard to a single access control server. To
+retrieve such a secret the application would request the necessary
+token from the access control server and include it in the request to
+each storage server for their shard of the secret. When the
+application receives a response from $k$ of the storage servers, it is
+able to reconstruct the original secret.
+
+In most cases, however, we imagine that in addition to wishing to
+mitigate storage server trust and reliability issues, the application
+will also wish to protect itself against access control server trust
+and reliability failures. To accomplish this latter, the application
+can leverage Tutamen storage server design allowing the specification
+of two pieces of access control metadata that accompany each secret
+collection: a list of AC servers and a minimum number of server from
+which valid tokens must be received to allow the associated
+requests. Using these parameters forms the basis of an additional $(k,
+n)$ threshold scheme for access control servers -- e.g. the
+application may associated a list of $n$ access control servers with
+each secret from which an application must acquire at least $k$ valid
+tokens in order to gain access. Thus, if the the user does not wish to
+trust a single access control server, they may require tokens from at
+least $k$ different AC servers in order to access the secrets in a
+given collection. Likewise, if the application wishes to withstand the
+failure of one or more AC servers, it can specify $n$ possible AC
+servers where $n > k$.
+
+In order to facilitate ease of management when operating is a
+distributed mode, Tutamen also support allowing applications to
+request specific IDs for each object when creating them. This allows
+clients to use the same ID across multiple serves alleviating the
+burden of maintaining a mapping between unique object IDs and the
+servers to which they correspond. Using the same object IDs across
+multiple servers also allows for more efficient token management --
+e.g if an application uses the same collection ID on there separate
+storage serves, all of which delegate a common set of access control
+servers, it's possible for the application to use a single token
+granting access to the relevant collection ID on all three
+servers. Without this capability, an application would be forced to
+request multiple tokens from each access control server corresponding
+to the collection ID used on each storage server.
+
+The ability to request specific object IDs does have one downside --
+it opens Tutamen up to a possible denial-of-service (DoS) attack where
+an attacker attempts to request the object IDs they know another
+application wishes to use for themselves. Since each server may only
+use each object ID once, the first application to request a given ID
+gets it. Thus, if an adversary knew which object IDs a given
+application planned to use (or was already using on a subset of
+possible servers), they could request these object IDs on any server
+on which they were not yet in use for themselves, depriving the
+original application for using those servers without first undertaking
+the burden of changing object IDs. None the less, we believe the
+convenience afforded by allowing applications to request specific
+object IDs outweigh the potential for abuse.
+
 % Storage Server Cert Verification Option
+
+\subsubsection{Bootstrapping Trust}
 
 \subsubsection{Applications}
 
@@ -247,11 +355,17 @@ or read a secret).
 
 \subsection{Security and Trust}
 
+% All trust flows from access control server
+% Every access control server trusted at least as much as storge server
+
 \subsubsection{Model}
 
 \subsubsection{Discussion}
 
 \subsection{Implementation}
 
+
+
 %%  LocalWords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
-%%  LocalWords:  authenticators authenticator objtype objuid
+%%  LocalWords:  authenticators authenticator objtype objuid Shamir's
+%%  LocalWords:  DoS
