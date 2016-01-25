@@ -480,19 +480,40 @@ following steps:
   the original secret.
 \end{packed_enum}
 
-\subsection{Security and Trust}
-
-% All trust flows from access control server
-% Every access control server trusted at least as much as storge server
-
-\subsubsection{Model}
-
-\subsubsection{Discussion}
-
 \subsection{Implementation}
 
+In order to demonstrate and test the Tutamen platform we've created
+reference implementations for the Storage Server, Access Control Server,
+and several client libraries and applications.
 
+Our Tutamen server implementation exposes a RESTful
+interface~\cite{fielding2000} for both the access control and storage
+server APIs. This interface both accepts and responds using
+JSON~\cite{json} messages over the HTTPS protocol. The full access
+control server API specification as well as the API reference
+implementation source code is available online
+at~\cite{src-tutamen-apiaccesscontrol}. Likewise, the storage server
+API specification and source code can be found
+at~\cite{src-tutamen-apistorage}. Both APIs are freely available under
+the terms of the AGPLv3. The server APIs are written in Python 3 using
+the Flask web framework~\cite{python-flask}. Both servers are designed
+to be served via WSGI~\cite{pep3333} using the Apache HTTP
+Server~\cite{apache} for TLS termination and client-certificate
+verification.
 
-%%  LocalWords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
+Both Tutamen servers rely on a shared \texttt{pytutamn-server} python
+library for the implementation of their core logic. The
+\texttt{pytutamen-server} source is available
+at~\cite{src-tutamen-pytutamenserver} under the terms of the
+LGPLv3. This library leverages the Redis~\cite{redis} key-value store
+for persistent storage and the Cryptography~\cite{python-cryptography}
+python library for x509 support. Our Tutamen implementation adopts the
+JSON Web Signature (JWS)~\cite{rfc7515} and JSON Web Token
+(JWT)~\cite{rfc7519} specifications for exchanging cryptographically
+authenticated, claim-based tokens between Tutamen applications, access
+control servers, and storage servers. We leverage the
+pyjwt~\cite{pyjwt} library for JWS and JWT support.
+
+%%  Localwords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
 %%  LocalWords:  authenticators authenticator objtype objuid Shamir's
-%%  LocalWords:  DoS SMS
+%%  LocalWords:  DoS SMS Redis AGPLv JWS JWT pyjwt
