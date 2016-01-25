@@ -353,6 +353,133 @@ object IDs outweigh the potential for abuse.
 
 \subsubsection{Example}
 
+To illustrate the interaction of the various components of the Tutamen
+platform, we present a basic example of the steps taken by an
+application to store and then retrieve a secret via Tutamen. In this
+example, we're assume the applications is using three storage servers
+and two access control servers as shown in
+Figure~\ref{fig:tutamen:systemdistributed}. We also assume the
+application has already bootstrapped an account and client -- e.g. it
+previously contacted the AC server with a request to create a new
+account and associated client, presenting a CSR corresponding to a
+locally stored private key and receiving a signed client certificate
+in response. For the purposes of this example, we'll also assume that
+the creator of the secret in question wishes to protect access to the
+secret by requiring SMS text message approval. We'll further assume
+that the creator also wishes to share the secret with a trusted
+colleague in addition to accessing it themselves.
+
+In order to store a new secret, the application performs the following
+steps:\footnote{Skipped from this description is the process of
+  creating authenticators (optional), verifiers, and permissions
+  groups for each of the AC data structures in question (i.e. the
+  collection authenticator, collection verifier, and collection
+  permissions group). These permissions groups are necessary to
+  control who can read, modify, or delete the corresponding AC objects
+  after creation. The process for creating said structures is similar
+  to the process described for creating the collection-related
+  authenticator, verifier, and permissions group -- and is thus left
+  out of the description to avoid confusion and save space.}
+
+\begin{packed_enum}
+\item In order to require SMS-based approvals for secret access, the
+  application starts by creating a new authenticator using the SMS
+  plugin and specifying the phone number of the secret's creator. To
+  achieve this, the application selects a random ID for the new
+  authenticator, requests the necessary tokens to create the
+  authenticator from each of the two AC servers, and finally uses
+  these tokens to create the authenticator on both AC servers using
+  the selected ID.
+\item The application then creates a verifier to control access to the
+  secret (or, more correctly, to the collection in which the secret
+  will be stored). The application specifies two account IDs for the
+  new verifier: the account ID of the creator (i.e. the account ID the
+  application is currently using) and the account ID of the creator's
+  trusted colleague. The application also specifies the ID of the SMS
+  authenticator created in the previous step. The application selects
+  a random ID for the new verifier, requests the necessary verifier
+  creation tokens from each AC server, and then uses these tokens to
+  create the verifier on both AC servers using the chosen ID.
+\item Next the application must select an ID for the new collection in
+  which the secret will be stored. This ID will be used on both the AC
+  servers to bind the permission group to the new collection as well
+  as on the storage servers where it will be used for the new
+  collection itself. The application randomly generates an ID (e.g. a
+  UUID~\cite{leach2005}).
+\item Next the application must create a permissions group to control
+  access to the new collection. This permissions group will use a
+  single verifier for all permissions (i.e. the one created in the
+  previous step). The application requests the necessary permissions
+  group creation tokens from each AC server and uses these tokens to
+  crate a new permission group on each server that requires the
+  previously created verifier and is bound to the selected collection
+  ID.
+\item The application must now create the new collection that will be
+  used to store the secret. To do this, it requests the necessary
+  collection creation tokens from each of the AC servers\footnote{We
+    assume the storage servers in question are configured to delegate
+    server-level secret creation access control to one or both of the
+    AC servers}. The application then uses these tokens and the
+  previously select collection ID to create a new collection on each
+  of the three storage servers. The application specifies that access
+  control for the collection should be delegated to the two AC servers
+  and that concurring tokens from both servers should be required to
+  perform operations on the collection.
+\item At this point the application is ready to store the secret
+  itself. It begins by sharding the secret into 3 parts, two of which
+  are sufficient to reconstruct the secret.
+\item The application then requests the necessary secret creation
+  tokens from both AC servers for the chosen collection ID. Since the
+  granting of these tokens is governed by the verifier created above,
+  the AC servers will confirm they come from an approved account and
+  text the creator's phone number for approval. Since this token
+  request comes from the creator's account and assuming the creator
+  approves access via text message response, the tokens will be
+  granted.
+\item The application uses these tokens to create a new ``secret''
+  within the collection on each of the three storage servers --
+  storing one shard of the original secret on each storage server.
+\item The storage servers verify the tokens in question using the
+  public singing keys from both AC servers. If valid, the storage
+  servers create and store the secret shards.
+\end{packed_enum}
+
+At this point, the original secret has been sharded into 3 (choose 2)
+parts, each of which is stored in a common collection on one of the
+three storage servers. In order to access any single shard, an
+application must secure a token granting read access to the
+corresponding collection ID from each of the two AC servers. To be
+granted read access the token request must originate form the
+creator's account or the account of their trusted colleague and the
+creator must approve the request via SMS.
+
+In order to restore the stored secret, the application performs the
+following steps:
+
+\begin{packed_enum}
+\item The application begins by requesting the necessary collection
+  read tokens for the ID of the collection used to store the secret
+  shards from both AC servers. The collection read permission is
+  governed by the previously created verifier, and grants access based
+  on SMS approval and client membership in the creator's or their
+  colleague's account.
+\item As before, this token request will trigger an SMS approval
+  message to the secret's creator. If they respond in the affirmative,
+  and assuming the application has access to the client TLS key-pair
+  associated with the secret creator's account, the tokens will be
+  issued.
+\item The application uses the tokens to request copies of the secret
+  shards from each storage server. Since only two of these shards are
+  required to reconstruct the secret, the application may opt to ask
+  for only two shards, or it may ask for all three and return the
+  first tow it receives.
+\item The storage servers verify the tokens in question using the
+  public singing keys from both AC servers. If valid, the storage
+  servers grant access to the requested secrets.
+\item The application recombines two of the three shards to recreate
+  the original secret.
+\end{packed_enum}
+
 \subsection{Security and Trust}
 
 % All trust flows from access control server
@@ -368,4 +495,4 @@ object IDs outweigh the potential for abuse.
 
 %%  LocalWords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
 %%  LocalWords:  authenticators authenticator objtype objuid Shamir's
-%%  LocalWords:  DoS
+%%  LocalWords:  DoS SMS
