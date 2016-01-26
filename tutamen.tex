@@ -483,8 +483,8 @@ following steps:
 \subsection{Implementation}
 
 In order to demonstrate and test the Tutamen platform we've created
-reference implementations for the Storage Server, Access Control Server,
-and several client libraries and applications.
+reference implementations for the Storage Server, Access Control
+Server, and several client libraries and applications.
 
 Our Tutamen server implementation exposes a RESTful
 interface~\cite{fielding2000} for both the access control and storage
@@ -501,7 +501,7 @@ to be served via WSGI~\cite{pep3333} using the Apache HTTP
 Server~\cite{apache} for TLS termination and client-certificate
 verification.
 
-Both Tutamen servers rely on a shared \texttt{pytutamn-server} python
+Both Tutamen servers rely on a shared \texttt{pytutamen-server} python
 library for the implementation of their core logic. The
 \texttt{pytutamen-server} source is available
 at~\cite{src-tutamen-pytutamenserver} under the terms of the
@@ -514,6 +514,44 @@ authenticated, claim-based tokens between Tutamen applications, access
 control servers, and storage servers. We leverage the
 pyjwt~\cite{pyjwt} library for JWS and JWT support.
 
+The access control servers expose a pluggable authenticators interface
+through which end users and other developers may add custom
+authentication functionality. This interface is similar in purpose to
+previous pluggable authentication interfaces such as
+PAM~\cite{samar1996}. The Tutamen authenticator interface is primarily
+designed for providing addition authentication checks beyond the TLS
+certificate based authentication the access control server
+automatically performs on every request of the purpose of associating
+each request with a specific account. As an example, we've implemented
+an authenticator module that allows users to approve Tutamen token
+request via SMS text message using the Twilio~\cite{twilio} messaging
+platform. We also envision authenticator modules for enforcing access
+control rules such as only allowing certain requests during certain
+times of day or controlling access on the basis of the networks
+address from which a request originates. Each authenticator plugin is
+provided with both a set of per-instance configuration data (i.e. for
+who an SMS message gets sent to) as well as all of the details of a
+specific token request including both the IDs and metadata associated
+with the requesting account and client (e.g. from which information
+such as originating IP address or time of day can be extracted).
+
+In addition to the server and authenticator implementations, we've
+also created a reference python client library to expedite interfacing
+python applications with the Tutamen platform. The client library is
+available under the terms of the LGPLv3 and can be accessed
+at~\cite{src-tutamen-pytutamen}. To accompany the client library we've
+created a reference CLI client through wish users may directly
+manipulate the various Tutamen objects. The library is useful for
+managing Tutamen objects even in cases where other applications
+(e.g. those discussed in Section~\ref{sec:apps}) are setup to
+interface directly with the Tutamen platform. In this manner, it's not
+necessary for every Tutamen app to implemented all Tutamen
+functionality -- i.e. an app might leverage only the necessary Tutamen
+commands to perform secret storage and retrieval, leaving the task of
+managing the sharing of Tutamen-stored secrets to the user via the CLI
+or to another dedicated management application.
+
 %%  Localwords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
 %%  LocalWords:  authenticators authenticator objtype objuid Shamir's
-%%  LocalWords:  DoS SMS Redis AGPLv JWS JWT pyjwt
+%%  LocalWords:  DoS SMS Redis AGPLv JWS JWT pyjwt pytutamen LGPLv
+%%  LocalWords:  Twilio
