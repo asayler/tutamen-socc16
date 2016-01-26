@@ -123,60 +123,7 @@ whiles till meeting a variety of security and privacy requirements.
 \input{intro.tex}
 \input{tutamen.tex}
 \input{trust.tex}
-
-\section{Applications}
-\label{sec:apps}
-
-\subsection{Full Disk Encryption}
-
-LUKS is a header for an encrypted block device and specifies which algorithms to
-use and contains the master symmetric key. There are 8 available keyslots in
-the header which can be set by an admin. The 0th keyslot is setup at creation
-time and manipulating the others and dumping the master key require access to
-just 1 of the slots.
-
-systemd-cryptsetup is linked against libcryptsetup, the same library that powers
-the normal cryptsetup util for LUKS. It is built into the initrd/initramfs and
-run during boot in order to initialize root. How it is copied in and how it is
-executed is distribution dependant, I can elaborate on Archlinux and RedHat...
-It is configured via rd.luks.*= kernel command line parameters, namely
-rd.luks.name=<UUID>=<name> tells it to map a LUKS block device with UUID to
-/dev/mapper/<name>.
-
-systemd-cryptsetup (as you might expect from a binary in the systemd repo)
-implements the systemd Password Agents specification
-http://www.freedesktop.org/wiki/Software/systemd/PasswordAgents/. An ini file
-is written to /run/systemd/ask-password/ask.<randomstring> when asking for a
-password. This file contains info such as the pid of the calling proc, an
-optional id, and a mandatory socket. Any program running on the system can
-monitor this directory and respond to password requests by writing simple
-strings into the unix domain dgram socket.
-
-One such program is systemd-ask-password-console which writes a password prompt
-to the console and waits for human input. This will be shown on the screen
-during the normal boot process
-
-We added tutamen-ask-password in go which can respond to \textbf{any password
-agent request} including the one by systemd-cryptsetup. Another notable one is
-built into OpenVPN. We also added a bit of Archlinux-tooling to get
-tutamen-ask-password and into the initrd. It copies the entire tutamen config
-directory pointed to by TUTATEM\_CONFIG into /root/.config on the initrd. The
-collection and secret UUIDs are read from the tutamen ini files as well.
-tutamen-ask-password does not interrupt the normal flow of the out of the box
-console agent. A user can still enter a pw manually before the network/tutamen
-has a chance to run, while it's running, or if it fails.
-
-We could add a tool to generate and add a key to luks and store in tutamen in
-one go
-
-Unrelated but since some authenticators implicitly provide some logging
-features, you can talk about a log\_noop authenticator or such if you need to
-fill some space.
-
-
-\subsection{VM Image Encryption}
-
-\subsection{Encrypted File Locker}
+\input{applications.tex}
 
 \section{Evaluation}
 \label{sec:eval}
