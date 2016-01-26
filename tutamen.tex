@@ -2,6 +2,7 @@
 \label{sec:tutamen}
 
 \subsection{Architecture}
+\label{sec:tutamen:arch}
 
 The Tutamen Secret Storage platform has three main components:
 
@@ -35,6 +36,7 @@ the end-user a high degree of flexibility to implement a range of
 redundancy and trust requirements.
 
 \subsubsection{Access Control Servers}
+\label{sec:tutamen:arch:acs}
 
 The Tutamen Access Control Servers are responsible with authenticating
 Tutamen requests as well as storing and enforcing all access control
@@ -106,6 +108,7 @@ contains a set of verifiers. In order to be granted a given permission
 a request must satisfy at least one of the verifiers in this set.
 
 \subsubsection{Storage Servers}
+\label{sec:tutamen:arch:ss}
 
 Tutamen storage servers are responsible for storing all or part of
 each Tutamen secret. Figure~\ref{fig:tutamen:storagestructs} shows the
@@ -153,6 +156,7 @@ corresponding application to store only a single secret per
 collection.
 
 \subsubsection{Access Control Protocol}
+\label{sec:tutamen:arch:acp}
 
 Access control servers control access related to both internal
 (i.e. access control server) and external (i.e. storage server)
@@ -236,6 +240,7 @@ storage server data structures (e.g. to create a collection or read a
 secret).
 
 \subsubsection{Distributed Usage}
+\label{sec:tutamen:arch:distributed}
 
 Tutamen is designed to be used in both centralized and distributed
 used cases. The simplest Tutamen arrangement (e.g. as shown in

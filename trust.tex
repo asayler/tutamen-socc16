@@ -1,10 +1,166 @@
 \section{Security and Trust}
 \label{sec:trust}
 
-% All trust flows from access control server
-% Every access control server trusted at least as much as storge server
+One of Tutamen's primary design goals is its ability to support a wide
+range of security and trust requirements. It achieves this goal
+through its support for both centralized and distributed operation as
+well as though its support for a range of authentication mechanisms.
 
-%\subsection{Model}
+\subsection{Security of Individual Servers}
+
+The Tutamen security model is rooted in the security of the access
+control servers. If the operation of these servers is secure, the
+operation of the rest of the system may also be secure. Any security
+guarantees provided via the access control server are extended to the
+storage servers via the signed tokens the AC servers provide.
+
+The security of each individual access control server rests on several
+requirements. Failure to uphold these requirements will result in the
+failure of an security guarantees provided by the AC server.
+
+\begin{packed_desc}
+\item[Certificate Authority Role:] Each access control server acts as
+  a CA delegating with issuing and verify client certificates for each
+  of its registered clients. Thus, its important that the CA keys
+  stored by each AC server remain secure and that each CA server
+  faithfully verifies the certificate presented by each client
+  connection. Failure in either of these roles will result in a
+  failure of any security guarantees provided by the AC server.
+\item[Token Issuance and Verification:] Each access control server is
+  responsible for verifying the access control requirements bound to
+  specific object/permission combinations, issuing signed tokens
+  attesting to such verification, and verify the signatures of tokens
+  the tokens it receives from clients wishes to operate on access
+  control objects. As such, it's important that each AC server keep
+  its private token signing key secure and that if faithfully verifies
+  both the access control requirements governing specific token
+  requests as well as the signatures on all incoming tokens.
+%\item[Collision Security:]
+\end{packed_desc}
+
+The storage servers must uphold the following security
+requirements. Failure to do so results in a failure of the security of
+the storage server.
+
+\begin{packed_desc}
+\item[Token Verification:] Each storage server must faithfully obtain
+  the public token signing key from each AC server delegate to provide
+  access control for a given storage object. The storage server must
+  then use these keys to verify the signatures on all tokens it
+  receives. Assume the token signatures is valid, the storage server
+  must faithfully enforce the claims asserted in a given token:
+  e.g. by only allowing actions granted by the permission contained in
+  the token on the object the token identifies prior to the expiration
+  time specified by the token.
+\item[Secure Storage:] Each storage server must take steps to store
+  user-provided secrets in a secure manner, releasing them only to
+  requests accompanied by a valid token granting such release.
+\end{packed_desc}
+
+Since the tokens the storage server must verify are provided by the AC
+servers, the security of the storage server with respect to a given
+collection is dependent on the security of any designated AC servers
+associated with said collection. If these AC servers are insecure, the
+storage server will not be secure.
+
+The security of Tutamen also, in most cases, depends on the security
+of the public CA/PKI system. While AC servers act as local CAs for the
+purpose of issuing and verify client certificates, we believe that in
+most cases both Tutamen AC and storage servers will rely on public CA
+system for obtain server certificates verifying the mapping between
+DNS names and the server itself -- as do most public websites. Since
+Tutamen storage servers retrieve the correct signing keys form each AC
+server on the basis of the AC servers domain name, properly verifying
+this name is critical. Similarly, its important for clients to verify
+they are talking to the storage and AC servers they intend to, and
+verifying the server certificates of each of these servers via the
+standard TLS handshake process if thus also critical.
+
+%Todo: cite other TLS security efforts such as CT, etc?
+
+\subsection{Security of Multiple Servers}
+
+Unlike existing secret management systems~\cite{vault, confidant,
+  keywhiz}, the Tutamen architecture is capable of remaining secure
+even when individual storage or access control servers fail to meet
+their security requirements. Such failures may result from physical
+server compromise, software bugs, malicious intent or incompetence on
+the part of the server operator, or compelled failures.\footnote{For
+  example, being forced to turn over stored secrets in response to
+  legal or governmental pressure.}
+
+To work around security failure of individual server, Tutamen
+applications can leverage Tutamen distributed operation modes. In
+these modes, the security of the system as a whole is diffused -- no
+longer relying on the security of any specific access control or
+storage server in order to keep an applications' secrets secure. As
+described in Section~\ref{sec:tutamen:arch:distributed} each
+applications can distribute both secrets storage and access control
+delegations using $n$ choose $k$ schemes. In such setups, the
+difference between n and k represents the degree to which a Tutamen
+applications can withstand security failures of the deploys AC and
+storage servers. For example, an applications which chooses to shard
+its secrets across five storage servers where any three shards are
+sufficient to recreate the secret ($n=5$, $k=3$) will continue to
+remain secure even if two of the storage servers fail to meet their
+security obligations. Similarly, if each secret shard delegates five
+possible AC servers, tokens from three of which are required to grant
+secrets access, the applications can withstand the failure of two AC
+server to uphold their security guarantees. Since the security of each
+storage server is dependent on the security of the associated AC
+servers, in most cases\footnote{There may be cases where a user
+  happens to trust the AC servers more than the storage servers that
+  would justify having a larger $k-n$ storage delta than the $k-n$
+  access control delta.} there is no security benefit from having a
+greater $n-k$ delta for storage servers than for AC servers (although
+such a delta may still yield reliability benefits).
+
+\subsection{Trust Model}
+
+Trust in Tutamen follows from the security models of both individual
+Tutamen servers and of the distributed Tutamen deployment
+architectures. If a Tutamen applications is leveraging only a single
+storage and AC server, the applications is placing a high degree of
+trust in both servers (and by proxy, the operators of both
+servers). This level of trust may be appropriate for some use cases --
+e.g. when a user is operating their own Tutamen's servers, but is
+often inappropriate in many other cases (e.g. when using third party
+hosted Tutamen servers). Fortunately, Tutamen also allows applications
+to avoid placing a high degree of trust in any single server by
+leveraging multiple servers and picking $k$ and $n$ in a manner that
+corresponding to the degree by which server is trusted.
+
+Beyond minimizing the amount of trust placed in each Tutamen's server
+by leveraging multiple servers, we also envision economic incentives
+helping to ensure Tutamen server trustworthiness. The Tutamen protocol
+is standardized and designed to support a range of interchangeable AC
+and storage server providers. Such a design allows for the development
+of a Tutamen server marketplace where both AC and storage server
+providers can compete against each other on the basis of
+trustworthiness, features (e.g. what types of authenticates they
+support), and cost. In such an ecosystem, Tutamen service providers
+who fail to uphold the Tutamen security requirements on their servers
+will suffer a negative economic effect, incentivizing such
+behavior. Its also likely the storage providers who take additional
+steps to protect the secrets they store (e.g. by using system such as
+Trusted Platform Modules (TPM) to encrypt the secrets they hold and
+harden server security) would be able to command a higher price in the
+marketplace,incentivizing such best practices.
+
+Thus, unlike other third-party cloud services where faithfulness to
+customer desires and economic incentives are in direct competition
+(e.g. as is the case on many ``free'' third part services that depend
+on selling user data to advertisers in order to generate revenue),
+Tutamen encourages a system where economic incentives are well aligned
+with applications security. That fact, coupled with the high degree of
+control over third-party trust Tutamen grants to each application by
+allowing each application to select both the number of and which
+servers the application wishes to use, make Tutamen a failure robust
+system in the face to both security and trustworthiness failures. Such
+robustness is a critical component if any successful security storage
+system.
 
 %\subsection{Discussion}
 
+
+%%  LocalWords:  Tutamen's Tutamen CAs DNS
