@@ -128,6 +128,36 @@ encryption.
 \subsection{VM Image Encryption}
 
 \subsection{Encrypted File Locker}
+An encrypted file locker protects data such that only those with a
+cryptographic key can view anything. Traditionally, the interaction 
+between user and file locker happens on a single machine with a single 
+key. Cloud computing services seek to break out of this mold. For example,
+Dropbox is a file locker that supports many sharing features. Files
+can be easily accessed from a different machine, or easily shared with
+another user. If anyone were to upload an encrypted file they
+would be forced to copy and manually share their key with any other
+user or machine that needed access to the file. Users shouldn't have
+to sacrifice the security of a encrypted file locker to use the
+sharing features packaged with Dropbox. 
+
+The solution to this problem is secure key sharing. Tutamen provides
+this functionality in a flexible and secure way. Instead of tediously
+copying keys, the user can store their key in a Tutamen
+secret. Then all they have to do is share that secret with any desired
+party. Tutamen also provides collections. This allows users to group
+together a batch of files, and then share access to all of them at
+once. 
+
+It may be a bit of a challenge for the average user to successfully
+combine using Dropbox, encryption, and Tutamen. To that end we
+created FuseBox. The source code is available here~\cite{fusebox}.
+FuseBox is an encrypted file locker that leverages Tutamen to share
+files between trusted parties. The application sits transparently 
+between the end user and Dropbox. In order to decrease its memory
+footprint on the user,
+FuseBox adopts an on the fly approach that differentiates it from the
+default Dropbox client. Files are retrieve from Dropbox only as
+needed. This sacrifices offline capability for taking up less space. 
 
 %%  LocalWords:  Tutamen keyslots keyslot systemd cryptsetup initrd
 %%  LocalWords:  libcryptsetup initramfs Archlinux RedHat ini pid FDE
