@@ -96,29 +96,28 @@
 \subsection*{Abstract}
 
 The storage and management of secrets (encryption keys, passwords,
-etc) are significant opens problems in the modern age of cloud-based,
-ephemeral computing infrastructure. How do we store and control access
-to the secrets necessary to configure and operate a range of modern
-technologies without sacrificing security and privacy requirements or
-significantly curtailing the desirable capabilities of our
-applications? As an answer to this question, we propose Tutamen - a
-next generation secret-storage service. Tutamen offers a number of
-desirable secret storage properties not present in existing secret
-storage solutions, including the ability to shard secrets across
-multiple storage providers - ensuring both redundancy and security,
-the ability to share secrets between users, and the ability to require
-contextual and out-of-band authentication parameters as a prerequisite
-to gaining secret access. These properties have allowed us to leverage
-Tutamen support a variety of use cases not easily realizable using
-existing systems such as providing autonomous full-disk encryption to
-headless servers and providing client-side encryption for files stored
-atop cloud-based file lockers or networked file systems while also
-supporting sharing and multi-device access to such files. In this
-paper, we present the nature of the secret storage problem, Tutamen's
-design and architecture, the implementation of our Tutamen prototype,
-and several of the applications in which we have implemented
-Tutamen-based secret storage to achieve previously unattainable goals
-whiles till meeting a variety of security and privacy requirements.
+etc) are significant open problems in the modern age of cloud-based,
+third-party hosted, ephemeral computing infrastructure. How do we
+store and control access to the secrets necessary to configure and
+operate a range of modern technologies without sacrificing security
+and privacy requirements or significantly curtailing the desirable
+capabilities of our applications? To answer this question, we propose
+Tutamen -- a next generation secret-storage service. Tutamen offers a
+number of desirable properties not present in existing secret storage
+solutions. These include the ability to operate atop minimally trusted
+infrastructure, the ability to share secrets between users, and the
+ability to control secret access based on contextual and out-of-band
+authentication parameters. These properties have allowed us to
+leverage Tutamen support a variety of use cases not easily realizable
+using existing systems including autonomous full-disk encryption on
+headless servers and VMs, and providing client-side encryption
+cloud-based file lockers while also supporting easy sharing of and
+multi-device access to such files. In this paper, we present the
+importance of the secret storage problem, Tutamen's design and
+architecture, the implementation of our Tutamen prototype, and several
+of the applications in which we have implemented Tutamen-based secret
+storage to achieve previously unattainable goals whiles till meeting a
+variety of security and privacy requirements.
 
 \input{intro.tex}
 \input{tutamen.tex}
