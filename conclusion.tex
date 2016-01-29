@@ -3,50 +3,49 @@
 
 How best to securely store secrets is a pressing issue in today's
 cloud-oriented, third-party hosted, ephemeral infrastructure adopting
-environment. This need as triggered the creation of a slew of
+environment. This need has triggered the creation of several
 secret-storage frameworks and systems. Unfortunately, these existing
-systems provide deficient in at least two key secret storage
-capabilities: the ability to be operated atop untrusted infrastructure
-and the ability to support a wide range of use cases - including
+systems prove deficient in at least two key secret storage
+capabilities: the ability to be operate atop untrusted infrastructure
+and the ability to support a wide range of use cases -- including
 autonomous access use cases or out-of-band human-in-the loop
 verification use cases.
 
 We created Tutamen to demonstrate our concept for a next generation
-secret storage system. Tutamen supports client-controlled secrets
-sharding to allow user to leverage minimally-trusted server
+secret storage system. Tutamen supports client-controlled secret
+sharding to allow applications to leverage minimally-trusted server
 infrastructure. Tutamen also supports a flexible and modular
-out-of-band authentication mechanism that allows end-user to specify
-complex access control requirements. We've successfully couple Tutamen
-with a number of applications including full disk encryption on
-headless servers and client-side encrypted file sharing between
-multiple parties. These use cases would be difficult (or at least
-burdensome on the end-user) to realize without a system such as
-Tutamen. We feel Tutamen represents the way forward in solving the
-secret storage problem.
+authentication mechanism that allows end-user to specify complex
+access control requirements. We've successfully couple Tutamen with a
+number of applications including full disk encryption on headless
+servers and client-side encrypted file sharing between multiple
+parties. These use cases would be difficult (or at least burdensome on
+the end-user) to realize without a system such as Tutamen. We feel
+Tutamen represents the way forward in addressing the secret storage
+problem.
 
 Our Tutamen prototype has proven quite useful in each use case where
-we have leveraged it, and we plan to continue dolloping the Tutamen
+we have leveraged it, and we plan to continue developing the Tutamen
 ecosystem. On the server side, we have plans to work toward increased
-performance and as well as adding support for additional authenticator
-modules. While the Tutamen servers currently have basic logging and
-auditing support, we plan to expand this support and explore
-interfacing with Intrusion Detection Systems and similar pattern
-recognition systems with an aim toward exposing more actionable
-intelligence to Tutamen authenticator modules. We are also considering
-tying Tutamen's logging infrastructure to a publicly audit-able system
-similar to the Certificate Transparency~\cite{laurie2013}
-project. Such a system would help to further reduce the trust Tutamen
-users must place in individual Tutamen servers by exposing a
-mechanisms by which such user could reliably audit the behavior of
-such providers.
+performance and to add support for additional authenticator
+modules. While the Tutamen servers currently have basic logging, we
+also plan to expand this support and explore interfacing Tutamen audit
+logs with intrusion detection systems with an aim toward exposing more
+actionable intelligence to Tutamen authenticator modules. We are also
+considering tying Tutamen's logging infrastructure to a publicly
+audit-able system similar to the Certificate
+Transparency~\cite{laurie2013} project. Such a system would help to
+further reduce the trust Tutamen users must place in individual
+Tutamen servers by exposing a mechanisms by which such user could
+reliably audit the behavior of such providers.
 
 We have made all of the Tutamen source code available via the
 previously referenced repositories and Free Software licenses. We
 encourage others to experiment with our Tutamen prototype and
 reference implementation, or to integrate Tutamen with their projects
-or applications. We hope the Tutamen (or similar secret storage
+or applications. We hope that Tutamen (or similar secret storage
 systems) can help to ease the burden currently imposed on
-administrator, developers, and end users who must otherwise undertake
+administrators, developers, and end users who must otherwise undertake
 the significant burden of manually manager sensitize material such as
 file encryption keys, passwords, and other secrets.
 
