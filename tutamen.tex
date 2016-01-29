@@ -526,20 +526,19 @@ account and client (e.g. from which information such as originating IP
 address or time of day can be extracted).
 
 In addition to the server and authenticator implementations, we've
-also created a reference python client library to expedite interfacing
-python applications with the Tutamen platform. The client library is
-available under the terms of the LGPLv3 and can be accessed
-at~\cite{src-tutamen-pytutamen}. To accompany the client library we've
-created a reference CLI client through wish users may directly
-manipulate the various Tutamen objects. The library is useful for
-managing Tutamen objects even in cases where other applications
-(e.g. those discussed in Section~\ref{sec:apps}) are setup to
-interface directly with the Tutamen platform. In this manner, its not
-necessary for every Tutamen app to implemented all Tutamen
-functionality -- i.e. an app might leverage only the necessary Tutamen
-commands to perform secret storage and retrieval, leaving the task of
-managing the sharing of Tutamen-stored secrets to the CLI or to
-another dedicated management application.
+also created reference Tutamen client libraries for both
+Python~\cite{src-tutamen-pytutamen} and
+Go~\cite{src-tutamen-go}. Using the Python client library, we've
+created a reference CLI client through which users may directly
+manipulate the various Tutamen objects. The CLI is useful for managing
+Tutamen objects even in cases where other applications (e.g. those
+discussed in Section~\ref{sec:apps}) are setup to interface directly
+with the Tutamen platform. In this manner, its not necessary for every
+Tutamen app to implement all Tutamen functionality -- i.e. an app
+might leverage only the necessary Tutamen commands to perform secret
+storage and retrieval, leaving the task of managing the sharing of
+Tutamen-stored secrets to the CLI or to another dedicated management
+application.
 
 %%  Localwords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
 %%  LocalWords:  authenticators authenticator objtype objuid Shamir's

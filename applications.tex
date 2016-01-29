@@ -5,8 +5,9 @@ Tutamen is designed to support a wide range of applications. We have
 integrate our reference Tutamen design with a set of common
 applications for the purpose of demonstrating the value derived from
 using a secure storage system such as Tutamen. These applications all
-achieve functionality that would have been difficult or impossible to
-achieve without using a system like Tutamen.
+leverage Tutamen's flexibility to achieve functionality that would
+have been difficult or impossible to achieve without using a system
+like Tutamen.
 
 \subsection{Full Disk Encryption}
 
@@ -15,38 +16,33 @@ the data stored on computing systems in the event that the system is
 lost, stolen, or otherwise physically compromised. In Linux,
 block-level encryption system such as dm-crypt~\cite{dm-crypt}
 (generally coupled with the Linux Unified Key Setup (LUKS)~\cite{luks}
-container) provide a popular method for securing the data stored
+container) provide a popular method for securing the data stored on
 laptops, desktops, and portable storage devices. Such systems
-generally require the user to enter a password at boot-time to unlock
-a locally stored encryption key that is then used to decrypt the block
-device in question. Unfortunately, the ``human-at-keyboard security''
-root make such systems difficultly or impossible to use atop headless
-servers or automated system where there no human can be expected to be
-present at boot time.
+traditionally require the user to enter a password at boot-time to
+unlock a locally stored encryption key that is then used to decrypt
+the block device in question. Unfortunately, the ``human-at-keyboard
+security'' root make such systems difficult or impossible to use atop
+headless servers or other automated system where no human can be
+expected to be present at boot time.
 
 In the standard dm-crypt FDE deployment, the LUKS header specifies
 which encryption algorithms to use and contains the master symmetric
 encryption key. The master key is itself encrypted and stored in one
 or more of with available ``keyslots'' in the LUKS header where each
 ``keyslot'' corresponds to a specific pass-phrase capable of
-decrypting the master-key. A pass-phrase to decrypt one of the copies
-of is provided at boot-time via the LUKS cryptsetup utility (which is
-installed in the local initramfs image). This utility is capable of
-obtaining the pass-phrase form a variety of sources, but most commonly
-simply quires the user to enter the pass-phrase
-directly\footnote{other modes of operation involve reading the
-  pass-phrase off an external storage device temporally connected to
-  the machine or extracting it from a local TPM} -- introducing an
-undesirable ``human-at-keyboard'' dependency in the case of most
-servers.
+decrypting the master-key. Traditionally, the user of such a system is
+prompted to enter one of these pass phrases at boot time via the LUKS
+cryptsetup utility (which is installed in the local initramfs image)
+-- introducing an undesirable ``human-at-keyboard'' dependency in the
+server or datacenter use case.
 
 The cryptsetup utility relies on the systemd Password Agent
 Specification~\cite{systemd-passwordagents} to request a pass-phrase
 from the user. We've created a Tutamen-aware implementation of this
 specification capable of responding to cryptsetup pass-phrase
-requests. Using this utility, cryptsetup either prompt the user for a
-pass-phrase directly or request the pass-phrase from a Tutamen storage
-server (after first retrieving the necessary tokens from the
+requests. Using this utility, cryptsetup can either prompt the user
+for a pass-phrase directly or request the pass-phrase from a Tutamen
+storage server (after first retrieving the necessary tokens from the
 corresponding Tutamen AC server). In addition to modifying the
 ask-password utility, we made several modifications to the initrd
 creation process to add Tutamen networking support, the necessary
@@ -55,31 +51,29 @@ Tutamen servers to use, and the UUIDs of the relevant Tutamen
 collection and secrets).
 
 Using this setup, we're able to boot servers with encrypted root (or
-other disks) without requiring a human to be physically present at the
-machine. In cases where we still desire human confirmation of such
-boot setups, we can leverage our SMS authenticator module to get an
-on-demand confirmation form a human anywhere they have cellular
-service as a prerequisite to Tutamen releasing the correct key. This
-allows us to gain the same level of human-in-the-loop security
-provided by a typed pass-phrase but without actually requiring a human
-to go to the data center to type one in. In situations where we don't
-desire a human-in-the-loop at all, we envision the automate the
-approval process via the use of Tutamen time-of-day and IP-source
-authenticators or more advanced authenticators that approve or deny
-request based on their environmental factors and the system's history
-of previous requests.
+other) disks without requiring a human to be physically present at the
+machine. In cases where we still desire human approval of the boot
+process, we can leverage our SMS authenticator module to get an
+on-demand confirmation from a designated human anywhere they have
+cellular service as a prerequisite to Tutamen releasing the correct
+key. This allows us to gain the same level of human-in-the-loop
+security provided by a typed pass-phrase but without actually
+requiring a human to go to the datacenter to type one in. In
+situations where we don't desire a human-in-the-loop at all, we
+envision an automated the approval process via the use of Tutamen
+time-of-day and IP-source authenticators or more advanced
+authenticators that leverage machine learning techniques to approve or
+deny request based on the system's history of previous requests.
 
-Our Tutamen-capable ask-password port and supporting initramfs code is
-available at~\cite{src-tutamen-askpassword}. This code leverages a
-Tutamen golang library we created to allows programs written in Go to
-request secrets from Tutamen servers~\cite{src-tutamen-go}. Since this
-utility speaks the standard systemd Password Agent protocol, it can
-also be used to provide Tutamen-backed pass-phrase storage to any
-applications leveraging this protocol, including OpenVPN and other
-standard system utility. We've not yet explored these sue cases as
-thoroughly, but we envision a Tutamen-passed systemd password agent
-being useful in a wide range of situations beyond just full disk
-encryption.
+Our Tutamen-capable ask-password port and supporting initramfs
+configuration code is available
+at~\cite{src-tutamen-askpassword}. Since this utility speaks the
+standard systemd Password Agent protocol, it can also be used to
+provide Tutamen-backed pass-phrase storage to any applications
+leveraging this protocol, including OpenVPN and other standard system
+utility. We've not yet thoroughly explored these use cases, but we
+envision a Tutamen-passed systemd password agent being useful in a
+wide range of situations beyond just full disk encryption.
 
 %% Each header contains eight available keyslots in the which
 %% can be set by an admin. The 0th keyslot is setup at creation time and
@@ -127,39 +121,48 @@ encryption.
 
 \subsection{VM Image Encryption}
 
-\subsection{Encrypted File Locker}
-An encrypted file locker protects data such that only those with a
-cryptographic key can view anything. Traditionally, the interaction 
-between user and file locker happens on a single machine with a single 
-key. Cloud computing services seek to break out of this mold. For example,
-Dropbox is a file locker that supports many sharing features. Files
-can be easily accessed from a different machine, or easily shared with
-another user. If anyone were to upload an encrypted file they
-would be forced to copy and manually share their key with any other
-user or machine that needed access to the file. Users shouldn't have
-to sacrifice the security of a encrypted file locker to use the
-sharing features packaged with Dropbox. 
+{\em Need to add this section and/or combine it with the FDE section above}
 
-The solution to this problem is secure key sharing. Tutamen provides
-this functionality in a flexible and secure way. Instead of tediously
-copying keys, the user can store their key in a Tutamen
-secret. Then all they have to do is share that secret with any desired
-party. Tutamen also provides collections. This allows users to group
-together a batch of files, and then share access to all of them at
-once. 
+\subsection{Encrypted File Locker (Dropbox)}
 
-It may be a bit of a challenge for the average user to successfully
-combine using Dropbox, encryption, and Tutamen. To that end we
-created FuseBox. The source code is available here~\cite{fusebox}.
-FuseBox is an encrypted file locker that leverages Tutamen to share
-files between trusted parties. The application sits transparently 
-between the end user and Dropbox. In order to decrease its memory
-footprint on the user,
-FuseBox adopts an on the fly approach that differentiates it from the
-default Dropbox client. Files are retrieve from Dropbox only as
-needed. This sacrifices offline capability for taking up less space. 
+Cloud-based file lockers such as Dropbox~\cite{dropbox} are extremely
+popular today. Unfortunately, these systems require users to trust the
+cloud provider with full access to their (generally unencrypted)
+data. Users wishing to overcome this deficiency can optionally encrypt
+all of their data on the client before syncing it to the file locker
+provider, but doing so does not generally interact well with such
+services' sharing and multi-device use cases -- client-side encryption
+traditionally requires users to employ manual, out-of-band key
+exchange mechanisms to share or sync their encrypted files. We don't
+believe file locker users should have to choose between easily syncing
+or sharing their files and using encryption to protect their data.
+
+Tutamen provides a solution to this problem by offering a secure
+key-sharing mechanisms. Instead of manually distributing or sharing
+encryption keys, the user can store their key as a Tutamen secret and
+leverage Tutamen's access control features to share the secret with
+the accounts of their friends. This entire process could even be
+automated such that when a user shares a file via Dropbox the
+corresponding encryption key is automatically shared via Tutamen.
+
+Toward this end, we have created FuseBox: an alternate Dropbox client
+that performs client-side encryption of all Dropbox files, storing the
+corresponding encryption keys on our reference Tutamen server. The
+source code for our FuseBox implementation is available
+at~\cite{fusebox}.  FuseBox transparently encrypts and decrypts files
+when they are opened and closed -- streaming the encrypted file data
+to or from Dropbox as necessary. Since FuseBox leverages Tutamen to
+store each per-file encryption key, it becomes possible to share an
+encrypted file via Dropbox, share its encryption key via Tutamen, and
+achieve the same level of functionally traditional Dropbox users have
+without having to expose one's data to Dropbox. While the key sharing
+process in FuseBox is not yet directly synced with Dropbox's file
+sharing system, the Tutamen CLI can be used to quickly share the
+encryption keys between users. In this manner, we've used FuseBox to
+store and share encrypted files with nearly the same ease with which
+one might use the traditional unencrypted Dropbox client.
 
 %%  LocalWords:  Tutamen keyslots keyslot systemd cryptsetup initrd
 %%  LocalWords:  libcryptsetup initramfs Archlinux RedHat ini pid FDE
 %%  LocalWords:  dgram tutamen OpenVPN TUTATEM luks authenticators dm
-%%  LocalWords:  SMS authenticator golang
+%%  LocalWords:  SMS authenticator golang Tutamen's FuseBox
