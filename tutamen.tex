@@ -510,13 +510,13 @@ previous pluggable authentication interfaces such as
 PAM~\cite{samar1996}. The Tutamen authenticator interface is primarily
 designed for providing authentication checks beyond the TLS
 certificate based authentication the access control server
-automatically performs on every request of the purpose of associating
+automatically performs on every request for the purpose of associating
 each request with a specific client and account. As an example, we've
 implemented an authenticator module that allows users to approve
 Tutamen token request via SMS text message using the
 Twilio~\cite{twilio} messaging platform. We also envision
 authenticator modules for enforcing access control rules such as only
-allowing requests during certain times of day or controlling access on
+allowing requests during certain times of day, or controlling access on
 the basis of the network address from which a request originates. Each
 authenticator plugin is provided with both a set of per-instance
 configuration data (i.e. to whom an SMS message gets sent for
