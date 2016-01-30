@@ -16,7 +16,7 @@ storage servers via the signed tokens the AC servers provide.
 
 The security of each individual access control server rests on several
 requirements. Failure to uphold these requirements will result in the
-failure of an security guarantees provided by the AC server.
+failure of any security guarantees provided by the AC server.
 
 \begin{packed_desc}
 \item[Certificate Authority Role:] Each access control server acts as
@@ -95,7 +95,7 @@ these modes, the security of the system as a whole is diffused -- no
 longer relying on the security of any specific access control or
 storage server in order to keep an applications' secrets secure. As
 described in Section~\ref{sec:tutamen:arch:distributed} each
-applications can distribute both secret storage and access control
+application can distribute both secret storage and access control
 delegations using $n$ choose $k$ schemes. In such setups, the
 difference between $n$ and $k$ represents the degree to which a
 Tutamen applications can withstand security failures of the associated
@@ -125,7 +125,7 @@ architectures. If a Tutamen application is leveraging only a single
 storage and AC server, the application is placing a high degree of
 trust in both servers (and by proxy, the operators of both
 servers). This level of trust may be appropriate for some use cases --
-e.g. when a user is operating their own Tutamen's servers, but is
+e.g. when a user is operating their own Tutamen's servers -- but is
 inappropriate in many other cases (e.g. when using third party hosted
 Tutamen servers). Fortunately, Tutamen also allows applications to
 avoid placing a high degree of trust in any single server by
@@ -151,15 +151,15 @@ able to command a higher price in the marketplace, incentivizing such
 best practices.
 
 Thus, unlike other third-party cloud services where faithfulness to
-customer desires and economic incentives are in direct competition
+customer's desires and economic incentives are in direct competition
 (e.g. as is the case on many ``free'' third part services that depend
 on selling user data to advertisers in order to generate revenue),
 Tutamen encourages a system where economic incentives are well aligned
-with applications security. That fact, coupled with the high degree of
+with applications' security. That fact, coupled with the high degree of
 control over third-party trust Tutamen grants to each application by
 allowing each application to select how many servers to diffuse trust
 across, make Tutamen a robust system in the face to both security and
-trustworthiness failures. Such robustness is a critical component if
+trustworthiness failures. Such robustness is a critical component of
 any successful secrete storage system.
 
 
