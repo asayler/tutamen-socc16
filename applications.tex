@@ -2,7 +2,7 @@
 \label{sec:apps}
 
 Tutamen is designed to support a wide range of applications. We have
-integrate our reference Tutamen design with a set of common
+integrated our reference Tutamen design with a set of common
 applications for the purpose of demonstrating the value derived from
 using a secure storage system such as Tutamen. These applications all
 leverage Tutamen's flexibility to achieve functionality that would
@@ -14,7 +14,7 @@ like Tutamen.
 Full disk encryption (FDE) system are a popular means of protecting
 the data stored on computing systems in the event that the system is
 lost, stolen, or otherwise physically compromised. In Linux,
-block-level encryption system such as dm-crypt~\cite{dm-crypt}
+block-level encryption systems such as dm-crypt~\cite{dm-crypt}
 (generally coupled with the Linux Unified Key Setup (LUKS)~\cite{luks}
 container) provide a popular method for securing the data stored on
 laptops, desktops, and portable storage devices. Such systems
@@ -28,7 +28,7 @@ expected to be present at boot time.
 In the standard dm-crypt FDE deployment, the LUKS header specifies
 which encryption algorithms to use and contains the master symmetric
 encryption key. The master key is itself encrypted and stored in one
-or more of with available ``keyslots'' in the LUKS header where each
+or more of the available ``keyslots'' in the LUKS header, where each
 ``keyslot'' corresponds to a specific pass-phrase capable of
 decrypting the master-key. Traditionally, the user of such a system is
 prompted to enter one of these pass phrases at boot time via the LUKS
@@ -41,14 +41,14 @@ Specification~\cite{systemd-passwordagents} to request a pass-phrase
 from the user. We've created a Tutamen-aware implementation of this
 specification capable of responding to cryptsetup pass-phrase
 requests. Using this utility, cryptsetup can either prompt the user
-for a pass-phrase directly or request the pass-phrase from a Tutamen
+for a pass-phrase directly, or request the pass-phrase from a Tutamen
 storage server (after first retrieving the necessary tokens from the
 corresponding Tutamen AC server). In addition to modifying the
 ask-password utility, we made several modifications to the initrd
 creation process to add Tutamen networking support, the necessary
-Tutamen client TLS key pair, and a config file specifying which
+Tutamen client TLS key pair, a config file specifying which
 Tutamen servers to use, and the UUIDs of the relevant Tutamen
-collection and secrets).
+collection and secrets.
 
 Using this setup, we're able to boot servers with encrypted root (or
 other) disks without requiring a human to be physically present at the
@@ -61,9 +61,9 @@ security provided by a typed pass-phrase but without actually
 requiring a human to go to the datacenter to type one in. In
 situations where we don't desire a human-in-the-loop at all, we
 envision an automated the approval process via the use of Tutamen
-time-of-day and IP-source authenticators or more advanced
+time-of-day and IP-source authenticators, or more advanced
 authenticators that leverage machine learning techniques to approve or
-deny request based on the system's history of previous requests.
+deny requests based on the system's history of previous requests.
 
 Our Tutamen-capable ask-password port and supporting initramfs
 configuration code is available
@@ -131,14 +131,14 @@ cloud provider with full access to their (generally unencrypted)
 data. Users wishing to overcome this deficiency can optionally encrypt
 all of their data on the client before syncing it to the file locker
 provider, but doing so does not generally interact well with such
-services' sharing and multi-device use cases -- client-side encryption
+services' sharing and multi-device use cases. Client-side encryption
 traditionally requires users to employ manual, out-of-band key
 exchange mechanisms to share or sync their encrypted files. We don't
 believe file locker users should have to choose between easily syncing
 or sharing their files and using encryption to protect their data.
 
 Tutamen provides a solution to this problem by offering a secure
-key-sharing mechanisms. Instead of manually distributing or sharing
+key-sharing mechanism. Instead of manually distributing or sharing
 encryption keys, the user can store their key as a Tutamen secret and
 leverage Tutamen's access control features to share the secret with
 the accounts of their friends. This entire process could even be
