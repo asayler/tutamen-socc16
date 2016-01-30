@@ -55,9 +55,9 @@ designed to map to individual end-users, but they can be used to track
 any logically singular entity to which one wishes to assign specific
 access control privileges. Accounts thus form the basis of controlling
 and sharing access to secrets via Tutamen. Within each account are one
-or more clients. While represent logically singular entities, clients
-represent specific devices controlled by such entities. Each account
-has one or more clients. For example, Jane Coworker would have a
+or more clients. While accounts represent logically singular entities, 
+clients represent specific devices controlled by such entities. Each
+account has one or more clients. For example, Jane Coworker would have a
 single account with three clients: one for her laptop, one for her
 desktop, and one for her phone.
 
@@ -122,7 +122,7 @@ more secrets (or parts of secrets). Associated with each collection is
 a list of one or more access control servers delegated with enforcing
 the access control requirements for the collection. Access control
 granularity is thus set at the per-collection, not per-secret level. A
-collection is also capable of storing a user-provided metadata to aid
+collection is also capable of storing an user-provided metadata to aid
 in the mapping of collections to the objects for which they store
 secrets.
 
@@ -136,15 +136,15 @@ corresponding collection.
 How best to map secret data to collections is left up to each
 application. This decision is primarily driven by the fact that access
 control is preformed on the per-collection level. Thus, if an
-applications requires that a set of secrets always have a common set
+application requires that a set of secrets always have a common set
 of access control requirements (e.g. per-sector encryption keys for a
 encrypted block device), it become efficient to group these secrets
 into a single collection. Doing so minimizes the complexity of trying
-to keep access control requirements synced across multiple secrets and
+to keep access control requirements synced across multiple secrets, and
 increases performance by minimizing the number of requests that the
 applications must make of the access control server. In cases where
 each secret requires its own access control requirements
-(e.g. per-file encrypting keys), it is appropriate for the
+(e.g. per-file encryption keys), it is appropriate for the
 corresponding application to store only a single secret per
 collection.
 
@@ -176,7 +176,7 @@ to a specific object: the object type and the object ID. Each request
 also contains a claim that binds it to a specific permission
 (e.g. read, write, delete, modify) for the corresponding
 object. Authorization requests are further bound to the specific
-client making the request (authenticated via mutual-TLS) and to an
+client making the request (authenticated via mutual-TLS), and to an
 expiration time after which the token is no longer valid.
 
 %% Listing~\ref{lst:tutamen:token} shows the structure of Tutamen
@@ -200,11 +200,11 @@ expiration time after which the token is no longer valid.
 %% }
 %% \end{lstlisting}
 
-Upon receiving a authorization request from a client, the access
+Upon receiving an authorization request from a client, the access
 control server looks up the permission group for the corresponding
 object (identified via the combination of object type and object ID)
 and then loads the verifier set corresponding to the requested
-permission. The server then traverses each verifier in this set -
+permission. The server then traverses each verifier in this set --
 verifying both client membership in one of the accounts listed in the
 verifier as well as executing any authenticator module required by the
 verifier until it finds (or fails to find) a verifier that is
@@ -220,12 +220,12 @@ Other than the bootstrapping operations and the token request
 operations themselves, all requests to either storage or access
 control servers must be accompanied by a valid token. The receiving
 server validates this token using the public signing key of the
-associated AC server: for request to the AC sever itself, this key is
+associated AC server; for request to the AC sever itself, this key is
 available internally. For requests to external storage servers, the
 signing key is downloaded by the target server from the access control
 server and cached for future use. In this manner, access control
 servers are responsible both for granting and verifying authorization
-requests and signing the corresponding tokens as well as for verifying
+requests and signing the corresponding tokens, as well as for verifying
 tokens accompanying requests to preform actions on access control
 server data structures (e.g. to create or modify verifiers or
 accounts). Storage servers are responsible only for verifying tokens
@@ -239,17 +239,17 @@ Tutamen is designed to be used in both centralized and distributed use
 cases. The simplest Tutamen arrangement (e.g. as shown in
 Figure~\ref{fig:tutamen:systembase}) involves leveraging a single
 Tutamen access control server and a single storage server. In this
-arrangement the storage server stores a complete copy of each secret
+arrangement, the storage server stores a complete copy of each secret
 while the access control server is charged with solely enforcing access
-to these secrets. While this use case is easy to deploy it has two
+to these secrets. While this use case is easy to deploy, it has two
 notable downsides. First, it forces the user to place a high degree of
 trust in the operator of the access control server (who has complete
 control over whether or not the access control rules for a given
 secret are being faithfully enforced) as well as the operator of the
 storage server (who, likewise, must faithfully verify incoming tokens
 and avoid otherwise leaking secret data). Second, it lacks any form of
-redundancy - if either the access control server or the storage server
-is unavailable the application will be unable to retrieve any secrets.
+redundancy -- if either the access control server or the storage server
+is unavailable applications will be unable to retrieve any secrets.
 
 To overcome these deficiencies, we've designed Tutamen to be
 optionally leveraged in a distributed manner as an alternative to
@@ -281,8 +281,8 @@ between $n$ and $k$ controls how much storage redundancy the system
 has by dictating the number of storage servers that can be unavailable
 before access to the secret itself is lost. The application then
 pushes each shard to the $n$ storage servers. If the application is
-merely concerned about storage redundancy or about their ability to
-trust storage server operator, it can delegate the access control for
+merely concerned about storage redundancy, or about their ability to
+trust a storage server operator, it can delegate the access control for
 each secret shard to a single access control server. To retrieve such
 a secret the application would request the necessary token from the
 access control server and include it in the request to each storage
@@ -297,12 +297,12 @@ server trust and reliability failures. To accomplish the latter, the
 application can leverage the fact that Tutamen storage servers allow
 the specification of two pieces of access control metadata
 corresponding to each stored collection: a list of AC servers and a
-minimum number of server from which valid tokens must be received to
+minimum number of servers from which valid tokens must be received to
 allow the associated requests. These parameters form the basis of an
 additional $(k, n)$ threshold scheme for access control servers --
 e.g. a collection may delegate a list of $n$ access control servers
 from which an application must acquire at least $k$ valid tokens in
-order to gain access. Thus, if the the user does not wish to trust a
+order to gain access. Thus, if the user does not wish to trust a
 single access control server, they may require tokens from at least
 $k$ different AC servers in order to access the data stored in a given
 collection. Likewise, if the application wishes to withstand the
@@ -318,7 +318,7 @@ the servers to which they correspond. Using the same object IDs across
 multiple servers also allows for more efficient token management --
 e.g if an application uses the same collection ID on three separate
 storage serves, all of which delegate a common set of access control
-servers, it's possible (a desirable) for the application to use a
+servers, it's possible (and desirable) for the application to use a
 single token granting access to the relevant collection ID on all
 three servers. Without this capability, an application would be forced
 to request multiple tokens from each access control server
@@ -333,10 +333,10 @@ gets it. Thus, if an adversary knew which object IDs a given
 application planned to use (or was already using on a subset of
 possible servers), they could request these object IDs on any server
 on which they were not yet in use for themselves, depriving the
-original application for using those servers without first undertaking
+original application of using those servers without first undertaking
 the burden of changing object IDs. None the less, we believe the
 convenience afforded by allowing applications to request specific
-object IDs outweigh the potential for DoS abuse.
+object IDs outweighs the potential for DoS abuse.
 
 \subsubsection{Example}
 
