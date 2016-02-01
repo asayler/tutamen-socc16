@@ -15,11 +15,22 @@ the user to adhere to a range of security and privacy requirements
 without sacrificing functionality in the process. Tutamen is a next
 generation secret storage platform. It builds on our previous secret
 storage efforts~\cite{custos-trios} and strives to offer features not
-provided by the various secret storage systems currently in use. In
-particular, Tutamen focuses on two key secret storage features absent
-from other systems -- the ability to support contextual and
-out-of-band (OOB) authentication mechanisms and the avoidance of any
-``single-point-of-trust'' requirements.
+provided by the various secret storage systems currently in
+use. In this paper, we use Tutamen, we offer several contributions:
+
+\begin{packed_item}
+\item Built-in support for modular authentication modules designed to
+  enable the use of contextual and alternate-band (e.g. SMS text
+  messages) authentication mechanism
+\item Ability to operate atop minimally trusted infrastructure
+  (i.e. Tutamen requires no single ``point-of-trust'' outside of the
+  applications that leverage it). This includes the ability to
+  leverage multiple storage and access control providers to achieve
+  both redundancy and to mitigate trust.
+\item Several practical demonstrations of how a secret storage system
+  such as Tutamen can be integrated with real-world applications to
+  offer secure desirable features in a secure and easy-to-use manner.
+\end{packed_item}
 
 \subsection{The Need for Secret Storage}
 
@@ -39,25 +50,22 @@ accounts. How best to store and manage these secrets is thus a
 significant question -- the answer to which forms the foundation to
 all of computing's higher level security and privacy guarantees.
 
-Beyond those mentioned above, there are several other factors driving
-the need for a good solution to the secret storage problem. On the
-system administration front, the trend toward ephemeral infrastructure
-cable of rapidly scaling up or down is driving the need for suitable
-configuration management systems capable of converting configuration
-metadata into fully configured systems. Systems such as
-puppet~\cite{puppet} or chef~\cite{chef} allow administrators to
-efficiently manage and configure large fleets of ephemeral
-systems. Such systems, however, do not tend to have suitable
-mechanisms for enforcing the security and privacy requirements
-inherent to storing secrets. Despite this, configuration data often 
-contains a variety of secrets including cryptographic secrets such as 
-SSH keys, TLS/SSL keys, and disk or file encryption keys, as well as 
-Tokens or credentials necessary to authenticate to a variety of 
-external APIs and services.
+Beyond the need to bootstrap a variety of security guarantees, there
+are several other factors driving the need for secrete storage
+solution. On the system administration front, the trend toward
+ephemeral infrastructure cable of rapidly scaling up or down is
+driving the adoption of configuration management systems such as
+puppet~\cite{puppet} or chef~\cite{chef}. Such systems, however, do
+not tend to have suitable mechanisms for enforcing the security and
+privacy requirements inherent to storing secrets. Despite this,
+configuration data often contains a variety of secrets including
+cryptographic secrets such as SSH keys, TLS/SSL keys, and disk or file
+encryption keys, as well as tokens or credentials necessary to
+authenticate to a variety of external APIs and services.
 
 Similarly, on the end-user front, the need for suitable secret storage
-systems is being driven by rapid expansion in the number of sites
-and services to which users must authenticate themselves, as well as by
+systems is being driven by rapid expansion in the number of sites and
+services to which users must authenticate themselves, as well as by
 the growing expanse of digital data users wish to protect. Indeed, the
 popularity of password management systems such as
 LastPass~\cite{lastpass} or 1Password~\cite{onepassword} as well as
@@ -80,7 +88,7 @@ secret storage presents a number of unique requirements including:
 \end{packed_item}
 
 In response to these needs, a number of general purpose secret-storage
-systems have been recently developed including HashiCorp's
+systems have been recently developed, including HashiCorp's
 Vault~\cite{vault}, Lyft's Confidant~\cite{confidant}, and Square's
 Keywhiz~\cite{keywhiz}. These systems exist to fulfill some or all of
 the requirements listed above. We believe, however, that such systems
@@ -106,17 +114,17 @@ particular, Tutamen supports operational modes where no single entity
 other than the client must be trusted. This allows users to leverage
 third party secret storage providers running Tutamen servers without
 having to place high degrees of trust in any single provider. Tutamen
-has also been developed with support for a modular out-of-band
-authentication interface. This interface makes Tutamen suitable for
-use in situations where it is desirable to leverage external
-environmental information to to keep a human in the authentication
-loop without actually requiring that the human be physically present
-or connected to the application requesting a secret. For example,
-Tutamen can be used to store the disk encryption keys required to boot
-a physical server of virtual machines, and only release these keys to
-the server requesting them when a human responds to a text message
-confirming the boot request.
+has also been developed with support for a modular authentication
+interface. This interface makes Tutamen suitable for use in situations
+where it is desirable to leverage external environmental information
+to to keep a human in the authentication loop without actually
+requiring that the human be physically present or connected to the
+application requesting a secret. For example, Tutamen can be used to
+store the disk encryption keys required to boot a physical server of
+virtual machines, and only release these keys to the server requesting
+them when a human responds to a text message confirming the boot
+request.
 
 % Todo: comparison table?
 
-%%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB
+%%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS
