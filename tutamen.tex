@@ -317,14 +317,12 @@ server.\footnote{The ability to request specific object IDs does have
   they know another application wishes to use for themselves. Since
   each server may only use each object ID once, the first application
   to request a given UUID gets it. Thus, if an adversary knew which
-  object IDs a given application planned to use (or was already using
-  on a subset of possible servers), they could request these object
-  IDs on any server on which they were not yet in use for themselves,
-  depriving the original application of using those servers without
-  first undertaking the burden of changing object IDs. None the less,
-  we believe the convenience afforded by allowing applications to
-  request specific object IDs outweighs the potential for DoS abuse.}
-
+  object IDs a given application planned to use, they could request
+  these object IDs on a set of AC servers for themselves, depriving
+  the original application of the ability to use those servers. None
+  the less, we believe the convenience afforded by allowing
+  applications to request specific object IDs outweighs the potential
+  for DoS abuse.}
 
 \subsection{Implementation}
 

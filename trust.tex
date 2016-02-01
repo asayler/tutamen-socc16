@@ -15,18 +15,18 @@ failure of any security guarantees provided by the AC server.
 \begin{packed_desc}
 \item[Certificate Authority Role:] Each access control server acts as
   a CA delegated with issuing and verifying client certificates. Thus,
-  it's important that the CA keys stored by each AC server remain
-  secure and that each CA server faithfully verifies the certificate
-  presented by each client connection.
+  each AC server must store its CA keys is a secure manner and
+  faithfully verify the certificate presented by each client
+  connection.
 \item[Token Issuance and Verification:] Each access control server is
   responsible for verifying the access control requirements bound to
   specific object/permission combinations, issuing signed tokens
   attesting to such verification, and verifying the signatures of the
   tokens it receives from clients wishing to operate on access control
-  objects. As such, it's important that each AC server keep its
-  private token signing key secure and that if faithfully verifies
-  both the access control requirements governing specific token
-  requests as well as the signatures on all incoming tokens.
+  objects. Thus, each AC server must store private token signing key
+  in a secure manner and faithfully verify both the access control
+  requirements governing specific token requests as well as the
+  signatures on all incoming tokens.
 \end{packed_desc}
 
 The storage servers must uphold the following security
@@ -34,15 +34,16 @@ requirements. Failure to do so results in a failure of the security of
 the storage server.
 
 \begin{packed_desc}
-\item[Token Verification:] Each storage server must obtain the public
-  token signing key from each AC server delegated with providing
-  access control for a given storage object. The storage server must
-  then use these keys to faithfully verify the signatures on all
-  tokens it receives. Assuming the token signature is valid, the
-  storage server must faithfully enforce the claims asserted in a
-  given token: e.g. by only allowing actions granted by the permission
-  contained in the token on the object the token identifies prior to
-  the expiration time specified by the token.
+\item[Token Verification:] Each storage server securely (via HTTPS)
+  must obtain the public token signing key from each AC server
+  delegated with providing access control for a given storage
+  object. The storage server must then use these keys to faithfully
+  verify the signatures on all tokens it receives. Assuming the token
+  signature is valid, the storage server must faithfully enforce the
+  claims asserted in a given token: e.g. by only allowing actions
+  granted by the permission contained in the token on the object the
+  token identifies prior to the expiration time specified by the
+  token.
 \item[Secure Storage:] Each storage server must take steps to store
   user-provided secrets in a secure manner, releasing them only to
   requests accompanied by the requisite number of valid tokens
@@ -53,7 +54,7 @@ Since the tokens the storage server must verify are provided by the AC
 servers, the security of the storage server with respect to a given
 collection is dependent on the security of any designated AC servers
 associated with said collection. If these AC servers are insecure, the
-storage server will also be insecure.
+objects that delegate access to them will also be insecure.
 
 \subsection{Security of Multiple Servers}
 
@@ -131,4 +132,5 @@ trustworthiness failures. Such robustness is a critical component of
 any successful secrete storage system.
 
 
-%%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators
+%%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
+%%  LocalWords:  ACS
