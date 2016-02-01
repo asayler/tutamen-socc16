@@ -20,11 +20,11 @@ this paper, we offer several contributions:
 
 \begin{packed_item}
 \item The design, implementation, and evaluation of a secret storage
-  system with support for several novel features including:
+  system with support for several novel features, including:
   \begin{packed_item}
   \item Modular authentication modules designed to add flexibility
     through the use of contextual, multi-factor, and alternate-band
-    (e.g. SMS text messages) authentication mechanisms.
+    (e.g., SMS text messages) authentication mechanisms.
   \item The ability to operate atop minimally trusted infrastructure
     by leveraging multiple storage and access control providers to
     achieve both redundancy and to mitigate trust.
@@ -42,7 +42,7 @@ the server infrastructure required to support the range of web sites
 and services we interact with every day. With this explosion of
 computing systems has come an equally large explosion in the amount of
 data stored by and about us. While some of this data is designed to be
-public (i.e. the entries on Wikipedia), much of it is not, requiring
+public (i.e., the entries on Wikipedia), much of it is not, requiring
 the enforcement of various privacy and security guarantees with
 respect to its handling and storage. The basis of providing such
 guarantees relies on our ability to store and selectively share
@@ -57,14 +57,14 @@ are several other factors driving the need for robust secrete storage
 solutions. On the system administration front, the trend toward
 ephemeral infrastructure cable of rapidly scaling up or down is
 driving the adoption of configuration management systems such as
-puppet~\cite{puppet} or chef~\cite{chef}. Such systems, however, do
+Puppet~\cite{puppet} or Chef~\cite{chef}. Such systems, however, do
 not tend to have suitable mechanisms for enforcing the security and
 privacy requirements inherent to storing secrets. Despite this,
 configuration data often contains a variety of secrets such as SSH
 keys, TLS/SSL keys, file encryption keys, and the tokens or
-credentials necessary to authenticate to external APIs and services.
+credentials necessary to authenticate with external APIs and services.
 
-Similarly, on the end-user front, the need for suitable secret storage
+Similarly, on the end user front, the need for suitable secret storage
 systems is being driven by a rapid expansion of the number of sites
 and services to which users must authenticate themselves, as well as
 by the growing expanse of digital data users wish to protect. Indeed,
@@ -78,7 +78,7 @@ secret storage, and the applications it enables, to end users.
 
 Unlike standard configuration management systems, or even specific
 secret storage systems such as password managers, a general purpose
-secret storage presents a number of unique requirements including the
+secret storage presents a number of unique requirements, including the
 following capabilities:
 
 \begin{packed_item}
@@ -89,7 +89,7 @@ following capabilities:
 \item Provide audit logs tracking secret access history
 \end{packed_item}
 
-In response to these needs, a number of general purpose secret-storage
+In response to these needs, a number of general purpose secret storage
 systems have been recently developed by industry, including
 HashiCorp's Vault~\cite{vault}, Lyft's Confidant~\cite{confidant}, and
 Square's Keywhiz~\cite{keywhiz}. These systems exist to fulfill some
@@ -105,7 +105,7 @@ storage requirements:
 \begin{packed_item}
 \item Avoidance of the need to place a high degree of trust in any
   single system outside the application that wishes to store a secret.
-\item Ability to support a range of secret access use-cases, including
+\item Ability to support a range of secret access use cases, including
   use cases where automatic or remote access to secrets is required.
 \end{packed_item}
 
@@ -118,13 +118,12 @@ without having to place high degrees of trust in any single
 provider. Tutamen also provides support for a modular authentication
 interface. This interface makes Tutamen suitable for use in situations
 where it is desirable to leverage external environmental information
-to automatically evaluate the authenticity of a secret request are
+to automatically evaluate the authenticity of a secret request or
 where it is necessary to keep a human in the authentication loop
-without actually requiring that the human be physically present or
-connected to the application requesting a secret. For example, Tutamen
-can be used to store the disk encryption keys required to boot a
-headless server, and only release these keys to the server requesting
-them when a human responds to a text message confirming the boot
-request.
+without actually requiring that the human be physically present. For
+example, Tutamen can be used to store the disk encryption keys
+required to boot a headless server, and only release these keys to the
+server requesting them when a human responds to a text message
+confirming the boot request.
 
 %%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS

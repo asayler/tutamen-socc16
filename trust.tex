@@ -15,7 +15,7 @@ failure of any security guarantees provided by the AC server.
 \begin{packed_desc}
 \item[Certificate Authority Role:] Each access control server acts as
   a CA delegated with issuing and verifying client certificates. Thus,
-  each AC server must store its CA keys is a secure manner and
+  each AC server must store its CA keys in a secure manner and
   faithfully verify the certificate presented by each client
   connection.
 \item[Token Issuance and Verification:] Each access control server is
@@ -34,13 +34,13 @@ requirements. Failure to do so results in a failure of the security of
 the storage server.
 
 \begin{packed_desc}
-\item[Token Verification:] Each storage server securely (via HTTPS)
-  must obtain the public token signing key from each AC server
+\item[Token Verification:] Each storage server must securely (via
+  HTTPS) obtain the public token signing key from each AC server
   delegated with providing access control for a given storage
   object. The storage server must then use these keys to faithfully
   verify the signatures on all tokens it receives. Assuming the token
   signature is valid, the storage server must faithfully enforce the
-  claims asserted in a given token: e.g. by only allowing actions
+  claims asserted in a given token; e.g., by only allowing actions
   granted by the permission contained in the token on the object the
   token identifies prior to the expiration time specified by the
   token.
@@ -69,22 +69,22 @@ the part of the server operator, or compelled failures.\footnote{For
 
 To work around security failures of individual server, Tutamen
 applications can leverage Tutamen's distributed operation modes. In
-these modes, the security of the system as a whole is diffused -- no
+these modes, the security of the system as a whole is diffused, no
 longer relying on the security of any specific access control or
-storage server in order to keep an applications' secrets secure. As
-described in Section~\ref{sec:tutamen:arch:distributed} each
+storage server in order to keep an application's secrets secure. As
+described in Section~\ref{sec:tutamen:arch:distributed}, each
 application can distribute both secret storage and access control
 delegations using $n$ choose $k$ schemes. In such setups, the
 difference between $n$ and $k$ represents the degree to which a
 Tutamen applications can withstand security failures of the associated
-AC and storage servers. For example, an applications which chooses to
+AC and storage servers. For example, an application which chooses to
 shard its secrets across five storage servers where any three shards
 are sufficient to recreate the secret ($n=5$, $k=3$) will continue to
 remain secure even if two of the storage servers fail to meet their
 security obligations. Similarly, if each secret shard delegates five
 possible AC servers, tokens from three of which are required to grant
 secret access, the applications can withstand the failure of two AC
-server to uphold their security guarantees.
+servers to uphold their security guarantees.
 
 \subsection{Trust Model}
 
@@ -93,13 +93,13 @@ Tutamen servers and of the distributed Tutamen deployment
 architectures. If a Tutamen application is leveraging only a single
 storage and AC server, the application is placing a high degree of
 trust in both servers (and by proxy, the operators of both
-servers). This level of trust may be appropriate for some use cases --
-e.g. when a user is operating their own Tutamen's servers -- but is
-inappropriate in many other cases (e.g. when using third party hosted
+servers). This level of trust may be appropriate for some use cases
+(e.g., when a user is operating their own Tutamen's servers), but is
+inappropriate in many other cases (e.g., when using third party hosted
 Tutamen servers). Fortunately, Tutamen allows applications to avoid
 placing a high degree of trust in any single server by leveraging
-multiple servers and picking $k$ and $n$ in a manner that
-corresponding to the degree by which server is trusted.
+multiple servers and picking $k$ and $n$ in a manner commensurate with
+the degree to which each server is trusted.
 
 Beyond minimizing the amount of trust placed in each individual
 Tutamen server by leveraging multiple servers, we also envision
@@ -108,29 +108,28 @@ trustworthiness~\cite{anderson2001}. The Tutamen protocol is
 standardized and designed to support a range of interchangeable ACS
 and SS providers. Such a design allows for the development of a
 Tutamen server marketplace where both ACS and SS providers can compete
-against each other on the basis of trustworthiness, features
-(e.g. what types of authenticators they support), and cost. In such an
+against each other on the basis of trustworthiness, features (e.g.,
+what types of authenticators they support), and cost. In such an
 ecosystem, Tutamen service providers who fail to uphold the Tutamen
 security requirements on their servers will suffer a negative economic
-effect, disincentivizing such behavior. Its also likely the storage
+effect, disincentivizing such behavior. It is also likely that storage
 providers who take additional steps to protect the secrets they store
-(e.g. by using systems such as Trusted Platform Modules (TPMs) to
+(e.g., by using systems such as Trusted Platform Modules (TPMs) to
 encrypt the secrets they hold and harden server security) would be
 able to command a higher price in the marketplace, incentivizing such
 best practices.
 
 Thus, unlike other third-party cloud services where trustworthiness
-and economic incentives are in direct competition (e.g. as is the case
-on many ``free'' third part services that depend on selling user data
-in order to generate revenue)~\cite{flowerday2006}, Tutamen encourages
-a system where economic incentives are well aligned with user
+and economic incentives are in direct competition (as is the case on
+many ``free'' third part services that depend on selling user data in
+order to generate revenue)~\cite{flowerday2006}, Tutamen encourages a
+system where economic incentives are well aligned with user
 trust. That fact, coupled with the high degree of control over
 third-party trust Tutamen grants to each application by allowing each
 application to select how many servers to diffuse trust across, make
-Tutamen a robust system in the face to both security and
+Tutamen a robust system in the face of both security and
 trustworthiness failures. Such robustness is a critical component of
 any successful secrete storage system.
-
 
 %%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
 %%  LocalWords:  ACS
