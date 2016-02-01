@@ -9,9 +9,11 @@ SRCS = $(TEX) refs.bib
 FIG_TMP = tmp.eps
 FIGS = $(patsubst %, figs/pdf/%.pdf, \
 	     tutamen-datastructures-ac \
-	     tutamen-datastructures-storage\
+	     tutamen-datastructures-storage \
 	     system-base \
-	     system-distributed)
+	     system-distributed \
+	     store-secret \
+	     fetch-secret )
 
 all: pdf
 
