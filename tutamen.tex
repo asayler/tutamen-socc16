@@ -52,12 +52,12 @@ operate. Figure~\ref{fig:tutamen:acstructs} shows these structures.
 In order to track and control access from specific users, the access
 control server uses per-user accounts. These accounts are generally
 designed to map to individual end-users, but they can be used to track
-any logically singular entity to which one wishes to assign specific
+any entity to which one wishes to assign specific
 access control privileges. Accounts thus form the basis of controlling
 and sharing access to secrets via Tutamen. Within each account are one
 or more clients. While accounts represent logically singular entities, 
 clients represent specific devices controlled by such entities. Each
-account has one or more clients. For example, Jane Coworker would have a
+account has one or more clients. For example, Jane Coworker may have a
 single account with three clients: one for her laptop, one for her
 desktop, and one for her phone.
 
@@ -77,7 +77,8 @@ initial client is created in tandem with a new account -- all
 subsequent clients are then approved by previously approved clients.
 
 In addition to accounts, the Tutamen access control server also uses
-``authenticators''. Authenticators are modular mechanisms used to
+``authenticators''. Authenticators are modular mechanisms similar
+to PAM~\cite{samar1996} moduls used to
 implement out-of-band or contextual access control requirements:
 e.g. only allowing access during specific times of day or from
 specific IP addresses. Authenticators can also be used to implement
@@ -122,7 +123,7 @@ more secrets (or parts of secrets). Associated with each collection is
 a list of one or more access control servers delegated with enforcing
 the access control requirements for the collection. Access control
 granularity is thus set at the per-collection, not per-secret level. A
-collection is also capable of storing an user-provided metadata to aid
+collection is also capable of storing a user-provided metadata to aid
 in the mapping of collections to the objects for which they store
 secrets.
 
@@ -220,7 +221,7 @@ Other than the bootstrapping operations and the token request
 operations themselves, all requests to either storage or access
 control servers must be accompanied by a valid token. The receiving
 server validates this token using the public signing key of the
-associated AC server; for request to the AC sever itself, this key is
+associated AC server; for requests to the AC sever itself, this key is
 available internally. For requests to external storage servers, the
 signing key is downloaded by the target server from the access control
 server and cached for future use. In this manner, access control
@@ -251,8 +252,8 @@ and avoid otherwise leaking secret data). Second, it lacks any form of
 redundancy -- if either the access control server or the storage server
 is unavailable applications will be unable to retrieve any secrets.
 
-To overcome these deficiencies, we've designed Tutamen to be
-optionally leveraged in a distributed manner as an alternative to
+To overcome these deficiencies, Tutamen can operate
+in a distributed manner as an alternative to
 single-server operation. Operating Tutamen in a distributed manner is
 largely a task that is pushed down to the application and client
 levels -- with the exception of supporting the necessary primitives to
@@ -482,8 +483,9 @@ implementation source code is available online
 at~\cite{src-tutamen-apiaccesscontrol}. Likewise, the storage server
 API specification and source code can be found
 at~\cite{src-tutamen-apistorage}. Both APIs are freely available under
-the terms of the AGPLv3. The server APIs are written in Python 3 using
-the Flask web framework~\cite{python-flask}. Both servers are designed
+the terms of the AGPLv3. The prototype servers are written in Python 3 using
+the Flask web framework~\cite{python-flask}. For
+simplicity, both servers are designed
 to be served via WSGI~\cite{pep3333} using the Apache HTTP
 Server~\cite{apache} for TLS termination and client-certificate
 verification.
