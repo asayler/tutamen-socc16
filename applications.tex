@@ -73,7 +73,10 @@ provide Tutamen-backed pass-phrase storage to any applications
 leveraging this protocol, including OpenVPN and other standard system
 utility. We've not yet thoroughly explored these use cases, but we
 envision a Tutamen-passed systemd password agent being useful in a
-wide range of situations beyond just full disk encryption.
+wide range of situations beyond just full disk encryption. Our
+experience integrating the systemd password agent with Tutamen also
+suggests that Tutamen would provide a useful backend for a variety of
+other ``agent'' protocols (e.g.~\cite{cox2002, ylonen1996}).
 
 %% Each header contains eight available keyslots in the which
 %% can be set by an admin. The 0th keyslot is setup at creation time and
@@ -147,22 +150,38 @@ corresponding encryption key is automatically shared via Tutamen.
 
 Toward this end, we have created FuseBox: an alternate Dropbox client
 that performs client-side encryption of all Dropbox files, storing the
-corresponding encryption keys on our reference Tutamen server. The
-source code for our FuseBox implementation is available
-at~\cite{fusebox}.  FuseBox transparently encrypts and decrypts files
-when they are opened and closed -- streaming the encrypted file data
-to or from Dropbox as necessary. Since FuseBox leverages Tutamen to
-store each per-file encryption key, it becomes possible to share an
-encrypted file via Dropbox, share its encryption key via Tutamen, and
-achieve the same level of functionally traditional Dropbox users have
-without having to expose one's data to Dropbox. While the key sharing
-process in FuseBox is not yet directly synced with Dropbox's file
-sharing system, the Tutamen CLI can be used to quickly share the
-encryption keys between users. In this manner, we've used FuseBox to
-store and share encrypted files with nearly the same ease with which
-one might use the traditional unencrypted Dropbox client.
+corresponding encryption keys on our reference Tutamen server.Tutamen
+achieves goals similar to those achieved by~\cite{goh2003}, but
+without requiring out-of-band key management. Similar to other
+file-system-level encryption systems~\cite{blaze1993, Cattaneo2001,
+  halcrow}, FuseBox provides transparent file encryption to end
+users. In order to avoid the storage space and security challenges
+presented by locally caching all Dropbox data (e.g. the operation mode
+for the official Dropbox client), FuseBox uses AES~\cite{daemen1999,
+  nist2001} as a stream cipher to transparently stream and encrypted
+data to/from Dropbox's servers on demand.  The source code for our
+FuseBox implementation is available at~\cite{fusebox}.
+
+Since FuseBox leverages Tutamen to store each per-file encryption key,
+it becomes possible to share an encrypted file via Dropbox, share its
+encryption key via Tutamen, and achieve the same level of functionally
+traditional Dropbox users have without having to expose one's data to
+Dropbox. While the key sharing process in FuseBox is not yet directly
+synced with Dropbox's file sharing system, the Tutamen CLI can be used
+to quickly share the encryption keys between users. In this manner,
+we've used FuseBox to store and share encrypted files with nearly the
+same ease with which one might use the traditional unencrypted Dropbox
+client. By leveraging Tutamen, FuseBox also gain the ability to be
+remotely revoke file access, e.g. in the case a device is lost or
+stolen, similar to systems such as~\cite{geambasu2011}. We also have
+plans to add cryptographic file authentication to FuseBox's streaming
+architecture using techniques such as those describes
+at~\cite{McGrew2005}. FuseBox, via Tutamen's distributed operation
+mode, avoids the sharing pitfalls associated many existing ``secure
+cloud storage'' providers~\cite{wilson2014} by avoiding the need for a
+single trusted CA in order to perform sharing operations.
 
 %%  LocalWords:  Tutamen keyslots keyslot systemd cryptsetup initrd
 %%  LocalWords:  libcryptsetup initramfs Archlinux RedHat ini pid FDE
 %%  LocalWords:  dgram tutamen OpenVPN TUTATEM luks authenticators dm
-%%  LocalWords:  SMS authenticator golang Tutamen's FuseBox
+%%  LocalWords:  SMS authenticator golang Tutamen's FuseBox FuseBox's

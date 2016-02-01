@@ -24,14 +24,14 @@ Tutamen has three discreet architectural components:
 The bulk of all Tutamen communication occurs between an application
 and one or more of each type of server. Inter-server communication is
 kept to a minimum to support scalability. All communication in Tutamen
-takes place via HTTPS connections -- and in some cases leverages mutual
-TLS to require both client and server authentication. Both access
-control and storage servers are designed to be used individually or in
-sets. E.g. An application may store their secret on a single storage
-server and delegate access control to a single access control server,
-or the application may shard its secret across multiple storage
-servers and delegate access control to multiple access control
-servers, or any combination thereof.
+takes place via TLS~\cite{dierks2008} HTTPS connections -- and in some
+cases leverages mutual TLS to require both client and server
+authentication. Both access control and storage servers are designed
+to be used individually or in sets. E.g. An application may store
+their secret on a single storage server and delegate access control to
+a single access control server, or the application may shard its
+secret across multiple storage servers and delegate access control to
+multiple access control servers, or any combination thereof.
 
 \subsubsection{Access Control Servers}
 \label{sec:tutamen:arch:acs}
@@ -77,14 +77,14 @@ initial client is created in tandem with a new account -- all
 subsequent clients are then approved by previously approved clients.
 
 In addition to accounts, the Tutamen access control server also uses
-``authenticators''. Authenticators are modular mechanisms similar
-to PAM~\cite{samar1996} moduls used to
-implement out-of-band or contextual access control requirements:
-e.g. only allowing access during specific times of day or from
-specific IP addresses. Authenticators can also be used to implement
-out-of-band authentication mechanisms such as confirming approval for
-a specific request from a user via text message, or otherwise
-interfacing with external services to gain approval.
+``authenticators''. Authenticators are modular mechanisms used to
+implement alternate-band or contextual access control
+requirements~\cite{hulsebosch2005}: e.g. only allowing access during
+specific times of day or from specific IP addresses. Authenticators
+can also be used to implement alternate-band authentication mechanisms
+such as confirming approval for a specific request from a user via
+text message, or otherwise interfacing with external services to gain
+approval.
 
 Accounts and authenticators are combined via verifiers. A verifier
 consists of a set of accounts and a set of authenticators. In order to
@@ -155,13 +155,14 @@ collection.
 Access control servers control access related to both internal
 (i.e. access control server) and external (i.e. storage server)
 objects by providing signed authorization tokens in response to valid
-requests. Each authorization token grants the bearer a specific
-permission related to a specific object. In this manner, access
-control servers provide a form of federated access management that
-bears some similarities to previously deployed systems such as
-Shibboleth~\cite{leandro2012}. Figure~\ref{fig:tutamen:systembase}
-shows the basic communication involved in the Tutamen access control
-process.
+requests. Similar to previously proposed distributed and federated
+access control systems~\cite{Calero2010, Leandro2012},
+each authorization token grants the bearer a specific permission
+related to a specific object. Unlike previous systems, however,
+Tutamen is designed to avoid needing to trust any single access
+control provider (see \S~\ref{sec:tutamen:arch:distributed}).
+Figure~\ref{fig:tutamen:systembase} shows the basic communication
+involved in the Tutamen access control process.
 
 \begin{figure}[th]
   \centering
@@ -252,17 +253,20 @@ and avoid otherwise leaking secret data). Second, it lacks any form of
 redundancy -- if either the access control server or the storage server
 is unavailable applications will be unable to retrieve any secrets.
 
-To overcome these deficiencies, Tutamen can operate
-in a distributed manner as an alternative to
-single-server operation. Operating Tutamen in a distributed manner is
-largely a task that is pushed down to the application and client
-levels -- with the exception of supporting the necessary primitives to
-support such operation, both Tutamen storage and access control server
-are designed to by largely agnostic to whether they are being used in
-a centralized or a distributed manner. This design has the benefit of
-avoiding server-side scaling challenges, allowing the extra overhead
-required for distributed operation to be supported by each application
-that requires it.
+A verity of systems have been proposed with the goal of minimizing
+trust requirements for cloud infrastructure~\cite{bessani2011,
+  kallahalla2003, kubiatowicz2000, mahajan2011,
+  wilcox-o'hearn2008}. Tutamen applies ``minimal-trust'' goals to the
+secret storage problem via support for a distributed operation mode as
+an alternative to single-server operation. Operating Tutamen in a
+distributed manner is largely a task that is pushed down to the
+application and client levels -- with the exception of supporting the
+necessary primitives to support such operation, both Tutamen storage
+and access control server are designed to by largely agnostic to
+whether they are being used in a centralized or a distributed
+manner. This design has the benefit of avoiding server-side scaling
+challenges, allowing the extra overhead required for distributed
+operation to be supported by each application that requires it.
 
 \begin{figure}[th]
   \centering
@@ -273,23 +277,26 @@ that requires it.
 
 Figure~\ref{fig:tutamen:systemdistributed} shows the basic layout of a
 distributed Tutamen setup. In such a setup, the Tutamen application
-first shards its secret using a $(k, n)$ threshold schemes such as
-Shamir's~\cite{shamir1979}. The application chooses the value of $n$
-based on the number of storage servers they wish to utilize. The value
-of $k$ is then chosen to control how many of the servers must be
-responsive in order to retrieve the secret -- i.e. the difference
-between $n$ and $k$ controls how much storage redundancy the system
-has by dictating the number of storage servers that can be unavailable
-before access to the secret itself is lost. The application then
-pushes each shard to the $n$ storage servers. If the application is
-merely concerned about storage redundancy, or about their ability to
-trust a storage server operator, it can delegate the access control for
-each secret shard to a single access control server. To retrieve such
-a secret the application would request the necessary token from the
-access control server and include it in the request to each storage
-server for their respective shard of the secret. When the application
-receives a response from $k$ of the storage servers, it is able to
-reconstruct the original secret.
+first shards its secret using a $(k, n)$ threshold
+scheme~\cite{shamir1979, krawczyk1993}, similar to other proposed
+``minimal trust'' cloud systems~\cite{bessani2011} as well as
+previously proposed ``key escrow'' systems~\cite{blaze1996,
+  denning1996}. The application chooses the value of $n$ based on the
+number of storage servers they wish to utilize. The value of $k$ is
+then chosen to control how many of the servers must be responsive in
+order to retrieve the secret -- i.e. the difference between $n$ and
+$k$ controls how much storage redundancy the system has by dictating
+the number of storage servers that can be unavailable before access to
+the secret itself is lost. The application then pushes each shard to
+the $n$ storage servers. If the application is merely concerned about
+storage redundancy, or about their ability to trust a storage server
+operator, it can delegate the access control for each secret shard to
+a single access control server. To retrieve such a secret the
+application would request the necessary token from the access control
+server and include it in the request to each storage server for their
+respective shard of the secret. When the application receives a
+response from $k$ of the storage servers, it is able to reconstruct
+the original secret.
 
 In most cases, however, we imagine that in addition to wishing to
 mitigate storage server trust and reliability failures, the
