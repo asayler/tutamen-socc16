@@ -4,36 +4,121 @@
   journal	= {Computer Science and Engineering},
   number	= {1},
   pages		= {27--36},
-  title		= {{A State of the Art Security Taxonomy of Internet
-		  Security: Threats and Countermeasures}},
-  url		= {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.134.5186\&rep=rep1\&type=pdf}
+  title		= {A State of the Art Security Taxonomy of {Internet}
+		  Security: Threats and Countermeasures},
+  url		= {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.134.5186}
 		  ,
   volume	= {1},
   year		= {2005}
 }
 
-@Misc{		  amazon-db,
-  author	= {{Amazon}},
-  title		= "DynamoDB",
-  howpublished	= {\url{aws.amazon.com/dynamodb}}
+@Article{	  abelson2015,
+  author	= {Abelson, Harold and Anderson, Ross and Bellovin, Steven M.
+		  and Benaloh, Josh and Blaze, Matt and Diffie, Whitfield and
+		  Gilmore, John and Green, Matthew and Landau, Susan and
+		  Neumann, Peter G. and Rivest, Ronald L. and Schiller,
+		  Jeffrey I. and Schneier, Bruce and Specter, Michael A. and
+		  Weitzner, Daniel J},
+  doi		= {10.1093/cybsec/tyv009},
+  issn		= {2057-2085},
+  journal	= {Journal of Cybersecurity},
+  month		= {November},
+  pages		= {69--79},
+  title		= {Keys Under Doormats: Mandating Insecurity by Requiring
+		  Government Access to All Data and Communications},
+  url		= {http://cybersecurity.oxfordjournals.org/lookup/doi/10.1093/cybsec/tyv009}
+		  ,
+  year		= {2015}
+}
+
+@Article{	  acquisti2013,
+  archiveprefix	= {arXiv},
+  arxivid	= {arXiv:1011.1669v3},
+  author	= {Acquisti, Alessandro and John, Leslie K and Loewenstein,
+		  George},
+  doi		= {10.1086/671754},
+  eprint	= {arXiv:1011.1669v3},
+  isbn		= {0047-2530},
+  journal	= {The Journal of Legal Studies},
+  month		= {June},
+  number	= {2},
+  pages		= {249--274},
+  pmid		= {25246403},
+  title		= {What Is Privacy Worth?},
+  url		= {http://www.journals.uchicago.edu/doi/10.1086/671754},
+  volume	= {42},
+  year		= {2013}
+}
+
+@InProceedings{	  adrian2015,
+  address	= {New York, New York, USA},
+  author	= {Adrian, David and Valenta, Luke and VanderSloot, Benjamin
+		  and Wustrow, Eric and Zanella-B{\'{e}}guelin, Santiago and
+		  Zimmermann, Paul and Bhargavan, Karthikeyan and Durumeric,
+		  Zakir and Gaudry, Pierrick and Green, Matthew and
+		  Halderman, J Alex and Heninger, Nadia and Springall, Drew
+		  and Thom{\'{e}}, Emmanuel},
+  booktitle	= {Proceedings of the 22nd ACM SIGSAC Conference on Computer
+		  and Communications Security},
+  doi		= {10.1145/2810103.2813707},
+  isbn		= {9781450338325},
+  pages		= {5--17},
+  publisher	= {ACM Press},
+  title		= {Imperfect Forward Secrecy: How {Diffie-Hellman} Fails in
+		  Practice},
+  url		= {http://dl.acm.org/citation.cfm?doid=2810103.2813707},
+  year		= {2015}
+}
+
+@Misc{		  agpl,
+  author	= {{Free Software Foundation}},
+  title		= {{GNU Affero General Public License}},
+  howpublished	= {\url{https://www.gnu.org/licenses/agpl-3.0.en.html}},
+  note		= {Version 3.0}
+}
+
+@InProceedings{	  ajtai1996,
+  author	= {Ajtai, M.},
+  title		= {Generating Hard Instances of Lattice Problems (Extended
+		  Abstract)},
+  booktitle	= {Proceedings of the Twenty-eighth Annual ACM Symposium on
+		  Theory of Computing},
+  series	= {STOC '96},
+  year		= {1996},
+  isbn		= {0-89791-785-5},
+  location	= {Philadelphia, Pennsylvania, USA},
+  pages		= {99--108},
+  numpages	= {10},
+  url		= {http://doi.acm.org/10.1145/237814.237838},
+  doi		= {10.1145/237814.237838},
+  acmid		= {237838},
+  publisher	= {ACM},
+  address	= {New York, NY, USA}
 }
 
 @Misc{		  amazon-ec2,
-  author	= {{Amazon}},
-  title		= "Elastic Cloud Compute",
-  howpublished	= {\url{aws.amazon.com/ec2}}
+  author	= {{Amazon.com, Inc}},
+  title		= {{Elastic Cloud Compute}},
+  howpublished	= {\url{http://aws.amazon.com/ec2}}
 }
 
 @Misc{		  amazon-hsm,
-  author	= {{Amazon}},
-  title		= "Cloud HSM",
-  howpublished	= {\url{aws.amazon.com/cloudhsm}}
+  author	= {{Amazon.com, Inc}},
+  title		= {{Cloud HSM}},
+  howpublished	= {\url{http://aws.amazon.com/cloudhsm}}
 }
 
 @Misc{		  amazon-s3,
-  author	= {{Amazon}},
-  title		= "Simple Storage Service",
-  howpublished	= {\url{aws.amazon.com/s3}}
+  author	= {{Amazon.com, Inc}},
+  title		= {{Simple Storage Service}},
+  howpublished	= {\url{http://aws.amazon.com/s3}}
+}
+
+@Misc{		  amazon-transparency,
+  author	= {{Amazon.com, Inc}},
+  title		= {{Amazon} Information Request Report},
+  howpublished	= {\url{http://d0.awsstatic.com/certifications/Information_Request_Report.pdf}}
+		  
 }
 
 @InProceedings{	  anderson2001,
@@ -43,88 +128,153 @@
   doi		= {10.1109/ACSAC.2001.991552},
   isbn		= {0-7695-1405-7},
   pages		= {358--365},
-  publisher	= {IEEE Comput. Soc},
-  title		= {{Why information security is hard - an economic
-		  perspective}},
-  url		= {ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=991552}
+  publisher	= {IEEE Computer Society},
+  title		= {Why information security is hard - an economic
+		  perspective},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=991552}
 		  ,
   year		= {2001}
 }
 
+@Book{		  anderson2013,
+  title		= {The Internet Police},
+  author	= {Anderson, Nate},
+  year		= {2013},
+  publisher	= {Norton \& Company},
+  isbn		= {978-0-393-06298-4}
+}
+
 @Misc{		  apache,
-  author	= {Apache Software Foundation, The},
-  title		= "Apache HTTP Server Project",
+  author	= {{Apache Software Foundation}},
+  title		= {{Apache} {HTTP} Server Project},
   howpublished	= {\url{https://httpd.apache.org/}}
 }
 
+@Misc{		  apple-fbiletter,
+  author	= {Cook, Tim and {Apple, Inc}},
+  title		= {A Message to Our Customers},
+  month		= {February},
+  year		= {2016},
+  howpublished	= {\url{https://www.apple.com/customer-letter/}}
+}
+
 @Misc{		  apple-icloud,
-  author	= {Apple Inc},
-  title		= "iCloud",
-  howpublished	= {\url{www.apple.com/icloud}}
+  author	= {{Apple, Inc}},
+  title		= {{iCloud}},
+  howpublished	= {\url{https://www.apple.com/icloud}}
 }
 
 @Misc{		  apple-icloudleak,
-  author	= {{Apple Inc}},
+  author	= {{Apple, Inc}},
   title		= {Update to Celebrity Photo Investigation},
   month		= {September},
   year		= {2014},
-  howpublished	= {\url{www.marketwatch.com/story/apple-media-advisory-2014-09-02}}
+  howpublished	= {\url{https://www.marketwatch.com/story/apple-media-advisory-2014-09-02}}
 		  
-}
-
-@Misc{		  apple-pay,
-  author	= {{Apple}},
-  title		= {Apple Pay},
-  howpublished	= {\url{www.apple.com/apple-pay/}}
 }
 
 @Article{	  ars-android-encrypt,
   author	= {Amadeo, Ron},
   journal	= {Ars Technica},
-  title		= {{Android L will have device encryption on by default}},
-  url		= {arstechnica.com/gadgets/2014/09/android-l-will-have-device-encryption-on-by-default/}
+  title		= {{Android L} will have device encryption on by default},
+  url		= {http://arstechnica.com/gadgets/2014/09/android-l-will-have-device-encryption-on-by-default/}
 		  ,
   year		= {2014},
-  month		= {Sep}
+  month		= {September}
+}
+
+@Article{	  ars-cookvfbi,
+  author	= {Anthony, Sebastion},
+  journal	= {Ars Technica},
+  title		= {{Tim Cook} says {Apple} will fight {US} gov't over
+		  court-ordered {iPhone} backdoor},
+  url		= {http://arstechnica.com/gadgets/2016/02/tim-cook-says-apple-will-fight-us-govt-over-court-ordered-iphone-backdoor/}
+		  ,
+  year		= {2016},
+  month		= {February}
+}
+
+@Article{	  ars-fbi-breakthrough,
+  author	= {Farivar, Cyrus},
+  journal	= {Ars Technica},
+  title		= {Feds break through seized {iPhone}, stnad down in legal
+		  battle with {Apple}},
+  url		= {http://arstechnica.com/tech-policy/2016/03/feds-break-through-seized-iphone-stand-down-in-legal-battle-with-apple/}
+		  ,
+  year		= {2016},
+  month		= {March}
+}
+
+@Article{	  ars-fbi-greyhats,
+  author	= {Kravets, David},
+  journal	= {Ars Technica},
+  title		= {{FBI} paid ``grey hats'' for zero-day exploit that
+		  unlocked seized {iPhone}},
+  url		= {http://arstechnica.com/tech-policy/2016/04/fbi-paid-gray-hats-for-zero-day-exploit-that-unlocked-seized-iphone/}
+		  ,
+  year		= {2016},
+  month		= {April}
 }
 
 @Article{	  ars-ios-encrypt,
   author	= {Farivar, Cyrus},
   journal	= {Ars Technica},
-  title		= {{Apple expands data encryption under iOS 8, making
-		  handover to cops moot}},
-  url		= {arstechnica.com/apple/2014/09/apple-expands-data-encryption-under-ios-8-making-handover-to-cops-moot/}
+  title		= {{Apple} expands data encryption under {iOS} 8, making
+		  handover to cops moot},
+  url		= {http://arstechnica.com/apple/2014/09/apple-expands-data-encryption-under-ios-8-making-handover-to-cops-moot/}
 		  ,
   year		= {2014},
-  month		= {Sep}
+  month		= {September}
+}
+
+@Article{	  ars-opmhack,
+  author	= {Gallagher, Sean},
+  journal	= {Ars Technica},
+  title		= {{EPIC} fail: {H}ow {OPM} hackers tapped the mother lode of
+		  espionage data},
+  url		= {http://arstechnica.com/security/2015/06/epic-fail-how-opm-hackers-tapped-the-mother-lode-of-espionage-data/}
+		  ,
+  year		= {2015},
+  month		= {July}
 }
 
 @Article{	  atlantic-google-iam,
   author	= {Rosen, Rebecca J.},
   journal	= {The Atlantic},
-  title		= {{Google Death: A Tool to Take Care of Your Gmail When
-		  You're Gone}},
-  url		= {www.theatlantic.com/technology/archive/2013/04/google-death-a-tool-to-take-care-of-your-gmail-when-youre-gone/274934/}
+  title		= {{Google Death}: A Tool to Take Care of Your {G}mail When
+		  You're Gone},
+  url		= {http://www.theatlantic.com/technology/archive/2013/04/google-death-a-tool-to-take-care-of-your-gmail-when-youre-gone/274934/}
 		  ,
   year		= {2013},
-  month		= {Apr}
+  month		= {April}
 }
 
 @Article{	  atwood2007,
-  author	= {Atwwod, Jeff},
-  journal	= {Cosing Horror: Programming and Human Factors},
-  title		= {{Building a Computer the Google Way}},
+  author	= {Atwood, Jeff},
+  journal	= {Coding Horror: Programming and Human Factors},
+  title		= {Building a Computer the {Google} Way},
   url		= {http://blog.codinghorror.com/building-a-computer-the-google-way/}
 		  ,
   year		= {2007},
-  month		= {Mar}
+  month		= {March}
+}
+
+@Article{	  balloun2012,
+  author	= {Balloun, O. Shane},
+  journal	= {University of San Francisco Maritime Law Journal},
+  number	= {409},
+  title		= {The True Obstacle to the Autonomy of Seasteads: {American}
+		  Law Enforcement Jurisdiction over Homesteads on the High
+		  Seas},
+  url		= {http://ssrn.com/abstract=2514693},
+  volume	= {24},
+  year		= {2012}
 }
 
 @Misc{		  berrange-qemucrypto,
   author	= {Berrange, Daniel},
-  title		= {{QEMU QCow2 built-in encyrption: just say no}},
-  howpublished	= {\url{https://www.berrange.com/posts/2015/03/17/}}
-		  ,
+  title		= {{QEMU} {QCOW2} built-in encryption: Just say no},
+  howpublished	= {\url{https://www.berrange.com/posts/2015/03/17/}},
   year		= {2015},
   month		= {March}
 }
@@ -132,12 +282,12 @@
 @InProceedings{	  bessani2011,
   author	= {Bessani, Alysson and Correia, Miguel and Quaresma, Bruno
 		  and Andre, Fernando and Sousa, Paulo},
-  booktitle	= {Proceedings of the sixth conference on Computer systems},
+  booktitle	= {Proceedings of the Sixth Conference on Computer Systems},
   isbn		= {9781450306348},
   pages		= {31--46},
-  title		= {{DepSky: Dependable and secure storage in a
-		  cloud-of-clouds}},
-  url		= {dl.acm.org/citation.cfm?id=1966449},
+  title		= {{DepSky}: Dependable and secure storage in a
+		  cloud-of-clouds},
+  url		= {http://dl.acm.org/citation.cfm?id=1966449},
   year		= {2011}
 }
 
@@ -147,13 +297,33 @@
   doi		= {10.1109/SP.2007.11},
   isbn		= {0-7695-2848-1},
   issn		= {1081-6011},
-  month		= may,
+  month		= {May},
   pages		= {321--334},
   publisher	= {IEEE},
-  title		= {{Ciphertext-Policy Attribute-Based Encryption}},
+  title		= {Ciphertext-Policy Attribute-Based Encryption},
   url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=4223236}
 		  ,
   year		= {2007}
+}
+
+@InProceedings{	  beurdouche2015,
+  author	= {Beurdouche, Benjamin and Bhargavan, Karthikeyan and
+		  Delignat-Lavaud, Antoine and Fournet, Cedric and Kohlweiss,
+		  Markulf and Pironti, Alfredo and Strub, Pierre-Yves and
+		  Zinzindohoue, Jean Karim},
+  booktitle	= {2015 IEEE Symposium on Security and Privacy},
+  doi		= {10.1109/SP.2015.39},
+  isbn		= {978-1-4673-6949-7},
+  issn		= {10816011},
+  month		= {May},
+  pages		= {535--552},
+  publisher	= {IEEE},
+  title		= {A Messy State of the Union: Taming the Composite State
+		  Machines of {TLS}},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=7163046}
+		  ,
+  volume	= {2015-July},
+  year		= {2015}
 }
 
 @Article{	  bhargava2011,
@@ -161,11 +331,30 @@
   journal	= {SPIE Defense, Security and Sensing 2011 Conference},
   number	= {0704},
   pages		= {7},
-  title		= {{Privacy in Cloud Computing Through Identity Management}},
+  title		= {Privacy in Cloud Computing Through Identity Management},
   url		= {http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA552741\&Location=U2\&doc=GetTRDoc.pdf}
 		  ,
   volume	= {298},
   year		= {2011}
+}
+
+@Article{	  biham1998,
+  author	= {Biham, Eli and Biryukov, Alex and Dunkelman, Orr and
+		  Richardson, Eran and Shamir, Adi},
+  journal	= {Selected Areas in Cryptography},
+  number	= {August},
+  pages		= {362--375},
+  title		= {Initial Observations on {Skipjack}: Cryptanalysis of
+		  {Skipjack-3XOR}},
+  year		= {1998}
+}
+
+@Misc{		  bis-encrypted,
+  author	= {{U.S. Department of Commerce: Bureau of Industry and
+		  Security}},
+  title		= {Identifying Encryption Items},
+  howpublished	= {\url{https://www.bis.doc.gov/index.php/policy-guidance/encryption/identifying-encryption-items}}
+		  
 }
 
 @InProceedings{	  bishop1996,
@@ -173,16 +362,16 @@
   booktitle	= {SHARE 86.0},
   number	= {916},
   pages		= {1--38},
-  title		= {{Unix security: threats and solutions}},
-  url		= {seclab.cs.ucdavis.edu/projects/vulnerabilities/scriv/1996-share86.pdf}
+  title		= {{U}nix security: threats and solutions},
+  url		= {http://seclab.cs.ucdavis.edu/projects/vulnerabilities/scriv/1996-share86.pdf}
 		  ,
   year		= {1996}
 }
 
 @Misc{		  bittorrent-sync,
   author	= {{BitTorrent}},
-  title		= "Sync",
-  howpublished	= {\url{www.getsync.com}}
+  title		= {{Sync}},
+  howpublished	= {\url{http://www.getsync.com}}
 }
 
 @Article{	  black2005,
@@ -193,23 +382,42 @@
   journal	= {Journal of Cryptology},
   number	= {2},
   pages		= {111--131},
-  title		= {{CBC MACs for arbitrary-length messages: The three-key
-		  constructions}},
+  title		= {{CBC MACs} for arbitrary-length messages: The three-key
+		  constructions},
   volume	= {18},
   year		= {2005}
+}
+
+@Unpublished{	  blackhat-lastpass,
+  title		= {Even the {LastPass} will be Stolen: Deal with it!},
+  author	= {Garcia, Alberto and Vigo, Martin},
+  year		= {2015},
+  note		= {Blackhat Europe},
+  url		= {https://www.blackhat.com/eu-15/briefings.html#even-the-lastpass-will-be-stolen-deal-with-it}
+		  
 }
 
 @Article{	  blaze1993,
   author	= {Blaze, Matt},
   doi		= {10.1145/168588.168590},
   isbn		= {0897916298},
-  journal	= {The 1st ACM Conference on Computer and Communication
-		  Security},
+  journal	= {Proceedings of the First ACM conference on Computer and
+		  Communications Security},
   pages		= {9--16},
-  title		= {{A cryptographic file system for UNIX}},
-  url		= {portal.acm.org/citation.cfm?doid=168588.168590$\backslash$npapers2://publication/doi/10.1145/168588.168590}
+  title		= {A cryptographic file system for {UNIX}},
+  url		= {http://portal.acm.org/citation.cfm?doid=168588.168590$\backslash$npapers2://publication/doi/10.1145/168588.168590}
 		  ,
   year		= {1993}
+}
+
+@Article{	  blaze1994,
+  author	= {Blaze, Matt},
+  journal	= {Proceedings of Second ACM Conference on Computer and
+		  Communications Security},
+  pages		= {59--67},
+  title		= {Protocol Failure in the Escrowed Encryption Standard},
+  year		= {1994},
+  month		= {April}
 }
 
 @Article{	  blaze1996,
@@ -221,8 +429,9 @@
   journal	= {Information Hiding},
   publisher	= {Springer Berlin Heidelberg},
   series	= {Lecture Notes in Computer Science},
-  title		= {{Oblivious Key Escrow}},
-  url		= {link.springer.com/chapter/10.1007/3-540-61996-8\_50},
+  title		= {Oblivious Key Escrow},
+  url		= {http://link.springer.com/chapter/10.1007/3-540-61996-8\_50}
+		  ,
   volume	= {1174},
   year		= {1996}
 }
@@ -231,7 +440,7 @@
   author	= {Borisov, Nikita and Goldberg, Ian and Brewer, Eric},
   booktitle	= {Workshop on Privacy in the Electronic Society},
   isbn		= {1581139683},
-  title		= {{Off-the-Record Communication, or, Why Not To Use PGP}},
+  title		= {{Off-the-Record} Communication, or, Why Not To Use {PGP}},
   year		= {2004}
 }
 
@@ -245,8 +454,8 @@
 		  Technologies},
   number	= {June},
   pages		= {114--119},
-  title		= {{Secret program execution in the cloud applying
-		  homomorphic encryption}},
+  title		= {Secret program execution in the cloud applying homomorphic
+		  encryption},
   volume	= {5},
   year		= {2011}
 }
@@ -275,9 +484,34 @@
   journal	= {Ars Technica},
   title		= {The secret to online safety: Lies, random characters, and
 		  a password manager},
-  url		= {arstechnica.com/information-technology/2013/06/the-secret-to-online-safety-lies-random-characters-and-a-password-manager}
+  url		= {http://arstechnica.com/information-technology/2013/06/the-secret-to-online-safety-lies-random-characters-and-a-password-manager}
 		  ,
-  year		= {2013}
+  year		= {2013},
+  month		= {June}
+}
+
+@Misc{		  burrfeinstein,
+  author	= {{U.S. Senate: 114th Congress}},
+  title		= {{Compliance with Court Orders Act of 2016}},
+  howpublished	= {\url{http://www.feinstein.senate.gov/public/index.cfm/press-releases?ID=EA927EA1-E098-4E62-8E61-DF55CBAC1649}}
+		  ,
+  year		= {2016},
+  month		= {April}
+}
+
+@Misc{		  calea-fcc,
+  author	= {{U.S. Federal Communication Commission}},
+  title		= {Communications Assistance for Law Enforcement Act},
+  howpublished	= {\url{https://www.fcc.gov/public-safety-and-homeland-security/policy-and-licensing-division/general/communications-assistance}}
+		  
+}
+
+@Misc{		  calea-usc,
+  author	= {{United States}},
+  title		= {{47 U.S. Code Subchapter I} - Interception of Digital and
+		  Other Communications},
+  howpublished	= {\url{https://www.law.cornell.edu/uscode/text/47/chapter-9/subchapter-I}}
+		  
 }
 
 @Article{	  calero2010,
@@ -285,12 +519,12 @@
 		  Johannes and Wilcock, Lawrence and Wray, Mike},
   doi		= {10.1109/MSP.2010.194},
   issn		= {1540-7993},
-  journal	= {IEEE Security {\&} Privacy Magazine},
-  month		= {nov},
+  journal	= {IEEE Security \& Privacy Magazine},
+  month		= {November},
   number	= {6},
   pages		= {48--55},
-  title		= {{Toward a Multi-Tenancy Authorization System for Cloud
-		  Services}},
+  title		= {Toward a Multi-Tenancy Authorization System for Cloud
+		  Services},
   url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5655242}
 		  ,
   volume	= {8},
@@ -300,9 +534,10 @@
 @TechReport{	  callas2007,
   author	= {Callas, J. and Donnerhacke, L. and Finney, H. and Shaw, D.
 		  and Thayer, R.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--91},
-  title		= {{RFC 1880: OpenPGP Message Format}},
-  url		= {tools.ietf.org/html/rfc1880},
+  title		= {{RFC} 1880: {OpenPGP} Message Format},
+  url		= {http://tools.ietf.org/html/rfc1880},
   year		= {2007}
 }
 
@@ -314,43 +549,18 @@
   isbn		= {978-3-540-00988-7},
   issn		= {16130073},
   publisher	= {Rino Falcone, Springer-Verlang},
-  title		= {{Designing for trust}},
+  title		= {Designing for Trust},
   year		= {2003}
-}
-
-@Misc{		  captcha,
-  author	= {Carnegie Mellon},
-  title		= "CAPTCHA",
-  howpublished	= {\url{www.captcha.net}}
-}
-
-@Article{	  casado2007,
-  author	= {Casado, Mart\`{\i}n and Freedman, Michael J and Pettit,
-		  Justin and Luo, Jianying and McKeown, Nick and Shenker,
-		  Scott},
-  isbn		= {9781595937131},
-  journal	= {ACM SIGCOMM Computer Communication Review},
-  number	= {4},
-  title		= {{Ethane: Taking control of the enterprise}},
-  url		= {klamath.stanford.edu/~nickm/papers/ethane-sigcomm07.pdf},
-  volume	= {37},
-  year		= {2007}
-}
-
-@Misc{		  cassandra,
-  author	= {Apache Software Foundation, The},
-  title		= "Cassandra",
-  howpublished	= {\url{cassandra.apache.org}}
 }
 
 @InProceedings{	  cattaneo2001,
   author	= {Cattaneo, Giuseppe and Catuogno, Luigi and Sorbo, Aniello
 		  Del and Persiano, Pino},
-  booktitle	= {USENIX Annual Technical Conference},
+  booktitle	= {{USENIX} Annual Technical Conference},
   doi		= {10.1.1.3.3627},
   pages		= {199--212},
-  title		= {{The Design and Implementation of a Transparent
-		  Cryptographic File System for UNIX.}},
+  title		= {The Design and Implementation of a Transparent
+		  Cryptographic File System for {UNIX}},
   url		= {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.3.3627{\&}rep=rep1{\&}type=pdf}
 		  ,
   year		= {2001}
@@ -358,100 +568,107 @@
 
 @TechReport{	  cebula2010,
   author	= {Cebula, James L. and Young, Lisa R.},
-  number	= {December},
-  title		= {{A taxonomy of operational cyber security risks}},
-  url		= {oai.dtic.mil/oai/oai?verb=getRecord\&metadataPrefix=html\&identifier=ADA537111}
+  month		= {December},
+  title		= {A taxonomy of operational cyber security risks},
+  url		= {http://oai.dtic.mil/oai/oai?verb=getRecord\&metadataPrefix=html\&identifier=ADA537111}
 		  ,
   year		= {2010}
 }
 
 @Misc{		  ceph,
-  author	= {Inktank Storage},
-  title		= "Ceph: The Future of Storage",
-  howpublished	= {\url{ceph.com}}
+  author	= {{Inktank Storage}},
+  title		= {{Ceph}: The Future of Storage},
+  howpublished	= {\url{http://ceph.com}}
 }
 
-@Misc{		  ceph-crush,
-  author	= {Inktank Storage},
-  title		= "Crush Maps",
-  howpublished	= {\url{ceph.com/docs/master/rados/operations/crush-map/}}
-}
-
-@Misc{		  ceph-librbd-python,
-  author	= {Inktank Storage},
-  title		= "Librbd (Python)",
-  howpublished	= {\url{docs.ceph.com/docs/master/rbd/librbdpy/}}
-}
-
-@Misc{		  ceph-librbd-src,
-  author	= {Inktank Storage},
-  title		= "Librbd Source Code",
-  howpublished	= {\url{github.com/ceph/ceph/tree/master/src/librbd}}
-}
-
-@Misc{		  ceph-rbdfuse,
-  author	= {Inktank Storage},
-  title		= "RBD-FUSE - Ecpose RBD Images As Files",
-  howpublished	= {\url{docs.ceph.com/docs/master/man/8/rbd-fuse/}}
+@Article{	  changedmy-lastpass,
+  author	= {Pearson, James},
+  journal	= {changedmy.name},
+  title		= {Discovering Secrets},
+  url		= {https://changedmy.name/2013/10/26/discovering-secrets.html}
+		  ,
+  month		= {October},
+  year		= {2013}
 }
 
 @Misc{		  chatsecure,
   author	= {Ballinger, Chris},
-  title		= {ChatSecure: Encrypted Messenger for iOS and Android},
-  howpublished	= {\url{chatsecure.org}}
+  title		= {{ChatSecure}: Encrypted Messenger for {iOS} and
+		  {Android}},
+  howpublished	= {\url{http://chatsecure.org}}
 }
 
 @Misc{		  chef,
-  author	= {Opscode},
-  title		= "Chef",
+  author	= {{Opscode}},
+  title		= {Chef},
   howpublished	= {\url{https://www.opscode.com/chef}}
 }
 
+@TechReport{	  ciab2015,
+  author	= {Council of Insurance Agents {and} Brokers},
+  title		= {{Cyber Market Watch Survey}},
+  url		= {https://www.ciab.com/WorkArea/DownloadAsset.aspx?id=5326},
+  year		= {2015},
+  month		= {April}
+}
+
 @Misc{		  cloudkeep,
-  author	= {Rackspace},
-  title		= "Cloud Keep",
-  howpublished	= {\url{github.com/cloudkeep}}
+  author	= {{Rackspace}},
+  title		= {{Cloud Keep}},
+  howpublished	= {\url{https://github.com/cloudkeep}}
 }
 
 @Misc{		  cloudkeep-presentation,
   author	= {Raim, Jarret and Tesauro, Matt},
-  title		= "Cloud Keep: OpenStack key management as a Service",
-  howpublished	= {\url{www.openstack.org/summit/portland-2013/session-videos/presentation/cloud-keep-openstack-key-management-as-a-service}}
+  title		= {{Cloud Keep}: {OpenStack} Key Management as a Service},
+  howpublished	= {\url{http://www.openstack.org/summit/portland-2013/session-videos/presentation/cloud-keep-openstack-key-management-as-a-service}}
+		  
+}
+
+@Misc{		  comey-testimony-encryption,
+  author	= {Comey, James B.},
+  title		= {Statement Before the {House Judiciary Committee}},
+  howpublished	= {\url{https://www.fbi.gov/news/testimony/encryption-tightrope-balancing-americans-security-and-privacy}}
+		  ,
+  year		= {2016},
+  month		= {March}
+}
+
+@Misc{		  commonwealthvgelfgatt,
+  author	= {{Commonwealth of Massachusetts Supreme Judicial Court}},
+  title		= {{Commonwealth vs. Leon I. Gelfgatt}},
+  year		= {2014},
+  month		= {June},
+  howpublished	= {\url{https://www.documentcloud.org/documents/1209519-commonwealth-vs-gelfgatt.html}}
 		  
 }
 
 @Misc{		  confidant,
   author	= {{Lyft}},
-  title		= "Confidant: Your Secret Keeper",
+  title		= {{Confidant}: Your Secret Keeper},
   howpublished	= {\url{https://lyft.github.io/confidant/}}
 }
 
 @InProceedings{	  cox2002,
   author	= {Cox, Russ and Grosse, Eric and Pike, Rob and Presotto,
 		  Dave and Quinlan, Sean},
-  booktitle	= {USENIX Security},
+  booktitle	= {{USENIX} Security},
   pages		= {3--16},
-  title		= {{Security in Plan 9.}},
-  url		= {www.usenix.org/publications/library/proceedings/sec02/cox.html}
+  title		= {Security in {Plan 9}},
+  url		= {http://www.usenix.org/publications/library/proceedings/sec02/cox.html}
 		  ,
   year		= {2002}
 }
 
 @Misc{		  cumulus4j,
-  author	= {NightLabs Consulting GmbH},
-  title		= "Cumulus4j",
-  howpublished	= {\url{www.cumulus4j.org}}
-}
-
-@Misc{		  curl,
-  author	= {Stenberg, Daniel},
-  title		= "curl",
-  howpublished	= {\url{curl.haxx.se}}
+  author	= {{NightLabs Consulting GmbH}},
+  title		= {{Cumulus4j}},
+  howpublished	= {\url{http://www.cumulus4j.org}}
 }
 
 @MastersThesis{	  custos-masters,
   author	= {Sayler, Andy},
-  title		= {{Custos: A Flexibly Secure Key-Value Storage Platform}},
+  title		= {{Custos}: A Flexibly Secure Key-Value Storage Platform},
   school	= {University of Colorado Boulder},
   year		= {2013},
   month		= {December}
@@ -459,59 +676,57 @@
 
 @Misc{		  custos-repo-encfs,
   author	= {Sayler, Andy},
-  title		= "EncFS Repo",
-  howpublished	= {\url{github.com/asayler/custos-client-encfs}}
+  title		= {{EncFS} source code},
+  howpublished	= {\url{https://github.com/asayler/custos-client-encfs}}
 }
 
 @Misc{		  custos-repo-libcustos,
   author	= {Sayler, Andy},
-  title		= "libcustos Repo",
-  howpublished	= {\url{github.com/asayler/custos-client-libcustos}}
+  title		= {{libcustos} source code},
+  howpublished	= {\url{https://github.com/asayler/custos-client-libcustos}}
 }
 
 @Misc{		  custos-repo-server,
   author	= {Sayler, Andy},
-  title		= "Custos Server Repo",
-  howpublished	= {\url{github.com/asayler/custos-server}}
+  title		= {{Custos} server source code},
+  howpublished	= {\url{https://github.com/asayler/custos-server}}
 }
 
 @InProceedings{	  custos-trios,
   author	= {Andy Sayler and Dirk Grunwald},
-  title		= {Custos: Increasing Security with Secret Storage as a
+  title		= {{Custos}: Increasing Security with Secret Storage as a
 		  Service},
   booktitle	= {2014 Conference on Timely Results in Operating Systems
 		  (TRIOS 14)},
   year		= {2014},
-  month		= oct,
+  month		= {October},
   address	= {Broomfield, CO},
   url		= {https://www.usenix.org/conference/trios14/technical-sessions/presentation/sayler}
 		  ,
-  publisher	= {USENIX Association}
+  publisher	= {{USENIX} Association}
 }
 
 @TechReport{	  daemen1999,
   author	= {Daemen, Joan and Rijmen, Vincent},
   isbn		= {3540425802},
-  title		= {{AES Proposal: Rijndael}},
+  title		= {{AES} Proposal: {Rijndael}},
   year		= {1999}
 }
 
-@Article{	  decandia2007,
-  author	= {DeCandia, Giuseppe and Hastorun, Deniz and Jampani, Madan
-		  and Kakulapati, Gunavardhan and Lakshman, Avinash and
-		  Pilchin, Alex and Sivasubramanian, Swaminathan and
-		  Vosshall, Peter and Vogels, Werner},
-  doi		= {10.1145/1323293.1294281},
-  isbn		= {9781595935915},
-  issn		= {01635980},
-  journal	= {ACM SIGOPS Operating Systems Review},
-  month		= oct,
-  number	= {6},
-  pages		= {205},
-  title		= {{Dynamo: Amazon's Highly Available Key-Value Store}},
-  url		= {portal.acm.org/citation.cfm?doid=1323293.1294281},
-  volume	= {41},
-  year		= {2007}
+@InProceedings{	  decarnedecarnavalet2014,
+  address	= {New York, New York, USA},
+  author	= {{de Carn{\'{e}} de Carnavalet}, Xavier and Mannan,
+		  Mohammad},
+  booktitle	= {Proceedings of the 30th Annual Computer Security
+		  Applications Conference},
+  doi		= {10.1145/2664243.2664288},
+  isbn		= {9781450330053},
+  pages		= {16--25},
+  publisher	= {ACM Press},
+  title		= {Challenges and implications of verifiable builds for
+		  security-critical open-source software},
+  url		= {http://dl.acm.org/citation.cfm?doid=2664243.2664288},
+  year		= {2014}
 }
 
 @Article{	  denning1996,
@@ -519,21 +734,33 @@
   doi		= {10.1145/227234.227239},
   issn		= {00010782},
   journal	= {Communications of the ACM},
-  month		= mar,
+  month		= {March},
   number	= {3},
   pages		= {34--40},
-  title		= {{A taxonomy for key escrow encryption systems}},
+  title		= {A taxonomy for key escrow encryption systems},
   url		= {https://portal.acm.org/citation.cfm?doid=227234.227239},
   volume	= {39},
   year		= {1996}
 }
 
+@Article{	  dergacheva2015,
+  author	= {Dergacheva, Anastasia and Andreeva, Ksenia},
+  journal	= {Inside Counsel},
+  month		= {September},
+  year		= {2015},
+  title		= {{Russia}: The impact of new {Internet} regulations on
+		  international companies},
+  url		= {http://www.insidecounsel.com/2015/09/25/russia-the-impact-of-new-internet-regulations-on-i}
+		  
+}
+
 @TechReport{	  dierks2008,
   author	= {Dierks, T. and Rescorla, E.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--105},
-  title		= {{RFC 5246: The Transport Layer Security (TLS) Protocol -
-		  Version 1.2}},
-  url		= {tools.ietf.org/html/rfc5246},
+  title		= {{RFC} 5246: The Transport Layer Security ({TLS}) Protocol
+		  - Version 1.2},
+  url		= {http://tools.ietf.org/html/rfc5246},
   year		= {2008}
 }
 
@@ -542,15 +769,25 @@
   journal	= {IEEE Transactions on Information Theory},
   number	= {6},
   pages		= {29--40},
-  title		= {{New directions in cryptography}},
-  url		= {ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1055638},
+  title		= {New directions in cryptography},
+  url		= {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1055638}
+		  ,
   volume	= {22},
   year		= {1976}
 }
 
+@InProceedings{	  dingledine2004,
+  author	= {Dingledine, Roger and Mathewson, Nick and Syverson, Paul},
+  booktitle	= {Proceedings of the 13th USENIX Security Symposium},
+  title		= {{T}or: {T}he Second-Generation Onion Router},
+  url		= {http://oai.dtic.mil/oai/oai?verb=getRecord{\&}metadataPrefix=html{\&}identifier=ADA465464}
+		  ,
+  year		= {2004}
+}
+
 @Misc{		  dm-crypt,
-  author	= {Broz, Milan},
-  title		= "dm-crypt",
+  author	= {Broz, Milan and Others},
+  title		= {dm-crypt},
   howpublished	= {\url{http://code.google.com/p/cryptsetup/wiki/DMCrypt}}
 }
 
@@ -562,147 +799,217 @@
   journal	= {ACM SIGOPS Operating Systems Review},
   number	= {1},
   pages		= {101--111},
-  title		= {{RFS: a network file system for mobile devices and the
-		  cloud}},
-  url		= {dl.acm.org/citation.cfm?id=1945036},
+  title		= {{RFS}: {A} network file system for mobile devices and the
+		  cloud},
+  url		= {http://dl.acm.org/citation.cfm?id=1945036},
   volume	= {45},
   year		= {2011}
 }
 
 @Misc{		  dropbox,
-  author	= {{Dropbox Inc.}},
-  title		= {Dropbox},
+  author	= {{Dropbox, Inc.}},
+  title		= {{Dropbox}},
   howpublished	= {\url{http://www.dropbox.com}}
 }
 
 @Misc{		  dropbox-authbug,
-  author	= {{Dropbox Inc.}},
+  author	= {{Dropbox, Inc.}},
   title		= {Yesterday's Authentication Bug},
-  howpublished	= {\url{blog.dropbox.com/2011/06/yesterdays-authentication-bug/}}
+  howpublished	= {\url{http://blog.dropbox.com/2011/06/yesterdays-authentication-bug/}}
 		  
 }
 
 @Misc{		  dropbox-passwords,
-  author	= {{Dropbox Inc.}},
-  title		= {Dropbox wan't hacked},
-  howpublished	= {\url{blog.dropbox.com/2014/10/dropbox-wasnt-hacked/}}
+  author	= {{Dropbox, Inc.}},
+  title		= {{Dropbox} wasn't hacked},
+  howpublished	= {\url{http://blog.dropbox.com/2014/10/dropbox-wasnt-hacked/}}
+		  
 }
 
 @Misc{		  dropbox-security,
-  author	= {{Dropbox Inc.}},
-  title		= {Dropbox Security},
-  howpublished	= {\url{www.dropbox.com/security}}
+  author	= {{Dropbox, Inc.}},
+  title		= {{Dropbox} Security},
+  howpublished	= {\url{http://www.dropbox.com/security}}
 }
 
 @Misc{		  dropbox-transparency,
   author	= {{Dropbox Inc.}},
-  title		= {Dropbox Transparency Report},
-  howpublished	= {\url{www.dropbox.com/transparency}}
+  title		= {{Dropbox} Transparency Report},
+  howpublished	= {\url{http://www.dropbox.com/transparency}}
+}
+
+@Article{	  ducklin2015,
+  author	= {Ducklin, Paul},
+  journal	= {Naked Security},
+  organization	= {Sophos},
+  title		= {Bad news! {LastPass} breached. Good news! You should be
+		  {OK}...},
+  url		= {https://nakedsecurity.sophos.com/2015/06/16/bad-news-lastpass-breached-good-news-you-should-be-ok/}
+		  ,
+  year		= {2015},
+  month		= {June}
 }
 
 @TechReport{	  dworkin2005,
   author	= {Dworkin, Morris},
-  title		= {{Recommendation for Block Cipher Modes of Operation: The
-		  CMAC Mode of Authencation}},
-  institution	= {{National Institute of Standards \& Technology}},
-  url		= {csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf}
+  title		= {Recommendation for Block Cipher Modes of Operation: {T}he
+		  {CMAC} Mode of Authentication},
+  institution	= {National Institute of Standards \& Technology},
+  url		= {http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf}
 		  ,
   year		= {2005},
   number	= {800-38B}
 }
 
+@Misc{		  ecpa,
+  author	= {{U.S. Department of Justice, Office of Justice Programs,
+		  Bureau of Justice Assistance}},
+  title		= {{Electronic Communications Privacy Act of 1986 (ECPA), 18
+		  U.S.C. Section 2510-22}},
+  howpublished	= {\url{https://it.ojp.gov/privacyliberty/authorities/statutes/1285}}
+		  
+}
+
 @Misc{		  ecryptfs,
-  author	= {Halcrow, Michael},
-  title		= "eCryptfs",
-  howpublished	= {\url{ecryptfs.org}}
+  author	= {Halcrow, Michael Austin},
+  title		= {{eCryptfs}},
+  howpublished	= {\url{http://ecryptfs.org}}
+}
+
+@Misc{		  eff-applecrypto,
+  author	= {Bonneau, Joseph},
+  institution	= {Electronic Frontier Foundation},
+  title		= {A Technical Perspective on the {Apple} {iPhone} Case},
+  month		= {February},
+  year		= {2016},
+  howpublished	= {\url{https://www.eff.org/deeplinks/2016/02/technical-perspective-apple-iphone-case}}
+		  
 }
 
 @TechReport{	  eff-canary,
   author	= {Opsahl, Kurt},
-  organization	= {{Electronic Frontier Foundation}},
+  institution	= {Electronic Frontier Foundation},
   year		= {2014},
   month		= {April},
-  title		= {{Warrant Canary Frequently Asked Questions}},
-  url		= {www.eff.org/deeplinks/2014/04/warrant-canary-faq}
+  title		= {Warrant Canary Frequently Asked Questions},
+  url		= {https://www.eff.org/deeplinks/2014/04/warrant-canary-faq}
+}
+
+@Misc{		  eff-ecpareform,
+  author	= {Cope, Sophia},
+  institution	= {Electronic Frontier Foundation},
+  title		= {{Senate Judiciary Committee} Finally Focuses on {ECPA}
+		  Reform},
+  month		= {September},
+  year		= {2015},
+  howpublished	= {\url{https://www.eff.org/deeplinks/2015/09/senate-judiciary-committee-finally-focuses-ecpa-reform}}
+		  
 }
 
 @Article{	  ellison1996,
   author	= {Ellison, C},
   journal	= {USENIX Security Symposium},
-  title		= {{Establishing identity without certification
-		  authorities}},
-  url		= {www.usenix.org/publications/library/proceedings/sec96/full\_papers/ellison/ellison.ps}
+  title		= {Establishing identity without certification authorities},
+  url		= {http://www.usenix.org/publications/library/proceedings/sec96/full\_papers/ellison/ellison.ps}
 		  ,
   year		= {1996}
 }
 
 @Misc{		  enigmail,
-  author	= {Enigmail Project, The},
-  title		= "Enigmail",
-  howpublished	= {\url{www.enigmail.net}}
+  author	= {{Enigmail Project}},
+  title		= {{Enigmail}},
+  howpublished	= {\url{http://www.enigmail.net}}
 }
 
 @Misc{		  facebook,
   author	= {{Facebook, Inc}},
-  title		= "Facebook",
-  howpublished	= {\url{www.facebook.com}}
+  title		= {{Facebook}},
+  howpublished	= {\url{http://www.facebook.com}}
+}
+
+@Misc{		  facebook-transparency,
+  author	= {{Facebook, Inc.}},
+  title		= {{United States} Law Enforcement Requests for Data},
+  howpublished	= {\url{https://govtrequests.facebook.com/country/United\%20States/2015-H1/}}
+		  
 }
 
 @Misc{		  fbi-nsl,
   author	= {{Federal Bureau of Investigation}},
-  title		= {{FOIPA: National Security Letters}},
-  howpublished	= {\url{vault.fbi.gov/National%20Security%20Letters%20(NSL)}},
+  title		= {{FOIA}: National Security Letters},
+  howpublished	= {\url{http://vault.fbi.gov/National\%20Security\%20Letters\%20(NSL)}}
+		  ,
   year		= {2007}
+}
+
+@Misc{		  fdic,
+  author	= {{United States}},
+  title		= {Federal Deposit Insurance Corporation},
+  howpublished	= {\url{https://www.fdic.gov}}
 }
 
 @Misc{		  ferpa,
   author	= {{U.S. Department of Education}},
-  title		= {Family Educational Rights and Privacy Act},
-  howpublished	= {\url{www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html}}
+  title		= {{Family Educational Rights and Privacy Act}},
+  howpublished	= {\url{https://www2.ed.gov/policy/gen/guid/fpco/ferpa/index.html}}
+		  
 }
 
 @PhDThesis{	  fielding2000,
   author	= {Fielding, Roy Thomas},
   school	= {University of California Irvine},
-  title		= {{Architectural Styles and the Design of Network-based
-		  Software Architectures}},
+  title		= {Architectural Styles and the Design of Network-based
+		  Software Architectures},
   year		= {2000}
 }
 
-@Article{	  fips140,
-  author	= {(NIST), National Institute of Standards \& Technology},
-  journal	= {Federal Information Processing Standards Publication},
-  title		= {{FIPS 140-2: Security Requirements for Cryptographic
-		  Modules}},
-  url		= {csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf},
+@TechReport{	  fips140,
+  author	= {{National Institute of Standards \& Technology}},
+  institution	= {{U.S. Dept. of Commerce}},
+  note		= {Federal Information Processing Standards Publication},
+  number	= {140-2},
+  title		= {Security Requirements for Cryptographic Modules},
+  url		= {http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf}
+		  ,
   year		= {2001}
+}
+
+@TechReport{	  fips46,
+  author	= {{National Institute of Standards \& Technology}},
+  institution	= {{U.S. Dept. of Commerce}},
+  note		= {Federal Information Processing Standards Publication},
+  number	= {46},
+  title		= {Data Encryption Standard},
+  url		= {http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf}
+		  ,
+  year		= {1977}
 }
 
 @Article{	  firesmith2005,
   author	= {Firesmith, Donald G.},
   doi		= {10.1.1.66.6934},
   journal	= {International Workshop on High Assurance Systems},
-  title		= {{A taxonomy of security-related requirements}},
-  url		= {citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.66.6934\&rep=rep1\&type=pdf}
+  title		= {A taxonomy of security-related requirements},
+  url		= {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.66.6934\&rep=rep1\&type=pdf}
 		  ,
   year		= {2005}
 }
 
 @Misc{		  fisc,
   author	= {{United States}},
-  title		= {{Foreign Intelligence Surveillance Court}},
+  title		= {Foreign Intelligence Surveillance Court},
   howpublished	= {\url{www.fisc.uscourts.gov/}}
 }
 
 @Misc{		  fitbit,
   author	= {{Fitbit}},
-  title		= {{About Fitbit}},
+  title		= {About {Fitbit}},
   howpublished	= {\url{http://www.fitbit.com/about}}
 }
 
 @Misc{		  flood2013,
   author	= {Flood, Gary},
-  title		= {{Gartner Tells Outsourcers: Embrace Cloud Or Die}},
+  title		= {{Gartner} Tells Outsourcers: Embrace Cloud Or Die},
   year		= {2013},
   howpublished	= {\url{http://www.informationweek.com/cloud/infrastructure-as-a-service/gartner-tells-outsourcers-embrace-cloud-or-die/d/d-id/1110991}}
 		  
@@ -719,105 +1026,92 @@
   pages		= {87--98},
   publisher	= {Kluwer Academic Publishers},
   series	= {IFIP International Federation for Information Processing},
-  title		= {{Trust: An Element of Information Security}},
-  url		= {link.springer.com/chapter/10.1007/0-387-33406-8\_8},
+  title		= {Trust: {A}n Element of Information Security},
+  url		= {http://link.springer.com/chapter/10.1007/0-387-33406-8\_8},
   volume	= {201},
   year		= {2006}
 }
 
 @Misc{		  foster2014,
   author	= {Foster, Ben},
-  title		= {{How many users on Facebook}},
-  year		= {2014},
+  title		= {How many users on {Facebook}},
+  year		= {2015},
   howpublished	= {\url{www.benphoster.com/facebook-user-growth-chart-2004-2010/}}
 		  
 }
 
-@TechReport{	  freier2011,
-  author	= {Freier, A. and Karlton, P. and Kocher, P.},
-  pages		= {1--68},
-  title		= {{RFC 6106: The Secure Socket Layer (SSL) Protocol -
-		  Version 3.0}},
-  url		= {tools.ietf.org/html/rfc6106},
-  year		= {2011}
+@Article{	  frosch2014,
+  author	= {Frosch, Tilman and Mainka, Christian and Bader, Christoph
+		  and Bergsma, Florian and Schwenk, Jorg and Holz, Thorsten},
+  journal	= {Cryptology ePrint Archive},
+  number	= {February},
+  pages		= {17},
+  title		= {How Secure is {TextSecure}?},
+  url		= {https://eprint.iacr.org/2014/904?utm{\_}source=dlvr.it{\&}utm{\_}medium=tumblr}
+		  ,
+  volume	= {2014/904},
+  year		= {2014}
+}
+
+@Misc{		  fsf-freedoms,
+  author	= {{Free Software Foundation}},
+  title		= {What is free software?},
+  howpublished	= {\url{https://www.gnu.org/philosophy/free-sw.en.html}},
+  note		= {Version 1.141}
+}
+
+@Misc{		  ftc-asus,
+  author	= {{U.S. Federal Trade Commission}},
+  title		= {{ASUS} Settles {FTC} Charges That Insecure Home Routers
+		  and Cloud Services Put Consumers' Privacy At Risk},
+  howpublished	= {\url{https://www.ftc.gov/news-events/press-releases/2016/02/asus-settles-ftc-charges-insecure-home-routers-cloud-services-put}}
+		  ,
+  year		= {2016},
+  month		= {February}
 }
 
 @MastersThesis{	  fu1998,
   author	= {Fu, Kevin E.},
   pages		= {1--85},
   school	= {Massachusetts Institute of Technology},
-  title		= {{Group Sharing and Random Access in Cryptographic Storage
-		  File Sytems}},
+  title		= {Group Sharing and Random Access in Cryptographic Storage
+		  File Systems},
   url		= {http://groups.csail.mit.edu/cis/theses/fu-masters.pdf},
   year		= {1998}
 }
 
-@InCollection{	  furnell2006,
-  address	= {Boston},
-  author	= {Furnell, Steven and Jusoh, Adila and Katsabas, Dimitris
-		  and Dowland, Paul},
-  booktitle	= {Security and Privacy in Dynamic Environments},
-  doi		= {10.1007/0-387-33406-8},
-  editor	= {Fischer-H\"{u}bner, Simone and Rannenberg, Kai and
-		  Yngstr\"{o}m, Louise and Lindskog, Stefan},
-  isbn		= {0-387-33405-X},
-  pages		= {307--316},
-  publisher	= {Kluwer Academic Publishers},
-  series	= {IFIP International Federation for Information Processing},
-  title		= {{Considering the Usability of End-User Security
-		  Software}},
-  url		= {link.springer.com/chapter/10.1007/0-387-33406-8\_26},
-  volume	= {201},
-  year		= {2006}
-}
-
-@Article{	  furnell2006a,
-  author	= {Furnell, S. M. and Jusoh, A. and Katsabas, D.},
+@Article{	  furnell2006,
+  author	= {Furnell, Steven. M. and Jusoh, A. and Katsabas, D.},
   doi		= {10.1016/j.cose.2005.12.004},
   issn		= {01674048},
   journal	= {Computers \& Security},
-  month		= feb,
+  month		= {February},
   number	= {1},
   pages		= {27--35},
-  title		= {{The challenges of understanding and using security: A
-		  survey of end-users}},
-  url		= {linkinghub.elsevier.com/retrieve/pii/S0167404805002038},
+  title		= {The challenges of understanding and using security: {A}
+		  survey of end-users},
+  url		= {http://linkinghub.elsevier.com/retrieve/pii/S0167404805002038}
+		  ,
   volume	= {25},
   year		= {2006}
 }
 
-@Article{	  furnell2010,
-  author	= {Furnell, Steven},
-  doi		= {10.1016/S1353-4858(10)70147-1},
-  issn		= {13534858},
-  journal	= {Network Security},
-  month		= dec,
-  number	= {12},
-  pages		= {13--17},
-  publisher	= {Elsevier Ltd},
-  title		= {{Usability versus complexity – striking the balance in
-		  end-user security}},
-  url		= {linkinghub.elsevier.com/retrieve/pii/S1353485810701471},
-  year		= {2010}
-}
-
 @Misc{		  fuse,
-  author	= {Szeredi, Miklos},
-  title		= "FUSE: Filesystems in Userspace",
-  howpublished	= {\url{fuse.sourceforge.net}}
+  author	= {Szeredi, Miklos and Others},
+  title		= {{FUSE}: Filesystems in Userspace},
+  howpublished	= {\url{http://fuse.sourceforge.net}}
 }
 
 @Misc{		  fusebox,
   author	= {Andrews, Taylor},
-  title		= "FuseBox Source Code",
+  title		= {{FuseBox} Source Code},
   howpublished	= {\url{https://github.com/taylorjandrews/FuseBox}}
-		  
 }
 
 @Misc{		  gazzang,
   author	= {Gazzang},
-  title		= "zTrustee",
-  howpublished	= {\url{www.gazzang.com/products/ztrustee}}
+  title		= {{zTrustee}},
+  howpublished	= {\url{http://www.gazzang.com/products/ztrustee}}
 }
 
 @InProceedings{	  geambasu2009,
@@ -826,9 +1120,9 @@
   booktitle	= {Proceedings of the 18th Conference on USENIX Security
 		  Symposium},
   pages		= {299--316},
-  title		= {{Vanish: Increasing Data Privacy with Self-Destructing
-		  Data.}},
-  url		= {www.usenix.org/legacy/events/sec09/tech/full\_papers/sec09\_crypto.pdf}
+  title		= {{Vanish}: Increasing Data Privacy with Self-Destructing
+		  Data},
+  url		= {http://www.usenix.org/legacy/events/sec09/tech/full\_papers/sec09\_crypto.pdf}
 		  ,
   year		= {2009}
 }
@@ -842,20 +1136,20 @@
   isbn		= {9781450306348},
   pages		= {1--16},
   publisher	= {ACM Press},
-  title		= {{Keypad: an auditing file system for theft-prone
-		  devices}},
-  url		= {dl.acm.org/ft\_gateway.cfm?id=1966447\&type=pdf},
+  title		= {{Keypad}: An auditing file system for theft-prone
+		  devices},
+  url		= {http://dl.acm.org/ft\_gateway.cfm?id=1966447\&type=pdf},
   year		= {2011}
 }
 
 @Article{	  gellman-muscular,
-  author	= {Gellman, Barton and Soltain, Ashkan},
-  journal	= {{The Washington Post}},
-  title		= {NSA infiltrates links to Yahoo, Google data centers
-		  worldwide, Snowden documents say},
+  author	= {Gellman, Barton and Soltani, Ashkan},
+  journal	= {The Washington Post},
+  title		= {{NSA} infiltrates links to {Yahoo}, {Google} data centers
+		  worldwide, {Snowden} documents say},
   url		= {http://www.washingtonpost.com/world/national-security/nsa-infiltrates-links-to-yahoo-google-data-centers-worldwide-snowden-documents-say/2013/10/30/e51d661e-4166-11e3-8b74-d89d714ca4dd_story.html}
 		  ,
-  month		= {Oct},
+  month		= {October},
   year		= {2013}
 }
 
@@ -866,47 +1160,58 @@
   number	= {September},
   pages		= {169},
   school	= {Stanford University},
-  title		= {{A fully homomorphic encryption scheme}},
+  title		= {A fully homomorphic encryption scheme},
   url		= {http://cs.au.dk/~stm/local-cache/gentry-thesis.pdf},
   year		= {2009}
 }
 
-@Article{	  ghemawat2003,
-  author	= {Ghemawat, Sanjay and Gobioff, Howard and Leung, Shun-Tak},
-  doi		= {10.1145/1165389.945450},
-  isbn		= {1581137575},
-  issn		= {01635980},
-  journal	= {ACM SIGOPS Operating Systems Review},
-  month		= dec,
-  number	= {5},
-  pages		= {29--43},
-  publisher	= {ACM},
-  title		= {{The Google file system}},
-  url		= {dl.acm.org/citation.cfm?id=945450},
-  volume	= {37},
-  year		= {2003}
+@Misc{		  github,
+  author	= {{GitHub, Inc.}},
+  title		= {{GitHub}: How people build software},
+  howpublished	= {\url{https://github.com/}}
+}
+
+@Article{	  gmail-blog-encryption,
+  author	= {Lidzborski, Nicolas},
+  journal	= {Official Gmail Blog},
+  title		= {Staying at the forefront of email security and
+		  reliability: {HTTPS}-only and 99.978\% availability},
+  url		= {https://gmail.googleblog.com/2014/03/staying-at-forefront-of-email-security.html}
+		  ,
+  year		= {2014},
+  month		= {Mar}
+}
+
+@Article{	  gmail-blog-indicators,
+  author	= {Rae-Grant, John},
+  journal	= {Official Gmail Blog},
+  title		= {Making email safer for you},
+  url		= {https://gmail.googleblog.com/2016/02/making-email-safer-for-you-posted-by.html}
+		  ,
+  year		= {2016},
+  month		= {February}
 }
 
 @Misc{		  gnu-bash,
   author	= {Ramey, Chet},
-  title		= "GNU Bash",
+  title		= {{GNU Bash}},
   howpublished	= {\url{http://www.gnu.org/software/bash/}}
 }
 
 @Misc{		  gnupg,
   author	= {Koch, Werner},
-  title		= "GnuPG",
-  howpublished	= {\url{www.gnupg.org}}
+  title		= {{GnuPG}},
+  howpublished	= {\url{http://www.gnupg.org}}
 }
 
 @Misc{		  goel2014,
   author	= {Goel, Vindu},
-  title		= {{Facebook Tinkers With Users' Emotions in News Feed
-		  Experiment, Stirring Outcry}},
+  title		= {{Facebook} Tinkers With Users' Emotions in News Feed
+		  Experiment, Stirring Outcry},
   year		= {2014},
   month		= {June},
-  note		= {{New York Times}},
-  howpublished	= {\url{www.nytimes.com/2014/06/30/technology/facebook-tinkers-with-users-emotions-in-news-feed-experiment-stirring-outcry.html}}
+  note		= {New York Times},
+  howpublished	= {\url{http://www.nytimes.com/2014/06/30/technology/facebook-tinkers-with-users-emotions-in-news-feed-experiment-stirring-outcry.html}}
 		  
 }
 
@@ -915,8 +1220,8 @@
 		  Boneh, Dan},
   journal	= {NDSS},
   number	= {0121481},
-  title		= {{SiRiUS: Securing Remote Untrusted Storage.}},
-  url		= {www.isoc.org/isoc/conferences/ndss/03/proceedings/papers/9.pdf}
+  title		= {{SiRiUS}: Securing Remote Untrusted Storage},
+  url		= {http://www.isoc.org/isoc/conferences/ndss/03/proceedings/papers/9.pdf}
 		  ,
   year		= {2003}
 }
@@ -924,20 +1229,21 @@
 @TechReport{	  goland1999,
   author	= {Y. Goland and W. Whitehead and A. Faizi and S. Carter and
 		  D. Jensen},
-  title		= {{RFC 1528: HTTP Extensions for Distributed Authoring --
-		  WEBDAV}},
+  institution	= {Internet Engineering Task Force},
+  title		= {{RFC 1528}: {HTTP} Extensions for Distributed Authoring --
+		  {WEBDAV}},
   pages		= {1--94},
-  month		= {Feb},
+  month		= {February},
   year		= {1999},
-  url		= {tools.ietf.org/html/rfc2518}
+  url		= {http://tools.ietf.org/html/rfc2518}
 }
 
 @Article{	  goldberg1974,
-  author	= {Goldberg, R.P},
+  author	= {Goldberg, R.P.},
   journal	= {IEEE Computer},
   number	= {4},
   pages		= {34--45},
-  title		= {{A Survey of Virtual Machine Research}},
+  title		= {A Survey of Virtual Machine Research},
   volume	= {7},
   year		= {1974}
 }
@@ -947,16 +1253,26 @@
 		  Ustaoglu, Berkant},
   booktitle	= {Conference on Computer and Communications Security},
   isbn		= {9781605583525},
-  title		= {{Multi-party Off-the-Record Messaging}},
+  title		= {Multi-party Off-the-Record Messaging},
   year		= {2009}
 }
 
 @Article{	  goodin-bible,
   author	= {Goodin, Dan},
   journal	= {Ars Technica},
-  title		= {How the Bible and YouTube are fueling the next frontier of
-		  password cracking},
-  url		= {arstechnica.com/security/2013/10/how-the-bible-and-youtube-are-fueling-the-next-frontier-of-password-cracking}
+  title		= {How the {Bible} and {YouTube} are fueling the next
+		  frontier of password cracking},
+  url		= {http://arstechnica.com/security/2013/10/how-the-bible-and-youtube-are-fueling-the-next-frontier-of-password-cracking}
+		  ,
+  year		= {2013}
+}
+
+@Article{	  goodin-dreadpirate,
+  author	= {Goodin, Dan},
+  journal	= {Ars Technica},
+  title		= {{FBI}: {Silk Road} mastermind couldn’t even keep himself
+		  anonymous online},
+  url		= {http://arstechnica.com/security/2013/10/silk-road-mastermind-unmasked-by-rookie-goofs-complaint-alleges/}
 		  ,
   year		= {2013}
 }
@@ -966,90 +1282,92 @@
   journal	= {Ars Technica},
   title		= {Why passwords have never been weaker, and crackers have
 		  never been stronger},
-  url		= {arstechnica.com/security/2012/08/passwords-under-assault},
+  url		= {http://arstechnica.com/security/2012/08/passwords-under-assault}
+		  ,
   year		= {2012}
 }
 
 @Misc{		  google-appengine,
-  author	= {{Google}},
-  title		= "App Engine",
-  howpublished	= {\url{cloud.google.com/appengine/docs}}
-}
-
-@Misc{		  google-auth,
-  author	= {{Google}},
-  title		= "Authenticator",
-  howpublished	= {\url{code.google.com/p/google-authenticator}}
-}
-
-@Misc{		  google-chrome,
-  author	= {{Google}},
-  title		= "Chrome",
-  howpublished	= {\url{www.google.com/chrome}}
+  author	= {{Google, Inc.}},
+  title		= {App Engine},
+  howpublished	= {\url{http://cloud.google.com/appengine/docs}}
 }
 
 @Misc{		  google-compute,
-  author	= {{Google}},
-  title		= "Compute Engine",
-  howpublished	= {\url{cloud.google.com/compute/}}
+  author	= {{Google, Inc.}},
+  title		= {Compute Engine},
+  howpublished	= {\url{http://cloud.google.com/compute/}}
 }
 
 @Misc{		  google-docs,
-  author	= {{Google}},
-  title		= "Docs",
-  howpublished	= {\url{docs.google.com}}
+  author	= {{Google, Inc.}},
+  title		= {Docs},
+  howpublished	= {\url{http://docs.google.com}}
 }
 
 @Misc{		  google-drive,
-  author	= {{Google}},
-  title		= "Drive",
-  howpublished	= {\url{drive.google.com}}
+  author	= {{Google, Inc.}},
+  title		= {Drive},
+  howpublished	= {\url{http://drive.google.com}}
 }
 
 @Misc{		  google-efficiency,
-  author	= {{Google}},
-  title		= "Data Centers - Efficiency",
-  howpublished	= {\url{www.google.com/about/datacenters/efficiency/internal/}}
+  author	= {{Google, Inc.}},
+  title		= {Data Center Efficiency},
+  howpublished	= {\url{http://www.google.com/about/datacenters/efficiency/internal/}}
 		  
 }
 
 @Misc{		  google-endtoend,
-  author	= {{Google}},
-  title		= "End-To-End",
-  howpublished	= {\url{github.com/google/end-to-end}}
+  author	= {{Google, Inc.}},
+  title		= {End-To-End},
+  howpublished	= {\url{http://github.com/google/end-to-end}}
 }
 
 @Misc{		  google-gmail,
-  author	= {{Google}},
-  title		= "Gmail",
-  howpublished	= {\url{mail.google.com}}
+  author	= {{Google, Inc.}},
+  title		= {Gmail},
+  howpublished	= {\url{https://mail.google.com}}
+}
+
+@Misc{		  google-hangouts,
+  author	= {{Google, Inc.}},
+  title		= {Hangouts},
+  howpublished	= {\url{https://hangouts.google.com}}
 }
 
 @Misc{		  google-music,
-  author	= {{Google}},
+  author	= {{Google, Inc.}},
   title		= {Google Play Music},
-  howpublished	= {\url{music.google.com}}
+  howpublished	= {\url{http://music.google.com}}
 }
 
-@Misc{		  google-wallet,
-  author	= {{Google}},
-  title		= {Google Wallet},
-  howpublished	= {\url{wallet.google.com}}
+@Misc{		  google-plus,
+  author	= {{Google, Inc.}},
+  title		= {Plus},
+  howpublished	= {\url{https://plus.google.com/}}
+}
+
+@Misc{		  google-transparency,
+  author	= {{Google Inc.}},
+  title		= {Google Transparency Report},
+  howpublished	= {\url{https://www.google.com/transparencyreport/userdatarequests/}}
+		  
 }
 
 @InProceedings{	  goyal2006,
   address	= {New York, New York, USA},
   author	= {Goyal, Vipul and Pandey, Omkant and Sahai, Amit and
 		  Waters, Brent},
-  booktitle	= {Proceedings of the 13th ACM conference on Computer and
-		  communications security - CCS '06},
+  booktitle	= {Proceedings of the 13th ACM Conference on Computer and
+		  Communications Security - CCS '06},
   doi		= {10.1145/1180405.1180418},
   isbn		= {1595935185},
   pages		= {89},
   publisher	= {ACM Press},
-  title		= {{Attribute-based encryption for fine-grained access
-		  control of encrypted data}},
-  url		= {portal.acm.org/citation.cfm?doid=1180405.1180418},
+  title		= {Attribute-based encryption for fine-grained access control
+		  of encrypted data},
+  url		= {http://portal.acm.org/citation.cfm?doid=1180405.1180418},
   year		= {2006}
 }
 
@@ -1057,15 +1375,15 @@
   author	= {Green, Matthew},
   journal	= {The New Yorker},
   title		= {The Daunting Challenge of Secure E-mail},
-  url		= {www.newyorker.com/online/blogs/elements/2013/11/the-daunting-challenge-of-secure-e-mail.html}
+  url		= {http://www.newyorker.com/online/blogs/elements/2013/11/the-daunting-challenge-of-secure-e-mail.html}
 		  ,
   year		= {2013}
 }
 
 @Article{	  green-pgp,
   author	= {Green, Matthew},
-  journal	= {A Few Thoughts on Crytophraphic Engineering},
-  title		= {What's the matter with PGP?},
+  journal	= {A Few Thoughts on Cryptographic Engineering},
+  title		= {What's the matter with {PGP}?},
   url		= {http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html}
 		  ,
   year		= {2014}
@@ -1074,7 +1392,7 @@
 @Article{	  greenwald-collect,
   author	= {Greenwald, Glenn},
   journal	= {The Guardian},
-  title		= {The crux of the NSA story in one phrase: 'collect it
+  title		= {The crux of the {NSA} story in one phrase: 'collect it
 		  all'},
   url		= {http://www.theguardian.com/commentisfree/2013/jul/15/crux-nsa-collect-it-all}
 		  ,
@@ -1085,74 +1403,62 @@
 @Article{	  greenwald-prism,
   author	= {Greenwald, Glenn and MacAskill, Ewen},
   journal	= {The Guardian},
-  title		= {NSA Prism program taps in to user data of Apple, Google,
-		  and others},
-  url		= {www.theguardian.com/world/2013/jun/06/us-tech-giants-nsa-data}
+  title		= {{NSA Prism} program taps in to user data of {Apple},
+		  {Google}, and others},
+  url		= {http://www.theguardian.com/world/2013/jun/06/us-tech-giants-nsa-data}
 		  ,
   month		= {June},
   year		= {2013}
 }
 
-@Article{	  guardian-appleencrypt,
-  author	= {Hern, Alex},
-  journal	= {{The Guardian}},
-  title		= {{Apple defies FBI and offers encryption by default on new
-		  operating system}},
-  url		= {http://www.theguardian.com/technology/2014/oct/17/apple-defies-fbi-encryption-mac-osx}
-		  ,
-  year		= {2014},
-  month		= {Oct}
-}
-
 @InProceedings{	  halcrow,
-  address	= {Ottawa},
   author	= {Halcrow, Michael Austin},
   booktitle	= {Ottawa Linux Symposium},
-  organization	= {International Business Machines, Inc},
+  institution	= {International Business Machines, Inc},
   pages		= {201--218},
-  title		= {{eCryptfs : An Enterprise-class Cryptographic Filesystem
-		  for Linux}},
+  title		= {{eCryptfs} : An Enterprise-class Cryptographic Filesystem
+		  for {Linux}},
   year		= {2005}
+}
+
+@Article{	  hall-caaudit,
+  author	= {Hall, Kirk},
+  journal	= {CA Security Council},
+  title		= {Certificate Authority Audits and Browser Root Program
+		  Requirements},
+  url		= {https://casecurity.org/2013/10/15/certificate-authority-audits-and-browser-root-program-requirements/}
+		  ,
+  year		= {2013},
+  month		= {October}
 }
 
 @Misc{		  heartbleed,
   author	= {Codenomicon},
-  title		= "The Heartbleed Bug",
-  howpublished	= {\url{heartbleed.com}}
-}
-
-@InProceedings{	  heninger2012,
-  author	= {Heninger, Nadia and Durumeric, Zakir and Wustrow, Eric and
-		  Halderman, Alex J.},
-  booktitle	= {Proceedings of the 21st USENIX Security Symposium},
-  title		= {{Mining your Ps and Qs: Detection of widespread weak keys
-		  in network devices}},
-  url		= {www.usenix.org/system/files/conference/usenixsecurity12/sec12-final228.pdf}
-		  ,
-  year		= {2012}
+  title		= {The {Heartbleed} Bug},
+  howpublished	= {\url{http://heartbleed.com}}
 }
 
 @Misc{		  heroku,
   author	= {Heroku},
-  title		= "Heroku Platform",
-  howpublished	= {\url{www.heroku.com}}
+  title		= {{Heroku} Platform},
+  howpublished	= {\url{http://www.heroku.com}}
 }
 
-@Misc{		  hill2012,
+@Article{	  hill2012,
   author	= {Hill, Kashmir},
-  title		= {{How Target Figured Out A Teen Girl Was Pregnant Before
-		  Her Father Did}},
+  title		= {How {Target} Figured Out A Teen Girl Was Pregnant Before
+		  Her Father Did},
   year		= {2012},
-  month		= {Feb},
-  note		= {{Forbes}},
-  howpublished	= {\url{www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/}}
+  month		= {February},
+  journal	= {Forbes},
+  howpublished	= {\url{http://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/}}
 		  
 }
 
 @Misc{		  hippa,
   author	= {{U.S. Department of Health and Human Services}},
   title		= {Understanding Health Information Privacy},
-  howpublished	= {\url{www.hhs.gov/ocr/privacy/hipaa/understanding/index.html}}
+  howpublished	= {\url{http://www.hhs.gov/ocr/privacy/hipaa/understanding/index.html}}
 		  
 }
 
@@ -1163,43 +1469,43 @@
   doi		= {10.1145/35037.35059},
   issn		= {07342071},
   journal	= {ACM Transactions on Computer Systems},
-  month		= feb,
+  month		= {February},
   number	= {1},
   pages		= {51--81},
-  title		= {{Scale and performance in a distributed file system}},
-  url		= {portal.acm.org/citation.cfm?doid=35037.35059},
+  title		= {Scale and performance in a distributed file system},
+  url		= {http://portal.acm.org/citation.cfm?doid=35037.35059},
   volume	= {6},
   year		= {1988}
 }
 
-@Book{		  howard1988-afs,
-  author	= {Howard, JH},
-  title		= {{An overview of the andrew file system}},
-  url		= {http://ra.adm.cs.cmu.edu/anon/anon/usr0/ftp/itc/CMU-ITC-062.pdf}
-		  ,
-  year		= {1988}
+@Misc{		  hr4528,
+  author	= {{U.S. House of Representatives: 114th Congress}},
+  title		= {{H.R. 4528: ENCRYPT Act of 2016}},
+  howpublished	= {\url{https://homeland.house.gov/wp-content/uploads/2016/03/2016.03.03_HR-4651-Commission.pdf}}
+		  
+}
+
+@Misc{		  hr4651,
+  author	= {{U.S. House of Representatives: 114th Congress}},
+  title		= {{H.R. 4651: Digital Security Commission Act of 2016 and
+		  Technology Challenges}},
+  howpublished	= {\url{https://homeland.house.gov/wp-content/uploads/2016/03/2016.03.03_HR-4651-Commission.pdf}}
+		  
 }
 
 @InProceedings{	  hulsebosch2005,
   address	= {New York, New York, USA},
   author	= {Hulsebosch, R. J. and Salden, A. H. and Bargh, M. S. and
 		  Ebben, P. W. G. and Reitsma, J.},
-  booktitle	= {Proceedings of the tenth ACM symposium on Access control
-		  models and technologies},
+  booktitle	= {Proceedings of the Tenth ACM symposium on Access control
+		  Models and Technologies},
   doi		= {10.1145/1063979.1064000},
   isbn		= {1595930450},
   pages		= {111},
   publisher	= {ACM Press},
-  title		= {{Context sensitive access control}},
-  url		= {dl.acm.org/citation.cfm?id=1064000},
+  title		= {Context sensitive access control},
+  url		= {http://dl.acm.org/citation.cfm?id=1064000},
   year		= {2005}
-}
-
-@Misc{		  ibm-restful,
-  author	= {IBM},
-  title		= "RESTful Web services: The basics",
-  howpublished	= {\url{www.ibm.com/developerworks/webservices/library/ws-restful}}
-		  
 }
 
 @Article{	  ibrahim2010,
@@ -1213,22 +1519,22 @@
   pages		= {177--189},
   publisher	= {Springer Berlin Heidelberg},
   series	= {Lecture Notes in Computer Science},
-  title		= {{Assessing the Usability of End-User Security Software}},
-  url		= {link.springer.com/chapter/10.1007/978-3-642-15152-1\_16},
+  title		= {Assessing the Usability of End-User Security Software},
+  url		= {http://link.springer.com/chapter/10.1007/978-3-642-15152-1\_16}
+		  ,
   volume	= {6264},
   year		= {2010}
 }
 
-@Article{	  intercept-cookencryption,
-  author	= {McLaughlin, Jenna},
-  journal	= {{The Intercept}},
-  title		= {{Apple’s Tim Cook Lashes Out at White House Officials
-		  for Being Wishy-Washy on Encryption}},
-  url		= {https://theintercept.com/2016/01/12/apples-tim-cook-lashes-out-at-white-house-officials-for-being-wishy-washy-on-encryption/}
+@Article{	  intercept-chatting,
+  author	= {Lee, Micah},
+  journal	= {The Intercept},
+  title		= {Chatting in Secret While We're All Being Watched},
+  url		= {https://theintercept.com/2015/07/14/communicating-secret-watched/}
 		  ,
-  year		= {2016},
-  month		= {Jan},
-  day		= {12}
+  year		= {2015},
+  month		= {July},
+  day		= {14}
 }
 
 @InProceedings{	  jensen2000,
@@ -1239,36 +1545,30 @@
   isbn		= {1234567890},
   pages		= {73},
   publisher	= {ACM Press},
-  title		= {{CryptoCache: a secure sharable file cache for roaming
-		  users}},
-  url		= {dl.acm.org/citation.cfm?id=566726.566744},
+  title		= {{CryptoCache}: a secure sharable file cache for roaming
+		  users},
+  url		= {http://dl.acm.org/citation.cfm?id=566726.566744},
   year		= {2000}
 }
 
 @PhDThesis{	  johnson2012,
   author	= {Johnson, Maritza L},
   school	= {Columbia University},
-  title		= {{Toward Usable Access Control for End-users: A Case Study
-		  of Facebook Privacy Settings}},
+  title		= {Toward Usable Access Control for End-users: A Case Study
+		  of {Facebook} Privacy Settings},
   year		= {2012}
 }
 
 @Misc{		  json,
   author	= {Crockford, Douglas},
-  title		= "Introducing JSON",
+  title		= {Introducing {JSON}},
   howpublished	= {\url{http://www.json.org}}
 }
 
-@Misc{		  json-c,
-  author	= {Haszlakiewicz, Eric},
-  title		= "json-c",
-  howpublished	= {\url{github.com/json-c/json-c/wiki}}
-}
-
 @Misc{		  jumpcloud,
-  author	= {{JumpCloud}},
-  title		= {JumpCloud: Identity Management Reimagined},
-  howpublished	= {\url{jumpcloud.com}}
+  author	= {JumpCloud},
+  title		= {{JumpCloud}: Identity Management Reimagined},
+  howpublished	= {\url{http://jumpcloud.com}}
 }
 
 @InProceedings{	  kallahalla2003,
@@ -1277,9 +1577,9 @@
   booktitle	= {Proceedings of the 2nd USENIX Conference on File and
 		  Storage Technologies},
   pages		= {29--42},
-  title		= {{Plutus: Scalable secure file sharing on untrusted
-		  storage}},
-  url		= {www.usenix.org/legacyurl/plutus-scalable-secure-file-sharing-untrusted-storage}
+  title		= {{Plutus}: Scalable secure file sharing on untrusted
+		  storage},
+  url		= {http://www.usenix.org/legacyurl/plutus-scalable-secure-file-sharing-untrusted-storage}
 		  ,
   year		= {2003}
 }
@@ -1288,19 +1588,41 @@
   author	= {Kamara, Seny and Papamanthou, C and Roeder, Tom},
   institution	= {Microsoft Research},
   pages		= {1--25},
-  title		= {{Cs2: A searchable cryptographic cloud storage system}},
-  url		= {research.microsoft.com/pubs/148632/cs2.pdf},
+  title		= {{CS2}: A searchable cryptographic cloud storage system},
+  url		= {http://research.microsoft.com/pubs/148632/cs2.pdf},
   year		= {2011}
+}
+
+@TechReport{	  kehl2015,
+  author	= {Kehl, Danielle and Wilson, Andi and Bankston, Kevin},
+  institution	= {New America, Open Technology Institute},
+  number	= {June},
+  title		= {Doomed to Repeat History?: Lessons from the Crypto Wars of
+		  the 1990s},
+  url		= {https://www.newamerica.org/oti/doomed-to-repeat-history-lessons-from-the-crypto-wars-of-the-1990s/}
+		  ,
+  year		= {2015}
 }
 
 @TechReport{	  kelly2007,
   author	= {Kelly, S. and Frankel, S.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--21},
-  title		= {{RFC 4868: Using HMAC-SHA-256, HMAC-SHA-384, and
-		  HMAC-SHA-512 with IPsec}},
-  url		= {www.ietf.org/rfc/rfc4868.txt},
+  title		= {{RFC 4868}: Using {HMAC-SHA-256}, {HMAC-SHA-384}, and
+		  {HMAC-SHA-512} with {IPsec}},
+  url		= {http://www.ietf.org/rfc/rfc4868.txt},
   year		= {2007},
   month		= {May}
+}
+
+@Article{	  kent2015,
+  author	= {Kent, Gail},
+  journal	= {Stanford Law School Center for Internet and Society Blog},
+  title		= {The Mutual Legal Assistance Problem Explained},
+  url		= {https://cyberlaw.stanford.edu/blog/2015/02/mutual-legal-assistance-problem-explained}
+		  ,
+  year		= {2015},
+  month		= {February}
 }
 
 @Article{	  kerravala2002,
@@ -1311,39 +1633,64 @@
 }
 
 @Misc{		  keybase,
-  author	= {{Keybase}},
-  title		= {KeyBase: Get a public key, safely, starting just with
+  author	= {Keybase},
+  title		= {{KeyBase}: Get a public key, safely, starting just with
 		  someone's social media username(s)},
-  howpublished	= {\url{keybase.io}}
+  howpublished	= {\url{http://keybase.io}}
 }
 
 @Misc{		  keywhiz,
-  author	= {{Square}},
-  title		= {Keywhiz: A system for managing and distributing secrets},
+  author	= {Square},
+  title		= {{Keywhiz}: A system for managing and distributing
+		  secrets},
   howpublished	= {\url{https://square.github.io/keywhiz/}}
 }
 
 @InProceedings{	  kher2005,
   address	= {New York, New York, USA},
   author	= {Kher, Vishal and Kim, Yongdae},
-  booktitle	= {Proceedings of the 2005 ACM workshop on Storage security
-		  and survivability},
+  booktitle	= {Proceedings of the 2005 ACM workshop on Storage Security
+		  and Survivability},
   doi		= {10.1145/1103780.1103783},
   isbn		= {159593233X},
   pages		= {9},
   publisher	= {ACM Press},
-  title		= {{Securing distributed storage: challenges, techniques, and
-		  systems}},
-  url		= {dl.acm.org/citation.cfm?id=1103783},
+  title		= {Securing distributed storage: challenges, techniques, and
+		  systems},
+  url		= {http://dl.acm.org/citation.cfm?id=1103783},
   year		= {2005}
+}
+
+@Article{	  koblitz1987,
+  issn		= {00255718, 10886842},
+  author	= {Neal Koblitz},
+  journal	= {Mathematics of Computation},
+  number	= {177},
+  pages		= {203-209},
+  publisher	= {American Mathematical Society},
+  title		= {Elliptic Curve Cryptosystems},
+  volume	= {48},
+  year		= {1987}
+}
+
+@Article{	  kocaoglu2008,
+  author	= {{Kocaoglu (Cahn Kojaolu)}, Kagan},
+  doi		= {10.2139/ssrn.1103644},
+  issn		= {1556-5068},
+  journal	= {SSRN Electronic Journal},
+  number	= {March},
+  title		= {A Comparative Bibliography: Regulatory Competition on
+		  Corporate Law},
+  url		= {http://www.ssrn.com/abstract=1103644},
+  year		= {2008}
 }
 
 @TechReport{	  koch2011,
   author	= {Koch, Werner and Brinkmann, Marcus},
   booktitle	= {kerckhoffs.g10code.com},
   pages		= {1--6},
-  title		= {{STEED - Usable End-to-End Encryption}},
-  url		= {kerckhoffs.g10code.com/www.g10code.de/docs/steed-usable-e2ee.pdf}
+  title		= {{STEED} - Usable End-to-End Encryption},
+  url		= {http://kerckhoffs.g10code.com/www.g10code.de/docs/steed-usable-e2ee.pdf}
 		  ,
   year		= {2011}
 }
@@ -1352,8 +1699,8 @@
   author	= {Kohl, John T. and Neuman, B. Clifford and Ts'o, Theodore
 		  Y.},
   booktitle	= {European Conference Proceedings},
-  title		= {{The evolution of the Kerberos authentication service}},
-  url		= {citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.120.944\&rep=rep1\&type=pdf}
+  title		= {The evolution of the {Kerberos} authentication service},
+  url		= {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.120.944\&rep=rep1\&type=pdf}
 		  ,
   year		= {1991}
 }
@@ -1365,34 +1712,36 @@
   doi		= {10.1007/3-540-48329-2},
   editor	= {Stinson, Douglas R.},
   isbn		= {978-3-540-57766-9},
-  month		= jul,
+  month		= {July},
   pages		= {136--146},
   publisher	= {Springer Berlin Heidelberg},
   series	= {Lecture Notes in Computer Science},
-  title		= {{Secret Sharing Made Short}},
-  url		= {link.springer.com/chapter/10.1007/3-540-48329-2\_12},
+  title		= {Secret Sharing Made Short},
+  url		= {http://link.springer.com/chapter/10.1007/3-540-48329-2\_12}
+		  ,
   volume	= {773},
   year		= {1994}
 }
 
 @TechReport{	  krawczyk1997,
   author	= {Krawczyk, H. and Bellare, M. and Canetti, R.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--11},
-  title		= {{RFC 2104: HMAC - Keyed-Hashing for Message
-		  Authentication}},
-  url		= {www.ietf.org/rfc/rfc2104.txt},
+  title		= {{RFC 2104}: {HMAC} - Keyed-Hashing for Message
+		  Authentication},
+  url		= {http://www.ietf.org/rfc/rfc2104.txt},
   year		= {1997},
-  month		= {Feb}
+  month		= {February}
 }
 
 @Article{	  krebs-anthem,
   author	= {Krebs, Brian},
   journal	= {Krebs on Security},
-  title		= {Data Breach at Health Insurer Anthem Could Impact
+  title		= {Data Breach at Health Insurer {Anthem} Could Impact
 		  Millions},
-  url		= {krebsonsecurity.com/2015/02/data-breach-at-health-insurer-anthem-could-impact-millions/}
+  url		= {http://krebsonsecurity.com/2015/02/data-breach-at-health-insurer-anthem-could-impact-millions/}
 		  ,
-  month		= {Feb},
+  month		= {February},
   year		= {2015}
 }
 
@@ -1400,7 +1749,7 @@
   author	= {Krebs, Brian},
   journal	= {Krebs on Security},
   title		= {Safeguarding Your Passwords},
-  url		= {voices.washingtonpost.com/securityfix/2008/01/safeguarding_your_passwords_1.html}
+  url		= {http://voices.washingtonpost.com/securityfix/2008/01/safeguarding_your_passwords_1.html}
 		  ,
   year		= {2008}
 }
@@ -1408,9 +1757,9 @@
 @Article{	  krebs-premera,
   author	= {Krebs, Brian},
   journal	= {Krebs on Security},
-  title		= {Premera Blue Cross Breach Exposes Financial, Medical
+  title		= {{Premera Blue Cross} Breach Exposes Financial, Medical
 		  Records},
-  url		= {krebsonsecurity.com/2015/03/premera-blue-cross-breach-exposes-financial-medical-records/}
+  url		= {http://krebsonsecurity.com/2015/03/premera-blue-cross-breach-exposes-financial-medical-records/}
 		  ,
   month		= {Mar},
   year		= {2015}
@@ -1424,51 +1773,63 @@
   journal	= {ACM SIGPLAN Notices},
   number	= {11},
   pages		= {190--201},
-  title		= {{Oceanstore: An architecture for global-scale persistent
-		  storage}},
-  url		= {dl.acm.org/citation.cfm?id=356989.357007},
+  title		= {{Oceanstore}: An architecture for global-scale persistent
+		  storage},
+  url		= {http://dl.acm.org/citation.cfm?id=356989.357007},
   volume	= {35},
   year		= {2000}
 }
 
 @Misc{		  lastpass,
   author	= {LastPass},
-  title		= "LastPass",
+  title		= {{LastPass} Password Manager},
   howpublished	= {\url{https://lastpass.com}}
+}
+
+@Article{	  lastpass-blog-breach,
+  author	= {Siegrist, Joe},
+  journal	= {LastPass Blog},
+  title		= {{LastPass} Security Notice},
+  url		= {https://blog.lastpass.com/2015/06/lastpass-security-notice.html/}
+		  ,
+  month		= {June},
+  year		= {2015}
 }
 
 @TechReport{	  laurie2013,
   author	= {Laurie, B. and Langley, A. and Kasper, E.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--27},
-  title		= {{RFC 6962: Certificate Transparency}},
-  url		= {https://tools.ietf.org/html/rfc6962},
+  title		= {{RFC 6962}: Certificate Transparency},
+  url		= {http://tools.ietf.org/html/rfc6962},
   year		= {2013}
 }
 
 @Misc{		  lavabit,
   author	= {Levison, Ladar},
-  title		= "Lavabit",
-  howpublished	= {\url{lavabit.com}}
+  title		= {{Lavabit}},
+  howpublished	= {\url{http://lavabit.com}}
 }
 
 @TechReport{	  leach2005,
   author	= {Leach, P. and Mealling, M. and Salz, R.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--32},
-  title		= {{RFC 4122: A universally Unique IDentifier (UUID) URN
-		  Namespace}},
-  url		= {www.ietf.org/rfc/rfc4122.txt},
+  title		= {{RFC 4122}: A Universally Unique Identifier ({UUID}) {URN}
+		  Namespace},
+  url		= {http://www.ietf.org/rfc/rfc4122.txt},
   year		= {2005}
 }
 
 @Article{	  leandro2012,
-  author	= {Leandro, Marcos A. P. MAP and Nascimento, Tiago J. and dos
+  author	= {Leandro, Marcos A. P. and Nascimento, Tiago J. and dos
 		  Santos, Daniel R. and Westphall, Carlos B. Carla M.},
   isbn		= {9781612081830},
   journal	= {ICN 2012, The Eleventh International Conference on
 		  Networks},
   pages		= {88--93},
-  title		= {{Multi-tenancy authorization system with federated
-		  identity for cloud-based environments using shibboleth}},
+  title		= {Multi-tenancy authorization system with federated identity
+		  for cloud-based environments using {Shibboleth}},
   url		= {http://www.thinkmind.org/index.php?view=article{\&}articleid=icn{\_}2012{\_}5{\_}10{\_}10065}
 		  ,
   year		= {2012}
@@ -1476,16 +1837,27 @@
 
 @Misc{		  leastauthority-s4,
   author	= {{Least Authority}},
-  title		= {Simple Secure Storage Service (S4)},
-  howpublished	= {\url{leastauthority.com}}
+  title		= {Simple Secure Storage Service ({S4})},
+  howpublished	= {\url{http://leastauthority.com}}
+}
+
+@Article{	  lee2014,
+  author	= {Berners-Lee, Tim},
+  journal	= {Wired},
+  month		= {March},
+  year		= {2014},
+  title		= {{Tim Berners-Lee} on the web at 25: the past, present and
+		  future},
+  url		= {http://www.wired.co.uk/magazine/archive/2014/03/web-at-25/tim-berners-lee}
+		  
 }
 
 @Article{	  levsion-lavabit,
   author	= {Levison, Ladar},
-  journal	= {{The Guardian}},
-  title		= {Secrets, lies and Snowden's email: why I was forced to
-		  shut down Lavabit},
-  url		= {www.theguardian.com/commentisfree/2014/may/20/why-did-lavabit-shut-down-snowden-email}
+  journal	= {The Guardian},
+  title		= {Secrets, lies and {Snowden's} email: Why {I} was forced to
+		  shut down {Lavabit}},
+  url		= {http://www.theguardian.com/commentisfree/2014/may/20/why-did-lavabit-shut-down-snowden-email}
 		  ,
   month		= {May},
   year		= {2014}
@@ -1497,70 +1869,66 @@
 		  D. E.},
   booktitle	= {Proceedings of the 11th Conference on File and Storage
 		  Systems},
-  title		= {{Horus: Fine-Grained Encryption-Based Security for
-		  Large-Scale Storage}},
-  url		= {www.usenix.org/system/files/conference/fast13/fast13-final142.pdf}
+  title		= {{Horus}: Fine-Grained Encryption-Based Security for
+		  Large-Scale Storage},
+  url		= {http://www.usenix.org/system/files/conference/fast13/fast13-final142.pdf}
 		  ,
   year		= {2013}
 }
 
 @Misc{		  linux-pam,
-  author	= {Linux-PAM Team, The},
-  title		= "Linux PAM",
-  howpublished	= {\url{www.linux-pam.org}}
+  author	= {{Linux-PAM Team}},
+  title		= {{Linux PAM}},
+  howpublished	= {\url{http://www.linux-pam.org}}
 }
 
 @Misc{		  linux-vfs,
   author	= {Johnson, Michael K.},
-  title		= "A tour of the Linux VFS",
+  title		= {A tour of the {Linux VFS}},
   year		= {1996},
-  howpublished	= {\url{www.tldp.org/LDP/khg/HyperNews/get/fs/vfstour.html}}
-}
-
-@InProceedings{	  litwin2011,
-  address	= {New York, New York, USA},
-  author	= {Litwin, Witold and Jajodia, Sushil and Schwarz, Thomas},
-  booktitle	= {Proceedings of the 10th annual ACM workshop on Privacy in
-		  the electronic society},
-  doi		= {10.1145/2046556.2046580},
-  isbn		= {9781450310024},
-  pages		= {171},
-  publisher	= {ACM Press},
-  title		= {{Privacy of data outsourced to a cloud for selected
-		  readers through client-side encryption}},
-  url		= {dl.acm.org/citation.cfm?doid=2046556.2046580},
-  year		= {2011}
+  howpublished	= {\url{http://www.tldp.org/LDP/khg/HyperNews/get/fs/vfstour.html}}
+		  
 }
 
 @Misc{		  logrythm,
-  author	= {{LogRhythm Inc}},
-  title		= "LogRhythm: SIEM 2.0, Log and Event Management, Log
-		  Analysis",
-  howpublished	= {\url{www.logrhythm.com}}
+  author	= {{LogRhythm, Inc}},
+  title		= {{LogRhythm}: {SIEM} 2.0, Log and Event Management, Log
+		  Analysis},
+  howpublished	= {\url{http://www.logrhythm.com}}
 }
 
-@Misc{		  lomas2014,
+@Article{	  lomas2014,
   author	= {Lomas, Natasha},
-  title		= {{Facebook Data Privacy Class Action Joined By 11,000 And
-		  Counting}},
+  title		= {{Facebook} Data Privacy Class Action Joined By 11,000 And
+		  Counting},
   year		= {2014},
-  month		= {Aug},
-  note		= {{TechCrunch}},
-  howpublished	= {\url{techcrunch.com/2014/08/04/europe-vs-facebook-class-action}}
+  month		= {August},
+  journal	= {TechCrunch},
+  howpublished	= {\url{http://techcrunch.com/2014/08/04/europe-vs-facebook-class-action}}
 		  
 }
 
 @Misc{		  lorier-pkcs11,
   author	= {Lorier, Perry},
-  title		= "Heartbleed and Private Key Availability",
+  title		= {{Heartbleed} and Private Key Availability},
   year		= {2014},
-  howpublished	= {\url{plus.google.com/106751305389299207737/posts/WM4i4Rqxs5n}}
+  howpublished	= {\url{http://plus.google.com/106751305389299207737/posts/WM4i4Rqxs5n}}
 		  
+}
+
+@InProceedings{	  loscocco2001,
+  author	= {Loscocco, Peter and Smalley, Stephen D},
+  booktitle	= {Ottawa Linux Symposium},
+  title		= {Meeting critical security objectives with
+		  Security-Enhanced {Linux}},
+  url		= {https://lwn.net/2001/features/OLS/pdf/pdf/selinux.pdf$\backslash$npapers2://publication/uuid/5063641D-BDBF-4E18-B822-0C4A7462D99C}
+		  ,
+  year		= {2001}
 }
 
 @Misc{		  luks,
   author	= {Fruhwirth, Clemens},
-  title		= "LUKS",
+  title		= {{LUKS}},
   howpublished	= {\url{https://code.google.com/p/cryptsetup}}
 }
 
@@ -1570,12 +1938,13 @@
   isbn		= {1581133855},
   issn		= {0178-2770},
   journal	= {Distributed Computing},
-  month		= dec,
+  month		= {December},
   number	= {4},
   pages		= {307--327},
-  title		= {{Delegation of cryptographic servers for capture-resilient
-		  devices}},
-  url		= {link.springer.com/article/10.1007/s00446-003-0098-4},
+  title		= {Delegation of cryptographic servers for capture-resilient
+		  devices},
+  url		= {http://link.springer.com/article/10.1007/s00446-003-0098-4}
+		  ,
   volume	= {16},
   year		= {2003}
 }
@@ -1587,28 +1956,44 @@
   doi		= {10.1145/2063509.2063512},
   issn		= {07342071},
   journal	= {ACM Transactions on Computer Systems},
-  month		= dec,
+  month		= {December},
   number	= {4},
   pages		= {1--38},
-  title		= {{Depot: Cloud Storage with Minimal Trust}},
-  url		= {dl.acm.org/citation.cfm?id=2063512},
+  title		= {{Depot}: Cloud Storage with Minimal Trust},
+  url		= {http://dl.acm.org/citation.cfm?id=2063512},
   volume	= {29},
   year		= {2011}
 }
 
 @Misc{		  mailpile,
   author	= {Einarsson, Bjarni and McCarth, Smair and Novak, Brennan},
-  title		= "Mailpile: Let's Take Email Back",
-  howpublished	= {\url{www.mailpile.is}}
+  title		= {{Mailpile}: Let's Take Email Back},
+  howpublished	= {\url{https://www.mailpile.is}}
 }
 
-@TechReport{	  matsui2004,
-  author	= {Matsui, A. and Nakajima, J. and Moriai, S.},
-  pages		= {1--16},
-  title		= {{RFC 3713: A Description of the Camellia Encryption
-		  Algorithm}},
-  url		= {tools.ietf.org/pdf/rfc3713.pdf},
-  year		= {2004}
+@Misc{		  mailvelope,
+  author	= {{Mailvelope GmbH}},
+  title		= {{Mailvelope}: {OpenPGP} Encryption for Webmail},
+  howpublished	= {\url{https://www.mailvelope.com/}}
+}
+
+@Article{	  marlinspike-doom,
+  author	= {Marlinspike, Moxie},
+  journal	= {Thought Crime},
+  title		= {{The Cryptographic Doom Principle}},
+  url		= {http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/}
+		  ,
+  year		= {2011},
+  month		= {December}
+}
+
+@Article{	  mashable-socialads,
+  author	= {Wagner, Kurt},
+  title		= {How {Facebook} Is Using Your Photos in Ads},
+  journal	= {Mashable},
+  year		= {2013},
+  month		= {September},
+  url		= {http://mashable.com/2013/09/05/facebook-ads-photo/}
 }
 
 @Article{	  mazieres1999,
@@ -1618,11 +2003,11 @@
   isbn		= {1581131402},
   issn		= {01635980},
   journal	= {ACM SIGOPS Operating Systems Review},
-  month		= dec,
+  month		= {December},
   number	= {5},
   pages		= {124--139},
-  title		= {{Separating key management from file system security}},
-  url		= {dl.acm.org/citation.cfm?id=319160},
+  title		= {Separating key management from file system security},
+  url		= {http://dl.acm.org/citation.cfm?id=319160},
   volume	= {33},
   year		= {1999}
 }
@@ -1632,8 +2017,7 @@
 		  Timothy and Bauer, Lujo and Christin, Nicolas and Cranor,
 		  Lorrie Faith and Kelley, Patrick Gage and Shay, Richard and
 		  Ur, Blase},
-  title		= {{Measuring Password Guessability for an Entire
-		  University}},
+  title		= {Measuring Password Guessability for an Entire University},
   year		= {2013}
 }
 
@@ -1641,46 +2025,61 @@
   author	= {McGrew, David},
   booktitle	= {Security in Storage Workshop},
   publisher	= {IEEE},
-  title		= {{Efficient authentication of large , dynamic data sets
-		  using Galois/Counter Mode (GCM)}},
+  title		= {Efficient authentication of large , dynamic data sets
+		  using {Galois}/Counter Mode ({GCM})},
   year		= {2005}
-}
-
-@InCollection{	  menezes1996,
-  author	= {Menezes, A. and van Oorschot, P. and Vanstone, S.},
-  booktitle	= {Handbook of Applied Cryptography},
-  pages		= {1--48},
-  title		= {{Overview of Cryptography}},
-  year		= {1996}
 }
 
 @Misc{		  microsoft-officeonline,
   author	= {{Microsoft}},
   title		= {{Office Online}},
-  howpublished	= {\url{office.live.com}}
+  howpublished	= {\url{http://office.live.com}}
 }
 
 @Misc{		  microsoft-onedrive,
   author	= {{Microsoft}},
   title		= {{OneDrive}},
-  howpublished	= {\url{onedrive.live.com}}
+  howpublished	= {\url{http://onedrive.live.com}}
 }
 
 @Misc{		  microsoft-onedrive-online,
   author	= {{Microsoft}},
-  title		= {{Online-only files and files avaible offline}},
+  title		= {Online-only files and files available offline},
   year		= {2015},
-  howpublished	= {\url{windows.microsoft.com/en-us/windows-8/onedrive-online-available-offline}}
+  howpublished	= {\url{http://windows.microsoft.com/en-us/windows-8/onedrive-online-available-offline}}
 		  
 }
 
 @TechReport{	  microsoft-smb2,
   author	= {{Microsoft}},
-  title		= {{Server Message Block (SMB) Protocol Versions 2 and 3}},
+  title		= {Server Message Block ({SMB}) Protocol Versions 2 and 3},
   number	= {MS-SMB2-46.0},
   pages		= {1--439},
-  url		= {msdn.microsoft.com/en-us/library/cc246482.aspx},
+  url		= {http://msdn.microsoft.com/en-us/library/cc246482.aspx},
   year		= {2014}
+}
+
+@InProceedings{	  miller1986,
+  author	= {Miller, Victor S.},
+  editor	= {Williams, Hugh C.},
+  title		= {Use of Elliptic Curves in Cryptography},
+  booktitle	= {Advances in Cryptology -- {CRYPTO} '85 Proceedings},
+  year		= {1986},
+  publisher	= {Springer Berlin Heidelberg},
+  address	= {Berlin, Heidelberg},
+  pages		= {417--426},
+  isbn		= {978-3-540-39799-1},
+  doi		= {10.1007/3-540-39799-X_31},
+  url		= {http://dx.doi.org/10.1007/3-540-39799-X_31}
+}
+
+@Article{	  miller2006,
+  author	= {Miller, Matthew},
+  journal	= {Forbes},
+  title		= {Catch Me If You Can},
+  url		= {http://www.forbes.com/forbes/2006/0327/112.html},
+  year		= {2006},
+  month		= {March}
 }
 
 @Article{	  miltchev2008,
@@ -1689,56 +2088,69 @@
   doi		= {10.1145/1380584.1380588},
   issn		= {03600300},
   journal	= {ACM Computing Surveys},
-  month		= aug,
+  month		= {August},
   number	= {3},
   pages		= {1--30},
-  title		= {{Decentralized access control in distributed file
-		  systems}},
+  title		= {Decentralized access control in distributed file systems},
   url		= {http://portal.acm.org/citation.cfm?doid=1380584.1380588},
   volume	= {40},
   year		= {2008}
 }
 
-@Misc{		  mint,
-  author	= {{Intuit}},
-  title		= {Mint: Money Manager, Bill Pay, Credit Score, Budgeting and
-		  Investing},
-  howpublished	= {\url{www.mint.com}}
-}
-
 @TechReport{	  mitmedialab2012,
   author	= {{MIT Media Lab}},
   institution	= {Human Dynamics, MIT Media Lab},
-  title		= {{OpenPDS Software}},
-  url		= {idcubed.org/open-platform/openpds-project},
+  title		= {{OpenPDS} Software},
+  url		= {http://idcubed.org/open-platform/openpds-project},
   year		= {2012}
 }
 
-@Misc{		  mongodb,
-  author	= {MongoDB Inc.},
-  title		= "mongoDB",
-  howpublished	= {\url{www.mongodb.org}}
+@Misc{		  mozilla-capolicy,
+  author	= {{Mozilla}},
+  title		= {{Mozilla} {CA} Certificate Policy: Version 2.2},
+  howpublished	= {\url{https://www.mozilla.org/en-US/about/governance/policies/security-group/certs/policy/}}
+		  
+}
+
+@Article{	  mozilla-deprecatehttp,
+  author	= {Barnes, Richard},
+  journal	= {Mozilla Security Blog},
+  title		= {{Deprecating Non-Secure HTTP}},
+  url		= {https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/}
+		  ,
+  year		= {2015},
+  month		= {April}
 }
 
 @TechReport{	  nakamoto2008,
   author	= {Nakamoto, Satoshi},
   pages		= {1--9},
-  title		= {{Bitcoin: A peer-to-peer electronic cash system}},
+  title		= {{Bitcoin}: A peer-to-peer electronic cash system},
   url		= {www.vsewiki.cz/images/archive/8/89/20110124151146!Bitcoin.pdf}
 		  ,
   year		= {2008}
 }
 
 @Book{		  nelson1972computer,
-  title		= {Computer Lib / Dream machines},
+  title		= {Computer Lib / Dream Machines},
   author	= {Nelson, Ted},
   year		= {1974},
   publisher	= {Self published}
 }
 
+@TechReport{	  netfreedom2015,
+  author	= {Kelly, Sanja and Earp, Madeline and Reed, Laura and
+		  Shahbaz, Adrian and Truong, Mai},
+  institution	= {{Freedom House}},
+  pages		= {1--40},
+  title		= {Freedom on the Net 2015: Privatizing Censorship, Eroding
+		  Privacy},
+  year		= {2015}
+}
+
 @Article{	  neuman1994,
   author	= {Neuman, B. Clifford and Ts'o, Theodore},
-  title		= {Kerberos: An Authentication Service for Computer
+  title		= {{Kerberos}: An Authentication Service for Computer
 		  Networks},
   journal	= {IEEE Communications Magazine},
   volume	= {32},
@@ -1749,113 +2161,145 @@
 
 @Misc{		  neurio,
   author	= {{Neurio}},
-  title		= {{Neurio Home Intelligence}},
-  howpublished	= {\url{www.neur.io}}
+  title		= {{Neurio} Home Intelligence},
+  howpublished	= {\url{http://www.neur.io}}
 }
 
-@Article{	  nist2001,
+@Misc{		  ninthcir-bernstein,
+  author	= {{U.S. Court of Appeals for the Ninth Circuit}},
+  title		= {{Daniel J. Bernstein et al., v. United States Department
+		  of State et al.}},
+  year		= {1999},
+  month		= {May},
+  howpublished	= {\url{https://www.epic.org/crypto/export_controls/bernstein_decision_9_cir.html}}
+		  ,
+  note		= {97-16686}
+}
+
+@TechReport{	  nist2001,
   author	= {{National Institute of Standards \& Technology}},
-  journal	= {Federal Information Processing Standards Publication},
-  title		= {{Announcing the Advanced Encryption Standard (AES)}},
-  url		= {scholar.google.com/scholar?hl=en\&btnG=Search\&q=intitle:Announcing+the+ADVANCED+ENCRYPTION+STANDARD+(+AES+)\#0}
+  institution	= {{U.S. Dept. of Commerce}},
+  note		= {Federal Information Processing Standards Publication},
+  number	= {197},
+  title		= {Announcing the Advanced Encryption Standard ({AES})},
+  url		= {http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf}
 		  ,
   year		= {2001}
+}
+
+@Article{	  nojeim2015,
+  author	= {Nojeim, Greg},
+  journal	= {Center for Democracy and Technology Blog},
+  title		= {{MLAT} Reform: A Straw Man Proposal},
+  url		= {https://cdt.org/insight/mlat-reform-a-straw-man-proposal/}
+		  ,
+  year		= {2015},
+  month		= {September}
 }
 
 @Book{		  norman2002design,
   title		= {The design of everyday things},
   author	= {Norman, Donald A},
   year		= {2002},
-  publisher	= {Basic books}
+  publisher	= {Basic Books}
 }
 
 @Misc{		  oauth,
-  author	= {OAuth Team, The},
-  title		= "OAuth",
-  howpublished	= {\url{oauth.net}}
+  author	= {{OAuth Team}},
+  title		= {{OAuth}},
+  howpublished	= {\url{http://oauth.net}}
 }
 
 @Misc{		  onepassword,
   author	= {AgileBits},
-  title		= "1Password",
+  title		= {{1Password}},
   howpublished	= {\url{http://agilebits.com/onepassword}}
 }
 
 @Misc{		  opencompute,
-  author	= {{The Open Compute Project Team}},
+  author	= {{Open Compute Project Team}},
   title		= {The Open Compute Project},
   howpublished	= {\url{http://www.opencompute.org/}}
 }
 
-@Misc{		  openid,
-  author	= {OpenID Foundation, The},
-  title		= "OpenID",
-  howpublished	= {\url{openid.net}}
-}
-
 @Misc{		  openpam,
-  author	= {Dag-Erling Smorgrav},
-  title		= "OpenPAM",
-  howpublished	= {\url{www.openpam.org}}
+  author	= {Smorgrav, Dag-Erling},
+  title		= {{OpenPAM}},
+  howpublished	= {\url{http://www.openpam.org}}
 }
 
 @Misc{		  openpgp,
-  author	= {OpenPGP Alliance, The},
-  title		= "OpenPGP",
-  howpublished	= {\url{www.openpgp.org}}
-}
-
-@Misc{		  openssh,
-  author	= {OpenBSD Team, The},
-  title		= "OpenSSH",
-  howpublished	= {\url{www.openssh.com}}
+  author	= {{OpenPGP Alliance}},
+  title		= {{OpenPGP}},
+  howpublished	= {\url{http://www.openpgp.org}}
 }
 
 @Misc{		  openssl,
   author	= {OpenSSL},
-  title		= "OpenSSL",
-  howpublished	= {\url{www.openssl.org}}
+  title		= {{OpenSSL}},
+  howpublished	= {\url{http://www.openssl.org}}
 }
 
 @Misc{		  openstack,
   author	= {{OpenStack Project Team}},
-  title		= "Openstack",
+  title		= {Openstack},
   howpublished	= {\url{https://www.openstack.org}}
 }
 
 @Misc{		  openstack-barbican,
   author	= {{OpenStack Project Team}},
-  title		= "Barbican",
+  title		= {{Barbican}},
   howpublished	= {\url{https://wiki.openstack.org/wiki/Barbican}}
+}
+
+@Misc{		  openvpn,
+  author	= {{OpenVPN Technologies, Inc}},
+  title		= {{OpenVPN}: Your private path to access network resources
+		  and services securely},
+  howpublished	= {\url{https://openvpn.net/}}
 }
 
 @Misc{		  openwhisper,
   author	= {{Open Whisper Systems}},
-  title		= "Security, simplified: Open Source securty for mobile
-		  devices.",
-  howpublished	= {\url{whispersystems.org}}
+  title		= {{Open Whisper}: Privacy That Fits in Your Pocket},
+  howpublished	= {\url{https://whispersystems.org}}
+}
+
+@Misc{		  opm-cybersecurityincidents,
+  author	= {{U.S. Office of Personnel Management}},
+  title		= {Cybersecurity Resource Center: Cybersecurity Incidents},
+  howpublished	= {\url{https://www.opm.gov/cybersecurity/cybersecurity-incidents/}}
+		  
+}
+
+@TechReport{	  otr-advanced-ratchet,
+  author	= {Marlinspike, Moxie},
+  title		= {Advanced cryptographic ratcheting},
+  url		= {https://whispersystems.org/blog/advanced-ratcheting/},
+  year		= {2013},
+  month		= {November}
 }
 
 @TechReport{	  otr-v3,
   author	= {{OTR Development Team}},
   title		= {Off-the-Record Messaging Protocol version 3},
-  url		= {otr.cypherpunks.ca/Protocol-v3-4.0.0.html}
+  url		= {https://otr.cypherpunks.ca/Protocol-v3-4.0.0.html}
 }
 
 @Misc{		  owncloud,
-  author	= {{OwnCloud}},
-  title		= "OwnCloud Server",
-  howpublished	= {\url{owncloud.org}}
+  author	= {{OwnCloud Team}},
+  title		= {OwnCloud Server},
+  howpublished	= {\url{http://owncloud.org}}
 }
 
-@Misc{		  pagliery2014,
+@Article{	  pagliery2014,
   author	= {Pagliery, Jose},
-  title		= {{Uber removes racy blog posts on prostitution, one-night
-		  stands}},
+  title		= {{Uber} removes racy blog posts on prostitution, one-night
+		  stands},
   year		= {2014},
-  month		= {Nov},
-  note		= {{CNN Money}},
-  howpublished	= {\url{money.cnn.com/2014/11/25/technology/uber-prostitutes/}}
+  month		= {November},
+  journal	= {CNN Money},
+  howpublished	= {\url{http://money.cnn.com/2014/11/25/technology/uber-prostitutes/}}
 		  
 }
 
@@ -1864,23 +2308,24 @@
   booktitle	= {Proceedings of the 1988 ACM SIGMOD Conference on
 		  Management of Data},
   publisher	= {ACM},
-  title		= {{A Case for Redundant Arrays of Inexpensive Disks
-		  (RAID)}},
+  title		= {A Case for Redundant Arrays of Inexpensive Disks
+		  ({RAID})},
   url		= {http://dl.acm.org/citation.cfm?id=50214},
   year		= {1988}
 }
 
 @Misc{		  pcidss,
-  author	= {{PCI Securty Standard Council}},
-  title		= {PCI SSC Data Security Standards Overview},
-  howpublished	= {\url{www.pcisecuritystandards.org/security_standards/index.php}}
+  author	= {{PCI Security Standard Council}},
+  title		= {{PCI SSC} Data Security Standards Overview},
+  howpublished	= {\url{http://www.pcisecuritystandards.org/security_standards/index.php}}
 		  
 }
 
 @Misc{		  pcks11-standard,
-  author	= {EMC2},
-  title		= "PKCS \#11: Cryptogrphic Token Interface Standard",
-  howpublished	= {\url{www.emc.com}}
+  author	= {{RSA Laboratories}},
+  title		= {{PKCS \#11}: Cryptographic Token Interface Standard},
+  howpublished	= {\url{http://www.emc.com/emc-plus/rsa-labs/standards-initiatives/pkcs-11-cryptographic-token-interface-standard.htm}}
+		  
 }
 
 @Article{	  peacock2004,
@@ -1888,11 +2333,11 @@
   doi		= {10.1109/MSP.2004.89},
   issn		= {1540-7993},
   journal	= {IEEE Security \& Privacy Magazine},
-  month		= sep,
+  month		= {September},
   number	= {5},
   pages		= {40--47},
-  title		= {{Typing patterns: a key to user identification}},
-  url		= {ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1341408}
+  title		= {Typing patterns: a key to user identification},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1341408}
 		  ,
   volume	= {2},
   year		= {2004}
@@ -1901,31 +2346,26 @@
 @TechReport{	  pep3333,
   author	= {Eby, P.J.},
   institution	= {Python Software Foundation},
-  title		= {{PEP 3333 -- Python Web Server Gateway Interface v1.0.1}},
+  title		= {{PEP} 3333 -- {Python} Web Server Gateway Interface
+		  v1.0.1},
   url		= {https://www.python.org/dev/peps/pep-3333/},
   year		= {2010}
-}
-
-@Misc{		  persona,
-  author	= {Mozilla},
-  title		= "Persona",
-  howpublished	= {\url{developer.mozilla.org/en-US/Persona}}
 }
 
 @Misc{		  pew-privsec14,
   author	= {{Pew Research Center}},
   title		= {Public Perceptions of Privacy and Security in a
-		  Post-Snowden Era},
+		  Post-{Snowden} Era},
   month		= {November},
   year		= {2014},
-  howpublished	= {\url{www.pewinternet.org/2014/11/12/public-privacy-perceptions}}
+  howpublished	= {\url{http://www.pewinternet.org/2014/11/12/public-privacy-perceptions}}
 		  
 }
 
 @Misc{		  pgp,
-  author	= {Symantic},
-  title		= "PGP",
-  howpublished	= {\url{www.symantec.com/encryption}}
+  author	= {Symantec},
+  title		= {{PGP}},
+  howpublished	= {\url{http://www.symantec.com/encryption}}
 }
 
 @InProceedings{	  popa2011,
@@ -1938,125 +2378,100 @@
   isbn		= {9781450309776},
   pages		= {85},
   publisher	= {ACM Press},
-  title		= {{CryptDB: Protecting Confidentiality with Encrypted Query
-		  Processing}},
-  url		= {dl.acm.org/citation.cfm?id=2043566},
+  title		= {{CryptDB}: Protecting Confidentiality with Encrypted Query
+		  Processing},
+  url		= {http://dl.acm.org/citation.cfm?id=2043566},
   year		= {2011}
 }
 
 @Misc{		  popcorntime,
   author	= {{Unknown}},
-  title		= {Popcorn Time: Watch Movies and TV Shows Instantly},
-  howpublished	= {\url{popcorntime.io}}
+  title		= {{Popcorn Time}: Watch Movies and {TV} Shows Instantly},
+  howpublished	= {\url{http://popcorntime.io}}
 }
 
 @Misc{		  porticor,
   author	= {Porticor},
-  title		= "Porticor Cloud Security",
+  title		= {{Porticor} Cloud Security},
   howpublished	= {\url{www.porticor.com/technology/}}
 }
 
 @Misc{		  puppet,
   author	= {{Puppet Labs}},
   title		= {{Puppet}},
-  howpublished	= {\url{https://puppetlabs.com}}
+  howpublished	= {\url{http://puppetlabs.com}}
 }
 
 @Misc{		  pyjwt,
   author	= {Padilla, José and Lindsay, Jeff},
-  title		= {{pyJWT: A Python implementation of RFC 7519}},
+  title		= {{pyJWT}: A {Python} implementation of {RFC} 7519},
   howpublished	= {\url{https://github.com/jpadilla/pyjwt}}
 }
 
 @Misc{		  python-cryptography,
   author	= {{Cryptography Contributors}},
-  title		= {Cryptography: A python crypto library},
+  title		= {Cryptography: A {Python} crypto library},
   howpublished	= {\url{https://cryptography.io/}}
 }
 
 @Misc{		  python-flask,
   author	= {Ronacher, Armin},
-  title		= "Flask: web development one drop at a time",
+  title		= {{Flask}: Web development one drop at a time},
   howpublished	= {\url{http://flask.pocoo.org/}}
-}
-
-@Misc{		  python-requests,
-  author	= {Reitz, Kenneth},
-  title		= "Requests: HTTP for Humans",
-  howpublished	= {\url{www.python-requests.org}}
-}
-
-@Misc{		  python-shelve,
-  author	= {Python Software Foundation},
-  title		= "shelve - python object persistence",
-  howpublished	= {\url{docs.python.org/2/library/shelve.html}}
 }
 
 @Misc{		  qemu,
   author	= {Bellard, Fabrice and Others},
-  title		= {{QEMU: Open Source Process Emsulator}},
+  title		= {{QEMU}: Open Source Process Emulator},
   howpublished	= {\url{http://wiki.qemu.org/Main_Page}}
-}
-
-@Misc{		  rackspace-compute,
-  author	= {{RackSpace}},
-  title		= "RackSpace Cloud Servers",
-  howpublished	= {\url{www.rackspace.com/cloud/servers}}
 }
 
 @TechReport{	  ramsdell-rfc5751,
   author	= {Ramsdell, B. and Turner, S.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--45},
-  title		= {{RFC 5751: Secure/Multipurpose Internet Mail Extensions
-		  (S/MIME) Version 3.2 Message Specification}},
-  url		= {www.ietf.org/rfc/rfc5751.txt},
+  title		= {{RFC} 5751: Secure/Multipurpose Internet Mail Extensions
+		  ({S/MIME}) Version 3.2 Message Specification},
+  url		= {http://www.ietf.org/rfc/rfc5751.txt},
   year		= {2010}
 }
 
 @Misc{		  rc4-source,
   author	= {{nobody@jpunix.com}},
-  title		= "Thank You Bob Anderson: RC4 Source Code",
+  title		= {Thank You {Bob Anderson}: {RC4} Source Code},
   howpublished	= {\url{http://cypherpunks.venona.com/archive/1994/09/msg00304.html}}
 		  
 }
 
 @Misc{		  redis,
-  author	= {{The Redis Team}},
-  title		= "Redis: REmote DIctionary Server",
+  author	= {{Redis Team}},
+  title		= {{Redis}: Remote Dictionary Server},
   howpublished	= {\url{http://redis.io/}}
 }
 
 @InProceedings{	  resch2011,
   author	= {Resch, Jason K. and Plank, James S.},
   booktitle	= {9th USENIX Conference on File and Storage Technologies},
-  title		= {{AONT-RS: Blending Security and Performance in Dispersed
-		  Storage Systems}},
+  title		= {{AONT-RS}: Blending Security and Performance in Dispersed
+		  Storage Systems},
   year		= {2011}
-}
-
-@Misc{		  rest-bestpractices,
-  author	= {Sahni, Vinay},
-  title		= "Best Practices for Designing a Pragmatic RESTful API",
-  howpublished	= {\url{www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api}}
-		  
 }
 
 @TechReport{	  rfc5280,
   author	= {Cooper, D. and Santesson, S. and Farrell, S. and Boeyen,
 		  S. and Housley, R. and Polk, W.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--150},
-  title		= {{RFC 5280: Internet X.509 Public Key Infrastructure
-		  Certificate and Certificate Revocation List (CRL)
-		  Profile}},
-  url		= {https://tools.ietf.org/html/rfc5280},
-  year		= {2008},
-  month		= {May}
+  title		= {{RFC} 5280: {Internet} {X.509} Public Key Infrastructure
+		  Certificate and Certificate Revocation List ({CRL})
+		  Profile}
 }
 
 @TechReport{	  rfc7515,
   author	= {Jones, M. and Bradles, J. and Sakimura, N.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--59},
-  title		= {{RFC 7515: JSON Web Signature (JWS)}},
+  title		= {{RFC} 7515: {JSON} Web Signature ({JWS})},
   url		= {https://tools.ietf.org/html/rfc7515},
   year		= {2015},
   month		= {May}
@@ -2064,8 +2479,9 @@
 
 @TechReport{	  rfc7519,
   author	= {Jones, M. and Bradles, J. and Sakimura, N.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--29},
-  title		= {{RFC 7519: JSON Web Token (JWT)}},
+  title		= {{RFC} 7519: {JSON} Web Token ({JWT})},
   url		= {https://tools.ietf.org/html/rfc7519},
   year		= {2015},
   month		= {May}
@@ -2077,9 +2493,9 @@
   journal	= {Communications of the ACM},
   number	= {2},
   pages		= {120--126},
-  title		= {{A method for obtaining digital signatures and public-key
-		  cryptosystems}},
-  url		= {dl.acm.org/citation.cfm?id=359342},
+  title		= {A method for obtaining digital signatures and public-key
+		  cryptosystems},
+  url		= {http://dl.acm.org/citation.cfm?id=359342},
   volume	= {21},
   year		= {1978}
 }
@@ -2088,8 +2504,8 @@
   author	= {Rosen, Alon},
   institution	= {Porticor},
   pages		= {1--9},
-  title		= {{Analysis of The Porticor Homomorphic Key Management
-		  Protocol}},
+  title		= {Analysis of the {Porticor} Homomorphic Key Management
+		  Protocol},
   year		= {2012}
 }
 
@@ -2098,28 +2514,28 @@
   doi		= {10.1145/502059.502053},
   issn		= {01635980},
   journal	= {ACM SIGOPS Operating Systems Review},
-  month		= dec,
+  month		= {December},
   number	= {5},
   pages		= {188},
   publisher	= {ACM},
-  title		= {{Storage management and caching in PAST, a large-scale,
-		  persistent peer-to-peer storage utility}},
-  url		= {dl.acm.org/citation.cfm?id=502053},
+  title		= {Storage management and caching in {PAST}, a large-scale,
+		  persistent peer-to-peer storage utility},
+  url		= {http://dl.acm.org/citation.cfm?id=502053},
   volume	= {35},
   year		= {2001}
 }
 
 @Misc{		  rsf-china,
-  author	= {{Reporter WIthout Borders}},
-  title		= {The Internet in China},
+  author	= {{Reporters Without Borders}},
+  title		= {The {Internet} in {China}},
   howpublished	= {\url{http://surveillance.rsf.org/en/china/}},
   year		= {2012}
 }
 
 @Misc{		  salt,
   author	= {Saltstack},
-  title		= "Salt",
-  howpublished	= {\url{www.saltstack.com}}
+  title		= {Salt},
+  howpublished	= {\url{http://www.saltstack.com}}
 }
 
 @Article{	  saltzer1974,
@@ -2127,27 +2543,25 @@
   doi		= {10.1145/361011.361067},
   issn		= {00010782},
   journal	= {Communications of the ACM},
-  month		= jul,
+  month		= {July},
   number	= {7},
   pages		= {388--402},
-  title		= {{Protection and the control of information sharing in
-		  multics}},
-  url		= {dl.acm.org/citation.cfm?id=361067
-		  portal.acm.org/citation.cfm?doid=361011.361067},
+  title		= {Protection and the control of information sharing in
+		  {Multics}},
+  url		= {http://dl.acm.org/citation.cfm?id=361067},
   volume	= {17},
   year		= {1974}
 }
 
 @Article{	  saltzer1975,
-  author	= {Saltzer, JH and Schroeder, MD},
+  author	= {Saltzer, Jerome H. and Schroeder, M.D.},
   doi		= {10.1109/PROC.1975.9939},
   issn		= {0018-9219},
   journal	= {Proceedings of the IEEE},
   number	= {9},
   pages		= {1278--1308},
-  title		= {{The protection of information in computer systems}},
-  url		= {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1451869
-		  http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1451869}
+  title		= {The protection of information in computer systems},
+  url		= {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1451869}
 		  ,
   volume	= {63},
   year		= {1975}
@@ -2163,9 +2577,9 @@
   isbn		= {9781450315968},
   pages		= {1--8},
   publisher	= {ACM Press},
-  title		= {{An efficient and secure data sharing framework using
-		  homomorphic encryption in the cloud}},
-  url		= {dl.acm.org/citation.cfm?doid=2347673.2347681},
+  title		= {An efficient and secure data sharing framework using
+		  homomorphic encryption in the cloud},
+  url		= {http://dl.acm.org/citation.cfm?doid=2347673.2347681},
   year		= {2012}
 }
 
@@ -2178,17 +2592,16 @@
   isbn		= {0897918290},
   pages		= {1--10},
   publisher	= {ACM Press},
-  title		= {{Unified login with pluggable authentication modules
-		  (PAM)}},
-  url		= {dl.acm.org/citation.cfm?id=238177
-		  portal.acm.org/citation.cfm?doid=238168.238177},
+  title		= {Unified login with pluggable authentication modules
+		  ({PAM})},
+  url		= {http://dl.acm.org/citation.cfm?id=238177},
   year		= {1996}
 }
 
 @Misc{		  saml,
   author	= {OASIS},
-  title		= "SAML",
-  howpublished	= {\url{www.oasis-open.org/committees/tc_home.php?wg_abbrev=security}}
+  title		= {Security assertion markup language ({SAML})},
+  howpublished	= {\url{http://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security}}
 		  
 }
 
@@ -2198,9 +2611,9 @@
 		  and Walsh, Dan and Lyon, Bob},
   booktitle	= {Proceedings of the Summer 1985 USENIX Conference},
   pages		= {119--130},
-  title		= {{Design and Implementation of the Sun Network
+  title		= {Design and Implementation of the {Sun Network
 		  Filesystem}},
-  url		= {ece.ut.ac.ir/Classpages/S90/ECE404/nfs.pdf},
+  url		= {http://ece.ut.ac.ir/Classpages/S90/ECE404/nfs.pdf},
   year		= {1985}
 }
 
@@ -2210,28 +2623,16 @@
   journal	= {IEEE Computer},
   number	= {2},
   pages		= {38--47},
-  title		= {{Role-Based Access Control Models}},
+  title		= {Role-Based Access Control Models},
   url		= {http://modelibra.googlecode.com/svn/trunk/Modelibra/doc/security/sandhu96.pdf}
 		  ,
   volume	= {29},
   year		= {1996}
 }
 
-@Misc{		  sasl,
-  author	= {Carnegie Mellon},
-  title		= "SASL",
-  howpublished	= {\url{asg.web.cmu.edu/sasl}}
-}
-
-@Misc{		  sayler-os-encfs,
-  author	= {Sayler, Andy and Ahn, Junho and Han, Richard},
-  title		= "OS Programming Assignment: An Encrypted Filesystem",
-  howpublished	= {\url{github.com/asayler/CU-CS3753-PA5}}
-}
-
 @Book{		  schlosser2013,
   title		= {Command and Control: Nuclear Weapons, the Damascus
-		  Accident, and the Issusion of Safety},
+		  Accident, and the Illusion of Safety},
   author	= {Schlosser, Eric},
   year		= {2013},
   publisher	= {The Penguin Press},
@@ -2242,9 +2643,9 @@
 @Article{	  schneier-metadata,
   author	= {Schneier, Bruce},
   journal	= {Wired},
-  title		= {NSA Doesn’t Need to Spy on Your Calls to Learn Your
+  title		= {{NSA} Doesn’t Need to Spy on Your Calls to Learn Your
 		  Secrets},
-  url		= {www.wired.com/2015/03/data-and-goliath-nsa-metadata-spying-your-secrets/}
+  url		= {http://www.wired.com/2015/03/data-and-goliath-nsa-metadata-spying-your-secrets/}
 		  ,
   year		= {2015},
   month		= {March}
@@ -2254,7 +2655,7 @@
   author	= {Schneier, Bruce},
   journal	= {Schneier on Security},
   title		= {Password Advice},
-  url		= {www.schneier.com/blog/archives/2009/08/password_advice.html}
+  url		= {http://www.schneier.com/blog/archives/2009/08/password_advice.html}
 		  ,
   year		= {2009}
 }
@@ -2269,34 +2670,99 @@
 @TechReport{	  schneier1998,
   author	= {Schneier, Bruce and Kelsey, John and Whiting, Doug and
 		  Wagner, David and Hall, Chris},
-  title		= {{Twofish: A 128-bit block cipher}},
-  url		= {www.thehackademy.net/madchat/crypto/hash-lib-algo/twofish/twofish.pdf}
+  title		= {{Twofish}: A 128-bit block cipher},
+  url		= {http://www.thehackademy.net/madchat/crypto/hash-lib-algo/twofish/twofish.pdf}
 		  ,
   year		= {1998}
 }
 
-@Book{		  schneier2000secrets,
-  title		= {Secrets and Lies},
-  author	= {Schneier, Bruce},
-  year		= {2000},
-  publisher	= {John Wiley \& Sons}
+@Book{		  schneier2010crypto,
+  title		= {Cryptography Engineering: Design Principles and Practical
+		  Applications},
+  author	= {Ferguson, Niels and Schneier, Bruce and Kohno, Tadayoshi},
+  year		= {2010},
+  publisher	= {Wiley},
+  address	= {Indianapolis, IN},
+  isbn		= {978-0-470-47424-2}
 }
 
-@Misc{		  scotus-smithvmaryland,
-  author	= {{Supreme Court of United States}},
-  title		= {Smith v. Maryland},
-  month		= {June},
-  year		= {1979},
-  howpublished	= {\url{scholar.google.com/scholar_case?case=3033726127475530815}}
+@Article{	  schneier2016,
+  author	= {Schneier, Bruce and Seidel, Kathleen and Vijayakumar,
+		  Saranya},
+  doi		= {10.2139/ssrn.2731160},
+  institution	= {Berkman Center for Internet {\&} Society},
+  issn		= {1556-5068},
+  journal	= {SSRN Electronic Journal},
+  pages		= {1--23},
+  title		= {A Worldwide Survey of Encryption Products},
+  url		= {http://papers.ssrn.com/sol3/papers.cfm?abstract{\_}id=2731160}
+		  ,
+  volume	= {2},
+  year		= {2016}
+}
+
+@Misc{		  scotus-katzvus,
+  author	= {{Supreme Court of the United States}},
+  title		= {{Katz v. United States}},
+  year		= {1967},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/389/347}}
 		  
 }
 
-@Misc{		  scotus-usvmiller,
-  author	= {{Supreme Court of United States}},
-  title		= {United States v. Miller},
-  month		= {April},
+@Misc{		  scotus-nearvminnesota,
+  author	= {{Supreme Court of the United States}},
+  title		= {{Near v. Minnesota}},
+  year		= {1931},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/283/697}}
+		  
+}
+
+@Misc{		  scotus-nytvus,
+  author	= {{Supreme Court of the United States}},
+  title		= {{New York Times v. United States}},
+  year		= {1971},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/403/713}}
+		  
+}
+
+@Misc{		  scotus-smithvmaryland,
+  author	= {{Supreme Court of the United States}},
+  title		= {{Smith v. Maryland}},
+  year		= {1979},
+  month		= {June},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/442/735}}
+		  
+}
+
+@Misc{		  scotus-usvjones,
+  author	= {{Supreme Court of the United States}},
+  title		= {{United States v. Jones}},
+  year		= {2012},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/10-1259}}
+		  
+}
+
+@Misc{		  scotus-usvmiller-guns,
+  author	= {{Supreme Court of the United States}},
+  title		= {{United States v. Miller}},
+  year		= {1939},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/307/174}}
+		  
+}
+
+@Misc{		  scotus-usvmiller-privacy,
+  author	= {{Supreme Court of the United States}},
+  title		= {{United States v. Mitchell Miller}},
   year		= {1976},
-  howpublished	= {\url{scholar.google.com/scholar_case?case=15052729295643479698}}
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/425/435/}}
+		  
+}
+
+@Misc{		  scotus-wooleyvmaynard,
+  author	= {{Supreme Court of the United States}},
+  title		= {{Wooley v. Maynard}},
+  year		= {1977},
+  howpublished	= {\url{https://www.law.cornell.edu/supremecourt/text/430/705}}
 		  
 }
 
@@ -2305,42 +2771,52 @@
   doi		= {10.1145/359168.359176},
   issn		= {00010782},
   journal	= {Communications of the ACM},
-  month		= nov,
+  month		= {November},
   number	= {11},
   pages		= {612--613},
-  title		= {{How to share a secret}},
-  url		= {portal.acm.org/citation.cfm?doid=359168.359176},
+  title		= {How to share a secret},
+  url		= {http://portal.acm.org/citation.cfm?doid=359168.359176},
   volume	= {22},
   year		= {1979}
 }
 
+@TechReport{	  shannon1945,
+  author	= {Shannon, Claude},
+  institution	= {Bell Labs},
+  number	= {MM 45-11002},
+  pages		= {1--136},
+  title		= {A Mathematical Theory of Cryptography},
+  url		= {https://www.iacr.org/museum/shannon45.html},
+  year		= {1945}
+}
+
 @Misc{		  shibboleth,
-  author	= {Shibboleth Consortium, The},
-  title		= "Shibboleth",
-  howpublished	= {\url{shibboleth.net}}
+  author	= {{Shibboleth Consortium}},
+  title		= {Shibboleth Homepage},
+  howpublished	= {\url{http://shibboleth.net}}
 }
 
 @InProceedings{	  shieh2011,
   address	= {New York, New York, USA},
   author	= {Shieh, Jyh-Ren and Lin, Ching-Yung and Wu, Ja-Ling},
-  booktitle	= {Proceedings of the 20th ACM international conference on
-		  Information and knowledge management - CIKM '11},
+  booktitle	= {Proceedings of the 20th ACM international Conference on
+		  Information and Knowledge Management - CIKM '11},
   doi		= {10.1145/2063576.2063708},
   isbn		= {9781450307178},
   pages		= {915},
   publisher	= {ACM Press},
-  title		= {{Recommendation in the end-to-end encrypted domain}},
-  url		= {dl.acm.org/citation.cfm?doid=2063576.2063708},
+  title		= {Recommendation in the end-to-end encrypted domain},
+  url		= {http://dl.acm.org/citation.cfm?doid=2063576.2063708},
   year		= {2011}
 }
 
 @Misc{		  sims2014,
   author	= {Sims, Peter},
-  title		= {{Can We Trust Uber?}},
+  title		= {Can We Trust {Uber}?},
   year		= {2014},
-  month		= {Sep},
-  note		= {{Medium}},
-  howpublished	= {\url{medium.com/@petersimsie/can-we-trust-uber-c0e793deda36}}
+  month		= {September},
+  note		= {Medium},
+  howpublished	= {\url{http://medium.com/@petersimsie/can-we-trust-uber-c0e793deda36}}
 		  
 }
 
@@ -2348,20 +2824,49 @@
   author	= {Singer, Abe and Anderson, Warren and Farrow, Rik},
   journal	= {;login},
   number	= {4},
-  title		= {{Rethinking Password Policies (Uncut)}},
-  url		= {www.usenix.org/sites/default/files/rethinking\_password\_policies\_unabridged.pdf}
+  title		= {Rethinking Password Policies (Uncut)},
+  url		= {http://www.usenix.org/sites/default/files/rethinking\_password\_policies\_unabridged.pdf}
 		  ,
   volume	= {38},
   year		= {2013}
 }
 
+@Book{		  singh1999,
+  title		= {The Code Book},
+  author	= {Singh, Simon},
+  year		= {1999},
+  publisher	= {Doubleday},
+  pages		= {279-292}
+}
+
+@Article{	  sisk2011,
+  author	= {Sisk, Gregory C.},
+  journal	= {University of St. Thomas Law Journal},
+  number	= {3},
+  title		= {Official Wrongdoing and the Civil Liability of the Federal
+		  Government and Officers},
+  volume	= {8},
+  year		= {2011}
+}
+
+@Misc{		  sixthcir-junger,
+  author	= {{U.S. Court of Appeals for the Sixth Circuit}},
+  title		= {{Peter D. Junger v. William Daley, U.S. Secretary of
+		  Commerce, et al.}},
+  year		= {2000},
+  month		= {April},
+  howpublished	= {\url{http://caselaw.findlaw.com/us-6th-circuit/1074126.html}}
+		  ,
+  note		= {98-4045}
+}
+
 @Misc{		  smith-stats,
   author	= {Craig Smith},
-  title		= {{How Many People Use 800+ of teh Top Social Networks,
-		  Apps, and Digital Services}},
+  title		= {How Many People Use 800+ of the Top Social Networks, Apps,
+		  and Digital Services},
   year		= {2005},
-  month		= mar,
-  howpublished	= {\url{expandedramblings.com/index.php/resource-how-many-people-use-the-top-social-media}}
+  month		= {March},
+  howpublished	= {\url{http://expandedramblings.com/index.php/resource-how-many-people-use-the-top-social-media}}
 		  
 }
 
@@ -2370,102 +2875,130 @@
   doi		= {10.1109/MSECP.2003.1177003},
   issn		= {1540-7993},
   journal	= {Security \& Privacy, IEEE},
-  month		= jan,
+  month		= {January},
   number	= {1},
   pages		= {89--93},
-  title		= {{Fairy dust, secrets, and the real world}},
-  url		= {ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1177003}
+  title		= {Fairy dust, secrets, and the real world},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1177003}
 		  ,
   volume	= {1},
   year		= {2003}
 }
 
+@Article{	  solove2015,
+  author	= {Solove, Daniel},
+  journal	= {Teach Privacy: Privacy and Security Blog},
+  title		= {Going Bankrupt with Your Personal Data},
+  url		= {https://www.teachprivacy.com/going-bankrupt-with-your-personal-data/}
+		  ,
+  year		= {2015},
+  month		= {July}
+}
+
 @TechReport{	  song2006,
   author	= {Song, J.H. and Poovendran, R. and Lee, J. and Iwata, T.},
+  institution	= {Internet Engineering Task Force},
   pages		= {1--20},
-  title		= {{RFC 4493: The AES-CMAC Algorithm}},
-  url		= {www.ietf.org/rfc/rfc4493.txt},
+  title		= {{RFC} 4493: The {AES-CMAC} Algorithm},
+  url		= {http://www.ietf.org/rfc/rfc4493.txt},
   year		= {2006},
   month		= {June}
 }
 
-@InProceedings{	  spencer1999,
-  author	= {Spencer, Ray and Smalley, Stephen and Loscocco, Peter and
-		  Hibler, Mike and Andersen, David and Lepreau, Jay},
-  booktitle	= {Proceedings of the 8th USENIX Security Symposium},
-  title		= {{The Flask Security Architecture: System Support for
-		  Diverse Security Policies}},
-  year		= {1999}
-}
-
 @Misc{		  spideroak,
   author	= {{SpiderOak}},
-  title		= {SpiderOak: Store. Sync. Share. Privately.},
-  howpublished	= {\url{spideroak.com}}
+  title		= {{SpiderOak}: Store, Sync, Share, Privately},
+  howpublished	= {\url{http://spideroak.com}}
 }
 
 @Misc{		  splunk,
-  author	= {{Splunk Inc}},
-  title		= "Splunk: Operational Intelligence, Log Management,
-		  Application Management, Enterprise Security and Compliance",
-  howpublished	= {\url{www.splunk.com}}
+  author	= {{Splunk, Inc}},
+  title		= {{Splunk}: Operational Intelligence, Log Management,
+		  Application Management, Enterprise Security and
+		  Compliance},
+  howpublished	= {\url{http://www.splunk.com}}
 }
 
 @Misc{		  src-qemu-tutamen,
   author	= {Sayler, Andy and Others},
-  title		= {{Tutamen-aware QEMU Port}},
+  title		= {{Tutamen-aware QEMU port}},
   howpublished	= {\url{https://github.com/asayler/qemu}}
 }
 
 @Misc{		  src-tutamen-apiaccesscontrol,
   author	= {Sayler, Andy},
-  title		= {{Tutamen Access Control API Source Code}},
+  title		= {{Tutamen} access control {API} source code},
   howpublished	= {\url{https://github.com/asayler/tutamen-api_accesscontrol}}
 		  
 }
 
 @Misc{		  src-tutamen-apistorage,
   author	= {Sayler, Andy},
-  title		= {{Tutamen Storage API Source Code}},
+  title		= {{Tutamen} storage {API} source code},
   howpublished	= {\url{https://github.com/asayler/tutamen-api_storage}}
 }
 
 @Misc{		  src-tutamen-askpassword,
   author	= {Monaco, Matt},
-  title		= {{Tutamen ask-password Source Code}},
+  title		= {{Tutamen ask-password} source code},
   howpublished	= {\url{https://git.monaco.cx/matt/tutamen-ask-password}}
+}
+
+@Misc{		  src-tutamen-cli,
+  author	= {Sayler, Andy},
+  title		= {{Tutamen} Command Line Interface},
+  howpublished	= {\url{https://github.com/asayler/tutamen-tutamencli}}
 }
 
 @Misc{		  src-tutamen-go,
   author	= {Monaco, Matt},
-  title		= {{Tutamen golang Library Source Code}},
+  title		= {{Tutamen golang} library source code},
   howpublished	= {\url{https://git.monaco.cx/matt/go-tutamen}}
 }
 
 @Misc{		  src-tutamen-pytutamen,
   author	= {Sayler, Andy},
-  title		= {{Tutamen pytutamen Client Source Code}},
+  title		= {{pytutamen} client source code},
   howpublished	= {\url{https://github.com/asayler/tutamen-pytutamen}}
 }
 
 @Misc{		  src-tutamen-pytutamenserver,
   author	= {Sayler, Andy},
-  title		= {{Tutamen pytutamen Server Source Code}},
+  title		= {{pytutamen} server source code},
   howpublished	= {\url{https://github.com/asayler/tutamen-pytutamen_server}}
+}
+
+@Article{	  starks2016,
+  author	= {Starks, Tim},
+  journal	= {Politico},
+  title		= {Cyber insurance gets {Hill} attention},
+  year		= {2016},
+  month		= {March}
+}
+
+@Article{	  stigall2013,
+  author	= {Stigall, Dan E},
+  institution	= {U.S. Department of Justice},
+  journal	= {SSRN},
+  title		= {Ungoverned Spaces, Transnational Crime, and the
+		  Prohibition on Extraterritorial Enforcement Jurisdiction in
+		  International Law},
+  url		= {http://ssrn.com/abstract=2211219},
+  year		= {2013}
 }
 
 @InProceedings{	  studer2010,
   address	= {New York, New York, USA},
   author	= {Studer, Ahren and Perrig, Adrian},
-  booktitle	= {Proceedings of the third ACM conference on Wireless
-		  network security - WiSec '10},
+  booktitle	= {Proceedings of the Third ACM Conference on Wireless
+		  Network Security - WiSec '10},
   doi		= {10.1145/1741866.1741892},
   isbn		= {9781605589237},
   pages		= {151},
   publisher	= {ACM Press},
-  title		= {{Mobile user location-specific encryption (MULE): Using
-		  Your Office as Your Password}},
-  url		= {portal.acm.org/citation.cfm?doid=1741866.1741892},
+  title		= {Mobile user location-specific encryption ({MULE}): Using
+		  Your Office as Your Password},
+  url		= {http://portal.acm.org/citation.cfm?doid=1741866.1741892},
   year		= {2010}
 }
 
@@ -2479,33 +3012,43 @@
   isbn		= {9781605586618},
   pages		= {55},
   publisher	= {ACM Press},
-  title		= {{The usability of end user cryptographic products}},
-  url		= {portal.acm.org/citation.cfm?doid=1940976.1940988},
+  title		= {The usability of end user cryptographic products},
+  url		= {http://portal.acm.org/citation.cfm?doid=1940976.1940988},
   year		= {2009}
 }
 
+@Article{	  swire2011,
+  author	= {Swire, Peter and Ahmad, Kenesa},
+  journal	= {Center for Democracy and Technology Blog},
+  title		= {Goring Dark versus a Golden Age for Surveillance},
+  url		= {https://cdt.org/blog/\%E2\%80\%98going-dark\%E2\%80\%99-versus-a-\%E2\%80\%98golden-age-for-surveillance\%E2\%80\%99/}
+		  ,
+  year		= {2011},
+  month		= {November}
+}
+
 @Misc{		  symantec-shellshock,
-  author	= {{Symantec Corperation}},
-  title		= "ShellShock: All you need to know about the Bash Bug
-		  vulnerability",
+  author	= {{Symantec Corporation}},
+  title		= {{ShellShock}: All you need to know about the {Bash Bug}
+		  vulnerability},
   howpublished	= {\url{http://www.symantec.com/connect/blogs/shellshock-all-you-need-know-about-bash-bug-vulnerability}}
 		  
 }
 
-@Article{	  symanteccorporation2014,
+@Article{	  symanteccorporation2015,
   author	= {{Symantec Corporation}},
   number	= {April},
-  pages		= {97},
-  title		= {{Internet Security Threat Report 2014}},
-  url		= {http://www.symantec.com/content/en/us/enterprise/other\_resources/b-istr\_main\_report\_v19\_21291018.en-us.pdf}
+  pages		= {119},
+  title		= {{Internet Security Threat Report 20}},
+  url		= {https://www4.symantec.com/mktginfo/whitepaper/ISTR/21347932_GA-internet-security-threat-report-volume-20-2015-social_v2.pdf}
 		  ,
-  volume	= {19},
-  year		= {2014}
+  volume	= {20},
+  year		= {2015}
 }
 
 @Misc{		  systemd-passwordagents,
-  author	= {{Systemd Contributors}},
-  title		= {{systemd Password Agents}},
+  author	= {{systemd Contributors}},
+  title		= {{systemd} Password Agents},
   howpublished	= {\url{https://wiki.freedesktop.org/www/Software/systemd/PasswordAgents/}}
 		  
 }
@@ -2513,12 +3056,12 @@
 @InProceedings{	  tang2012,
   author	= {Tang, Yang and Ames, Phillip and Bhamidipati, Sravan and
 		  Bijlani, Ashish and Geambasu, Roxana and Sarda, Nikhil},
-  booktitle	= {Proceedings of the 10th USENIX conference on Operating
+  booktitle	= {Proceedings of the 10th USENIX Conference on Operating
 		  Systems Design and Implementation},
   pages		= {77--91},
-  title		= {{CleanOS: Limiting Mobile Data Exposure with Idle
-		  Eviction.}},
-  url		= {www.usenix.org/system/files/conference/osdi12/osdi12-final-203.pdf}
+  title		= {{CleanOS}: Limiting Mobile Data Exposure with Idle
+		  Eviction},
+  url		= {http://www.usenix.org/system/files/conference/osdi12/osdi12-final-203.pdf}
 		  ,
   year		= {2012}
 }
@@ -2528,14 +3071,25 @@
   title		= {{The Fourth Amendment Third-Party Doctrine}},
   institution	= {Congressional Research Service},
   number	= {R43586},
-  url		= {\url{fas.org/sgp/crs/misc/R43586.pdf}},
+  url		= {\url{http://fas.org/sgp/crs/misc/R43586.pdf}},
   year		= {2014}
+}
+
+@Article{	  thompson1984,
+  author	= {Thompson, Ken},
+  journal	= {Communications of the ACM},
+  month		= {June},
+  number	= {8},
+  pages		= {761--763},
+  title		= {Reflections on Trusting Trust},
+  volume	= {27},
+  year		= {1984}
 }
 
 @Misc{		  tresorit,
   author	= {{Tresorit}},
-  title		= "Tresorit: The ultimate was to stay safe in the cloud",
-  howpublished	= {\url{tresorit.com}}
+  title		= {{Tresorit}: The ultimate was to stay safe in the cloud},
+  howpublished	= {\url{http://tresorit.com}}
 }
 
 @Article{	  tsipenyuk2005,
@@ -2543,13 +3097,12 @@
   doi		= {10.1109/MSP.2005.159},
   issn		= {1540-7993},
   journal	= {Security \& Privacy, IEEE},
-  month		= nov,
+  month		= {November},
   number	= {6},
   pages		= {81--84},
-  title		= {{Seven pernicious kingdoms: A taxonomy of software
-		  security errors}},
-  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1556543
-		  http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1556543}
+  title		= {Seven pernicious kingdoms: A taxonomy of software security
+		  errors},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=1556543}
 		  ,
   volume	= {3},
   year		= {2005}
@@ -2557,73 +3110,161 @@
 
 @Misc{		  tsukayama2014,
   author	= {Tsukayama, Hayley},
-  title		= {{Facebook draws fire from privacy advocates over ad
-		  chnages}},
+  title		= {{Facebook} draws fire from privacy advocates over ad
+		  changes},
   year		= {2014},
   month		= {June},
-  note		= {{Washington Post}},
-  howpublished	= {\url{www.washingtonpost.com/blogs/the-switch/wp/2014/06/12/privacy-experts-say-facebook-changes-open-up-unprecedented-data-collection/}}
+  note		= {Washington Post},
+  howpublished	= {\url{http://www.washingtonpost.com/blogs/the-switch/wp/2014/06/12/privacy-experts-say-facebook-changes-open-up-unprecedented-data-collection/}}
 		  
 }
 
 @Misc{		  twilio,
   author	= {{Twilio}},
-  title		= {{Twilio: A Messaging, Voice, Video and Authentication API
-		  for every application}},
+  title		= {{Twilio}: A Messaging, Voice, Video and Authentication
+		  {API} for every application},
   howpublished	= {\url{https://www.twilio.com/}}
 }
 
 @Misc{		  uber,
   author	= {{Uber}},
-  title		= {Uber: Your Ride, On Demand},
-  howpublished	= {\url{www.uber.com}}
+  title		= {{Uber}: Your Ride, On Demand},
+  howpublished	= {\url{http://www.uber.com}}
+}
+
+@Misc{		  us-constitution-amend1,
+  author	= {{United States}},
+  title		= {{First Amendment to the U.S. Constitution}},
+  year		= {1789},
+  month		= {September},
+  howpublished	= {\url{http://www.gpo.gov/fdsys/pkg/CDOC-110hdoc50/pdf/CDOC-110hdoc50.pdf}}
+		  
+}
+
+@Misc{		  us-constitution-amend2,
+  author	= {{United States}},
+  title		= {{Second Amendment to the U.S. Constitution}},
+  year		= {1789},
+  month		= {September},
+  howpublished	= {\url{http://www.gpo.gov/fdsys/pkg/CDOC-110hdoc50/pdf/CDOC-110hdoc50.pdf}}
+		  
 }
 
 @Misc{		  us-constitution-amend4,
   author	= {{United States}},
-  title		= {{US Constituion: Amendment 4}},
+  title		= {{Fourth Amendment to the U.S. Constitution}},
   year		= {1789},
-  month		= {Sep},
-  howpublished	= {\url{www.gpo.gov/fdsys/pkg/CDOC-110hdoc50/pdf/CDOC-110hdoc50.pdf}}
+  month		= {September},
+  howpublished	= {\url{http://www.gpo.gov/fdsys/pkg/CDOC-110hdoc50/pdf/CDOC-110hdoc50.pdf}}
 		  
 }
 
+@Misc{		  us-constitution-amend5,
+  author	= {{United States}},
+  title		= {{Fifth Amendment to the U.S. Constitution}},
+  year		= {1789},
+  month		= {September},
+  howpublished	= {\url{http://www.gpo.gov/fdsys/pkg/CDOC-110hdoc50/pdf/CDOC-110hdoc50.pdf}}
+		  
+}
+
+@Misc{		  usc-allwrits,
+  author	= {{United States}},
+  title		= {{28 U.S. Code, Title 28, Part V, Chapter 111 (Section
+		  1651) - Writs}},
+  howpublished	= {\url{https://www.law.cornell.edu/uscode/text/28/1651}}
+}
+
+@Misc{		  usvboucher,
+  author	= {{U.S. District Court for the District of Vermont}},
+  title		= {{In re Boucher}},
+  year		= {2007},
+  howpublished	= {\url{http://www.volokh.com/files/Boucher.pdf}}
+}
+
+@Misc{		  usvdoe,
+  author	= {{U.S. Court of Appeals for the Eleventh Circuit}},
+  title		= {{United States v. John Doe}},
+  year		= {2012},
+  howpublished	= {\url{https://www.eff.org/files/filenode/opiniondoe22312.pdf}}
+		  
+}
+
+@InProceedings{	  valipour2009,
+  author	= {Valipour, Mohammad Hadi and Amirzafari, Bavar and Maleki,
+		  Khashayar Niki and Daneshpour, Negin},
+  booktitle	= {2009 2nd IEEE International Conference on Computer Science
+		  and Information Technology},
+  doi		= {10.1109/ICCSIT.2009.5235004},
+  isbn		= {978-1-4244-4519-6},
+  pages		= {34--38},
+  publisher	= {IEEE},
+  title		= {A brief survey of software architecture concepts and
+		  service oriented architecture},
+  url		= {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=5235004}
+		  ,
+  year		= {2009}
+}
+
 @Misc{		  vault,
-  author	= {{HashiCorp}},
-  title		= {{Vault: A tool for managing secrets}},
+  author	= {HashiCorp},
+  title		= {{Vault}: A tool for managing secrets},
   howpublished	= {\url{https://www.vaultproject.io/}}
 }
 
-@Misc{		  vintsurf-dropbox,
-  author	= {vintsurf},
-  title		= {{Dropbox... opening my docs?}},
-  month		= {Sep},
-  year		= {2013},
-  howpublished	= {\url{http://www.wncinfosec.com/dropbox-opening-my-docs/}}
+@Misc{		  w3c,
+  author	= {{World Wide Web Consortium (W3C)}},
+  title		= {{W3C} Homepage},
+  howpublished	= {\url{https://www.w3.org/}}
 }
 
-@Misc{		  whiteout,
-  author	= {{Whiteout}},
-  title		= {Whiteout Mail: Email Encryption for the Rest of Us},
-  howpublished	= {\url{whiteout.io/}}
+@Article{	  walden2011,
+  author	= {Walden, Ian},
+  doi		= {10.2139/ssrn.1781067},
+  isbn		= {9781447141891},
+  issn		= {1556-5068},
+  journal	= {SSRN Electronic Journal},
+  number	= {185},
+  pages		= {1--24},
+  title		= {Accessing Data in the Cloud: The Long Arm of the Law
+		  Enforcement Agent},
+  url		= {http://www.ssrn.com/abstract=1781067},
+  volume	= {2004},
+  year		= {2011}
 }
 
-@TechReport{	  whitten1998,
-  author	= {Whitten, Alma and Tygar, J. D.},
-  number	= {102590},
-  title		= {{Usability of security: A case study}},
-  url		= {oai.dtic.mil/oai/oai?verb=getRecord\&metadataPrefix=html\&identifier=ADA361032}
+@Misc{		  whatsapp,
+  author	= {{WhatsApp, Inc}},
+  title		= {{WhatsApp}: Simple, Personal, Real Time Messaging},
+  howpublished	= {\url{https://www.whatsapp.com/}}
+}
+
+@Misc{		  whitehouse-clipper,
+  author	= {{White House Office of the Press Secretary}},
+  title		= {Statement of the Press Secretary},
+  howpublished	= {\url{https://www.epic.org/crypto/clipper/white_house_statement_2_94.html}}
 		  ,
-  year		= {1998}
+  year		= {1994},
+  month		= {February}
+}
+
+@Article{	  whitehouse2013,
+  author	= {{President's Review Group on Intelligence and
+		  Communications Technologies}},
+  title		= {Liberty and Security in a Changing World},
+  url		= {http://www.whitehouse.gov/sites/default/files/docs/2013-12-12{\_}rg{\_}final{\_}report.pdf}
+		  ,
+  year		= {2013},
+  month		= {December}
 }
 
 @InProceedings{	  whitten1999,
   author	= {Whitten, Alma and Tygar, J. D.},
   booktitle	= {Proceedings of the 8th USENIX Security Symposium},
   pages		= {679--702},
-  title		= {{Why Johnny can't encrypt: A usability evaluation of PGP
-		  5.0}},
-  url		= {www.usenix.org/events/sec99/full\_papers/whitten/whitten.ps}
+  title		= {Why {Johnny} can't encrypt: A usability evaluation of
+		  {PGP} 5.0},
+  url		= {http://www.usenix.org/events/sec99/full\_papers/whitten/whitten.ps}
 		  ,
   year		= {1999}
 }
@@ -2631,83 +3272,71 @@
 @InProceedings{	  wilcox-o'hearn2008,
   address	= {New York, New York, USA},
   author	= {Wilcox-O'Hearn, Zooko and Warner, Brian},
-  booktitle	= {Proceedings of the 4th ACM international workshop on
-		  Storage security and survivability},
+  booktitle	= {Proceedings of the 4th ACM International Workshop on
+		  Storage Security and Survivability},
   doi		= {10.1145/1456469.1456474},
   isbn		= {9781605582993},
   pages		= {21--26},
   publisher	= {ACM Press},
-  title		= {{Tahoe: the least-authority filesystem}},
-  url		= {dl.acm.org/citation.cfm?id=1456474},
+  title		= {{Tahoe}: the least-authority filesystem},
+  url		= {http://dl.acm.org/citation.cfm?id=1456474},
   year		= {2008}
 }
 
 @Article{	  wilson2014,
   archiveprefix	= {arXiv},
-  arxivid	= {arXiv:1404.2697v1},
-  author	= {Wilson, Duane C. and Ateniese, Giuseppe},
-  eprint	= {arXiv:1404.2697v1},
-  journal	= {arXiv preprint arXiv:1404.2697},
-  title		= {{To Share or Not to Share in Client-Side Encrypted
-		  Clouds}},
-  url		= {arxiv.org/abs/1404.2697},
+  arxivid	= {1404.2697},
+  author	= {Wilson, Duane and Ateniese, Giuseppe},
+  eprint	= {1404.2697},
+  journal	= {arXiv:1404.2697},
+  month		= {November},
+  title		= {To Share or Not to Share in Client-Side Encrypted Clouds},
+  url		= {http://arxiv.org/abs/1404.2697},
   year		= {2014}
-}
-
-@Article{	  wobber2007,
-  author	= {Wobber, Ted and Yumerefendi, Aydan and Abadi, Mart\'{\i}n
-		  and Birrell, Andrew and Simon, Daniel R.},
-  doi		= {10.1145/1272998.1273033},
-  isbn		= {9781595936363},
-  issn		= {01635980},
-  journal	= {ACM SIGOPS Operating Systems Review},
-  month		= jun,
-  number	= {3},
-  pages		= {355},
-  title		= {{Authorizing applications in singularity}},
-  url		= {portal.acm.org/citation.cfm?doid=1272998.1273033},
-  volume	= {41},
-  year		= {2007}
 }
 
 @Misc{		  wuala,
   author	= {{LaCie AG}},
-  title		= "Wuala: Secure Cloud Storage",
-  howpublished	= {\url{www.wuala.com}}
+  title		= {Wuala: Secure Cloud Storage},
+  howpublished	= {\url{http://www.wuala.com}}
 }
 
-@Article{	  wulf1974,
-  author	= {Wulf, W. and Cohen, E. and Corwin, W. and Jones, A. and
-		  Levin, R. and Pierson, C. and Pollack, F.},
-  doi		= {10.1145/355616.364017},
-  issn		= {00010782},
-  journal	= {Communications of the ACM},
-  month		= jun,
-  number	= {6},
-  pages		= {337--345},
-  title		= {{HYDRA: The Kernel of a Multiprocessor Operating System}},
-  url		= {portal.acm.org/citation.cfm?doid=355616.364017},
-  volume	= {17},
-  year		= {1974}
+@Misc{		  xkcd-504,
+  author	= {Munroe, Randall},
+  title		= {{XKCD} \#504: Legal Hacks},
+  howpublished	= {\url{https://xkcd.com/504/}},
+  year		= {2008},
+  month		= {November}
 }
 
 @Misc{		  yahoo-endtoend,
-  author	= {{Yahoo}},
-  title		= "End-To-End",
+  author	= {Yahoo},
+  title		= {End-to-End},
   howpublished	= {\url{https://github.com/yahoo/end-to-end}}
 }
 
 @Article{	  ylonen1996,
   author	= {Ylonen, Tatu},
   journal	= {Proceedings of the 6th USENIX Security Symposium},
-  title		= {{SSH–secure login connections over the Internet}},
-  url		= {static.usenix.org/publications/library/proceedings/sec96/full\_papers/ylonen/ylonen.ps}
+  title		= {{SSH}-secure login connections over the {Internet}},
+  url		= {http://static.usenix.org/publications/library/proceedings/sec96/full\_papers/ylonen/ylonen.ps}
 		  ,
   year		= {1996}
 }
 
-@Misc{		  yubikey,
-  author	= {Yubico},
-  title		= "YubiKey Standard",
-  howpublished	= {\url{www.yubico.com/products/yubikey-hardware/yubikey}}
+@Misc{		  zimmermann-pgp10,
+  author	= {Zimmermann, Philip},
+  title		= {{PGP} Marks 10th Anniversary},
+  howpublished	= {\url{https://www.philzimmermann.com/text/PGP_10thAnniversary.txt}}
+		  ,
+  year		= {2001},
+  month		= {June}
+}
+
+@Book{		  zimmermann-pgpsource,
+  author	= {Zimmermann, Philip},
+  title		= {{PGP} Source Code and Internals},
+  publisher	= {MIT Press},
+  isbn		= {0-262-24039-4},
+  year		= {1995}
 }
