@@ -1,7 +1,7 @@
 \section{The Tutamen Platform}
 \label{sec:tutamen}
 
-The Tutamen Secret Storage Platform is designed to handle the storage
+The Tutamen Secret-Storage Platform is designed to handle the storage
 of arbitrary secret material from a range of applications. In this
 section, we present the Tutamen architecture and our reference Tutamen
 server implementations.
@@ -237,7 +237,7 @@ A variety of systems have been proposed with the goal of minimizing
 trust requirements for cloud infrastructure~\cite{bessani2011,
   kallahalla2003, kubiatowicz2000, mahajan2011,
   wilcox-o'hearn2008}. Tutamen applies similar ``minimal-trust'' goals
-to the secret storage problem by offering support for a distributed
+to the secret-storage problem by offering support for a distributed
 operation mode as an alternative to single-server operation. Operating
 Tutamen in a distributed manner is largely a task that is pushed down
 to the application (or client library). With the exception of offering
@@ -392,7 +392,7 @@ Section~\ref{sec:apps}) are set up to interface directly with the
 Tutamen platform. In this manner, it's not necessary for every Tutamen
 application to implement all Tutamen functionality. Instead, an
 application might leverage only the necessary Tutamen commands to
-perform secret storage and retrieval, leaving the task of managing the
+perform secret-storage and retrieval, leaving the task of managing the
 sharing of Tutamen-stored secrets to the CLI or to another dedicated
 management application.
 

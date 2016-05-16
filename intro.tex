@@ -6,20 +6,20 @@ data necessary to ensure or bootstrap the security of computing
 systems and services -- has always been a non-trivial problem. As we
 continue to move toward computing and storage platforms controlled by
 third parties, and embrace modern trends toward ephemeral
-infrastructure, the secret storage problem only becomes more prevalent
+infrastructure, the secret-storage problem only becomes more prevalent
 and critical to solve.
 
 Tutamen\footnote{Latin -- A means of protection or defense.} is our
-attempt to solve the secret storage problem in a manner that allows
+attempt to solve the secret-storage problem in a manner that allows
 the user to adhere to a range of security and privacy requirements
 without sacrificing functionality in the process. Tutamen is a next
-generation secret storage platform. It builds on our previous secret
+generation secret-storage platform. It builds on our previous secret
 storage efforts~\cite{custos-trios} and strives to offer features not
-provided by the various secret storage systems available today. In
+provided by the various secret-storage systems available today. In
 this paper, we offer several contributions:
 
 \begin{packed_item}
-\item The design, implementation, and evaluation of a secret storage
+\item The design, implementation, and evaluation of a secret-storage
   system with support for several novel features, including:
   \begin{packed_item}
   \item Modular authentication modules designed to add flexibility
@@ -29,12 +29,12 @@ this paper, we offer several contributions:
     by leveraging multiple storage and access control providers to
     achieve both redundancy and to mitigate trust.
   \end{packed_item}
-\item Several practical demonstrations of how a secret storage system
+\item Several practical demonstrations of how a secret-storage system
   with such features can be integrated with real-world applications to
   offer desirable features in a secure and easy-to-use manner.
 \end{packed_item}
 
-\subsection{The Need for Secret Storage}
+\subsection{The Need for Secret-Storage}
 
 Computing systems today invade every contour of our lives -- from the
 fitness trackers on our wrists, to our ``smart'' home appliances, to
@@ -64,7 +64,7 @@ configuration data often contains a variety of secrets such as SSH
 keys, TLS/SSL keys, file encryption keys, and the tokens or
 credentials necessary to authenticate with external APIs and services.
 
-Similarly, on the end user front, the need for suitable secret storage
+Similarly, on the end user front, the need for suitable secret-storage
 systems is being driven by a rapid expansion of the number of sites
 and services to which users must authenticate themselves, as well as
 by the growing expanse of digital data users wish to protect. Indeed,
@@ -74,11 +74,11 @@ user and manufacturer demands for encryption support on their
 devices~\cite{apple-fbiletter} demonstrate the importance of secret
 storage, and the applications it enables, to end users.
 
-\subsection{The Ideal Secret Storage System}
+\subsection{The Ideal Secret-Storage System}
 
 Unlike standard configuration management systems, or even specific
-secret storage systems such as password managers, a general purpose
-secret storage presents a number of unique requirements, including the
+secret-storage systems such as password managers, a general purpose
+secret-storage presents a number of unique requirements, including the
 following capabilities:
 
 \begin{packed_item}
@@ -89,7 +89,7 @@ following capabilities:
 \item Provide audit logs tracking secret access history
 \end{packed_item}
 
-In response to these needs, a number of general purpose secret storage
+In response to these needs, a number of general purpose secret-storage
 systems have been recently developed by industry, including
 HashiCorp's Vault~\cite{vault}, Lyft's Confidant~\cite{confidant}, and
 Square's Keywhiz~\cite{keywhiz}. These systems exist to fulfill some
@@ -110,10 +110,10 @@ storage requirements:
 \end{packed_item}
 
 It is toward these final two requirements that Tutamen attempts to
-advance the state of the art over existing secret storage systems. In
+advance the state of the art over existing secret-storage systems. In
 particular, Tutamen supports operational modes where no single entity
 other than the application must be trusted. This allows users to
-leverage third party secret storage providers running Tutamen servers
+leverage third party secret-storage providers running Tutamen servers
 without having to place high degrees of trust in any single
 provider. Tutamen also provides support for a modular authentication
 interface. This interface makes Tutamen suitable for use in situations
