@@ -8,8 +8,16 @@
 % Matt Monaco
 % Dirk Grunwald
 
-
-\documentclass[letterpaper,twocolumn,10pt]{article}
+% SoCC Template: do not change these values
+\documentclass[10pt,twocolumn]{article}
+\usepackage{times}
+\baselineskip 12pt
+\textheight 9in
+\textwidth 6.5in
+\oddsidemargin 0in
+\topmargin 0in
+\headheight 0in
+\headsep 0in
 
 % System Packages
 \usepackage{epsfig}
@@ -23,9 +31,6 @@
 \usepackage{listings}
 \usepackage{authblk}
 
-% Local Packages
-\usepackage{usenix}
-
 % Package Options
 \hypersetup{
     colorlinks,
@@ -33,34 +38,6 @@
     filecolor=black,
     linkcolor=black,
     urlcolor=black
-}
-\lstset{
-  language={},
-  basicstyle=\footnotesize,
-  numbers=left,
-  numberstyle=\tiny,
-  stepnumber=1,
-  numbersep=5pt,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=4,
-  captionpos=b,
-  breaklines=true,
-  breakatwhitespace=false,
-  frame=single,
-  frameround=tttt
-}
-\lstdefinelanguage{JavaScript}{
-  keywords={break, case, catch, continue, debugger, default, delete,
-    do, else, finally, for, function, if, in, instanceof, new, return,
-    switch, this, throw, try, typeof, var, void, while, with, true,
-    false, null},
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]',
-  morestring=[b]'',
-  sensitive=true
 }
 
 % Macros
@@ -73,11 +50,8 @@
 % Start
 \begin{document}
 
-%don't want date printed
-\date{}
-
 %make title bold and 14 pt font (Latex default is non-bold, 16 pt)
-\title{\Large \bf Tutamen: A Next Generation Secret Storage Platform}
+\title{Tutamen: A Next-Generation Secret-Storage Platform}
 
 % start author
 \author{Andy Sayler}
@@ -87,14 +61,12 @@
 \affil{University of Colorado}
 % end author
 
+%don't want date printed
+\date{}
+
 \maketitle
 
-% Use the following at camera-ready time to suppress page numbers.
-% Comment it out when you first submit the paper for review.
-%\thispagestyle{empty}
-
-\subsection*{Abstract}
-
+\begin{abstract}
 The storage and management of secrets (encryption keys, passwords,
 etc) are significant open problems in the modern age of cloud-based,
 third-party hosted, ephemeral computing infrastructure. How do we
@@ -117,6 +89,7 @@ prototype, and several of the applications in which we have
 implemented Tutamen-based secret storage to achieve previously
 unattainable goals while still meeting a variety of security and
 privacy requirements.
+\end{abstract}
 
 \input{intro.tex}
 \input{tutamen.tex}
@@ -126,9 +99,9 @@ privacy requirements.
 \input{conclusion.tex}
 
 {
-  \clearpage
-  \footnotesize
-  \bibliographystyle{acm}
+%  \clearpage
+%  \footnotesize
+  \bibliographystyle{abbrv}
   \bibliography{refs}
 }
 
