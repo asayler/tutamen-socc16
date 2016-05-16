@@ -74,14 +74,14 @@ time-of-day and IP-source authenticators.
 Cloud-based file lockers such as Dropbox~\cite{dropbox} are extremely
 popular today. Unfortunately, these systems require users to trust the
 cloud provider with full access to their (generally unencrypted)
-data~\cite{vintsurf-dropbox}. Users wishing to overcome this
-deficiency can optionally encrypt all of their data on the client
-before syncing it to the file locker provider, but doing so does not
-generally interact well with such services' sharing and multi-device
-use cases, requiring users to employ manual, out-of-band key
-exchange mechanisms to share or sync their encrypted files. We don't
-believe file locker users should have to choose between easily syncing
-or sharing their files and using encryption to protect their data.
+data. Users wishing to overcome this deficiency can optionally encrypt
+all of their data on the client before syncing it to the file locker
+provider, but doing so does not generally interact well with such
+services' sharing and multi-device use cases, requiring users to
+employ manual, out-of-band key exchange mechanisms to share or sync
+their encrypted files. We don't believe file locker users should have
+to choose between easily syncing or sharing their files and using
+encryption to protect their data.
 
 Tutamen provides a solution to this problem by offering a secure
 key-sharing mechanism. Instead of manually distributing or sharing
