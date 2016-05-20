@@ -33,7 +33,7 @@ structures (as in the store secret case), or reading existing data
 structures (as in the retrieve secret case). The ``other'' time is
 spent reading the Tutamen config files, loading the necessary client
 certificates, and dealing with the overhead required to interpret the
-python-based CLI.
+Python-based CLI.
 
 It is not unexpected that the client must spend the bulk of its time
 requesting tokens and waiting for them to be approved -- token
@@ -47,7 +47,7 @@ account. Verifiers that include human-in-the-loop authenticators
 amount of time the human requires to provide approval. Thus, it is
 important that Tutamen applications treat token approval as an
 operation that can take anywhere from under a second to human-scale
-times (e.g., 10s of seconds). To help alleviate these waits on
+times (e.g., tens of seconds). To help alleviate these waits on
 applications that must perform a high number of Tutamen requests,
 Tutamen tokens may be reused up until their expiration time. Thus, it
 is possible for an application to request a long-lived token and to
@@ -73,9 +73,9 @@ with client certificates tops out around 90 rps, and the null
 operation without client certificates tops out at about 110 rps. Raw
 HTTPS tops out around 120 rps. HTTP topped out around 5000 rps (curve
 truncated for viewability). The current server setup is thus primarily
-limited by the crypto overhead required to serve the application and
-verify client certificates using TLS. Token verification itself also
-incurs additional computational requirements - including cryptographic
+limited by the TLS overhead required to serve the application and
+verify client certificates. Token verification itself also incurs
+additional computational requirements - including cryptographic
 signing operations, but is well within the order of magnitude of the
 underlying server limits. Secret retrieval (after acquiring a token)
 is relatively quick, topping out at around 100 rps.
@@ -91,7 +91,7 @@ needs. We've also designed our reference server to be horizontally
 scalable (e.g., by spinning up multiple load-balanced API servers that
 share a common database). That scalability, coupled with future
 performance-related code optimization, leads us to believe the Tutamen
-server infrastructure can be adopted to meet the needs of larger
+server infrastructure can be adapted to meet the needs of larger
 installations with only moderate effort.
 
 %%  LocalWords:  Tutamen Tutamen's verifiers authenticators SMS Xeon

@@ -9,7 +9,7 @@ server implementations.
 \subsection{Architecture}
 \label{sec:tutamen:arch}
 
-Tutamen has three discreet architectural components:
+Tutamen has three discrete architectural components:
 
 \begin{packed_desc}
 \item[Access Control Servers (ACS):] The systems responsible for
@@ -62,26 +62,27 @@ account with three clients: one for her laptop, one for her desktop,
 and one for her phone.
 
 Each client is associated with a single x509~\cite{rfc5280} TLS
-key/cert-pair used to authenticate the client to the access control
-server. The access control server acts as the Certificate Authority
-(CA) administering these certificates. When a new client is created it
-generates a local private key and uses this key to generate an X509
-Certificate Signing Request (CSR). This request is then sent to the
-access control server where it awaits approval from an existing client
-in the account. If approved, the CSR is used to generate a signed
-certificate that is sent back to the new client for use in future ACS
-communication. To facilitate bootstrapping new accounts, client CSRs
-are also generated and sent during new account creation. These are
-automatically approved and associated with the new account -- i.e.,
-the initial client is created in tandem with a new account while all
-subsequent clients are approved by previously approved clients.
+key/certificate-pair used to authenticate the client to the access
+control server. The access control server acts as the Certificate
+Authority (CA) administering these certificates. When a new client is
+created it generates a local private key and uses this key to generate
+an X509 Certificate Signing Request (CSR). This request is then sent
+to the access control server where it awaits approval from an existing
+client in the account. If approved, the CSR is used to generate a
+signed certificate that is sent back to the new client for use in
+future ACS communication. To facilitate bootstrapping new accounts,
+client CSRs are also generated and sent during new account
+creation. These are automatically approved and associated with the new
+account -- i.e., the initial client is created in tandem with a new
+account while all subsequent clients are approved by previously
+approved clients.
 
 In addition to accounts, the Tutamen access control server also uses
 ``authenticators''. Authenticators are modular mechanisms used to
 implement contextual access control requirements~\cite{hulsebosch2005}
 such as only allowing access during specific times of day or from
 specific IP addresses. Authenticators can also be used to implement
-multi-factor and/or alternate-band authentication mechanisms such as
+multi-factor or alternate-band authentication mechanisms such as
 confirming approval for a specific request from a user via text
 message, or otherwise interfacing with external services to gain
 approval.
@@ -139,7 +140,7 @@ application. This decision is primarily driven by the fact that access
 control is performed on the per-collection level. Thus, if an
 application requires that a set of secrets always have a common set of
 access control requirements (e.g., per-sector encryption keys for an
-encrypted block device), it become efficient to group these secrets
+encrypted block device), it becomes efficient to group these secrets
 into a single collection. Doing so minimizes the complexity of trying
 to keep access control requirements synced across multiple secrets,
 and increases performance by minimizing the number of requests that
@@ -201,8 +202,8 @@ Other than the bootstrapping operations and the token request
 operations themselves, all requests to either storage or access
 control servers must be accompanied by a valid token. The receiving
 server validates this token using the public signing key of the
-associated AC server; for requests to the AC sever itself, this key is
-available internally. For requests to external storage servers, the
+associated AC server; for requests to the AC server itself, this key
+is available internally. For requests to external storage servers, the
 signing key is downloaded by the storage server from the access
 control server and cached for future use. In this manner, access
 control servers are responsible both for granting and verifying
@@ -210,8 +211,8 @@ authorization requests and signing the corresponding tokens, as well
 as for verifying tokens accompanying requests to perform actions on
 ACS objects (e.g., to create or modify verifiers or accounts). Storage
 servers are responsible only for verifying tokens accompanying
-requests to perform actions on SS objects (e.g., to create a collection
-or read a secret).
+requests to perform actions on SS objects (e.g., to create a
+collection or read a secret).
 
 \subsubsection{Distributed Usage}
 \label{sec:tutamen:arch:distributed}
@@ -262,7 +263,7 @@ scheme~\cite{krawczyk1993, shamir1979}, similar to other proposed
 ``minimal trust'' cloud systems~\cite{bessani2011} as well as
 previously proposed ``key escrow'' systems~\cite{blaze1996,
   denning1996}. The application chooses the value of $n$ based on the
-number of storage servers it wishes to utilize. The value of $k$ is
+number of storage servers it wishes to use. The value of $k$ is
 then chosen to control how many of the servers must be responsive in
 order to retrieve the secret; i.e., the difference between $n$ and
 $k$ controls how much storage redundancy the system has by dictating
@@ -305,8 +306,8 @@ alleviating the burden of maintaining a mapping between object IDs and
 the servers to which they correspond. Using the same object IDs across
 multiple servers also allows for more efficient token management --
 e.g., if an application uses the same collection ID on three separate
-storage serves, all of which delegate a common set of access control
-servers, it's possible (and desirable) for the application to use a
+storage servers, all of which delegate a common set of access control
+servers, it is possible (and desirable) for the application to use a
 single token granting access to the relevant collection ID on all
 three servers. Without this capability, an application would be forced
 to request multiple tokens from each access control server
@@ -326,7 +327,7 @@ server.\footnote{The ability to request specific object IDs does have
 
 \subsection{Implementation}
 
-In order to demonstrate and test the Tutamen platform we've created
+In order to demonstrate and test the Tutamen platform we have created
 reference implementations for the storage server, access control
 server, and several client libraries.
 
@@ -346,7 +347,7 @@ designed to be served via WSGI~\cite{pep3333} using the Apache HTTP
 Server~\cite{apache} for TLS termination and client-certificate
 verification.
 
-Both Tutamen servers rely on a shared \texttt{pytutamen-server} python
+Both Tutamen servers rely on a shared \texttt{pytutamen-server} Python
 library for the implementation of their core logic. The
 \texttt{pytutamen-server} source is available
 at~\cite{src-tutamen-pytutamenserver} under the terms of the
@@ -367,7 +368,7 @@ PAM~\cite{samar1996}. The Tutamen authenticator interface is primarily
 designed for providing authentication checks beyond the TLS
 certificate-based authentication the access control server
 automatically performs on every request for the purpose of associating
-each request with a specific client and account. As an example, we've
+each request with a specific client and account. As an example, we have
 implemented an authenticator module that allows users to approve
 Tutamen token requests via SMS text message using the
 Twilio~\cite{twilio} messaging platform. We also envision
@@ -380,16 +381,16 @@ request including both the IDs and metadata associated with the
 requesting account and client (e.g., from which information such as
 originating IP address or time of day can be extracted).
 
-In addition to the server and authenticator implementations, we've
+In addition to the server and authenticator implementations, we have
 also created reference Tutamen client libraries for both
 Python~\cite{src-tutamen-pytutamen} and
-Go~\cite{src-tutamen-go}. Using the Python client library, we've
+Go~\cite{src-tutamen-go}. Using the Python client library, we have
 created a reference Tutamen CLI through which users may directly
 store/retrieve secrets and control secret sharing and access control
 rules. The CLI is useful for managing Tutamen objects even in cases
 where other applications (e.g., those discussed in
 Section~\ref{sec:apps}) are set up to interface directly with the
-Tutamen platform. In this manner, it's not necessary for every Tutamen
+Tutamen platform. In this manner, it is not necessary for every Tutamen
 application to implement all Tutamen functionality. Instead, an
 application might leverage only the necessary Tutamen commands to
 perform secret-storage and retrieval, leaving the task of managing the
@@ -425,7 +426,7 @@ server.\footnote{Omitted from this diagram is the process of creating
   creation. The process for creating said structures is similar to the
   process of creating the collection-related verifier and permissions
   group shown. To avoid the infinite recursion of needing verifiers
-  for each verifier, it's possible for a verifier to be associated
+  for each verifier, it is possible for a verifier to be associated
   with a permissions group in which it is itself a member (i.e., a
   verifier can enforce its own access control specification).}
 

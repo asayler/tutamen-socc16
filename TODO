@@ -14,7 +14,6 @@
 + Why two servers? Separation of duties
 + Figure 5 too small
 + Explain Figure 5 handshack process
-+ Section 3.2: $n-k+1$ error ($n-k+1$ = robustness,  k = compromise)
 + Figure 2 uses many undefined abbreviations; defined in the caption
 + The top of page 6 refers to "a novel ($k,n$) threshold scheme."
   Say "novel yet simple"
@@ -73,26 +72,7 @@
   * secret-storage platform
   * access-control server
 + Typographic errors that won't be caught by a spell-checker:
-    * it's -> it is
-    * US -> U.S.
-    * pass-phrase -> passphrase
-    * introspection -> surveillance
-    * "utilize" -> "use"
     * "in order to" -> "to"
     * "as well as" -> "and"
-    * "secrete" -> secret
-    * "cable" -> "capable"
-    * "sever" -> "server"
-    * "serves" -> "servers"
-    * "discreet" -> "discrete"
-    * "adopted" -> "adapted"
-    * "become efficient" -> "becomes efficient"
-    * "/" -> "and" or "or"
-    * cert -> certificate
     * syncing -> synchronizing
-    * 10s -> tens
-    * crypto -> cryptography
-    * we've -> we have
-    * and/or -> or, either... or
-    * python -> Python
     * "human-at-keyboard" -> "human-at-the-keyboard".

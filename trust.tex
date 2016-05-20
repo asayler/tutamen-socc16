@@ -74,17 +74,21 @@ longer relying on the security of any specific access control or
 storage server in order to keep an application's secrets secure. As
 described in Section~\ref{sec:tutamen:arch:distributed}, each
 application can distribute both secret-storage and access control
-delegations using $n$ choose $k$ schemes. In such setups, the
-difference between $n$ and $k$ represents the degree to which a
-Tutamen applications can withstand security failures of the associated
-AC and storage servers. For example, an application which chooses to
-shard its secrets across five storage servers where any three shards
-are sufficient to recreate the secret ($n=5$, $k=3$) will continue to
-remain secure even if two of the storage servers fail to meet their
-security obligations. Similarly, if each secret shard delegates five
-possible AC servers, tokens from three of which are required to grant
-secret access, the applications can withstand the failure of two AC
-servers to uphold their security guarantees.
+delegations using $n$ choose $k$ schemes. In such setups, the value of
+$k$ represents the degree to which a Tutamen applications can
+withstand security failures of the associated AC and storage servers,
+while the difference between $n$ and $k$ dictates the degree to which
+an Application can withstand availability failures. For example, an
+application which chooses to shard its secrets across six storage
+servers where any three shards are sufficient to recreate the secret
+($n=6$, $k=3$) will remain secure as long as no more than two ($k-1$)
+of the storage servers fail to meet their security
+obligations. Similarly, if each secret shard delegates six possible AC
+servers, tokens from three of which are required to grant secret
+access, the applications can withstand the failure of two AC servers
+to uphold their security guarantees. In both cases, the system can
+also withstand the availability failure of up to three servers ($n-k$)
+while continuing to operate.
 
 \subsection{Trust Model}
 
@@ -129,7 +133,7 @@ third-party trust Tutamen grants to each application by allowing each
 application to select how many servers to diffuse trust across, make
 Tutamen a robust system in the face of both security and
 trustworthiness failures. Such robustness is a critical component of
-any successful secrete storage system.
+any successful secret storage system.
 
 %%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
 %%  LocalWords:  ACS

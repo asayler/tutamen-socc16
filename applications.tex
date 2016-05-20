@@ -23,17 +23,17 @@ password at boot-time to unlock a locally stored encryption key which
 is then used to decrypt the block device in question. Unfortunately,
 the ``human-at-keyboard'' security root make such systems difficult or
 impossible to use atop headless servers or in related situations where
-no human can be expected to be present at boot-time. We've leveraged
+no human can be expected to be present at boot-time. We have leveraged
 Tutamen to overcome this barrier.
 
-To add Tutamen-support to LUKS/dm-crypt we've created a Tutamen-aware
+To add Tutamen-support to LUKS/dm-crypt we have created a Tutamen-aware
 implementation~\cite{src-tutamen-askpassword} of the \texttt{systemd}
 Password Agent Specification~\cite{systemd-passwordagents}. This
 specification is used by LUKS/dm-crypt \texttt{cryptsetup} utility to
 request the necessary decryption secret. At boot time,
 \texttt{cryptsetup} will send out a request for this secret. Normally
 this triggers a ``human-at-keyboard'' prompt for a boot
-pass-phrase. Our Tutamen-aware password agent can instead respond to
+passphrase. Our Tutamen-aware password agent can instead respond to
 such requests by retrieving the necessary decryption secret from a
 Tutamen storage server (after first retrieving the necessary tokens
 from the corresponding Tutamen AC server). In addition to modifying
@@ -43,13 +43,13 @@ the necessary Tutamen client TLS key pair, and a config file
 specifying which Tutamen servers to use and the UUIDs of the relevant
 Tutamen collection and secrets.
 
-We've also integrated Tutamen support with QEMU to provide qcow2
+We have also integrated Tutamen support with QEMU to provide qcow2
 encryption keys when a VM boots~\cite{src-qemu-tutamen}. Similar to
 the dm-crypt setup, QEMU normally requires the user to provide the
 encryption key via the QEMU console when a VM launches. Our system
 replaces this ``human-at-keyboard'' process with Tutamen-based secret
 retrieval. In addition, QEMU currently requires the user to provide
-the full encryption key, not just a pass-phrase to unlock a pre-stored
+the full encryption key, not just a passphrase to unlock a pre-stored
 key~\cite{berrange-qemucrypto}. This has negative security
 repercussions in the common case where users pick short password-like
 keys. Using Tutamen, we can overcome this barrier since Tutamen
@@ -63,7 +63,7 @@ the machine. In cases where we still desire human approval of the boot
 process, we can leverage our SMS authenticator module to get an
 on-demand confirmation from a designated human as a prerequisite to
 Tutamen releasing the correct key. This allows us to gain the same
-level of human-in-the-loop security provided by a typed pass-phrase,
+level of human-in-the-loop security provided by a typed passphrase,
 but without actually requiring a human to go to the datacenter to type
 one in. In situations where we don't desire a human-in-the-loop at
 all, we envision automating the approval process via the use of
@@ -112,7 +112,7 @@ functionality traditional Dropbox users have without having to expose
 one's data to Dropbox. While the key sharing process in FuseBox is not
 yet directly synced with Dropbox's file sharing system, the Tutamen
 CLI can be used to quickly share the encryption keys between users. In
-this manner, we've used FuseBox to store and share encrypted files
+this manner, we have used FuseBox to store and share encrypted files
 with nearly the same ease with which one might use the traditional
 unencrypted Dropbox client. By leveraging Tutamen, FuseBox also gains
 the ability to remotely revoke file access, e.g., in the case a device
@@ -128,7 +128,7 @@ reliance on a single trusted party to facilitate sharing operations.
 
 Since our Tutamen-capable ask-password port speaks the standard
 systemd Password Agent protocol, it can also be used to provide
-Tutamen-backed pass-phrase storage to any applications leveraging this
+Tutamen-backed passphrase storage to any applications leveraging this
 protocol, including OpenVPN and various password storage utilities. We
 have not yet thoroughly explored these use cases, but we envision a
 Tutamen-passed systemd password agent being useful in a wide range of
