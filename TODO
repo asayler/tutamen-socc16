@@ -1,0 +1,98 @@
++ Discuss key rotation and certificate revocation
+- Trim Section 2 - too much tangential info, focus on Auth and Storage
++ Discuss how SS/ACS servers are added removed (migrated, decommissioned)
++ Discuss incremental scaling
++ Discuss client cert revocation
++ Diagram relationship between clients, accounts, and certs
++ Increase performance
++ Emphasize Dropbox integration
++ Add related work section
++ Call out contributions in more detail - multi-admin domain, etc
++ Reference CleanOS (OSDI'12) and TinMan (EuroSys'15)
++ Reference kerberos for token mechanism
++ Discuss placing both ACS and SS on a single machine
++ Why two servers? Separation of duties
++ Figure 5 too small
++ Explain Figure 5 handshack process
++ Section 3.2: $n-k+1$ error ($n-k+1$ = robustness,  k = compromise)
++ Figure 2 uses many undefined abbreviations; defined in the caption
++ The top of page 6 refers to "a novel ($k,n$) threshold scheme."
+  Say "novel yet simple"
++ Footnote 2 ends by claiming that the ID-grabbing DOS attack isn't
+  worth worrying about.  Those sound like famous last words.  In
+  any case, why can't an application just request a different ID?
+  The entire process of generating IDs is inadequately specified.
++ Section 3.3 argues that service providers who do a bad job of
+  being secure "will suffer a negative economic effect,
+  disincentivizing such behavior."  This is the type of wishful
+  thinking that is popular with economists; it's not a valid
+  security argument.  There are plenty of counterexamples in the
+  real world, and in any case the argument rests on the assumption
+  of a fully informed client base.  The paper would do better to
+  simply omit that paragraph and instead admit that Tutamen still
+  has risks, but that (a) it is better than current alternatives
+  and (b) sharding secrets sufficiently widely can arbitrarily
+  reduce risk.
++ Figure 8 is insufficiently explained.  In the first place, the
+  chosen axes are a bit odd, although I guess the X axis is
+  intended to represent applied load.  But why does the latency
+  initially drop as the load rises?  Why do the curves all stop at
+  different points?  (Was the next point off the charts?  Were the
+  tests arbitrarily stopped at that point?  Or did the authors
+  simply decide that the following point was on the graph but
+  unacceptable?)
++ The experimental evaluation is sketchy at best, and vaguely
+  described.  What is the "2011-era" machine?  What is its clock
+  rate?  How much memory does the host have?  How fast is its
+  network connection?  How many experimental runs were done?  (The
+  standard deviations in Figure 8 are meaningless without knowing
+  the run count; in any case it would be better to give confidence
+  intervals.)
++ The authors consistently use an en dash, separated by spaces, to
+  set off parenthetical comments (except in one place where they
+  use a hyphen).  Correct typography calls for an em dash with no
+  spaces; see Lamport p. 14.  Also, in at least two places the
+  parenthetical begins with an en dash but is terminated by a
+  comma, which is also correct.  In other words, you should write
+  parentheticals--also known as asides--like this, rather than
+  writing them--incorrectly, like this.
++ At the beginning of Section 2.1 is the phrase "...for
+  authenticating secret requests".  That would normally be read as
+  "authenticating requests that are kept secret".  Rephrasing to
+  "authenticating requests for secrets" would be clearer.
++ Page 6, column 2, the second paragraph contains a lengthy
+  unparseable sentence: "The Tutamen authenticator interface..."  A
+  rewrite would be most helpful to the reader.
++ Surely there's a better title for Section 4.3 than "Other".
++ Figure 7 requires color to be interpreted.  The CFP explicitly
+  requires figures to be legible in monochrome.
++ I would argue that human-scale times (bottom of p. 10) are hours,
+  not seconds.  A human might be asleep when a text message comes
+  in.
++ Fix hyphens
+  * secret-storage platform
+  * access-control server
++ Typographic errors that won't be caught by a spell-checker:
+    * it's -> it is
+    * US -> U.S.
+    * pass-phrase -> passphrase
+    * introspection -> surveillance
+    * "utilize" -> "use"
+    * "in order to" -> "to"
+    * "as well as" -> "and"
+    * "secrete" -> secret
+    * "cable" -> "capable"
+    * "sever" -> "server"
+    * "serves" -> "servers"
+    * "discreet" -> "discrete"
+    * "adopted" -> "adapted"
+    * "become efficient" -> "becomes efficient"
+    * "/" -> "and" or "or"
+    * cert -> certificate
+    * syncing -> synchronizing
+    * 10s -> tens
+    * crypto -> cryptography
+    * we've -> we have
+    * and/or -> or, either... or
+    * python -> Python
+    * "human-at-keyboard" -> "human-at-the-keyboard".
