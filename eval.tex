@@ -19,12 +19,14 @@ pairs\footnote{In each instance, both an Access Control Server and a
   separate for performance purposes.}:
 
 \begin{packed_desc}
-\item[Paris, France:] Hosted atop Scaleway infrastructure~\cite{scaleway}
-  running on a bare metal Atom C2550-based server.
+\item[Paris, France:] Hosted atop Scaleway
+  infrastructure~\cite{scaleway} running on a C2S instance (bare
+  metal, 4-core, 8GB, Intel Atom C2550).
 \item[North Virginia:] Hosted atop Amazon Web Services
-  EC2~\cite{amazon-ec2} running on a c4.large virtual machine.
-\item[Boulder, CO:] Self hosted deployment running as a virtual machine
-  atop an Intel Xeon E31245-based server.
+  EC2~\cite{amazon-ec2} running on a c4.large instance (VM, 2-core,
+  3.75GB, Intel Xeon E5-2666).
+\item[Boulder, CO:] Self-hosted deployment (VM, 4-core, 4GB virtual,
+  Intel Xeon E3-1245).
 \end{packed_desc}
 
 We are able to use this test deployment to shard secrets across all
