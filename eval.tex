@@ -54,12 +54,23 @@ is possible for an application to request a long-lived token and to
 reuse this token to access multiple secrets within the collection to
 which the token grants read access.
  
-\begin{figure}[th]
+\begin{figure*}[th]
   \centering
-  \includegraphics[width=\columnwidth]{./figs/png/chart-iops.png}
-  \caption{Throughput vs Latency Curves}
-  \label{fig:eval:iops}
-\end{figure}
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/get_ac_auth_comp_chart.png}
+    \caption{AC Server -- Get Authorization Token}
+    \label{fig:eval:scaleup:gettoken}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/get_ss_secret_comp_chart.png}
+    \caption{Storage Server -- Fetch Secret}
+    \label{fig:eval:scaleup:getsecret}
+  \end{subfigure}
+  \caption{Scale Up Performance of Tutamen Servers on Amazon EC2
+    Gen4 Compute-Optimized Instances}
+  \label{fig:eval:scaleup}
+\end{figure*}
 
 Figure~\ref{fig:eval:iops} shows the request rate vs response time
 (with standard deviations) of a token request operation, two ``null''
