@@ -1,6 +1,43 @@
 \section{Performance}
 \label{sec:performace}
 
+\begin{figure*}[th]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/get_ac_auth_comp_chart.png}
+    \caption{AC Server -- Get Authorization Token}
+    \label{fig:eval:scaleup:gettoken}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/get_ss_secret_comp_chart.png}
+    \caption{Storage Server -- Fetch Secret}
+    \label{fig:eval:scaleup:getsecret}
+  \end{subfigure}
+  \caption{Scale Up Performance of Tutamen Servers on Amazon EC2
+    Gen4 Compute-Optimized Instances}
+  \label{fig:eval:scaleup}
+\end{figure*}
+
+\begin{figure*}[th]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/timing_bars_chart.png}
+    \caption{Relative Time Spent Processing Store and Fetch
+      Operations}
+    \label{fig:eval:rel:secret}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[t]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{./figs/png/get_ac_auth_breakdown_chart.png}
+    \caption{Relative Performance of Tutamen AC Server Operations}
+    \label{fig:eval:rel:acops}
+  \end{subfigure}
+  \caption{Timing and Performance Comparison of Tutamen Server
+    Operation Sub-components}
+  \label{fig:eval:rel}
+\end{figure*}
+
 We've evaluated Tutamen in a variety of scenarios using the
 applications described in \S~\ref{sec:apps}. These scenarios have
 proven Tutamen's usefulness as an enabler of previously unattainable
@@ -11,13 +48,6 @@ not yet been optimized for performance, we have performed a number of
 performance measurements in order to better understand the relative
 computational load and bottlenecks of the various parts of the Tutamen
 system.
-
-\begin{figure}[th]
-  \centering
-  \includegraphics[width=\columnwidth]{./figs/png/chart-timings.png}
-  \caption{Timings for Tutamen Operations}
-  \label{fig:eval:timings}
-\end{figure}
 
 Figure~\ref{fig:eval:timings} shows the time required to complete two
 of the most common Tutamen operations: storing a new secret and
@@ -54,24 +84,6 @@ is possible for an application to request a long-lived token and to
 reuse this token to access multiple secrets within the collection to
 which the token grants read access.
  
-\begin{figure*}[th]
-  \centering
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{./figs/png/get_ac_auth_comp_chart.png}
-    \caption{AC Server -- Get Authorization Token}
-    \label{fig:eval:scaleup:gettoken}
-  \end{subfigure}
-  ~
-  \begin{subfigure}[t]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{./figs/png/get_ss_secret_comp_chart.png}
-    \caption{Storage Server -- Fetch Secret}
-    \label{fig:eval:scaleup:getsecret}
-  \end{subfigure}
-  \caption{Scale Up Performance of Tutamen Servers on Amazon EC2
-    Gen4 Compute-Optimized Instances}
-  \label{fig:eval:scaleup}
-\end{figure*}
-
 Figure~\ref{fig:eval:iops} shows the request rate vs response time
 (with standard deviations) of a token request operation, two ``null''
 AC API operations (one that sends and verifies the client TLS
