@@ -4,7 +4,6 @@
 + Discuss incremental scaling
 + Discuss client cert revocation
 + Diagram relationship between clients, accounts, and certs
-+ Increase performance
 + Emphasize Dropbox integration
 + Add related work section
 + Call out contributions in more detail - multi-admin domain, etc
@@ -12,7 +11,7 @@
 + Reference kerberos for token mechanism
 + Discuss placing both ACS and SS on a single machine
 + Why two servers? Separation of duties
-+ Figure 5 too small
++ Figure 5 (storing secret) too small
 + Explain Figure 5 handshack process
 + Figure 2 uses many undefined abbreviations; defined in the caption
 + The top of page 6 refers to "a novel ($k,n$) threshold scheme."
@@ -32,21 +31,6 @@
   has risks, but that (a) it is better than current alternatives
   and (b) sharding secrets sufficiently widely can arbitrarily
   reduce risk.
-+ Figure 8 is insufficiently explained.  In the first place, the
-  chosen axes are a bit odd, although I guess the X axis is
-  intended to represent applied load.  But why does the latency
-  initially drop as the load rises?  Why do the curves all stop at
-  different points?  (Was the next point off the charts?  Were the
-  tests arbitrarily stopped at that point?  Or did the authors
-  simply decide that the following point was on the graph but
-  unacceptable?)
-+ The experimental evaluation is sketchy at best, and vaguely
-  described.  What is the "2011-era" machine?  What is its clock
-  rate?  How much memory does the host have?  How fast is its
-  network connection?  How many experimental runs were done?  (The
-  standard deviations in Figure 8 are meaningless without knowing
-  the run count; in any case it would be better to give confidence
-  intervals.)
 + The authors consistently use an en dash, separated by spaces, to
   set off parenthetical comments (except in one place where they
   use a hyphen).  Correct typography calls for an em dash with no
@@ -63,11 +47,6 @@
   unparseable sentence: "The Tutamen authenticator interface..."  A
   rewrite would be most helpful to the reader.
 + Surely there's a better title for Section 4.3 than "Other".
-+ Figure 7 requires color to be interpreted.  The CFP explicitly
-  requires figures to be legible in monochrome.
-+ I would argue that human-scale times (bottom of p. 10) are hours,
-  not seconds.  A human might be asleep when a text message comes
-  in.
 + Fix hyphens
   * secret-storage platform
   * access-control server
