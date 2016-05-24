@@ -2,9 +2,8 @@
 \label{sec:trust}
 
 One of Tutamen's primary design goals is its ability to support a wide
-range of security and trust requirements. It achieves this goal
-through its support for both centralized and distributed operation as
-well as though its support for a range of authentication mechanisms.
+range of security and trust requirements. In this section, we present
+a basic overview of the Tutamen security and trust models.
 
 \subsection{Security of Individual Servers}
 
@@ -54,18 +53,28 @@ Since the tokens the storage server must verify are provided by the AC
 servers, the security of the storage server with respect to a given
 collection is dependent on the security of any designated AC servers
 associated with said collection. If these AC servers are insecure, the
-objects that delegate access to them will also be insecure.
+objects that delegate access to them will also be
+insecure.\footnote{Since the security of Tutamen is derived from the
+  security of the access control server, it is reasonable for a single
+  host to operate both access control and storage servers. Such a
+  deployment requires no more trust than a host who operates only an
+  access control server. The Tutamen access control and storage roles
+  are mainly split into separate servers to allow for independent
+  scaling of each role and to promote separation of duties in the code
+  base, and collocating both servers types is not generally
+  detrimental to the security of the system.}
 
 \subsection{Security of Multiple Servers}
 
 Unlike existing secret management systems~\cite{vault, confidant,
-  keywhiz}, the Tutamen architecture is capable of remaining secure
-even when individual storage or access control servers fail to meet
-their security requirements. Such failures may result from physical
-server compromise, software bugs, malicious intent or incompetence on
-the part of the server operator, or compelled failures.\footnote{For
-  example, being forced to turn over stored secrets in response to
-  legal or governmental pressure.}
+  keywhiz}, the Tutamen architecture is designed to support users
+outside of a single administrative domain and is capable of remaining
+secure even when individual storage or access control servers fail to
+meet their security requirements. Such failures may result from
+physical server compromise, software bugs, malicious intent or
+incompetence on the part of the server operator, or compelled
+failures.\footnote{For example, being forced to turn over stored
+  secrets in response to legal or governmental pressure.}
 
 To work around security failures of individual server, Tutamen
 applications can leverage Tutamen's distributed operation modes. In
@@ -105,35 +114,20 @@ placing a high degree of trust in any single server by leveraging
 multiple servers and picking $k$ and $n$ in a manner commensurate with
 the degree to which each server is trusted.
 
-Beyond minimizing the amount of trust placed in each individual
-Tutamen server by leveraging multiple servers, we also envision
-economic incentives helping to ensure Tutamen server
-trustworthiness~\cite{anderson2001}. The Tutamen protocol is
-standardized and designed to support a range of interchangeable ACS
-and SS providers. Such a design allows for the development of a
-Tutamen server marketplace where both ACS and SS providers can compete
-against each other on the basis of trustworthiness, features (e.g.,
-what types of authenticators they support), and cost. In such an
-ecosystem, Tutamen service providers who fail to uphold the Tutamen
-security requirements on their servers will suffer a negative economic
-effect, disincentivizing such behavior. It is also likely that storage
-providers who take additional steps to protect the secrets they store
-(e.g., by using systems such as Trusted Platform Modules (TPMs) to
-encrypt the secrets they hold and harden server security) would be
-able to command a higher price in the marketplace, incentivizing such
-best practices.
-
-Thus, unlike other third-party cloud services where trustworthiness
-and economic incentives are in direct competition (as is the case on
-many ``free'' third part services that depend on selling user data in
-order to generate revenue)~\cite{flowerday2006}, Tutamen encourages a
-system where economic incentives are well aligned with user
-trust. That fact, coupled with the high degree of control over
-third-party trust Tutamen grants to each application by allowing each
-application to select how many servers to diffuse trust across, make
-Tutamen a robust system in the face of both security and
-trustworthiness failures. Such robustness is a critical component of
-any successful secret storage system.
+When selecting Tutamen hosts for distributed Tutamen operation, it is
+desirable to select hosts with geospatial, geopolitical, and
+administrative diversity. Doing so reduces the likelihood that
+multiple servers will be subject to the same failure (e.g. a regional
+power outage) and also reduces the likelihood of collusion (e.g. by
+avoiding the use of multiple Tutamen hosting providers controlled by a
+single administrative entity) as well as the likelihood of compelled
+access (e.g. by locating secret shards across national boundaries
+where no single government can compel access to all shards). Should a
+system such as Tutamen ever become standardized, we also envision the
+formation of a competing market of Tutamen providers from which users
+may select individual hosts for their secrets. Such a market has the
+potential to align economic benefits with good-faith efforts by server
+providers to uphold the Tutamen security guarantees~\cite{sayler-phd}.
 
 %%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
 %%  LocalWords:  ACS
