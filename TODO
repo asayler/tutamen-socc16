@@ -5,19 +5,6 @@
 + Emphasize Dropbox integration
 + Add related work section
 + Reference CleanOS (OSDI'12) and TinMan (EuroSys'15)
-+ Discuss placing both ACS and SS on a single machine
-+ Why two servers? Separation of duties
-+ Section 3.3 argues that service providers who do a bad job of
-  being secure "will suffer a negative economic effect,
-  disincentivizing such behavior."  This is the type of wishful
-  thinking that is popular with economists; it's not a valid
-  security argument.  There are plenty of counterexamples in the
-  real world, and in any case the argument rests on the assumption
-  of a fully informed client base.  The paper would do better to
-  simply omit that paragraph and instead admit that Tutamen still
-  has risks, but that (a) it is better than current alternatives
-  and (b) sharding secrets sufficiently widely can arbitrarily
-  reduce risk.
 + The authors consistently use an en dash, separated by spaces, to
   set off parenthetical comments (except in one place where they
   use a hyphen).  Correct typography calls for an em dash with no
