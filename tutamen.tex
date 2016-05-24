@@ -1,10 +1,14 @@
 \section{The Tutamen Platform}
 \label{sec:tutamen}
 
-The Tutamen Secret-Storage Platform is designed to handle the storage
-of arbitrary secret material from a range of applications. In this
+The Tutamen secret-storage platform is designed to handle the storage
+of arbitrary secret material from a range of applications.  In this
 section, we present the Tutamen architecture and our reference Tutamen
-server implementations.
+server implementations. Tutamen expands on Custos~\cite{custos-trios}
+our previous secret-storage attempt. It aims to simplify some of the
+concepts Custos proposed, as well as to add better support for
+distributing secrets across multiple servers, reducing the trust
+placed in any given server in the process.
 
 \subsection{Architecture}
 \label{sec:tutamen:arch}
@@ -23,15 +27,16 @@ Tutamen has three discrete architectural components:
 
 The bulk of all Tutamen communication occurs between an application
 and one or more of each type of server. Inter-server communication is
-kept to a minimum to support scalability. All communication in Tutamen
-takes place via TLS~\cite{dierks2008} HTTPS connections, and in some
-cases leverages mutual TLS to provide both client and server
-authentication. Both access control and storage servers are designed
-to be used individually or in sets. E.g., an application may store its
-secrets on a single storage server and delegate access control to a
-single access control server, or the application may shard its secrets
-across multiple storage servers and delegate access control to
-multiple access control servers, or any combination thereof.
+kept to a minimum to support scalability as the number of servers
+grows. All communication in Tutamen takes place via
+TLS~\cite{dierks2008} HTTPS connections, and in some cases leverages
+mutual-TLS to provide both client and server authentication. Both
+access control and storage servers are designed to be used
+individually or in sets. E.g., an application may store its secrets on
+a single storage server and delegate access control to a single access
+control server, or the application may shard its secrets across
+multiple storage servers and delegate access control to multiple
+access control servers, or any combination thereof.
 
 \subsubsection{Access Control Servers}
 \label{sec:tutamen:arch:acs}
@@ -75,17 +80,27 @@ client CSRs are also generated and sent during new account
 creation. These are automatically approved and associated with the new
 account -- i.e., the initial client is created in tandem with a new
 account while all subsequent clients are approved by previously
-approved clients.
+approved clients. While not yet implemented in the prototype, client
+certificates are also deigned to be revocable either by other clients
+within an account, or by the administrator of a given Tutamen AC
+server. Certificate revocation Si handled in the typical manner
+whereby the Tutamen AC Server (acting as a CA) maintains and
+advertises a signed certificate revocation list that is consulted
+anytime a client certificate needs to be verified to confirm that the
+Certificate is still valid. Account holders can use this functionality
+to transition from old clients to new ones, first using the old client
+to approve the CSR for new client, and then using the new client to
+revoke the certificate of the old client.
 
 In addition to accounts, the Tutamen access control server also uses
-``authenticators''. Authenticators are modular mechanisms used to
-implement contextual access control requirements~\cite{hulsebosch2005}
-such as only allowing access during specific times of day or from
-specific IP addresses. Authenticators can also be used to implement
-multi-factor or alternate-band authentication mechanisms such as
-confirming approval for a specific request from a user via text
-message, or otherwise interfacing with external services to gain
-approval.
+``authenticators''. Authenticators are modular
+mechanisms~\cite{samar1996} used to implement contextual access
+control requirements~\cite{hulsebosch2005} such as only allowing
+access during specific times of day or from specific IP
+addresses. Authenticators can also be used to implement multi-factor
+or alternate-band authentication mechanisms such as confirming
+approval for a specific request from a user via text message, or
+otherwise interfacing with external services to gain approval.
 
 Accounts and authenticators are combined via verifiers. A verifier
 consists of a set of accounts and a set of authenticators. In order to
@@ -98,11 +113,14 @@ The final component of the Tutamen access control server is the
 permissions group. Each permissions group corresponds to a specific
 object (identified via the combination of an object type and an object
 ID) within the Tutamen ecosystem. A permissions group contains one or
-more permissions, each corresponding to a specific class of actions
-that can be performed on the corresponding object. Each permission is
-associated with a set of verifiers. In order to be granted a given
-permission, a request must satisfy at least one of the verifiers in
-this set.
+more permissions (e.g. create, read, modify, delete,), each
+corresponding to a specific class of actions that can be performed on
+the corresponding object. Each permission is associated with a set of
+verifiers. In order to be granted a given permission, a request must
+satisfy at least one of the verifiers in this set. In this manner,
+Tutamen allows the fine-grained control of each permission of each
+object on the basis of account membership, authenticator satisfaction,
+or a combination of both.
 
 \subsubsection{Storage Servers}
 \label{sec:tutamen:arch:ss}
@@ -144,20 +162,20 @@ encrypted block device), it becomes efficient to group these secrets
 into a single collection. Doing so minimizes the complexity of trying
 to keep access control requirements synced across multiple secrets,
 and increases performance by minimizing the number of requests that
-the applications must make to secure tokens from the access control
-server. In cases where each secret requires its own access control
-requirements (e.g., per-file encryption keys), it is appropriate for
-the corresponding application to store only a single secret per
-collection.
+the applications must make for approval to act on a collection of
+secrets from the access control server. In cases where each secret
+requires its own access control requirements (e.g., per-file
+encryption keys), it is appropriate for the corresponding application
+to store only a single secret per collection.
 
 \subsubsection{Access Control Protocol}
 \label{sec:tutamen:arch:acp}
 
-Access control servers control access related to both internal
-(i.e., access control server) and external (i.e., storage server)
-objects by providing signed authorization tokens in response to valid
+Access control servers control access related to both internal (i.e.,
+access control server) and external (i.e., storage server) objects by
+providing signed authorization tokens in response to valid
 requests. Similar to previously proposed distributed and federated
-access control systems~\cite{Calero2010, Leandro2012},
+access control systems~\cite{neuman1994, calero2010, leandro2012},
 each authorization token grants the bearer a specific permission
 related to a specific object. Unlike previous systems, however,
 Tutamen is designed to avoid needing to trust any single access
@@ -177,19 +195,26 @@ to a client sending an authorization request. Each authorization
 request (and each corresponding token) includes two claims binding it
 to a specific object: the object type and the object ID. Each token
 request also contains a claim that binds it to a specific permission
-(e.g., read, write, delete, modify) for the corresponding
-object. Authorization requests are further bound to the specific
-client making the request (authenticated via mutual-TLS), and to an
-expiration time after which the token is no longer valid.
+for the corresponding object. Authorization requests are further bound
+to the specific client making the request (authenticated via
+mutual-TLS), and to an expiration time after which the token is no
+longer valid. Tutamen allows the client to request a specific validity
+duration/expiration time for each token, facilitating the reuse of a
+single tokens to repeat a specific type of operation on a given object
+without needing to re-authenticate each time. The AC server considers
+the request expiation time when deciding whether or not to approve an
+authentication exist, and may return an authorization valid for less
+time than originally requested or deny a request for an overly-long
+duration all together.
 
 Upon receiving an authorization request from a client, the access
 control server looks up the permission group for the corresponding
 object (identified via the combination of object type and object ID)
 and then loads the verifier set corresponding to the requested
 permission. The server then traverses each verifier in this set,
-verifying both client membership in one of the accounts listed in the
-verifier as well as executing any authenticator modules required by
-the verifier until it finds (or fails to find) a verifier that is
+checking for client membership in one of the accounts listed in the
+verifier and executing any authenticator modules required by the
+verifier until it finds (or fails to find) a verifier that is
 satisfied by the request. If the server is able to verify compliance
 with at least one verifier, it grants the authorization request and
 returns a signed authorization token that includes the object type,
@@ -204,15 +229,15 @@ control servers must be accompanied by a valid token. The receiving
 server validates this token using the public signing key of the
 associated AC server; for requests to the AC server itself, this key
 is available internally. For requests to external storage servers, the
-signing key is downloaded by the storage server from the access
-control server and cached for future use. In this manner, access
-control servers are responsible both for granting and verifying
-authorization requests and signing the corresponding tokens, as well
-as for verifying tokens accompanying requests to perform actions on
-ACS objects (e.g., to create or modify verifiers or accounts). Storage
-servers are responsible only for verifying tokens accompanying
-requests to perform actions on SS objects (e.g., to create a
-collection or read a secret).
+signing key is downloaded by the storage server via an HTTPS API call
+to the access control server and cached for future use. In this
+manner, access control servers are responsible both for granting and
+verifying authorization requests and signing the corresponding tokens,
+as well as for verifying tokens accompanying requests to perform
+actions on ACS objects (e.g., to create or modify verifiers or
+accounts). Storage servers are responsible only for verifying tokens
+accompanying requests to perform actions on SS objects (e.g., to
+create a collection or read a secret).
 
 \subsubsection{Distributed Usage}
 \label{sec:tutamen:arch:distributed}
@@ -444,6 +469,6 @@ user to provide a response to an SMS challenge approving access to the
 secret.
 
 %%  Localwords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
-%%  LocalWords:  authenticators authenticator
+%%  LocalWords:  authenticators authenticator Custos
 %%  LocalWords:  DoS SMS Redis AGPLv JWS JWT pyjwt pytutamen LGPLv
 %%  LocalWords:  Twilio tutamen Auth
