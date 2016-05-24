@@ -24,8 +24,8 @@ failure of any security guarantees provided by the AC server.
   tokens it receives from clients wishing to operate on access control
   objects. Thus, each AC server must store private token signing key
   in a secure manner and faithfully verify both the access control
-  requirements governing specific token requests as well as the
-  signatures on all incoming tokens.
+  requirements governing specific token requests and the signatures on
+  all incoming tokens.
 \end{packed_desc}
 
 The storage servers must uphold the following security
@@ -80,14 +80,14 @@ To work around security failures of individual server, Tutamen
 applications can leverage Tutamen's distributed operation modes. In
 these modes, the security of the system as a whole is diffused, no
 longer relying on the security of any specific access control or
-storage server in order to keep an application's secrets secure. As
-described in Section~\ref{sec:tutamen:arch:distributed}, each
-application can distribute both secret-storage and access control
-delegations using $n$ choose $k$ schemes. In such setups, the value of
-$k$ represents the degree to which a Tutamen applications can
-withstand security failures of the associated AC and storage servers,
-while the difference between $n$ and $k$ dictates the degree to which
-an Application can withstand availability failures. For example, an
+storage server to keep an application's secrets secure. As described
+in Section~\ref{sec:tutamen:arch:distributed}, each application can
+distribute both secret-storage and access control delegations using
+$n$ choose $k$ schemes. In such setups, the value of $k$ represents
+the degree to which a Tutamen applications can withstand security
+failures of the associated AC and storage servers, while the
+difference between $n$ and $k$ dictates the degree to which an
+Application can withstand availability failures. For example, an
 application which chooses to shard its secrets across six storage
 servers where any three shards are sufficient to recreate the secret
 ($n=6$, $k=3$) will remain secure as long as no more than two ($k-1$)
@@ -118,22 +118,21 @@ When selecting Tutamen hosts for distributed Tutamen operation, it is
 desirable to select hosts with geospatial, geopolitical, and
 administrative diversity. Doing so reduces the likelihood that
 multiple servers will be subject to the same failure (e.g. a regional
-power outage) and also reduces the likelihood of collusion (e.g. by
-avoiding the use of multiple Tutamen hosting providers controlled by a
-single administrative entity) as well as the likelihood of compelled
-access (e.g. by locating secret shards across national boundaries
-where no single government can compel access to all shards). Should a
-system such as Tutamen ever become standardized, we also envision the
-formation of a competing market of Tutamen providers from which users
-may select individual hosts for their secrets. Such a market has the
-potential to align economic benefits with good-faith efforts by server
-providers to uphold the Tutamen security
-guarantees~\cite{sayler-phd}. Although using Tutamen will also entail
+power outage), increases the cost of collusion (e.g. by avoiding the
+use of multiple Tutamen hosting providers controlled by a single
+administrative entity), and hinders compelled access (e.g. by locating
+secret shards across national boundaries where no single government
+can compel access to all shards). Should a system such as Tutamen ever
+become standardized, we also envision the formation of a competing
+market of Tutamen providers from which users may select individual
+hosts for their secrets. Such a market has the potential to align
+economic benefits with security best practices by server
+providers~\cite{sayler-phd}. Although using Tutamen will always entail
 risks with respect to trusted third parties, we believe these risks
-are much lower than existing centralized secret storage platforms and
-that increasing the number of providers over which secrets or access
-control duties are split serves to arbitrarily reduce the degree of
-such risks.
+are lower for Tutamen than for existing centralized secret storage
+platforms. Furthermore, increasing the number of providers over which
+secrets or access control duties are split serves to arbitrarily
+reduce the degree of such risks.
 
 %%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
 %%  LocalWords:  ACS

@@ -3,17 +3,17 @@
 
 We've evaluated Tutamen in a variety of scenarios using the
 applications described in \S~\ref{sec:apps}. In this section, we
-discuss both our existing Tutamen deployment as well as the
-performance characteristics of our Tutamen prototype.
+discuss both our existing Tutamen deployment and the performance
+characteristics of our Tutamen prototype.
 
 \subsection{Deployment}
 \label{sec:eval:deployment}
 
 We've deployed a group of Tutamen servers, each either hosted locally
-or by an independent third party in order to gain geospatial,
-geopolitical, and administrative diversity. Our current Tutamen
-deployment includes three access control and storage server pairs,
-across wish we can shard both secrets and access control duties:
+or by an independent third party to gain geospatial, geopolitical, and
+administrative diversity. Our current Tutamen deployment includes
+three access control and storage server pairs, across wish we can
+shard both secrets and access control duties:
 
 \begin{packed_desc}
 \item[Paris, France:] Scaleway~\cite{scaleway} C2S instance\footnote{Bare
@@ -67,9 +67,9 @@ requiring only a single lookup per system boot. Since our current
 deployment has easily supported the needs of our existing Tutamen
 users and applications, we have not yet had a need to optimize our
 Tutamen deployment for performance. Nonetheless, we have performed a
-number of performance measurements in order to better understand the
-scaling and bottlenecks of the Tutamen system and to target future
-performance enhancements.
+number of performance measurements to better understand the scaling
+and bottlenecks of the Tutamen system and to target future performance
+enhancements.
 
 Figure~\ref{fig:eval:scaleup} shows the response vs request rates of
 single access control and storage server deployment across a range of
@@ -90,28 +90,27 @@ linearly with the number of CPU cores, ranging from around 30 RPS on a
 c4.large to around 130 RPS on a c4.4xlarge. Processing authorization
 token requests tends to be the most computationally difficult Tutamen
 operation: the process requires verifying both cryptographic
-assertions (e.g. a client certificate via the account ID) as well as
-loading and verifying each authenticator module (where
-required).\footnote{Processing authorizations can also incur
-  human-scale delays far in excess of the computational limits, as in
-  cases where an SMS authenticator requires a human to receive and
-  then respond to a text message. Tutamen clients must thus account
-  for the possibility of significant delays when requesting tokens,
-  generally via timeouts or asynchronous callbacks.}
-Figure~\ref{fig:eval:scaleup:getsecret} shows a similar set of curves
-for a stream of request to fetch a secret from a Tutamen storage
-server. As in the access control case, these operations scale linearly
-with the number of CPU cores, up until the point where they top out
-via the diminishing return of a c4.4xlarge instance relative to a
-c2.2xlarge instance. While we have not fully determined the exact
-cause of this limit, we believe it is a combination of our Python test
-client itself being only capable of generating ~180 TLS requests per
-second and the fact that the Redis database starts to reach the limit
-of the instances I/O performance around this point, leading us to
-become I/O instead of CPU bound. It should be noted that the request
-secret operation requires significantly fewer computational resources
-than the ``get token'' operation, leading to a performance range of
-~70 RPS to ~180 RPS.
+assertions (e.g. a client certificate via the account ID) and each
+authenticator module (where required).\footnote{Processing
+  authorizations can incur human-scale delays far in excess of the
+  computational limits, as in cases where an SMS authenticator
+  requires a human to receive and then respond to a text
+  message. Tutamen clients must thus account for the possibility of
+  significant delays when requesting tokens, generally via timeouts or
+  asynchronous callbacks.}  Figure~\ref{fig:eval:scaleup:getsecret}
+shows a similar set of curves for a stream of request to fetch a
+secret from a Tutamen storage server. As in the access control case,
+these operations scale linearly with the number of CPU cores, up until
+the point where they top out via the diminishing return of a
+c4.4xlarge instance relative to a c2.2xlarge instance. While we have
+not fully determined the exact cause of this limit, we believe it is a
+combination of our Python test client itself being only capable of
+generating ~180 TLS requests per second and the fact that the Redis
+database starts to reach the limit of the instances I/O performance
+around this point, leading us to become I/O instead of CPU bound. It
+should be noted that the request secret operation requires
+significantly fewer computational resources than the ``get token''
+operation, leading to a performance range of ~70 RPS to ~180 RPS.
 
 \begin{figure*}[thb]
   \centering
@@ -178,8 +177,8 @@ of our current deployment through a mix of balancing requests across
 multiple backend instances (i.e. to overcome database and I/O limits
 of single instance) and the use of more powerful processing
 capabilities (e.g. cryptographic accelerators). We also have plans to
-streamline the cryptographic code as well as the database abstraction
-layer to decrease Tutamen's computational and I/O requirements. On the
+streamline the cryptographic code and the database abstraction layer
+to decrease Tutamen's computational and I/O requirements. On the
 client, we also have plans to take advantage of Tutamen's support for
 long-lived (e.g. minutes to hours vs seconds) tokens to decrease the
 frequency with which clients must make requests to the Tutamen AC

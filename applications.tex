@@ -56,7 +56,7 @@ Cloud-based file storage systems such as Dropbox~\cite{dropbox} are
 extremely popular today. Unfortunately, these systems require users to
 trust the cloud provider with full access to their (generally
 unencrypted) data. Users wishing to overcome this deficiency can
-optionally encrypt all of their data on the client before syncing it
+optionally encrypt all of their data on the client before uploading it
 to the file locker provider, but doing so does not generally interact
 well with such services' sharing and multi-device use cases, requiring
 users to employ manual, out-of-band key exchange mechanisms to share
@@ -85,13 +85,13 @@ client), FuseBox uses AES~\cite{daemen1999, nist2001} as a stream
 cipher to transparently stream and encrypted data to/from Dropbox's
 servers on demand. Since FuseBox leverages Tutamen to store each
 per-file encryption key, FuseBox natively supports Dropbox's
-multi-device sync use case by allowing a user to access and decrypt
-their Dropbox files from any device on which they have setup the
-Tutamen client. FuseBox also makes it simple to share an encrypted
+multi-device synchronization use case by allowing a user to access and
+decrypt their Dropbox files from any device on which they have setup
+the Tutamen client. FuseBox also makes it simple to share an encrypted
 file via Dropbox, share its encryption key via Tutamen, and achieve
 the same level of functionality traditional Dropbox users have without
 having to expose one's data to Dropbox.\footnote{While the key sharing
-  process in FuseBox is not yet directly synced with Dropbox's file
+  process in FuseBox is not yet directly linked to Dropbox's file
   sharing system, the Tutamen CLI can be used to quickly share the
   encryption keys between users.} In this manner, we have used FuseBox
 to store and share encrypted files with nearly the same ease with

@@ -2,23 +2,4 @@
 - Trim Section 2 - too much tangential info, focus on Auth and Storage
 + Discuss how SS/ACS servers are added removed (migrated, decommissioned)
 + Discuss incremental scaling
-+ Emphasize Dropbox integration
-+ Add related work section
 + Reference CleanOS (OSDI'12) and TinMan (EuroSys'15)
-+ The authors consistently use an en dash, separated by spaces, to
-  set off parenthetical comments (except in one place where they
-  use a hyphen).  Correct typography calls for an em dash with no
-  spaces; see Lamport p. 14.  Also, in at least two places the
-  parenthetical begins with an en dash but is terminated by a
-  comma, which is also correct.  In other words, you should write
-  parentheticals--also known as asides--like this, rather than
-  writing them--incorrectly, like this.
-+ Surely there's a better title for Section 4.3 than "Other".
-+ Fix hyphens
-  * secret-storage platform
-  * access-control server
-+ Typographic errors that won't be caught by a spell-checker:
-    * "in order to" -> "to"
-    * "as well as" -> "and"
-    * syncing -> synchronizing
-    * "human-at-keyboard" -> "human-at-the-keyboard".
