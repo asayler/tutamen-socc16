@@ -2,24 +2,11 @@
 - Trim Section 2 - too much tangential info, focus on Auth and Storage
 + Discuss how SS/ACS servers are added removed (migrated, decommissioned)
 + Discuss incremental scaling
-+ Discuss client cert revocation
-+ Diagram relationship between clients, accounts, and certs
 + Emphasize Dropbox integration
 + Add related work section
-+ Call out contributions in more detail - multi-admin domain, etc
 + Reference CleanOS (OSDI'12) and TinMan (EuroSys'15)
-+ Reference kerberos for token mechanism
 + Discuss placing both ACS and SS on a single machine
 + Why two servers? Separation of duties
-+ Figure 5 (storing secret) too small
-+ Explain Figure 5 handshack process
-+ Figure 2 uses many undefined abbreviations; defined in the caption
-+ The top of page 6 refers to "a novel ($k,n$) threshold scheme."
-  Say "novel yet simple"
-+ Footnote 2 ends by claiming that the ID-grabbing DOS attack isn't
-  worth worrying about.  Those sound like famous last words.  In
-  any case, why can't an application just request a different ID?
-  The entire process of generating IDs is inadequately specified.
 + Section 3.3 argues that service providers who do a bad job of
   being secure "will suffer a negative economic effect,
   disincentivizing such behavior."  This is the type of wishful
@@ -39,13 +26,6 @@
   comma, which is also correct.  In other words, you should write
   parentheticals--also known as asides--like this, rather than
   writing them--incorrectly, like this.
-+ At the beginning of Section 2.1 is the phrase "...for
-  authenticating secret requests".  That would normally be read as
-  "authenticating requests that are kept secret".  Rephrasing to
-  "authenticating requests for secrets" would be clearer.
-+ Page 6, column 2, the second paragraph contains a lengthy
-  unparseable sentence: "The Tutamen authenticator interface..."  A
-  rewrite would be most helpful to the reader.
 + Surely there's a better title for Section 4.3 than "Other".
 + Fix hyphens
   * secret-storage platform

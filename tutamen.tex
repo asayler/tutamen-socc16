@@ -18,7 +18,7 @@ Tutamen has three discrete architectural components:
 \begin{packed_desc}
 \item[Access Control Servers (ACS):] The systems responsible for
   storing and enforcing secret access control requirements and for
-  authenticating secret requests.
+  authenticating requests related to secrets and access control data.
 \item[Storage Servers (SS):] The systems responsible for storing
   secrets (or parts of secrets).
 \item[Applications:] The systems leveraging the Tutamen platform to
@@ -466,22 +466,21 @@ subsequent requests using a \texttt{tutamen-tokens} header field.
 
 The access control servers expose a pluggable authenticator interface
 through which end users and other developers may add custom
-authentication functionality. The Tutamen authenticator interface is
-primarily designed for providing authentication checks beyond the TLS
-certificate-based authentication the access control server
-automatically performs on every request for the purpose of associating
-each request with a specific client and account. As an example, we
-have implemented an authenticator module that allows users to approve
-Tutamen token requests via SMS text message using the
-Twilio~\cite{twilio} messaging platform. We also envision
-authenticator modules for enforcing access control rules such as only
-allowing requests during certain times of day or from specific network
-addresses. Each authenticator plugin is provided with both a set of
-per-instance configuration data (e.g., to whom an SMS message gets
-sent for approval) as well as all of the details of a specific token
-request including both the IDs and metadata associated with the
-requesting account and client (e.g., from which information such as
-originating IP address or time of day can be extracted).
+authentication functionality. This interface is primarily designed to
+allow users to specify authentication checks beyond the TLS client
+certificate authentication the access control server automatically
+performs on every request. As an example, we have implemented an
+authenticator module that allows users to approve Tutamen token
+requests via SMS text message using the Twilio~\cite{twilio} messaging
+platform. We also envision authenticator modules for enforcing access
+control rules such as only allowing requests during certain times of
+day or from specific network addresses. Each authenticator plugin is
+provided with both a set of per-instance configuration data (e.g., to
+whom an SMS message gets sent for approval) as well as all of the
+details of a specific token request including both the IDs and
+metadata associated with the requesting account and client (e.g., from
+which information such as originating IP address or time of day can be
+extracted).
 
 In addition to the server and authenticator implementations, we have
 also created reference Tutamen client libraries for both
