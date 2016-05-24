@@ -1,9 +1,9 @@
 \section{Introduction}
 \label{sec:intro}
 
-How best to store and manage secrets--the bits of sensitive data
+How best to store and manage secrets -- the bits of sensitive data
 necessary to ensure or bootstrap the security of computing systems and
-services--has always been a non-trivial problem. As we continue to
+services -- has always been a non-trivial problem. As we continue to
 move toward computing and storage platforms controlled by third
 parties, and embrace modern trends toward ephemeral infrastructure,
 the secret-storage problem only becomes more prevalent and critical to
@@ -16,24 +16,23 @@ requirements without sacrificing functionality in the process. Tutamen
 is a next-generation secret-storage platform. It builds on our
 previous secret-storage efforts~\cite{custos-trios} as well as various
 secret-storage systems available today~\cite{vault, keywhiz,
-  confidant}. In this paper, we offer several contributions:
+  confidant}.
 
+In this paper, we present the design, implementation, and evaluation
+of a secret-storage system with support for several novel features. We
+also provide Several practical demonstrations of how a secret-storage
+system with such features can be integrated with real-world
+applications to offer desirable features in a secure and easy-to-use
+manner. Tutaman's primary selling-points include:
 \begin{packed_item}
-\item The design, implementation, and evaluation of a secret-storage
-  system with support for several novel features, including:
-  \begin{packed_item}
-  \item A modular authentication system designed to support
-    contextual, multi-factor, and alternate-band (e.g., SMS text
-    messages) authentication mechanisms.
-  \item The ability to operate atop minimally trusted infrastructure
-    by leveraging multiple storage and access control providers to
-    achieve both redundancy and to mitigate trust.
-  \item The ability to share and manage secrets beyond the boundaries
-    of a single administrative domain.
-  \end{packed_item}
-\item Several practical demonstrations of how a secret-storage system
-  with such features can be integrated with real-world applications to
-  offer desirable features in a secure and easy-to-use manner.
+\item A modular authentication system designed to support contextual,
+  multi-factor, and alternate-band (e.g., SMS text messages)
+  authentication mechanisms.
+\item The ability to operate atop minimally trusted infrastructure
+  by leveraging multiple storage and access control providers to
+  achieve both redundancy and to mitigate trust.
+\item The ability to share and manage secrets beyond the boundaries
+  of a single administrative domain.
 \end{packed_item}
 
 \subsection{The Need for Secret-Storage}
@@ -44,7 +43,7 @@ the server infrastructure required to support the range of web sites
 and services we interact with every day. With this explosion of
 computing systems has come an equally large explosion in the amount of
 data stored by and about us. While some of this data is designed to be
-public (i.e., the entries on Wikipedia), much of it is not, requiring
+public (e.g., the entries on Wikipedia), much of it is not, requiring
 the enforcement of various privacy and security guarantees with
 respect to its handling and storage. The basis of providing such
 guarantees relies on our ability to store and selectively share
@@ -61,7 +60,7 @@ ephemeral infrastructure capable of rapidly scaling up or down is
 driving the adoption of configuration management systems such as
 Puppet~\cite{puppet} or Chef~\cite{chef}. Such systems, however, do
 not tend to have suitable mechanisms for enforcing the security and
-privacy requirements inherent to storing secrets. Despite this,
+privacy requirements inherent to storing secrets. Nonetheless,
 configuration data often contains a variety of secrets such as SSH
 keys, TLS/SSL keys, file encryption keys, and the tokens or
 credentials necessary to authenticate with external APIs and services.
@@ -71,9 +70,10 @@ systems is being driven by a rapid expansion of the number of sites
 and services to which users must authenticate themselves and the
 growing expanse of digital data and computing devices users wish to
 protect. Indeed, the popularity of password management systems such as
-LastPass~\cite{lastpass} or 1Password~\cite{onepassword} demonstrate
-the importance of secret-storage, and the applications it enables, to
-end users.
+LastPass~\cite{lastpass} or 1Password~\cite{onepassword} and the
+increasing trend toward ``on-by-default'' device-encryption
+demonstrate the importance of secret-storage, and the applications it
+enables, to end users.
 
 \subsection{The Ideal Secret-Storage System}
 
@@ -107,8 +107,7 @@ more secret-storage requirements:
 
 \begin{packed_item}
 \item Avoidance of the need to place a high degree of trust in any
-  single system or administrative domain beyond application that
-  wishes to store a secret.
+  single system or administrative domain.
 \item Ability to support a range of secret-access use cases, including
   use cases where automatic or remote access to secrets is required.
 \end{packed_item}
@@ -116,12 +115,12 @@ more secret-storage requirements:
 It is toward these final two requirements that Tutamen attempts to
 advance the state of the art over existing secret-storage systems. In
 particular, Tutamen supports operational modes where no single entity
-other than the application must be trusted. This allows users to
-leverage third party secret-storage providers running Tutamen servers
-without having to place high degrees of trust in any single
+other than the client application must be trusted. This allows users
+to leverage third party secret-storage providers running Tutamen
+servers without having to place high degrees of trust in any single
 provider. Tutamen is also designed to scale beyond a single
 administrative domain, and does not require centralized control or
-administration of every server in a Tutamen deployment. Tutamen also
+administration of each server in a Tutamen deployment. Tutamen also
 provides support for a modular authentication interface. This
 interface makes Tutamen suitable for use in situations where it is
 desirable to leverage external environmental information to
@@ -134,3 +133,4 @@ requesting them when a human responds to a text message confirming the
 boot request.
 
 %%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS
+%%  LocalWords:  Tutaman's
