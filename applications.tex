@@ -83,26 +83,27 @@ storage space and security challenges presented by locally caching all
 Dropbox data (i.e., the operation mode for the official Dropbox
 client), FuseBox uses AES~\cite{daemen1999, nist2001} as a stream
 cipher to transparently stream encrypted data to/from Dropbox's
-servers on demand. Since FuseBox leverages Tutamen to store each
-per-file encryption key, FuseBox natively supports Dropbox's
-multi-device synchronization use case by allowing a user to access and
-decrypt their Dropbox files from any device on which they have setup
-the Tutamen client. FuseBox also makes it simple to share an encrypted
-file via Dropbox, share its encryption key via Tutamen, and achieve
-the same level of functionality traditional Dropbox users have without
-having to expose one's data to Dropbox.\footnote{While the key sharing
-  process in FuseBox is not yet directly linked to Dropbox's file
-  sharing system, the Tutamen CLI can be used to quickly share the
-  encryption keys between users.} In this manner, we have used FuseBox
-to store and share encrypted files with nearly the same ease with
-which one might use the traditional unencrypted Dropbox client. By
-leveraging Tutamen, FuseBox also gains the ability to remotely revoke
-file access, e.g., in the case a device is lost or stolen, similar to
-systems such as~\cite{geambasu2011}. FuseBox, via Tutamen's
-distributed operation mode, also avoids the sharing pitfalls
-associated many existing ``secure cloud storage''
-providers~\cite{wilson2014} by avoiding reliance on a single trusted
-party to facilitate sharing operations.
+servers on demand (similar in purpose to systems such
+as~\cite{tang2012} and~\cite{xia2015}). Since FuseBox leverages
+Tutamen to store each per-file encryption key, FuseBox natively
+supports Dropbox's multi-device synchronization use case by allowing a
+user to access and decrypt their Dropbox files from any device on
+which they have setup the Tutamen client. FuseBox also makes it simple
+to share an encrypted file via Dropbox, share its encryption key via
+Tutamen, and achieve the same level of functionality traditional
+Dropbox users have without having to expose one's data to
+Dropbox.\footnote{While the key sharing process in FuseBox is not yet
+  directly linked to Dropbox's file sharing system, the Tutamen CLI
+  can be used to quickly share the encryption keys between users.} In
+this manner, we have used FuseBox to store and share encrypted files
+with nearly the same ease with which one might use the traditional
+unencrypted Dropbox client. By leveraging Tutamen, FuseBox also gains
+the ability to remotely revoke file access, e.g., in the case a device
+is lost or stolen, similar to systems such
+as~\cite{geambasu2011}. FuseBox, via Tutamen's distributed operation
+mode, also avoids the sharing pitfalls associated many existing
+``secure cloud storage'' providers~\cite{wilson2014} by avoiding
+reliance on a single trusted party to facilitate sharing operations.
 
 %%  LocalWords:  Tutamen keyslots keyslot systemd cryptsetup initrd
 %%  LocalWords:  libcryptsetup initramfs Archlinux RedHat ini pid FDE
