@@ -1,7 +1,7 @@
 \section{Security and Trust}
 \label{sec:trust}
 
-One of Tutamen's primary design goals is its ability to support a wide
+One of Tutamen's primary design goals is the ability to support a wide
 range of security and trust requirements. In this section, we present
 a basic overview of the Tutamen security and trust models.
 
@@ -33,16 +33,15 @@ requirements. Failure to do so results in a failure of the security of
 the storage server.
 
 \begin{packed_desc}
-\item[Token Verification:] Each storage server must securely (via
-  HTTPS) obtain the public token signing key from each AC server
-  delegated with providing access control for a given storage
-  object. The storage server must then use these keys to faithfully
-  verify the signatures on all tokens it receives. Assuming the token
-  signature is valid, the storage server must faithfully enforce the
-  claims asserted in a given token; e.g., by only allowing actions
-  granted by the permission contained in the token on the object the
-  token identifies prior to the expiration time specified by the
-  token.
+\item[Token Verification:] Each storage server must securely download
+  the public token signing key from each AC server delegated with
+  providing access control for a given storage object. The storage
+  server must then use these keys to faithfully verify the signatures
+  on all tokens it receives. Assuming the token signature is valid,
+  the storage server must faithfully enforce the claims asserted in a
+  given token; e.g., by only allowing actions granted by the
+  permission contained in the token on the object the token identifies
+  prior to the expiration time specified by the token.
 \item[Secure Storage:] Each storage server must take steps to store
   user-provided secrets in a secure manner, releasing them only to
   requests accompanied by the requisite number of valid tokens
@@ -61,8 +60,8 @@ insecure.\footnote{Since the security of Tutamen is derived from the
   access control server. The Tutamen access control and storage roles
   are mainly split into separate servers to allow for independent
   scaling of each role and to promote separation of duties in the code
-  base, and collocating both servers types is not generally
-  detrimental to the security of the system.}
+  base. Collocating both server types on a single host is not
+  generally detrimental to the security of the system.}
 
 \subsection{Security of Multiple Servers}
 
@@ -76,7 +75,7 @@ incompetence on the part of the server operator, or compelled
 failures.\footnote{For example, being forced to turn over stored
   secrets in response to legal or governmental pressure.}
 
-To work around security failures of individual server, Tutamen
+To work around security failures of an individual server, Tutamen
 applications can leverage Tutamen's distributed operation modes. In
 these modes, the security of the system as a whole is diffused, no
 longer relying on the security of any specific access control or
@@ -88,12 +87,12 @@ the degree to which a Tutamen applications can withstand security
 failures of the associated AC and storage servers, while the
 difference between $n$ and $k$ dictates the degree to which an
 Application can withstand availability failures. For example, an
-application which chooses to shard its secrets across six storage
+application that chooses to shard its secrets across six storage
 servers where any three shards are sufficient to recreate the secret
 ($n=6$, $k=3$) will remain secure as long as no more than two ($k-1$)
 of the storage servers fail to meet their security
 obligations. Similarly, if each secret shard delegates six possible AC
-servers, tokens from three of which are required to grant secret
+servers, token from three of which are required to grant secret
 access, the applications can withstand the failure of two AC servers
 to uphold their security guarantees. In both cases, the system can
 also withstand the availability failure of up to three servers ($n-k$)
@@ -117,16 +116,16 @@ the degree to which each server is trusted.
 When selecting Tutamen hosts for distributed Tutamen operation, it is
 desirable to select hosts with geospatial, geopolitical, and
 administrative diversity. Doing so reduces the likelihood that
-multiple servers will be subject to the same failure (e.g. a regional
-power outage), increases the cost of collusion (e.g. by avoiding the
+multiple servers will be subject to the same failure (e.g., a regional
+power outage), increases the cost of collusion (e.g., by avoiding the
 use of multiple Tutamen hosting providers controlled by a single
-administrative entity), and hinders compelled access (e.g. by locating
-secret shards across national boundaries where no single government
-can compel access to all shards). Should a system such as Tutamen ever
-become standardized, we also envision the formation of a competing
-market of Tutamen providers from which users may select individual
-hosts for their secrets. Such a market has the potential to align
-economic benefits with security best practices by server
+administrative entity), and hinders compelled access (e.g., by
+locating secret shards across national boundaries where no single
+government can compel access to all shards). Should a system such as
+Tutamen ever become standardized, we also envision the formation of a
+competing market of Tutamen providers from which users may select
+individual hosts for their secrets. Such a market has the potential to
+align economic benefits with security best practices by server
 providers~\cite{sayler-phd}. Although using Tutamen will always entail
 risks with respect to trusted third parties, we believe these risks
 are lower for Tutamen than for existing centralized secret storage

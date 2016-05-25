@@ -9,37 +9,37 @@ parties, and embrace modern trends toward ephemeral infrastructure,
 the secret-storage problem only becomes more prevalent and critical to
 solve.
 
-Tutamen\footnote{Latin for ``A means of protection or defense''.} is
+Tutamen\footnote{Latin for ``A means of protection or defense.''} is
 our attempt to solve the secret-storage problem in a manner that
 allows the user to adhere to a range of security and privacy
 requirements without sacrificing functionality in the process. Tutamen
 is a next-generation secret-storage platform. It builds on our
 previous secret-storage efforts~\cite{custos-trios} as well as various
-secret-storage systems available today~\cite{vault, keywhiz,
-  confidant}.
+secret-storage systems available today~\cite{vault, confidant,
+  keywhiz}.
 
 In this paper, we present the design, implementation, and evaluation
 of a secret-storage system with support for several novel features. We
-also provide Several practical demonstrations of how a secret-storage
-system with such features can be integrated with real-world
+also provide several practical demonstrations of how a secret-storage
+system with such features can be integrated with real world
 applications to offer desirable features in a secure and easy-to-use
-manner. Tutaman's primary selling-points include:
+manner. Tutaman's primary selling points include:
 \begin{packed_item}
 \item A modular authentication system designed to support contextual,
   multi-factor, and alternate-band (e.g., SMS text messages)
   authentication mechanisms.
-\item The ability to operate atop minimally trusted infrastructure
-  by leveraging multiple storage and access control providers to
-  achieve both redundancy and to mitigate trust.
+\item The ability to operate atop minimally trusted infrastructure by
+  leveraging multiple storage and access control providers to achieve
+  redundancy and mitigate trust.
 \item The ability to share and manage secrets beyond the boundaries
   of a single administrative domain.
 \end{packed_item}
 
 \subsection{The Need for Secret-Storage}
 
-Computing systems today invade every contour of our lives, from the
+Computing systems today invade every facet of our lives, from the
 fitness trackers on our wrists, to our ``smart'' home appliances, to
-the server infrastructure required to support the range of web sites
+the server infrastructure required to support the range of websites
 and services we interact with every day. With this explosion of
 computing systems has come an equally large explosion in the amount of
 data stored by and about us. While some of this data is designed to be
@@ -49,8 +49,8 @@ respect to its handling and storage. The basis of providing such
 guarantees relies on our ability to store and selectively share
 secrets ranging from the keys used to encrypt our data to the
 passwords used to protect our online accounts. How best to store and
-manage these secrets is thus a critical question; the answer to which
-forms the foundation to all of computing's higher level security and
+manage these secrets is thus a critical question, the answer to which
+forms the foundation for all of computing's higher level security and
 privacy guarantees.
 
 Beyond the need to bootstrap a variety of security guarantees, there
@@ -72,8 +72,8 @@ growing expanse of digital data and computing devices users wish to
 protect. Indeed, the popularity of password management systems such as
 LastPass~\cite{lastpass} or 1Password~\cite{onepassword} and the
 increasing trend toward ``on-by-default'' device-encryption
-demonstrate the importance of secret-storage, and the applications it
-enables, to end users.
+demonstrate the importance of secret-storage and the applications it
+enables to end users.
 
 \subsection{The Ideal Secret-Storage System}
 
@@ -83,15 +83,15 @@ secret-storage presents a number of unique requirements, including the
 following capabilities:
 
 \begin{packed_item}
-\item Store arbitrary secret data
-\item Secure the manner in which such data is stored
-\item Enforce fine-grained access control requirements
-\item Support a range of authentication sources/methods
-\item Provide audit logs tracking secret-access history
+\item Store arbitrary secret data.
+\item Secure the manner in which such data is stored.
+\item Enforce fine-grained access control requirements.
+\item Support a range of authentication sources/methods.
+\item Provide audit logs tracking secret-access history.
 \end{packed_item}
 
 In response to these needs, a number of general purpose secret-storage
-systems have been recently developed by industry, including
+systems have recently been developed by industry, including
 HashiCorp's Vault~\cite{vault}, Lyft's Confidant~\cite{confidant}, and
 Square's Keywhiz~\cite{keywhiz}. These systems exist to fulfill some
 or all of the requirements listed above. We believe, however, that
@@ -128,7 +128,7 @@ automatically evaluate the authenticity of a secret-request or where
 it is necessary to keep a human in the authentication loop without
 actually requiring that the human be physically present. For example,
 Tutamen can be used to store the disk encryption keys required to boot
-a headless server, and only release these keys to the server
+a headless server, and to only release these keys to the server
 requesting them when a human responds to a text message confirming the
 boot request.
 

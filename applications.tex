@@ -21,7 +21,7 @@ the data stored on laptops, desktops, and VMs. Such systems
 traditionally bootstrap security by requiring the user to enter a
 password at boot-time to unlock a locally stored encryption key which
 is then used to decrypt the block device in question. Unfortunately,
-the ``human-at-the-keyboard'' security root make such systems
+the ``human-at-the-keyboard'' security basis makes such systems
 difficult or impossible to use atop headless servers or in situations
 where no human can be expected to be present at boot-time. We have
 leveraged Tutamen to overcome this barrier.
@@ -82,7 +82,7 @@ transparent file encryption to end users. In order to avoid the
 storage space and security challenges presented by locally caching all
 Dropbox data (i.e., the operation mode for the official Dropbox
 client), FuseBox uses AES~\cite{daemen1999, nist2001} as a stream
-cipher to transparently stream and encrypted data to/from Dropbox's
+cipher to transparently stream encrypted data to/from Dropbox's
 servers on demand. Since FuseBox leverages Tutamen to store each
 per-file encryption key, FuseBox natively supports Dropbox's
 multi-device synchronization use case by allowing a user to access and
