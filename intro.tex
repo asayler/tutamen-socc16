@@ -20,9 +20,9 @@ secret-storage systems available today~\cite{vault, confidant,
 
 In this paper, we present the design, implementation, and evaluation
 of a secret-storage system with support for several novel features. We
-also provide several practical demonstrations of how a secret-storage
-system with such features can be integrated with real world
-applications to offer desirable features in a secure and easy-to-use
+also provide several practical demonstrations of how our
+secret-storage system can be integrated with real world applications
+to offer desirable features in a secure and easy-to-use
 manner. Tutaman's primary selling points include:
 \begin{packed_item}
 \item A modular authentication system designed to support contextual,
@@ -37,12 +37,12 @@ manner. Tutaman's primary selling points include:
 
 \subsection{The Need for Secret-Storage}
 
-Computing systems today invade every facet of our lives, from the
-fitness trackers on our wrists, to our ``smart'' home appliances, to
-the server infrastructure required to support the range of websites
-and services we interact with every day. With this explosion of
-computing systems has come an equally large explosion in the amount of
-data stored by and about us. While some of this data is designed to be
+Computing systems invade every facet of our lives, from the fitness
+trackers on our wrists, to our ``smart'' home appliances, to the
+server infrastructure required to support the range of websites and
+services we interact with every day. With this explosion of computing
+systems has come an equally large explosion in the amount of data
+stored by and about us. While some of this data is designed to be
 public (e.g., the entries on Wikipedia), much of it is not, requiring
 the enforcement of various privacy and security guarantees with
 respect to its handling and storage. The basis of providing such
@@ -63,7 +63,7 @@ not tend to have suitable mechanisms for enforcing the security and
 privacy requirements inherent to storing secrets. Nonetheless,
 configuration data often contains a variety of secrets such as SSH
 keys, TLS/SSL keys, file encryption keys, and the tokens or
-credentials necessary to authenticate with external APIs and services.
+credentials necessary to authenticate to external APIs and services.
 
 Similarly, on the end user front, the need for suitable secret-storage
 systems is being driven by a rapid expansion of the number of sites
@@ -78,13 +78,13 @@ enables to end users.
 \subsection{The Ideal Secret-Storage System}
 
 Unlike standard configuration management systems, or even specific
-secret-storage systems such as password managers, a general purpose
+secret-storage systems such as password managers, general purpose
 secret-storage presents a number of unique requirements, including the
 following capabilities:
 
 \begin{packed_item}
 \item Store arbitrary secret data.
-\item Secure the manner in which such data is stored.
+\item Secure the manner in which secrets are stored.
 \item Enforce fine-grained access control requirements.
 \item Support a range of authentication sources/methods.
 \item Provide audit logs tracking secret-access history.
@@ -99,11 +99,11 @@ such systems are hindered by several key limitations. First, they
 generally require at least one fully trusted server as the basis of
 their security model, making them unsuitable for operation atop
 untrusted infrastructure. Second, they are designed for use within the
-boundaries of a single administrative domain, and require the user to
+boundaries of a single administrative domain and require the user to
 trust the administrators of that domain. Finally, they tend to lack
 support for use cases requiring autonomous or remote access to secret
-material in a secure manner. These deficiencies give rise to a few
-more secret-storage requirements:
+material in a secure manner. These deficiencies give rise to several
+additional secret-storage requirements:
 
 \begin{packed_item}
 \item Avoidance of the need to place a high degree of trust in any
@@ -120,7 +120,7 @@ to leverage third party secret-storage providers running Tutamen
 servers without having to place high degrees of trust in any single
 provider. Tutamen is also designed to scale beyond a single
 administrative domain, and does not require centralized control or
-administration of each server in a Tutamen deployment. Tutamen also
+administration of each server in a Tutamen deployment. Tutamen
 provides support for a modular authentication interface. This
 interface makes Tutamen suitable for use in situations where it is
 desirable to leverage external environmental information to
