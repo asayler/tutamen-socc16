@@ -132,5 +132,54 @@ a headless server, and to only release these keys to the server
 requesting them when a human responds to a text message confirming the
 boot request.
 
+\subsection{Motivating Examples}
+
+As a motivating example, consider the popular Dropbox cloud file
+locker service~\cite{dropbox}, through which users may upload
+arbitrary files in order to sync them between multiple devices and to
+share them with other users. While Dropbox provides encryption for
+data in transit between the Dropbox servers and a client
+machine~\cite{dropbox-security}, Dropbox also holds a copy of the
+associated encryption keys, enabling them to decrypt a user's files
+whenever they desire. To overcome this deficiency, a user could
+instead implement some form of ``client-side'' encryption allowing
+them to encrypt all data locally and ensuring Dropbox itself never has
+access to the user's files. Unfortunately, such a solution begets a
+number of additional challenges, namely:
+
+\begin{packed_enum}
+\item It breaks Dropbox's sharing use case. While users could still
+  share encrypted versions of their files with other users via
+  Dropbox, they would also have to exchange the associated encryption
+  key out-of-band in order to decrypt and read or update any shared
+  file.
+\item It complicates Dropbox's syncing use case. Whereas before a
+  Dropbox user could bootstrap a new Dropbox client device simply by
+  signing into their Dropbox account, users must now both sign into
+  their Dropbox account and manually transfer a copy of their
+  encryption key to the new device to enable the required encryption
+  and decryption operations.
+\end{packed_enum}
+
+These challenges are not unique to Dropbox. There are many modern
+examples of security and privacy enhancing technologies being hindered
+by the lack of good solutions in the secret storage space. For
+example, full disk encryption systems traditionally require a human to
+manually enter secret in order to boot the system -- a requirement
+that makes full disk encryption largely unusable in deployments where
+no human can reasonably be expected to be present at each
+reboot. Mobile computing devices are prone to loss and theft, but are
+routinely used to store large amounts of user data -- much of which
+could be reasonably classified as ``secret'' and not ideal for storage
+on such devices. Password manager have grown in popularity to help
+users manage the burden of remembering the secrets (e.g. passwords)
+necessary to access the services they use day-to-day, but such
+services generally required placing a high degree of trust in a single
+third party provider.
+
+To address these challenges and overcome existing deficiencies, users
+requires a mechanism for securely storing, managing, and exchanging a
+wide range of secrets. Tutamen aims to provide such a system.
+
 %%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS
 %%  LocalWords:  Tutaman's
