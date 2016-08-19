@@ -2,7 +2,7 @@
 \label{sec:intro}
 
 How best to store and manage secrets -- the bits of sensitive data
-necessary to ensure or bootstrap the security of computing systems and
+necessary to bootstrap or ensure the security of computing systems and
 services -- has always been a non-trivial problem. As we continue to
 move toward computing and storage platforms controlled by third
 parties, and embrace modern trends toward ephemeral infrastructure,
@@ -62,8 +62,8 @@ Puppet~\cite{puppet} or Chef~\cite{chef}. Such systems, however, do
 not tend to have suitable mechanisms for enforcing the security and
 privacy requirements inherent to storing secrets. Nonetheless,
 configuration data often contains a variety of secrets such as SSH
-keys, TLS/SSL keys, file encryption keys, and the tokens or
-credentials necessary to authenticate to external APIs and services.
+keys, TLS/SSL keys, and the tokens or credentials necessary to
+authenticate to external APIs and services.
 
 Similarly, on the end user front, the need for suitable secret-storage
 systems is being driven by a rapid expansion of the number of sites
@@ -120,17 +120,13 @@ to leverage third party secret-storage providers running Tutamen
 servers without having to place high degrees of trust in any single
 provider. Tutamen is also designed to scale beyond a single
 administrative domain, and does not require centralized control or
-administration of each server in a Tutamen deployment. Tutamen
-provides support for a modular authentication interface. This
+administration of each server in a Tutamen deployment. Furthermore,
+Tutamen provides support for a modular authentication interface. This
 interface makes Tutamen suitable for use in situations where it is
 desirable to leverage external environmental information to
 automatically evaluate the authenticity of a secret-request or where
 it is necessary to keep a human in the authentication loop without
-actually requiring that the human be physically present. For example,
-Tutamen can be used to store the disk encryption keys required to boot
-a headless server, and to only release these keys to the server
-requesting them when a human responds to a text message confirming the
-boot request.
+actually requiring that the human be physically present.
 
 \subsection{Motivating Examples}
 
@@ -141,10 +137,11 @@ share them with other users. While Dropbox provides encryption for
 data in transit between the Dropbox servers and a client
 machine~\cite{dropbox-security}, Dropbox also holds a copy of the
 associated encryption keys, enabling them to decrypt a user's files
-whenever they desire. To overcome this deficiency, a user could
-instead implement some form of ``client-side'' encryption allowing
-them to encrypt all data locally and ensuring Dropbox itself never has
-access to the user's files. Unfortunately, such a solution begets a
+whenever they desire (or when they are breached or compelled to
+provide such data)\cite{sayler-trust}. To overcome this deficiency, a
+Dropbox user could employ some form of ``client-side'' encryption
+whereby they encrypt all data locally and ensure Dropbox itself never
+has access to the their files. Unfortunately, such a solution begets a
 number of additional challenges, namely:
 
 \begin{packed_enum}
@@ -152,13 +149,16 @@ number of additional challenges, namely:
   share encrypted versions of their files with other users via
   Dropbox, they would also have to exchange the associated encryption
   key out-of-band in order to decrypt and read or update any shared
-  file.
+  file. Such out-of-band key exchange is burdensome and calls into
+  question the utility of client-side encrypting a service such as
+  Dropbox in the first place.
 \item It complicates Dropbox's syncing use case. Whereas before a
   Dropbox user could bootstrap a new Dropbox client device simply by
   signing into their Dropbox account, users must now both sign into
   their Dropbox account and manually transfer a copy of their
   encryption key to the new device to enable the required encryption
-  and decryption operations.
+  and decryption operations. Again, this manual key management process
+  is burdensome and prone to error.
 \end{packed_enum}
 
 These challenges are not unique to Dropbox. There are many modern
@@ -167,19 +167,28 @@ by the lack of good solutions in the secret storage space. For
 example, full disk encryption systems traditionally require a human to
 manually enter secret in order to boot the system -- a requirement
 that makes full disk encryption largely unusable in deployments where
-no human can reasonably be expected to be present at each
-reboot. Mobile computing devices are prone to loss and theft, but are
-routinely used to store large amounts of user data -- much of which
-could be reasonably classified as ``secret'' and not ideal for storage
-on such devices. Password manager have grown in popularity to help
-users manage the burden of remembering the secrets (e.g. passwords)
-necessary to access the services they use day-to-day, but such
-services generally required placing a high degree of trust in a single
-third party provider.
+no human can reasonably be expected to be present at boot time
+(e.g. in a large datacenter deployment or atop third party cloud
+infrastructure). Mobile computing devices are prone to loss and theft,
+but are routinely used to store large amounts of user data -- much of
+which could be reasonably classified as ``secret'' (e.g. social
+security numbers and credit card details) and which should not be
+stored unprotected on theft-prone devices. Password manager have grown
+in popularity as a means to help users manage the burden of
+remembering the secrets (e.g. passwords) necessary to access the
+services they use each day, but such services generally require
+placing a high degree of trust in a single third party provider.
 
 To address these challenges and overcome existing deficiencies, users
 requires a mechanism for securely storing, managing, and exchanging a
-wide range of secrets. Tutamen aims to provide such a system.
+wide range of secrets. Tutamen aims to provide such a system. For
+example, Tutamen can be used to store the disk encryption keys
+required to boot a headless server, and to only release these keys to
+the server requesting them when a human responds to a text message
+confirming the boot request. Or it can be used to distribute
+encryption keys amongst a set of collaborating Dropbox users. The
+remainder of this paper discusses Tutaman's design and how it can be
+applied to solve issues such as those raised here.
 
 %%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS
 %%  LocalWords:  Tutaman's
