@@ -8,16 +8,9 @@
 % Matt Monaco
 % Dirk Grunwald
 
-% SoCC Template: do not change these values
-\documentclass[10pt,twocolumn]{article}
-\usepackage{times}
-\baselineskip 12pt
-\textheight 9in
-\textwidth 6.5in
-\oddsidemargin 0in
-\topmargin 0in
-\headheight 0in
-\headsep 0in
+\documentclass[10pt]{socc}
+\usepackage{amsmath}
+\usepackage{mathptmx}
 
 % System Packages
 \usepackage{epsfig}
@@ -43,26 +36,42 @@
 % Macros
 \input{macros.tex}
 
-% Other Options
-\clubpenalty = 10000
-\widowpenalty = 10000
-
 % Start
 \begin{document}
 
-%make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+%% \CopyrightYear{2016}
+%% \setcopyright{acmlicensed}
+%% \conferenceinfo{SoCC '16,}{October 05 - 07, 2016, Santa Clara, CA, USA}
+%% \isbn{978-1-4503-4525-5/16/10}\acmPrice{\$15.00}
+%% \doi{http://dx.doi.org/10.1145/2987550.2987581}
+
+\conferenceinfo{SoCC '16}{October 05 - 07, 2016, Santa Clara, CA, USA} 
+\copyrightyear{2016} 
+\copyrightdata{978-1-4503-4525-5/16/10} 
+\doi{2987550.2987581}
+\exclusivelicense
+
+% title
 \title{Tutamen: A Next-Generation Secret-Storage Platform}
 
 % start author
-\author{Andy Sayler}
-\author{Taylor Andrews}
-\author{Matt Monaco}
-\author{Dirk Grunwald}
-\affil{University of Colorado}
+\authorinfo{Andy Sayler}
+           {University of Colorado, Boulder}
+           {andy.sayler@colorado.edu}
+\authorinfo{Taylor Andrews}
+           {University of Colorado, Boulder}
+           {taylor.andrews-1@colorado.edu}
+\authorinfo{Matt Monaco}
+           {University of Colorado, Boulder}
+           {matthew.monaco@colorado.edu}
+\authorinfo{Dirk Grunwald}
+           {University of Colorado, Boulder}
+           {dirk.grunwald@colorado.edu}
 % end author
-
-%don't want date printed
-\date{}
 
 \maketitle
 
@@ -93,6 +102,14 @@ previously unattainable security-oriented goals while still supporting
 a wide range of feature-oriented requirements.
 \end{abstract}
 
+\category{K.6.5}
+         {Management of Computing and Information Systems}
+         {Security and Protection}
+\terms
+Security, Software as a Service
+\keywords
+Secret Storage, Cryptographic Keys, SSaaS
+
 \input{intro.tex}
 \input{tutamen.tex}
 \input{trust.tex}
@@ -103,7 +120,8 @@ a wide range of feature-oriented requirements.
 {
 %  \clearpage
 %  \footnotesize
-  \bibliographystyle{abbrv}
+  \bibliographystyle{abbrvnat}
+  \softraggedright
   \bibliography{refs}
 }
 
