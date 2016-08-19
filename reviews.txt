@@ -120,7 +120,7 @@ Similarly, I couldn't figure out how you would implement a user
 temporarily logging into a shared computer (e.g., in a computer lab,
 or in an internet cafe).  Would you create a temporary client cert for
 this device, and then revoke the cert?  That would give you a lot of
-revocations to worry about, if this was a frequent situation..
+revocations to worry about, if this was a frequent situation.
 
 (2.) You claim to solve the problem of distributing keys to headless
 servers.  But what's the authentication policy do you have for getting

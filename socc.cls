@@ -1045,9 +1045,9 @@
    \parfillskip = 0pt
    \spaceskip = .7em
    \noindent \LARGE \bfseries \@titletext \par}
-  \vskip 6pt
-  \noindent \Large \@subtitletext \par
-  \vskip 12pt
+  \vskip 15pt
+  %% \noindent \Large \@subtitletext \par
+  %% \vskip 12pt
   \ifcase \@authorcount
     \@latex@error{No authors were specified for this paper}{}\or
     \@titleauthors{i}{}{}\or
@@ -1071,7 +1071,7 @@
   \else
     \@latex@error{Cannot handle more than 12 authors}{}%
   \fi
-  \vspace{1.75pc}
+  \vspace{15pt}
   \end{center}}
 
 \def \@settitlebanner {%
@@ -1095,7 +1095,7 @@
               \@setauthor{12.5pc}{#3}{\@true}\par
     \relax
   \fi\fi
-  \vspace{20pt}}
+  \vspace{10pt}}
 
 \def \@setauthor #1#2#3{%                       {width}{text}{unused}
   \vtop{%
@@ -1105,7 +1105,7 @@
     \normalfont
     \centering
     \large \@name{\@authorname#2}\par
-    \vspace{5pt}
+    \vspace{3pt}
     \normalsize \@name{\@authoraffil#2}\par
     \vspace{2pt}
     \textsf{\@name{\@authoremail#2}}\par}}
