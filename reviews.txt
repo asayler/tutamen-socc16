@@ -1,0 +1,143 @@
+===========================================================================
+SOCC 2016 Review #104A
+---------------------------------------------------------------------------
+Paper #104: Tutamen: A Next-Generation Secret-Storage Platform
+---------------------------------------------------------------------------
+
+Overall merit: 3. Weak accept
+Reviewer expertise: 2. Some familiarity
+
+===== Detailed evaluation =====
+
+This paper presents the design and implementation of Tutamen, a
+platform that allows applications to store secrets in a potentially
+untrusted environment and control access to these secrets. The access
+control can be configured to factor in static account boundaries and
+dynamic, contextual information (e.g., time of day) using "plugin"
+authenticators. The latter also provides a principled way of
+incorporating human input to validate accesses. Although the paper
+does not dwell much on this, I felt the platform was fairly expressive
+and allows access control policies to be expressed in a natural and-or
+tree structure.  Another aspect of of Tutamen is its design for
+distributed usage, which allows an application to spread trust around
+different servers - unless a certain configurable number of servers
+implementing the platform collude, secrets would be safe.
+
+The paper addresses a well-motivated problem. The presented solution
+is simple, well-designed, and backed by a solid implementation
+effort. The value of the platform is also demonstrated using
+real-world applications. The presentation is top-notch. I am not
+well-versed in prior work in this area, so I am less sure of the
+technical delta from previous work. The idea of (n,k) sharding itself
+does not seem deep or novel. I am not sure why a client could not
+build on a non-distributed platform by managing the distribution
+itself and achieving similar trust guarantees.
+
+===========================================================================
+SOCC 2016 Review #104B
+---------------------------------------------------------------------------
+Paper #104: Tutamen: A Next-Generation Secret-Storage Platform
+---------------------------------------------------------------------------
+
+Overall merit: 3. Weak accept
+Reviewer expertise: 2. Some familiarity
+
+===== Detailed evaluation =====
+
+Strengths:
+* Relevant and interesting problem domain, especially the use cases.
+* Clear presentation; well written paper; solid explanations.
+* The design has been well thought through.
+
+Weaknesses:
+* I can't help but think that the approach gives the impression of
+being overengineered. The bulk of the paper radiates "how" rather than
+"why" -- the system is aimed to be so general that it becomes too
+abstract. I would structure the paper with deeper focus on the use
+cases, ideally expressing how your use cases would not be possible
+except with this system that you are proposing. In terms of framing,
+you want the design to reflect a true need from a tangible and
+well-justified problem (or a set of problems), rather than effectively
+starting with the design and then stating examples of what it can
+solve.
+* My interest in your use cases makes me wish I could see detailed
+experimental evaluation of those scenarios with the appropriate
+metrics, rather than just statistics from the Tutamen servers.
+* The paper lacks systematic experimental comparison to related
+work. This would help answer the question "do we really need all this
+complexity?"
+* 100 RPS does not seem .. high, even though the authors claim it was
+ample for their evaluation. Could you articulate what problems would
+need to be resolved to scale the server up, say, 10x?
+* How robust is the system to failures?
+* How difficult is the system to use? It might be helpful to do a
+(mini) user study to ensure that the system is usable despite the
+seemingly large number of features.
+
+===========================================================================
+SOCC 2016 Review #104C
+---------------------------------------------------------------------------
+ Paper #104: Tutamen: A Next-Generation Secret-Storage Platform
+---------------------------------------------------------------------------
+
+Overall merit: 3. Weak accept
+Reviewer expertise: 4. Expert
+
+===== Detailed evaluation =====
+
+This paper proposes a service for storing secrets (e.g., cryptographic
+keys, API tokens, etc), and releasing them to applications based on
+policies (e.g., must provide a password, must respond to an SMS
+challenge, must be within the right time-of-day, IP address, etc).
+
+The problem statement seems great to me (storing secrets is
+increasingly important), and this architecture seems like a reasonable
+step towards that goal.  The authors have a reasonable design that
+involves sharding secrets among several storage servers (using a
+secret-sharing scheme) and configuring each storage server to require
+some number of tokens from authentication servers (whose job it is to
+handle various authentication policies, such as 2FA).
+
+The reason for a "weak accept" instead of "strong accept" is that the
+authors have published a good chunk of this work in TRIOS'14 (which
+they cite in this submission), and they say this submission
+effectively is a simpler and cleaner version of their previous
+protocol.  I agree with that (although it would have been nice to have
+a more precise comparison with this prior work), and I still think
+it'd be nice to publish this submission, but that's why I'm not
+"strong accept" for it.
+
+On the technical side, I have three main questions:
+
+(1.) Why do you need TLS client certificates at all?  They seem to be
+required (as opposed to the rest of the authentication protocol, which
+is based on the user's desired policy), and I don't understand what
+they buy for you.  You need to authenticate every request based on the
+user-specified policy anyway, so what additional guarantees are you
+getting from the client cert?
+
+Similarly, I couldn't figure out how you would implement a user
+temporarily logging into a shared computer (e.g., in a computer lab,
+or in an internet cafe).  Would you create a temporary client cert for
+this device, and then revoke the cert?  That would give you a lot of
+revocations to worry about, if this was a frequent situation..
+
+(2.) You claim to solve the problem of distributing keys to headless
+servers.  But what's the authentication policy do you have for getting
+that key?  You say almost nothing about it (page 9, bottom left), but
+this seems to be THE QUESTION in terms of giving a headless server its
+keys.  Maybe your policy is "the server can authenticate with its own
+client certificate", in which case the main win seems to be from
+auditing when the server requested its key..  But then you should
+explain in what way you solve this problem.
+
+(3.) Why is your performance so slow (30 requests per second on a
+two-vCPU EC2 instance)!?  This seems to amount to 66 msec of CPU time
+to handle a request!  What kind of crypto are you using?  Modern
+Ed25519 should be far faster.  Even with RSA, running "openssl speed
+rsa1024" or "openssl speed rsa2048" I get numbers that are orders of
+magnitude faster than yours:
+
+                   sign    verify   sign/s verify/s
+rsa 1024 bits 0.000099s 0.000007s  10134.1 153705.0
+rsa 2048 bits 0.000653s 0.000019s   1530.4  52501.4
