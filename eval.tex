@@ -28,7 +28,7 @@ We've utilized our experimental Tutamen deployment to manually store
 secrets via the Tutamen CLI, to store encryption keys for our FuseBox
 app, and to store encryption keys for our LUKS and our QCOW2 full-disk
 encryption systems. In each case, Tutamen has allowed us to realize
-use cases not easily attainable before such as the use of full disk
+use cases not traditionally attainable such as the use of full disk
 encryption on headless servers and the sharding of sensitive files via
 Dropbox. This deployment demonstrates Tutamen's usefulness as an
 enabler of previously unattainable functionality in a manner that also
@@ -97,7 +97,7 @@ required).\footnote{Processing authorizations can incur human-scale
   an SMS authenticator requires a human to receive and then respond to
   a text message. Tutamen clients must thus account for the
   possibility of significant delays when requesting tokens, generally
-  via timeouts or asynchronous callbacks.}
+  via the use of asynchronous callbacks.}
 Figure~\ref{fig:eval:scaleup:getsecret} shows a similar set of curves
 for a stream of request to fetch a secret from a Tutamen storage
 server. As in the access control case, these operations scale linearly
@@ -107,11 +107,11 @@ c2.2xlarge instance. While we have not fully determined the exact
 cause of this limit, we believe it is a combination of our Python test
 client itself being only capable of generating ~180 TLS requests per
 second and the fact that the Redis database starts to reach the limit
-of the instances I/O performance around this point, leading us to
-become I/O instead of CPU bound. It should be noted that the request
-secret operation requires significantly fewer computational resources
-than the ``get token'' operation, leading to a performance range of
-~70 RPS to ~180 RPS.
+of the instance's I/O performance around this point, leading us to
+become I/O bound instead of CPU bound. It should be noted that the
+request secret operation requires significantly fewer computational
+resources than the ``get token'' operation, leading to a performance
+range of ~70 RPS to ~180 RPS.
 
 \begin{figure*}[thb]
   \centering
@@ -166,8 +166,9 @@ RPS. Raw HTTPS tops out around 90 RPS. HTTP topped out around 550 rps
 primarily limited by the TLS overhead required to serve the
 application and verify client certificates. Token verification itself
 also incurs additional computational requirements, including
-cryptographic signing operations. Finally, the data retrieval itself
-incurs some overhead.
+cryptographic signing operations. Finally, the data retrieval from the
+Redis database and marshaling of data between Python and Redis data
+types incurs some overhead.
 
 While the current Tutamen performance has been sufficient for our
 in-house needs, we have plans to optimize and increase the performance
@@ -179,17 +180,16 @@ backend instances (i.e., to overcome database and I/O limits of single
 instance) and the use of more powerful processing capabilities (e.g.,
 cryptographic accelerators). We also have plans to streamline the
 cryptographic code and the database abstraction layer to decrease
-Tutamen's computational and I/O requirements. On the client, we also
-have plans to take advantage of Tutamen's support for long-lived
-(e.g., minutes to hours vs seconds) tokens to decrease the frequency
-with which clients must make requests to the Tutamen AC
-server. Finally, we also have plans to amend the Tutamen protocol to
-allow for batching multiple token and storage sever requests together
-to decrease the ratio of authentication overhead to useful work
-possible in a single round trip request. We believe a combination of
-these techniques would allow us to significantly increase the
-performance of our Tutamen deployment with only moderate additional
-effort.
+Tutamen's computational and I/O requirements. On the client, we have
+plans to take advantage of Tutamen's support for long-lived (e.g.,
+minutes-to-hours vs seconds) tokens to decrease the frequency with
+which clients must make requests to the Tutamen AC server. Finally, we
+have plans to amend the Tutamen protocol to allow for batching
+multiple token and storage sever requests together to decrease the
+ratio of authentication overhead to useful work possible in a single
+round trip request. We believe a combination of these techniques would
+allow us to significantly increase the performance of our Tutamen
+deployment with only moderate additional development effort.
 
 %%  LocalWords:  Tutamen Tutamen's verifiers authenticators SMS Xeon
 %%  LocalWords:  authenticator HTTPS Redis viewability Scaleway QCOW
