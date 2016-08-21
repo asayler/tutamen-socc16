@@ -2,9 +2,9 @@
 \label{sec:tutamen}
 
 The Tutamen secret-storage platform is designed to handle the storage
-of arbitrary secret material from a range of applications.  In this
+of arbitrary secret material from a range of applications. In this
 section, we present the Tutamen architecture and our reference Tutamen
-server implementations. Tutamen expands on Custos~\cite{custos-trios}
+server implementations. Tutamen expands on Custos~\cite{custos-trios},
 our previous secret-storage attempt. It aims to simplify some of the
 concepts Custos proposed and to add better support for distributing
 secrets across multiple servers.
@@ -58,12 +58,12 @@ control server uses per-actor accounts. These accounts are generally
 designed to map to individual end users, but they can be used to track
 any entity to which one wishes to assign specific access control
 privileges. Accounts thus form the basis of controlling and sharing
-access to secrets via Tutamen. Within each account are one or more
-clients. While accounts represent logically singular entities, clients
-represent specific devices controlled by such entities. Each account
-has one or more clients. For example, Jane Coworker may have a single
-account with three clients: one for her laptop, one for her desktop,
-and one for her phone.
+access to secrets via Tutamen. Associated with each account are one or
+more clients. While accounts represent logically singular entities,
+clients represent specific devices controlled by such entities. Each
+account has one or more clients. For example, Jane Coworker may have a
+single account with three clients: one for her laptop, one for her
+desktop, and one for her phone.
 
 Each client is associated with a single x509~\cite{rfc5280} TLS
 key/certificate-pair used to authenticate the client to the access
@@ -93,12 +93,12 @@ the new client to revoke the certificate of the old client.
 In addition to accounts, the Tutamen access control server also uses
 \textit{authenticators}. Authenticators are modular plugins (similar
 to PAM~\cite{samar1996}) used to implement contextual access control
-requirements~\cite{hulsebosch2005} such as only allowing access during
-specific times of day or from specific IP addresses. Authenticators
-can also be used to implement multi-factor or alternate-band
-authentication mechanisms such as confirming approval for a specific
-request from a user via text message, or otherwise interfacing with
-external services to gain approval.
+requirements~\cite{hulsebosch2005} such as limiting access to specific
+times of day or to specific IP addresses. Authenticators can also be
+used to implement multi-factor or alternate-band authentication
+mechanisms such as confirming approval for a specific request from a
+user via text message, or otherwise interfacing with external services
+to gain approval.
 
 Accounts and authenticators are combined via verifiers. A verifier
 consists of a set of accounts and a set of authenticators. To satisfy
@@ -115,9 +115,12 @@ create, read, modify, delete,), each corresponding to a specific class
 of actions that can be performed on the corresponding object. Each
 permission is associated with a set of verifiers. To be granted a
 given permission, a request must satisfy at least one of the verifiers
-in this set. In this manner, Tutamen allows the fine-grained control
-of each permission for each object on the basis of account membership,
-authenticator satisfaction, or a combination of both.
+in this set.\footnote{The combination of OR-ed lists of verifiers,
+  each containing an AND-ed list of authenticators allows the
+  construction of AND/OR access control trees using the Tutamen access
+  control primitives.} In this manner, Tutamen allows the fine-grained
+control of each permission for each object on the basis of account
+membership, authenticator satisfaction, or a combination of both.
 
 \subsubsection{Storage Servers}
 \label{sec:tutamen:arch:ss}
@@ -149,7 +152,7 @@ to store and any associated user-provided metadata.\footnote{How best
   access control is performed on the per-collection level. Thus, if an
   application requires that a set of secrets always have a common set
   of access control requirements, it is efficient to group these
-  secrets into a single collection.  In cases where each secret
+  secrets into a single collection. In cases where each secret
   requires its own access control requirements (e.g., per-file
   encryption keys), it is appropriate for the corresponding
   application to store only a single secret per collection.}
@@ -188,15 +191,15 @@ longer valid. Tutamen allows the client to request a specific
 expiration time for each token, facilitating the reuse of a single
 token to repeat a specific action on a given object without needing to
 re-authenticate each time. The access control server considers the
-request expiration time when deciding whether or not to approve an
-authentication exist, and may return an authorization valid for less
+requested expiration time when deciding whether or not to approve an
+authentication request, and may return an authorization valid for less
 time than originally requested or deny a request for an overly long
 duration altogether.
 
 Upon receiving an authorization request from a client, the access
 control server looks up the permission group for the corresponding
 object (identified via the combination of object type and object ID)
-and then loads the verifier set corresponding to the requested
+and then loads the set of verifiers corresponding to the requested
 permission. The server then traverses each verifier in this set,
 checking for client membership in one of the accounts listed in the
 verifier and executing any authenticator modules required by the
@@ -205,8 +208,9 @@ satisfied by the request. If the server is able to verify compliance
 with at least one verifier, it grants the authorization request and
 returns a signed authorization token that includes the object type,
 object ID, granted permission, and expiration time. The bearer of this
-token presents it in conjunction with a request to either the access
-control server or a storage server to act on the corresponding object.
+token presents it to either the access control server or a storage
+server in conjunction with it's request to act on the corresponding
+object.
 
 Other than the bootstrapping operations and the token request
 operations themselves, all requests to either storage or access
@@ -291,11 +295,11 @@ specification of two pieces of metadata corresponding to each stored
 collection: a set of AC servers approved to provide access control
 tokens for the collection and a minimum number of servers from which
 valid tokens must be received. These parameters form the basis of a
-novel yet simple $(k, n)$ threshold scheme for access control servers
--- e.g., a collection may delegate a list of $n$ access control
-servers from which an application must acquire at least $k$ valid
-tokens to gain access. Thus, if the user does not wish to trust a
-single access control server, they may require tokens from at least
+novel, yet simple, $(k, n)$ threshold scheme for access control
+servers -- e.g., a collection may delegate a list of $n$ access
+control servers from which an application must acquire at least $k$
+valid tokens to gain access. Thus, if the user does not wish to trust
+a single access control server, they may require tokens from at least
 $k$ different AC servers to access the data stored in a given
 collection. Likewise, if the application wishes to withstand the
 failure of one or more AC servers, it can specify $n$ possible AC
@@ -322,8 +326,8 @@ application to use a single token on all three servers.\footnote{The
   given access control server for themselves, depriving the original
   application of the ability to use those servers with that ID. At
   worst, however, this attack posses an inconvenience to applications,
-  since an application is welcome to simply generate a new UUID and
-  re-key the object with it.}
+  since an application is welcome to simply generate a new UUID for
+  use with each object it stores instead.}
 
 \subsection{Usage Example}
 
@@ -357,22 +361,22 @@ server.\footnote{Omitted from this diagram is the process of creating
   itself a member (i.e., a verifier can enforce its own access control
   specification).} As shown, the client starts by setting up the
 necessary access control structures (i.e., a new verifier and a
-corresponding set of collection permissions).\footnote{Note that is is
+corresponding set of collection permissions).\footnote{Note that it is
   critical that the client creates the permission set corresponding to
-  the planned UUID for the new collection prior to creating the
-  collection itself. Failure to do so risks allowing another actor to
-  ``hijack'' the collection by requesting the permission set
-  corresponding to the new collection's UUID before the original
-  requester. As with other Tutamen operations, the first person to
-  request an object corresponding to a given UUID gets it. Thus, a
-  client should only create a collection using a given UUID after they
-  have properly secured the corresponding permissions for the UUID in
-  question.} Once the AC structures have been created, the client
-creates the storage data structures: first a new collection, than a
-secret within the collection. Prior to each operation, the client must
-also request a token granting the necessary permission from the AC
-server, meaning that about half the interactions in the secret
-creation process are token requests.
+  the planned collection UUID prior to creating the collection
+  itself. Failure to do so risks allowing another actor to ``hijack''
+  the collection by requesting the permission set corresponding to the
+  new collection's UUID before the original requester. As with other
+  Tutamen operations, the first person to request an object
+  corresponding to a given UUID gets it. Thus, a client should only
+  create a collection using a given UUID after they have properly
+  secured the corresponding permissions for the UUID in question on
+  each AC server they wish to utilize.} Once the AC structures have
+been created, the client creates the storage data structures: first a
+new collection, than a secret within the collection. Prior to each
+operation, the client must also request a token granting the necessary
+permission from the AC server, meaning that about half the
+interactions in the secret creation process are token requests.
 
 \begin{figure}[th]
   \centering
@@ -383,15 +387,16 @@ creation process are token requests.
 
 Figure~\ref{fig:tutamen:fetchsecret} shows the steps required to
 retrieve an existing secret. This diagram also assumes that the secret
-in question has an SMS authenticator associated with it, requiring a
-user to provide a response to an SMS challenge approving access to the
-secret. Compared to the process of storing a new secret, retrieving a
-secret is much simpler since it is not necessary to create the slew of
-new objects required when creating a new collection. Ignoring any
-round trips required by individual authenticator modules (e.g., the
-SMS verification), secret retrieval required only a single round trip
-to each server: one to each AC server to retrieve a token and one to
-each storage server to retrieve each shard of the secret. In Tutamen,
+in question has an SMS (i.e. text message) authenticator associated
+with it, requiring a user to provide a response to an SMS challenge in
+order to approve access to the secret. Compared to the process of
+storing a new secret, retrieving a secret is much simpler since it is
+not necessary to create the slew of new access control objects
+required when creating a new collection. Ignoring any round trips
+required by individual authenticator modules (e.g., the SMS
+verification), secret retrieval required only a single round trip to
+each server: one to each AC server to retrieve a token and one to each
+storage server to retrieve each shard of the secret. In Tutamen,
 secret retrieval is thus less expensive than secret storage. We
 foresee most secret-related workloads requiring many reads of a single
 stored secret, so optimizing the system for reads over writes seems
@@ -455,8 +460,8 @@ Tutamen platform. In this manner, it is not necessary for every
 Tutamen application to implement all Tutamen management
 functionality. Instead, an application might leverage only the
 necessary Tutamen commands to perform secret-storage and retrieval,
-leaving the task of managing the sharing of Tutamen-stored secrets to
-the CLI or to another dedicated management application.
+leaving the task of managing the access control of Tutamen-stored
+secrets to the CLI or to another dedicated management application.
 
 %%  Localwords:  Tutamen ACS HTTPS CSR CSRs Authenticators verifiers
 %%  LocalWords:  authenticators authenticator Custos
