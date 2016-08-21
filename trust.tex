@@ -14,18 +14,17 @@ failure of any security guarantees provided by the AC server.
 \begin{packed_desc}
 \item[Certificate Authority Role:] Each access control server acts as
   a CA delegated with issuing and verifying client certificates. Thus,
-  each AC server must store its CA keys in a secure manner and
-  faithfully verify the certificate presented by each client
-  connection.
+  each AC server must faithfully store its CA keys in a secure manner,
+  issue client certificates, and verify the certificate presented by
+  each client connection.
 \item[Token Issuance and Verification:] Each access control server is
   responsible for verifying the access control requirements bound to
   specific object/permission combinations, issuing signed tokens
   attesting to such verification, and verifying the signatures of the
-  tokens it receives from clients wishing to operate on access control
-  objects. Thus, each AC server must store private token signing key
-  in a secure manner and faithfully verify both the access control
-  requirements governing specific token requests and the signatures on
-  all incoming tokens.
+  tokens it receives. Thus, each AC server must faithfully store a
+  private token signing key in a secure manner and verify both the
+  access control requirements governing specific token requests and
+  the signatures and claims on all incoming tokens.
 \end{packed_desc}
 
 The storage servers must uphold the following security
@@ -38,14 +37,14 @@ the storage server.
   providing access control for a given storage object. The storage
   server must then use these keys to faithfully verify the signatures
   on all tokens it receives. Assuming the token signature is valid,
-  the storage server must faithfully enforce the claims asserted in a
-  given token; e.g., by only allowing actions granted by the
+  the storage server must also faithfully enforce the claims asserted
+  in a given token; e.g., by only allowing actions granted by the
   permission contained in the token on the object the token identifies
   prior to the expiration time specified by the token.
 \item[Secure Storage:] Each storage server must take steps to store
-  user-provided secrets in a secure manner, releasing them only to
-  requests accompanied by the requisite number of valid tokens
-  granting such release.
+  user-provided secrets in a secure manner, releasing them only in
+  response to requests accompanied by the requisite number of valid
+  tokens required for such a release.
 \end{packed_desc}
 
 Since the tokens the storage server must verify are provided by the AC
@@ -72,8 +71,9 @@ secure even when individual storage or access control servers fail to
 meet their security requirements. Such failures may result from
 physical server compromise, software bugs, malicious intent or
 incompetence on the part of the server operator, or compelled
-failures.\footnote{For example, being forced to turn over stored
-  secrets in response to legal or governmental pressure.}
+failures\cite{sayler-trust}.\footnote{For example, being forced to
+  turn over stored secrets in response to legal or governmental
+  pressure.}
 
 To work around security failures of an individual server, Tutamen
 applications can leverage Tutamen's distributed operation modes. In
@@ -83,19 +83,19 @@ storage server to keep an application's secrets secure. As described
 in Section~\ref{sec:tutamen:arch:distributed}, each application can
 distribute both secret-storage and access control delegations using
 $n$ choose $k$ schemes. In such setups, the value of $k$ represents
-the degree to which a Tutamen applications can withstand security
+the degree to which a Tutamen application can withstand security
 failures of the associated AC and storage servers, while the
 difference between $n$ and $k$ dictates the degree to which an
-Application can withstand availability failures. For example, an
+application can withstand availability failures. For example, an
 application that chooses to shard its secrets across six storage
 servers where any three shards are sufficient to recreate the secret
 ($n=6$, $k=3$) will remain secure as long as no more than two ($k-1$)
 of the storage servers fail to meet their security
 obligations. Similarly, if each secret shard delegates six possible AC
-servers, token from three of which are required to grant secret
+servers, tokens from three of which are required to grant secret
 access, the applications can withstand the failure of two AC servers
 to uphold their security guarantees. In both cases, the system can
-also withstand the availability failure of up to three servers ($n-k$)
+also withstand the loss of availability of up to three servers ($n-k$)
 while continuing to operate.
 
 \subsection{Trust Model}
@@ -104,7 +104,7 @@ Trust in Tutamen follows from the security models of both individual
 Tutamen servers and of the distributed Tutamen deployment
 architectures. If a Tutamen application is leveraging only a single
 storage and AC server, the application is placing a high degree of
-trust in both servers (and by proxy, the operators of both
+trust in both servers (and by proxy, the operator(s) of both
 servers). This level of trust may be appropriate for some use cases
 (e.g., when a user is operating their own Tutamen's servers), but is
 inappropriate in many other cases (e.g., when using third party hosted
@@ -126,12 +126,12 @@ Tutamen ever become standardized, we also envision the formation of a
 competing market of Tutamen providers from which users may select
 individual hosts for their secrets. Such a market has the potential to
 align economic benefits with security best practices by server
-providers~\cite{sayler-phd}. Although using Tutamen will always entail
-risks with respect to trusted third parties, we believe these risks
-are lower for Tutamen than for existing centralized secret storage
-platforms. Furthermore, increasing the number of providers over which
-secrets or access control duties are split serves to arbitrarily
-reduce the degree of such risks.
+providers~\cite{sayler-trust, sayler-phd}. Although using Tutamen will
+always entail risks with respect to trusted third parties, we believe
+these risks are lower for Tutamen than for existing centralized secret
+storage platforms. Furthermore, increasing the number of providers
+over which secrets or access control duties are split serves to
+arbitrarily reduce the degree of such risks.
 
 %%  LocalWords:  Tutamen's Tutamen CAs DNS TPMs authenticators HTTPS
 %%  LocalWords:  ACS
