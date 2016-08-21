@@ -30,10 +30,10 @@ To add Tutamen-support to LUKS/dm-crypt we have integrated Tutamen
 with the LUKS/dm-crypt bootstrapping
 process~\cite{src-tutamen-askpassword}. Our integration replaces the
 traditional ``human-at-the-keyboard'' boot-time password prompt with a
-request to a Tutamen storage server for necessary decryption secret
-(after first retrieving the necessary tokens from the corresponding
-Tutamen AC server). We have also integrated Tutamen support with QEMU
-to provide qcow2 encryption keys when a VM
+request to a Tutamen storage server for the necessary decryption
+secret (after first retrieving the necessary tokens from the
+corresponding Tutamen AC server). We have also integrated Tutamen
+support with QEMU to provide qcow2 encryption keys when a VM
 boots~\cite{src-qemu-tutamen}. Similar to the dm-crypt setup, QEMU
 normally requires the user to provide the encryption key via the QEMU
 console when a VM launches. Our system replaces this process with
@@ -47,8 +47,8 @@ key. This allows us to gain the same level of human-in-the-loop
 security provided by a typed passphrase, but without actually
 requiring a human to go to the datacenter to type one in. In
 situations where we don't desire a human-in-the-loop at all, we
-envision automating the approval process via the use of time-of-day
-and IP-source authenticators.
+envision automating the approval process via the use of time-of-day,
+IP-source, or similar environmental factor authenticators.
 
 \subsection{Encrypted Cloud Storage}
 
@@ -81,8 +81,8 @@ systems~\cite{blaze1993, Cattaneo2001, halcrow}, FuseBox provides
 transparent file encryption to end users. In order to avoid the
 storage space and security challenges presented by locally caching all
 Dropbox data (i.e., the operation mode for the official Dropbox
-client), FuseBox uses AES~\cite{daemen1999, nist2001} as a stream
-cipher to transparently stream encrypted data to/from Dropbox's
+client), FuseBox uses AES~\cite{daemen1999, nist2001} in a stream
+cipher mode to transparently stream encrypted data to/from Dropbox's
 servers on demand (similar in purpose to systems such
 as~\cite{tang2012} and~\cite{xia2015}). Since FuseBox leverages
 Tutamen to store each per-file encryption key, FuseBox natively
