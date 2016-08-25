@@ -19,10 +19,9 @@ secret-storage systems available today~\cite{vault, confidant,
   keywhiz}.
 
 In this paper, we present the design, implementation, and evaluation
-of a secret-storage system with support for several novel features. We
-also provide several practical demonstrations of how our
-secret-storage system can be integrated with real world applications
-to offer desirable features in a secure and easy-to-use
+of Tutamen and its novel features. We also provide several practical
+demonstrations of how Tutamen can be integrated with real world
+applications to offer desirable features in a secure and easy-to-use
 manner. Tutamen's primary selling points include:
 \begin{packed_item}
 \item A modular authentication system designed to support contextual,
@@ -37,7 +36,7 @@ manner. Tutamen's primary selling points include:
 
 \subsection{The Need for Secret-Storage}
 
-Computing systems invade every facet of our lives, from the fitness
+Computing systems pervade every facet of our lives, from the fitness
 trackers on our wrists, to our ``smart'' home appliances, to the
 server infrastructure required to support the range of websites and
 services we interact with every day. With this explosion of computing
@@ -77,63 +76,57 @@ enables to end users.
 
 \subsection{Motivating Examples}
 
-As a motivating example, consider the popular Dropbox cloud file
-locker service~\cite{dropbox}, through which users may upload
-arbitrary files in order to sync them between multiple devices and to
-share them with other users. While Dropbox provides encryption for
-data in transit between the Dropbox servers and a client
-machine~\cite{dropbox-security}, Dropbox also holds a copy of the
-associated encryption keys, enabling them to decrypt a user's files
-whenever they desire (or when they are breached or compelled to
-provide such data). To overcome this deficiency, a Dropbox user could
-employ some form of ``client-side'' encryption whereby they encrypt
-all data locally and ensure Dropbox itself never has access to the
-their files. Unfortunately, such a solution begets a number of
-additional challenges, namely:
+There are a number of motivating examples that highlight the potential
+usefulness of a general purpose secure secret-storage system:
 
-\begin{packed_enum}
-\item It breaks Dropbox's sharing use case. While users could still
-  share encrypted versions of their files with other users via
-  Dropbox, they would also have to exchange the associated encryption
-  key out-of-band in order to decrypt and read or update any shared
-  file. Such out-of-band key exchange is burdensome and calls into
-  question the utility of client-side encrypting a service such as
-  Dropbox in the first place.
-\item It complicates Dropbox's syncing use case. Whereas before a
-  Dropbox user could bootstrap a new Dropbox client device simply by
-  signing into their Dropbox account, users must now both sign into
-  their Dropbox account and manually transfer a copy of their
-  encryption key to the new device to enable the required encryption
-  and decryption operations. Again, this manual key management process
-  is burdensome and prone to error.
-\end{packed_enum}
-
-These challenges are not unique to Dropbox. There are many modern
-examples of security and privacy enhancing technologies being hindered
-by the lack of good solutions in the secret storage space. For
-example, full disk encryption systems traditionally require a human to
-manually enter secret in order to boot the system -- a requirement
-that makes full disk encryption largely unusable in deployments where
-no human can reasonably be expected to be present at boot time
-(e.g. in a large datacenter deployment or atop third party cloud
-infrastructure). Mobile computing devices are prone to loss and theft,
-but are routinely used to store large amounts of user data -- much of
-which could be reasonably classified as ``secret'' (e.g. social
-security numbers and credit card details) and which should not be
-stored unprotected on theft-prone devices. Password manager have grown
-in popularity as a means to help users manage the burden of
-remembering the secrets (e.g. passwords) necessary to access the
-services they use each day, but such services generally require
-placing a high degree of trust in a single third party provider.
+\begin{packed_desc}
+\item[Encrypted File Lockers:] Cloud file locker services such as
+  Dropbox~\cite{dropbox} or Google Drive~\cite{google-drive} provide a
+  popular mechanism through which users may upload arbitrary files in
+  order to sync them across multiple devices or to share them with
+  other users. Such services, however, require the user to place a
+  high degree of trust in third party storage
+  providers~\cite{sayler-trust}. To mitigate such trust, users could
+  employ various forms of client-side encryption, but doing so
+  introduces a number of challenging encryption-key management
+  problems that complicate the sharing and syncing use cases inherent
+  to such services. Coupling client-side encryption systems with a
+  distributed secret storage system, however, has the potential to
+  reduce the degree to which users must trust third parties while also
+  preserving straightforward syncing and sharing paradigms.
+\item[Datacenter Disk Encryption:] Full disk encryption systems such
+  as dm-crypt~\cite{dm-crypt} are useful for protecting operating
+  systems and the data they store from unauthorized access or
+  manipulation. Such systems, however, traditionally require a human
+  to manually enter a secret in order to boot the system -- a
+  requirement that makes full disk encryption largely unusable in
+  deployments where no human can reasonably be expected to be
+  physically present at boot time (e.g., on a headless remote server
+  or atop third party cloud infrastructure). A secret-storage system
+  capable of providing the necessary disk encryption key at boot and
+  extending, by proxy, the ``human-in-the-loop'' boot requirement
+  beyond mere physical presence (e.g., by sending a text message
+  challenge to an administrator's cell phone) has the potential to
+  expand the use of such encryption systems even in modern remote
+  deployments.
+\item[Password Management:] As mentioned, the growth of the number of
+  passwords users must recall on a daily basis forces users to either
+  choose low quality passwords, to reuse passwords across multiple
+  services, or to place a high degree of trust in a third party
+  password management services. A distributed secret storage service,
+  however, has the potential to provide services similar to those
+  provided by third party password managers, but with a lower degree
+  of third party trust.
+\end{packed_desc}
 
 \subsection{The Ideal Secret-Storage System}
 
-To address these challenges and overcome existing deficiencies, users
-require a mechanism for securely storing, managing, and exchanging a
-wide range of secrets. Unlike standard configuration management
-systems, or even specific secret-storage systems such as password
-managers, general purpose secret-storage presents a number of unique
-requirements, including the following capabilities:
+To address use cases such as these, users require a mechanism for
+securely storing, managing, and exchanging a wide range of
+secrets. Unlike standard configuration management systems, or even
+specific secret-storage systems such as traditional password managers,
+general purpose secret-storage presents a number of unique
+requirements. These include the following capabilities:
 
 \begin{packed_item}
 \item Store arbitrary secret data.
@@ -173,18 +166,17 @@ to leverage third party secret-storage providers running Tutamen
 servers without having to place high degrees of trust in any single
 provider. Tutamen is also designed to scale beyond a single
 administrative domain, and does not require centralized control or
-administration of each server in a Tutamen deployment. Furthermore,
-Tutamen provides support for a modular authentication interface. This
-interface makes Tutamen suitable for use in situations where it is
-desirable to leverage external environmental information to
-automatically evaluate the authenticity of a secret-request or where
-it is necessary to keep a human in the authentication loop without
-actually requiring that the human be physically present. For example,
-Tutamen can be used to store the disk encryption keys required to boot
-a headless server, and to only release these keys to the server
-requesting them when a human responds to a text message confirming the
-boot request.  The remainder of this paper discusses Tutamen's design
-and how it can be applied to solve issues such as those raised here.
+administration of each server in a Tutamen deployment. This capability
+makes it possible to employ Tutamen in loosely organized environments
+or across the Internet in general. Furthermore, Tutamen provides
+support for a modular authentication interface. This interface makes
+Tutamen suitable for use in situations where it is desirable to
+leverage external environmental information to automatically evaluate
+the authenticity of a secret-request or where it is necessary to keep
+a human in the authentication loop without actually requiring that the
+human be physically present. The remainder of this paper discusses
+Tutamen's design and how it can be applied to solve issues such as
+those raised here.
 
 %%  LocalWords:  Tutamen LastPass HashiCorp's Lyft's Keywhiz OOB SMS
-%%  LocalWords:  Tutamen's
+%%  LocalWords:  Tutamen's dm
