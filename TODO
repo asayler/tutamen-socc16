@@ -1,4 +1,0 @@
-+ Discuss key rotation and certificate revocation
-- Trim Section 2 - too much tangential info, focus on Auth and Storage
-+ Discuss how SS/ACS servers are added removed (migrated, decommissioned)
-+ Discuss incremental scaling
